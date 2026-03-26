@@ -1,0 +1,4349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Report — woocommerce.com</title>
+  <style>
+    :root {
+      --color-bg:         #0f1117;
+      --color-surface:    #1a1d27;
+      --color-border:     #2a2d3a;
+      --color-primary:    #6366f1;
+      --color-primary-light: #818cf8;
+      --color-success:    #22c55e;
+      --color-warning:    #f59e0b;
+      --color-danger:     #ef4444;
+      --color-info:       #3b82f6;
+      --color-text:       #e2e8f0;
+      --color-muted:      #94a3b8;
+      --color-card:       #1e2130;
+      --radius:           12px;
+      --radius-sm:        6px;
+      --shadow:           0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* ── Layout ───────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Header ───────────────────────────────────────────────── */
+    .report-header {
+      background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+      border-bottom: 1px solid var(--color-border);
+      padding: 48px 0 40px;
+    }
+    .report-header .meta { color: var(--color-muted); font-size: 13px; margin-top: 8px; }
+    .report-header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+    .report-header .url-badge {
+      display: inline-block; margin-top: 12px;
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; color: var(--color-primary-light);
+    }
+
+    /* ── Score ring ───────────────────────────────────────────── */
+    .score-hero {
+      display: flex; align-items: center; gap: 32px;
+      background: var(--color-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius); padding: 32px; margin: 32px 0;
+    }
+    .score-ring { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+    .score-ring svg { transform: rotate(-90deg); }
+    .score-ring .ring-bg { fill: none; stroke: var(--color-border); stroke-width: 10; }
+    .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+    .score-ring .ring-good    { stroke: var(--color-success); }
+    .score-ring .ring-warn    { stroke: var(--color-warning); }
+    .score-ring .ring-poor    { stroke: var(--color-danger);  }
+    .score-ring .ring-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      text-align: center;
+    }
+    .score-ring .ring-text .num  { font-size: 28px; font-weight: 800; line-height: 1; }
+    .score-ring .ring-text .denom { font-size: 12px; color: var(--color-muted); }
+    .score-hero-info h2 { font-size: 20px; font-weight: 700; }
+    .score-hero-info .grade {
+      display: inline-block; padding: 2px 12px; border-radius: 20px;
+      font-size: 13px; font-weight: 700; margin-top: 4px;
+    }
+    .grade-A { background: rgba(34,197,94,.15); color: var(--color-success); }
+    .grade-B { background: rgba(34,197,94,.1);  color: #86efac; }
+    .grade-C { background: rgba(245,158,11,.15); color: var(--color-warning); }
+    .grade-D { background: rgba(239,68,68,.12);  color: #fca5a5; }
+    .grade-F { background: rgba(239,68,68,.2);   color: var(--color-danger); }
+    .score-stats { display: flex; gap: 24px; margin-top: 12px; }
+    .score-stats .stat { text-align: center; }
+    .score-stats .stat .val { font-size: 20px; font-weight: 700; }
+    .score-stats .stat .lbl { font-size: 11px; color: var(--color-muted); text-transform: uppercase; letter-spacing: .5px; }
+    .stat-critical .val { color: var(--color-danger); }
+    .stat-warning  .val { color: var(--color-warning); }
+
+    /* ── Layer score grid ─────────────────────────────────────── */
+    .layer-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px; margin: 24px 0;
+    }
+    .layer-card {
+      background: var(--color-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius); padding: 20px 16px; text-align: center;
+    }
+    .layer-card .layer-name { font-size: 11px; color: var(--color-muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px; }
+    .layer-card .layer-score { font-size: 26px; font-weight: 800; }
+    .layer-card .layer-bar { height: 4px; border-radius: 2px; margin-top: 8px; background: var(--color-border); }
+    .layer-card .layer-bar-fill { height: 100%; border-radius: 2px; transition: width .8s ease; }
+    .score-good { color: var(--color-success); }
+    .score-warn { color: var(--color-warning); }
+    .score-poor { color: var(--color-danger);  }
+    .bar-good   { background: var(--color-success); }
+    .bar-warn   { background: var(--color-warning); }
+    .bar-poor   { background: var(--color-danger);  }
+
+    /* ── Section headers ──────────────────────────────────────── */
+    .section { margin: 48px 0; }
+    .section-title {
+      font-size: 18px; font-weight: 700; margin-bottom: 20px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--color-border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-title .icon { font-size: 20px; }
+
+    /* ── Cards ────────────────────────────────────────────────── */
+    .card {
+      background: var(--color-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 16px;
+    }
+    .card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .card-title { font-size: 15px; font-weight: 600; }
+    .card-url   { font-size: 12px; color: var(--color-muted); margin-top: 2px; word-break: break-all; }
+
+    /* ── Badges ───────────────────────────────────────────────── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600;
+    }
+    .badge-healthy  { background: rgba(34,197,94,.12);  color: var(--color-success); }
+    .badge-warning  { background: rgba(245,158,11,.12); color: var(--color-warning); }
+    .badge-critical { background: rgba(239,68,68,.15);  color: var(--color-danger);  }
+    .badge-info     { background: rgba(59,130,246,.12); color: var(--color-info); }
+    .badge-na       { background: rgba(148,163,184,.1); color: var(--color-muted); }
+
+    /* ── Issues list ──────────────────────────────────────────── */
+    .issue-list { list-style: none; }
+    .issue-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid var(--color-border);
+    }
+    .issue-item:last-child { border-bottom: none; }
+    .issue-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .dot-critical { background: var(--color-danger);  }
+    .dot-warning  { background: var(--color-warning); }
+    .dot-info     { background: var(--color-info); }
+    .issue-layer  { font-size: 11px; color: var(--color-primary-light); font-weight: 600;
+                    white-space: nowrap; padding-top: 1px; min-width: 80px; }
+    .issue-msg    { font-size: 13px; color: var(--color-text); }
+    .issue-page   { font-size: 11px; color: var(--color-muted); margin-top: 2px; }
+
+    /* ── Tables ───────────────────────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 11px; color: var(--color-muted); text-transform: uppercase;
+         letter-spacing: .5px; padding: 8px 12px; border-bottom: 1px solid var(--color-border); }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(42,45,58,.6); font-size: 13px; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+
+    /* ── Metric row ───────────────────────────────────────────── */
+    .metric-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--color-border); }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-label  { font-size: 13px; color: var(--color-muted); width: 160px; flex-shrink: 0; }
+    .metric-value  { font-size: 14px; font-weight: 600; width: 80px; }
+    .metric-bar    { flex: 1; height: 6px; background: var(--color-border); border-radius: 3px; }
+    .metric-bar-fill { height: 100%; border-radius: 3px; }
+    .metric-rating { font-size: 11px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+    .rating-good  { background: rgba(34,197,94,.12);  color: var(--color-success); }
+    .rating-needs { background: rgba(245,158,11,.12); color: var(--color-warning); }
+    .rating-poor  { background: rgba(239,68,68,.15);  color: var(--color-danger);  }
+
+    /* ── Breakpoint grid ──────────────────────────────────────── */
+    .bp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .bp-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 16px; }
+    .bp-name  { font-size: 11px; color: var(--color-muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+    .bp-checks { display: flex; flex-direction: column; gap: 6px; }
+    .bp-check  { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+
+    /* ── Funnel ───────────────────────────────────────────────── */
+    .funnel { display: flex; align-items: center; gap: 0; margin: 16px 0; }
+    .funnel-step {
+      flex: 1; text-align: center; padding: 12px 8px;
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      position: relative;
+    }
+    .funnel-step:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+    .funnel-step:last-child  { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .funnel-step .step-icon  { font-size: 18px; }
+    .funnel-step .step-name  { font-size: 10px; color: var(--color-muted); margin-top: 4px; }
+    .funnel-step.passed      { border-color: var(--color-success); background: rgba(34,197,94,.06); }
+    .funnel-step.failed      { border-color: var(--color-danger);  background: rgba(239,68,68,.06); }
+    .funnel-step.skipped     { opacity: .5; }
+
+    /* ── Page summary table ───────────────────────────────────── */
+    .pages-table td:first-child { font-weight: 500; }
+    .score-pill {
+      display: inline-block; padding: 2px 10px; border-radius: 12px;
+      font-size: 12px; font-weight: 700;
+    }
+    .pill-good { background: rgba(34,197,94,.12);  color: var(--color-success); }
+    .pill-warn { background: rgba(245,158,11,.12); color: var(--color-warning); }
+    .pill-poor { background: rgba(239,68,68,.15);  color: var(--color-danger);  }
+
+    /* ── TOC ──────────────────────────────────────────────────── */
+    .toc { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 24px; margin: 32px 0; }
+    .toc h3 { font-size: 14px; color: var(--color-muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 12px; }
+    .toc ol  { padding-left: 20px; }
+    .toc li  { padding: 4px 0; }
+    .toc a   { color: var(--color-primary-light); text-decoration: none; font-size: 14px; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    .report-footer {
+      border-top: 1px solid var(--color-border); padding: 32px 0;
+      text-align: center; color: var(--color-muted); font-size: 12px; margin-top: 64px;
+    }
+
+    /* ── Divider ──────────────────────────────────────────────── */
+    .divider { border: none; border-top: 1px solid var(--color-border); margin: 32px 0; }
+
+    /* ── Print ────────────────────────────────────────────────── */
+    @media print {
+      body { background: white; color: #1a1a2e; }
+      .card, .layer-card, .toc, .bp-card, .funnel-step { background: white; border-color: #e2e8f0; }
+      :root { --color-bg: white; --color-surface: #f8fafc; --color-card: white; --color-border: #e2e8f0; --color-text: #1e293b; --color-muted: #64748b; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="report-header">
+    <div class="container">
+      <p style="font-size:12px;color:var(--color-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">Website Audit Report</p>
+      <h1>woocommerce.com</h1>
+      <div class="url-badge">https://woocommerce.com/</div>
+      <p class="meta" style="margin-top:12px">March 17, 2026 &nbsp;·&nbsp; 10 pages &nbsp;·&nbsp; 16.5 min scan time</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    
+    <div class="toc">
+      <h3>Pages in This Report</h3>
+      <ol>
+    <li><a href="#page-0">home (rank 1)</a> — <span style="color:var(--color-muted)">82/100</span></li>
+    <li><a href="#page-1">service-page (rank 2)</a> — <span style="color:var(--color-muted)">89/100</span></li>
+    <li><a href="#page-2">service-page (rank 3)</a> — <span style="color:var(--color-muted)">82/100</span></li>
+    <li><a href="#page-3">services (rank 4)</a> — <span style="color:var(--color-muted)">87/100</span></li>
+    <li><a href="#page-4">service-page (rank 5)</a> — <span style="color:var(--color-muted)">79/100</span></li>
+    <li><a href="#page-5">services (rank 6)</a> — <span style="color:var(--color-muted)">79/100</span></li>
+    <li><a href="#page-6">services (rank 7)</a> — <span style="color:var(--color-muted)">80/100</span></li>
+    <li><a href="#page-7">service-page (rank 8)</a> — <span style="color:var(--color-muted)">87/100</span></li>
+    <li><a href="#page-8">service-page (rank 9)</a> — <span style="color:var(--color-muted)">91/100</span></li>
+    <li><a href="#page-9">contact (rank 10)</a> — <span style="color:var(--color-muted)">83/100</span></li></ol>
+    </div>
+    
+    <section class="section" id="summary">
+      <div class="section-title"><span class="icon">📊</span> Executive Summary</div>
+
+      <div class="score-hero">
+        
+    <div class="score-ring">
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle class="ring-bg"   cx="60" cy="60" r="50" />
+        <circle class="ring-fill ring-good"
+          cx="60" cy="60" r="50"
+          stroke-dasharray="314.1592653589793"
+          stroke-dashoffset="50.26548245743669" />
+      </svg>
+      <div class="ring-text">
+        <div class="num" style="color:#22c55e">84</div>
+        <div class="denom">/100</div>
+      </div>
+    </div>
+        <div class="score-hero-info">
+          <h2>Overall Site Score</h2>
+          <span class="badge grade-B">B Grade</span>
+          <div class="score-stats" style="margin-top:16px">
+            <div class="stat stat-critical">
+              <div class="val">6</div>
+              <div class="lbl">Critical</div>
+            </div>
+            <div class="stat stat-warning">
+              <div class="val">80</div>
+              <div class="lbl">Warnings</div>
+            </div>
+            <div class="stat">
+              <div class="val">10</div>
+              <div class="lbl">Pages</div>
+            </div>
+            <div class="stat">
+              <div class="val">16.5 min</div>
+              <div class="lbl">Scan Time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-grid">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">90</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:90%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">89</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:89%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">70</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:70%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">55</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:55%"></div></div>
+    </div>
+      </div>
+
+      
+    <div class="card" style="margin-top:24px">
+      <div class="card-header"><div class="card-title">🔴 Critical Issues</div></div>
+      <ul class="issue-list">
+        
+    <li class="issue-item">
+      <div class="issue-dot dot-info"></div>
+      <div>
+        <div class="issue-layer">Performance</div>
+        <div class="issue-msg">40 image(s) took over 1.00s to load</div>
+        <div class="issue-page">home (rank 1)</div>
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-info"></div>
+      <div>
+        <div class="issue-layer">Performance</div>
+        <div class="issue-msg">36 image(s) took over 1.00s to load</div>
+        <div class="issue-page">service-page (rank 3)</div>
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-info"></div>
+      <div>
+        <div class="issue-layer">Performance</div>
+        <div class="issue-msg">FCP is 3.36s — very slow first paint (threshold: 1.80s)</div>
+        <div class="issue-page">services (rank 6)</div>
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-info"></div>
+      <div>
+        <div class="issue-layer">Performance</div>
+        <div class="issue-msg">12 image(s) took over 1.00s to load</div>
+        <div class="issue-page">services (rank 6)</div>
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-info"></div>
+      <div>
+        <div class="issue-layer">Forms</div>
+        <div class="issue-msg">&quot;Form 3&quot; — no validation on empty submit</div>
+        <div class="issue-page">services (rank 7)</div>
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-info"></div>
+      <div>
+        <div class="issue-layer">Ecommerce</div>
+        <div class="issue-msg">Product listing: Listing page loaded but products found but missing both images and prices</div>
+        <div class="issue-page">contact (rank 10)</div>
+      </div>
+    </li>
+      </ul>
+    </div>
+      
+    <div class="card" style="margin-top:24px">
+      <div class="card-header"><div class="card-title">📄 Pages Audited</div></div>
+      <table class="pages-table">
+        <tr>
+          <th>Page</th>
+          <th>Score</th>
+          <th>Health</th>
+          <th>UI</th>
+          <th>Navigation</th>
+          <th>Forms</th>
+          <th>Performance</th>
+        </tr>
+        
+        <tr>
+          <td>
+            <a href="#page-0" style="color:var(--color-primary-light);text-decoration:none">home (rank 1)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/</div>
+          </td>
+          <td><span class="score-pill pill-good">82/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>74</td>
+          <td>100</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-1" style="color:var(--color-primary-light);text-decoration:none">service-page (rank 2)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/download</div>
+          </td>
+          <td><span class="score-pill pill-good">89/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>94</td>
+          <td>100</td>
+          <td>68</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-2" style="color:var(--color-primary-light);text-decoration:none">service-page (rank 3)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/woocommerce</div>
+          </td>
+          <td><span class="score-pill pill-good">82/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>94</td>
+          <td>100</td>
+          <td>36</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-3" style="color:var(--color-primary-light);text-decoration:none">services (rank 4)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/wordpress-ecommerce</div>
+          </td>
+          <td><span class="score-pill pill-good">87/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>91</td>
+          <td>85</td>
+          <td>71</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-4" style="color:var(--color-primary-light);text-decoration:none">service-page (rank 5)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/enterprise-ecommerce</div>
+          </td>
+          <td><span class="score-pill pill-warn">79/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>86</td>
+          <td>55</td>
+          <td>51</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-5" style="color:var(--color-primary-light);text-decoration:none">services (rank 6)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/development-services</div>
+          </td>
+          <td><span class="score-pill pill-warn">79/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>94</td>
+          <td>100</td>
+          <td>19</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-6" style="color:var(--color-primary-light);text-decoration:none">services (rank 7)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/products</div>
+          </td>
+          <td><span class="score-pill pill-good">80/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>88</td>
+          <td>45</td>
+          <td>55</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-7" style="color:var(--color-primary-light);text-decoration:none">service-page (rank 8)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/payments</div>
+          </td>
+          <td><span class="score-pill pill-good">87/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>94</td>
+          <td>100</td>
+          <td>59</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-8" style="color:var(--color-primary-light);text-decoration:none">service-page (rank 9)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/for-agencies</div>
+          </td>
+          <td><span class="score-pill pill-good">91/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>94</td>
+          <td>100</td>
+          <td>82</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#page-9" style="color:var(--color-primary-light);text-decoration:none">contact (rank 10)</a>
+            <div style="font-size:11px;color:var(--color-muted)">woocommerce.com/contact-us</div>
+          </td>
+          <td><span class="score-pill pill-good">83/100</span></td>
+          <td>100</td>
+          <td>100</td>
+          <td>86</td>
+          <td>100</td>
+          <td>61</td>
+        </tr>
+      </table>
+    </div>
+    </section>
+
+    <!-- ── Per-page results ── -->
+    <section class="section" id="pages">
+      <div class="section-title"><span class="icon">📄</span> Page-by-Page Results</div>
+      
+    <div class="card" id="page-0" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">home (rank 1)</div>
+          <div class="card-url">https://woocommerce.com/</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-B">B</span>
+          <span class="score-pill pill-good">82/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-warn">74</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:74%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">50</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:50%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>✓ None</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">2 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (6)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (6)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (4)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">74/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>8 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>2 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>external</td>
+        <td><span style="color:var(--color-danger)">404</span></td>
+        <td style="word-break:break-all;font-size:12px">https://storeleads.app/reports</td>
+      </tr>
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D8af91c22af70fc9cdf6dc020b12b7b2956839f68189059c07b89bf556e89aa8c%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken external link(s) (out of 2 checked)</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        <p style="color:var(--color-muted)">No testable forms found on this page</p>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">50/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">1.33s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:26.6%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">3.05s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:50.83333333333333%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">3.39s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:37.666666666666664%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">737ms</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:100%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">1.42s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:28.4%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>7933 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>615 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>49 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>121</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (65)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-danger)">✕ 40</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-warning)">⚠ 9</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 3.05s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Page load is 3.39s — consider deferring non-critical resources</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-critical"></div>
+      <div>
+        
+        <div class="issue-msg">40 image(s) took over 1.00s to load</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">9 oversized image(s) over 200KB — serve WebP/AVIF and compress</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 737ms — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-1" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">service-page (rank 2)</div>
+          <div class="card-url">https://woocommerce.com/download</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-B">B</span>
+          <span class="score-pill pill-good">89/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">94</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:94%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">68</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:68%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>Download WooCommerce - WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/download/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">94/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>3 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>2 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D14486d94d55b4107504f3014509cd475872c1abef11b770d2614f35f5b7e8d53%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        <p style="color:var(--color-muted)">No testable forms found on this page</p>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">68/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">2.02s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:40.400000000000006%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">2.32s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:38.666666666666664%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">2.66s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:29.555555555555557%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.46s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:48.66666666666667%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">2.40s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:48%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>1954 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>252 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>44 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>56</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (13)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-warning)">⚠ 1</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 2.02s — aim for under 1.80s</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 2.32s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 oversized image(s) over 200KB — serve WebP/AVIF and compress</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.46s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-2" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">service-page (rank 3)</div>
+          <div class="card-url">https://woocommerce.com/woocommerce</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-B">B</span>
+          <span class="score-pill pill-good">82/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">94</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:94%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-poor">36</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-poor" style="width:36%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>What is WooCommerce? - WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/woocommerce/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">94/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>13 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>1 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D92b71141b6ed0b2d0da1e86148c7085ff9f4d2ee32f64ccaf2cf422220693fac%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        <p style="color:var(--color-muted)">No testable forms found on this page</p>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-danger)">36/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">2.12s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:42.4%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">3.51s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:58.5%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">4.86s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:54%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.33s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:44.333333333333336%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">2.43s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:48.6%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>25565 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>254 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>68 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>103</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (49)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-danger)">✕ 36</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-warning)">⚠ 8</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 2.12s — aim for under 1.80s</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 3.51s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Page load is 4.86s — consider deferring non-critical resources</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-critical"></div>
+      <div>
+        
+        <div class="issue-msg">36 image(s) took over 1.00s to load</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">8 oversized image(s) over 200KB — serve WebP/AVIF and compress</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.33s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-3" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">services (rank 4)</div>
+          <div class="card-url">https://woocommerce.com/wordpress-ecommerce</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-B">B</span>
+          <span class="score-pill pill-good">87/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">91</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:91%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">85</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:85%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">71</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:71%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>WordPress Ecommerce Plugin - WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/wordpress-ecommerce/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (4)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">91/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>3 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>15 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>external</td>
+        <td><span style="color:var(--color-danger)">404</span></td>
+        <td style="word-break:break-all;font-size:12px">https://storeleads.app/reports</td>
+      </tr>
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3Df67452ba7e0cb2796137a46b9ca06075ca490a082573f38ae52283af6cff1ab9%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken external link(s) (out of 15 checked)</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">85/100</span>
+        </div>
+        
+    <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:8px;padding:16px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <span style="font-weight:600">Form 3</span>
+        <span class="score-pill pill-good">85/100</span>
+      </div>
+      <table>
+        <tr><td style="color:var(--color-muted);width:200px">Empty Submit Validation</td><td><span style="color:#22c55e">✓</span> <small style="color:var(--color-muted)">(aria)</small></td></tr>
+        <tr><td style="color:var(--color-muted)">Invalid Email Caught</td><td><span style="color:#22c55e">✓</span></td></tr>
+        <tr><td style="color:var(--color-muted)">Error Messages Visible</td><td><span style="color:#ef4444">✕</span> </td></tr>
+        
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">&quot;Form 3&quot; — error messages not clearly visible</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">71/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">2.14s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:42.8%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">2.65s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:44.166666666666664%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">2.99s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:33.22222222222222%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.55s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:51.66666666666667%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">2.14s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:42.8%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>1636 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>309 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>48 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>70</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (17)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 2.14s — aim for under 1.80s</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 2.65s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.55s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-4" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">service-page (rank 5)</div>
+          <div class="card-url">https://woocommerce.com/enterprise-ecommerce</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-C">C</span>
+          <span class="score-pill pill-warn">79/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">86</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:86%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-warn">55</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:55%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">51</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:51%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>Enterprise Ecommerce Platform - WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/enterprise-ecommerce/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (4)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (8)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">86/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>2 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>5 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>external</td>
+        <td><span style="color:var(--color-danger)">404</span></td>
+        <td style="word-break:break-all;font-size:12px">https://storeleads.app/reports</td>
+      </tr>
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3Da73b78093c54ae05f64362c23c655fbaad6ecf40eba843579063a93c8e5b3e5a%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken external link(s) (out of 5 checked)</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">55/100</span>
+        </div>
+        
+    <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:8px;padding:16px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <span style="font-weight:600">Opt-in</span>
+        <span class="score-pill pill-warn">55/100</span>
+      </div>
+      <table>
+        <tr><td style="color:var(--color-muted);width:200px">Empty Submit Validation</td><td><span style="color:#22c55e">✓</span> <small style="color:var(--color-muted)">(custom-ui)</small></td></tr>
+        <tr><td style="color:var(--color-muted)">Invalid Email Caught</td><td><span style="color:#ef4444">✕</span></td></tr>
+        <tr><td style="color:var(--color-muted)">Error Messages Visible</td><td><span style="color:#ef4444">✕</span> </td></tr>
+        
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">&quot;Opt-in&quot; — invalid email accepted without error</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">&quot;Opt-in&quot; — error messages not clearly visible</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">51/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">2.12s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:42.4%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">2.80s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:46.666666666666664%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">3.31s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:36.77777777777778%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.46s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:48.66666666666667%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">2.12s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:42.4%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>12516 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>668 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>48 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>90</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (37)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-warning)">⚠ 5</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 2.12s — aim for under 1.80s</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 2.80s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Page load is 3.31s — consider deferring non-critical resources</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">5 oversized image(s) over 200KB — serve WebP/AVIF and compress</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.46s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-5" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">services (rank 6)</div>
+          <div class="card-url">https://woocommerce.com/development-services</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-C">C</span>
+          <span class="score-pill pill-warn">79/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">94</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:94%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-poor">19</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-poor" style="width:19%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>WooCommerce Development Services</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/development-services/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (4)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (4)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">94/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>25 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>0 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D186f75280ce1bfa6df3885b36192089d2d0aed21e671d259badc905cdb160021%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        <p style="color:var(--color-muted)">No testable forms found on this page</p>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-danger)">19/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">3.36s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-poor" style="width:67.2%"></div></div>
+      <span class="metric-rating rating-poor">Poor</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">3.98s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:66.33333333333333%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">4.32s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:48%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">2.87s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:95.66666666666667%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">3.37s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:67.4%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>2342 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>270 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>49 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>63</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (19)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-danger)">✕ 12</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-warning)">⚠ 2</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-critical"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 3.36s — very slow first paint (threshold: 1.80s)</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 3.98s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Page load is 4.32s — consider deferring non-critical resources</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-critical"></div>
+      <div>
+        
+        <div class="issue-msg">12 image(s) took over 1.00s to load</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">2 oversized image(s) over 200KB — serve WebP/AVIF and compress</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 2.87s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-6" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">services (rank 7)</div>
+          <div class="card-url">https://woocommerce.com/products</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-B">B</span>
+          <span class="score-pill pill-good">80/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">88</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:88%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-poor">45</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-poor" style="width:45%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">55</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:55%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>WooCommerce Extensions, Themes, Plugins, and More</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/products/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">88/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>60 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>0 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>external</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3Dfc641e91a9d7517004f700c7cd73b4aefe7c58d3a7073c2da8ca46a85f342329%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken external link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-danger)">45/100</span>
+        </div>
+        
+    <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:8px;padding:16px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <span style="font-weight:600">Form 3</span>
+        <span class="score-pill pill-poor">45/100</span>
+      </div>
+      <table>
+        <tr><td style="color:var(--color-muted);width:200px">Empty Submit Validation</td><td><span style="color:#ef4444">✕</span> </td></tr>
+        <tr><td style="color:var(--color-muted)">Invalid Email Caught</td><td><span style="color:var(--color-muted)">— No email field</span></td></tr>
+        <tr><td style="color:var(--color-muted)">Error Messages Visible</td><td><span style="color:#ef4444">✕</span> </td></tr>
+        
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-critical"></div>
+      <div>
+        
+        <div class="issue-msg">&quot;Form 3&quot; — no validation on empty submit</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">&quot;Form 3&quot; — error messages not clearly visible</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">55/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">2.61s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:52.2%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">2.79s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:46.5%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">3.29s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:36.55555555555556%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.83s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:61%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">2.61s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:52.2%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>2068 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>280 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>79 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>130</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (66)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-warning)">⚠ 2</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 2.61s — aim for under 1.80s</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 2.79s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Page load is 3.29s — consider deferring non-critical resources</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">2 oversized image(s) over 200KB — serve WebP/AVIF and compress</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.83s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-7" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">service-page (rank 8)</div>
+          <div class="card-url">https://woocommerce.com/payments</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-B">B</span>
+          <span class="score-pill pill-good">87/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">94</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:94%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">59</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:59%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>WooPayments – WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/payments/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">2 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (5)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (4)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (8)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">94/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>11 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>3 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3Df3c6d0ae9315a4541fc8cb213b43d59427848454fbb69d53eb8f90a34f11b865%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        <p style="color:var(--color-muted)">No testable forms found on this page</p>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">59/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">2.26s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:45.2%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">2.38s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:39.666666666666664%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">3.24s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:36%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.40s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:46.666666666666664%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">2.29s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:45.800000000000004%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>2081 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>592 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>48 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>68</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (17)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-danger)">✕ 1</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 2.26s — aim for under 1.80s</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 2.38s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Page load is 3.24s — consider deferring non-critical resources</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 image(s) took over 1.00s to load</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.40s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-8" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">service-page (rank 9)</div>
+          <div class="card-url">https://woocommerce.com/for-agencies</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-A">A</span>
+          <span class="score-pill pill-good">91/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">94</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:94%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">72</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:72%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-good">82</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:82%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>Woo + Automattic for Agencies - WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/for-agencies/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (3)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">94/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>2 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>1 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D8df8cb991bd78056995a7592e698d0d5f38fcd36cbbdb20ca400495cf89057aa%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        <p style="color:var(--color-muted)">No testable forms found on this page</p>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">72/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>176</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">82/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">1.70s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:34%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">2.38s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:39.666666666666664%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">2.39s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:26.555555555555554%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.36s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:45.33333333333333%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">1.72s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:34.4%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>1767 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>252 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>46 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>60</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (18)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-warning)">⚠ 1</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 2.38s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 oversized image(s) over 200KB — serve WebP/AVIF and compress</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.36s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+
+    <div class="card" id="page-9" style="margin-bottom:32px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">contact (rank 10)</div>
+          <div class="card-url">https://woocommerce.com/contact-us</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge grade-B">B</span>
+          <span class="score-pill pill-good">83/100</span>
+        </div>
+      </div>
+
+      <div class="layer-grid" style="margin-bottom:24px">
+        
+    <div class="layer-card">
+      <div class="layer-name">Health</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">UI Layout</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Navigation</div>
+      <div class="layer-score score-good">86</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:86%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Forms</div>
+      <div class="layer-score score-good">100</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-good" style="width:100%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Ecommerce</div>
+      <div class="layer-score score-warn">52</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:52%"></div></div>
+    </div>
+        
+    <div class="layer-card">
+      <div class="layer-name">Performance</div>
+      <div class="layer-score score-warn">61</div>
+      <div class="layer-bar"><div class="layer-bar-fill bar-warn" style="width:61%"></div></div>
+    </div>
+      </div>
+
+      <hr class="divider" />
+      
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🏥 Health</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <table>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">HTTP Status</td>
+      <td>200 ✓ OK</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Page Title</td>
+      <td>Contact us - WooCommerce</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Blank Screen</td>
+      <td>✓ No</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">JS Errors</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Network Fails</td>
+      <td>✓ None</td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted);width:160px">Redirect</td>
+      <td>→ https://woocommerce.com/contact-us/</td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 non-critical request(s) failed</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🖼 UI & Layout</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        
+    <div style="margin-bottom:16px">
+      <table>
+        <tr><td style="color:var(--color-muted);width:160px">Logo</td><td><span style="color:#22c55e">✓</span> Visible &nbsp; <span style="color:#22c55e">✓</span> Clickable &nbsp; <span style="color:#22c55e">✓</span> Links Home</td></tr>
+        <tr><td style="color:var(--color-muted)">Overflow</td><td><span style="color:#22c55e">✓</span> No horizontal overflow</td></tr>
+        <tr><td style="color:var(--color-muted)">Mobile Nav</td><td><span style="color:#22c55e">✓</span> Hamburger visible</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Breakpoints</p>
+    <div class="bp-grid">
+    <div class="bp-card">
+      <div class="bp-name">mobile (375px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (1)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Mobile Nav</div>
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">tablet (768px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (1)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-name">desktop (1440px)</div>
+      <div class="bp-checks">
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Header</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> Footer</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> CTA (1)</div>
+        <div class="bp-check"><span style="color:#22c55e">✓</span> No Overflow</div>
+        
+      </div>
+    </div></div>
+    
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🔗 Navigation</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">86/100</span>
+        </div>
+        
+    <table><tr><th>Region</th><th>Total</th><th>Status</th></tr>
+    <tr>
+      <td style="color:var(--color-muted)">Navigation</td>
+      <td>128 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Internal</td>
+      <td>4 links</td>
+      <td><span style="color:var(--color-success)">✓ All ok</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">External</td>
+      <td>5 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr>
+    <tr>
+      <td style="color:var(--color-muted)">Footer</td>
+      <td>7 links</td>
+      <td><span style="color:var(--color-danger)">✕ 1 broken</span></td>
+    </tr></table>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Broken Links</p>
+    <table>
+      <tr><th>Region</th><th>Status</th><th>URL</th></tr>
+      
+      <tr>
+        <td>external</td>
+        <td><span style="color:var(--color-danger)">404</span></td>
+        <td style="word-break:break-all;font-size:12px">https://docs.woocommerce.com/documentation/plugins/woocommerce/getting-started/installation-and-updating/</td>
+      </tr>
+      <tr>
+        <td>footer</td>
+        <td><span style="color:var(--color-danger)">429</span></td>
+        <td style="word-break:break-all;font-size:12px">https://www.instagram.com/woocommerce</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Redirects (3)</p>
+    <ul style="list-style:none;font-size:12px">
+      <li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&amp;redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D3c26920b255e4ade94b38769679bae0e89a38fb6cd370d15c9de4cc6f045b473%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/</li><li style="padding:4px 0;color:var(--color-muted)">https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/</li>
+    </ul>
+    
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken external link(s) (out of 5 checked)</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">1 broken footer link(s) (out of 7 checked)</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">📋 Forms</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-success)">100/100</span>
+        </div>
+        <p style="color:var(--color-muted)">No testable forms found on this page</p>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">🛒 Ecommerce</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">52/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Purchase Funnel</p>
+    <div class="funnel">
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Listing</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Detail</div>
+    </div>
+      
+    <div class="funnel-step failed">
+      <div class="step-icon">✕</div>
+      <div class="step-name">Add to Cart</div>
+    </div>
+      
+    <div class="funnel-step passed">
+      <div class="step-icon">✓</div>
+      <div class="step-name">Cart</div>
+    </div>
+      
+    <div class="funnel-step skipped">
+      <div class="step-icon">○</div>
+      <div class="step-name">Checkout</div>
+    </div>
+    </div>
+    <table style="margin-top:16px">
+      <tr><td style="color:var(--color-muted);width:160px">Platform</td><td>WooCommerce <small style="color:var(--color-muted)">(high confidence)</small></td></tr>
+      <tr><td style="color:var(--color-muted)">Products found</td><td>1</td></tr>
+      <tr><td style="color:var(--color-muted)">Add to Cart btn</td><td><span style="color:#ef4444">✕</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Checkout</td><td><span style="color:#ef4444">✕</span> </td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-critical"></div>
+      <div>
+        
+        <div class="issue-msg">Product listing: Listing page loaded but products found but missing both images and prices</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Checkout: No checkout button/link found on cart page</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+      <div style="margin-bottom:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h4 style="font-size:14px;font-weight:600">⚡ Performance</h4>
+          <span style="font-size:13px;font-weight:700;color:var(--color-warning)">61/100</span>
+        </div>
+        
+    <p style="font-size:12px;color:var(--color-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Timing</p>
+    
+    <div class="metric-row">
+      <div class="metric-label">First Contentful Paint</div>
+      <div class="metric-value">2.50s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:50%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">DOM Content Loaded</div>
+      <div class="metric-value">2.60s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:43.333333333333336%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Page Load Time</div>
+      <div class="metric-value">3.10s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-warn" style="width:34.44444444444444%"></div></div>
+      <span class="metric-rating rating-needs">Needs Work</span>
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-value">1.31s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:43.666666666666664%"></div></div>
+      
+    </div>
+    
+    <div class="metric-row">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-value">2.50s</div>
+      <div class="metric-bar"><div class="metric-bar-fill bar-good" style="width:50%"></div></div>
+      <span class="metric-rating rating-good">Good</span>
+    </div>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Page Weight</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Total Transfer</td><td>1405 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">JavaScript</td><td>358 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">CSS</td><td>44 KB</td></tr>
+      <tr><td style="color:var(--color-muted)">Resources</td><td>52</td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Images (6)</p>
+    <table>
+      <tr><td style="color:var(--color-muted)">Slow (&gt;1s)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+      <tr><td style="color:var(--color-muted)">Large (&gt;200KB)</td><td><span style="color:var(--color-success)">✓ None</span></td></tr>
+    </table>
+    <p style="font-size:12px;color:var(--color-muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:.5px">Issues</p>
+    <ul class="issue-list">
+      
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">FCP is 2.50s — aim for under 1.80s</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">DOMContentLoaded is 2.60s — heavy JS/CSS blocking initial render</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Page load is 3.10s — consider deferring non-critical resources</div>
+        
+      </div>
+    </li>
+    <li class="issue-item">
+      <div class="issue-dot dot-warning"></div>
+      <div>
+        
+        <div class="issue-msg">Server response time (TTFB) is 1.31s — slow server or missing CDN</div>
+        
+      </div>
+    </li>
+    </ul>
+      </div>
+      <hr class="divider" />
+    </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="report-footer">
+    <div class="container">
+      Generated by Site Auditor &nbsp;·&nbsp; woocommerce.com &nbsp;·&nbsp; March 17, 2026
+    </div>
+  </footer>
+
+</body>
+</html>

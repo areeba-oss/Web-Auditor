@@ -1,0 +1,2300 @@
+{
+  "meta": {
+    "reportTitle": "Web Audit Report — woocommerce.com",
+    "domain": "woocommerce.com",
+    "generatedAt": "2026-03-24T11:53:48.313Z",
+    "auditedPages": 10,
+    "tool": "SPCTEK Web Auditor",
+    "version": "1.0"
+  },
+  "executiveSummary": {
+    "headline": "Your site scores 79/100 — a solid foundation with clear wins available.",
+    "overallScore": 79,
+    "grade": {
+      "grade": "B",
+      "label": "Good",
+      "color": "#65a30d"
+    },
+    "keyStats": [
+      {
+        "label": "Pages Audited",
+        "value": 10,
+        "icon": "PA"
+      },
+      {
+        "label": "Critical Issues",
+        "value": 10,
+        "icon": "CI",
+        "highlight": true
+      },
+      {
+        "label": "Warnings",
+        "value": 0,
+        "icon": "WN"
+      },
+      {
+        "label": "Mobile Failures",
+        "value": 0,
+        "icon": "MF",
+        "highlight": false
+      },
+      {
+        "label": "Avg. FCP",
+        "value": "N/A",
+        "icon": "FCP"
+      }
+    ],
+    "performanceStats": {
+      "avgFCP": {
+        "ms": null,
+        "formatted": null,
+        "grade": null
+      },
+      "avgTTFB": {
+        "ms": null,
+        "formatted": null,
+        "grade": null
+      },
+      "avgLoadTime": {
+        "ms": null,
+        "formatted": null,
+        "grade": null
+      }
+    },
+    "siteHealth": {
+      "httpOkCount": 10,
+      "totalPages": 10,
+      "totalLinks": 1957,
+      "brokenLinks": 29,
+      "totalCTAs": 29,
+      "headerFound": 10,
+      "footerFound": 10,
+      "logoFound": 10,
+      "mobilePass": 10,
+      "mobileFail": 0
+    },
+    "topFindings": [
+      "10 critical issue(s) across 10 pages",
+      "29 broken link(s)"
+    ],
+    "worstPages": [
+      {
+        "slug": "/",
+        "score": 76,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
+        "slug": "/showcase",
+        "score": 77,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
+        "slug": "/wordpress-ecommerce",
+        "score": 78,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      }
+    ],
+    "bestPages": [
+      {
+        "slug": "/development-services",
+        "score": 81,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
+        "slug": "/download",
+        "score": 81,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
+        "slug": "/for-agencies",
+        "score": 80,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      }
+    ],
+    "callToAction": "The issues identified are actionable improvements that can increase search rankings, improve user experience, and drive more conversions."
+  },
+  "pageBreakdown": [
+    {
+      "url": "https://woocommerce.com",
+      "slug": "/",
+      "overallScore": 76,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 95,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 19,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 2,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Broken Links Detected",
+          "color": "#dc2626"
+        },
+        "severity": "high",
+        "totalLinks": 194,
+        "internalLinks": 60,
+        "externalLinks": 3,
+        "brokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "nav"
+          },
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "nav"
+          },
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "nav"
+          },
+          {
+            "url": "https://storeleads.app/reports",
+            "status": 404,
+            "region": "external"
+          },
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "3 of 131 nav link(s) are broken",
+          "1 broken external link(s) (out of 3 checked)",
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "3 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 7,
+        "ctaTexts": [
+          "Get started",
+          "Start here",
+          "Create your dream store",
+          "Customize my store",
+          "Get started with WooCommerce",
+          "Get in touch about enterprise solutions"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "6 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "3 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "7 CTA(s): Get started, Start here, Create your dream store"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 3,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/wordpress-ecommerce",
+      "slug": "/wordpress-ecommerce",
+      "overallScore": 78,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 47,
+        "layout": 90
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 201,
+        "internalLinks": 56,
+        "externalLinks": 17,
+        "brokenLinks": [
+          {
+            "url": "https://storeleads.app/reports",
+            "status": 404,
+            "region": "external"
+          },
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken external link(s) (out of 17 checked)",
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "2 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 1,
+        "ctaTexts": [
+          "Get started"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 1,
+        "forms": [
+          {
+            "index": 0,
+            "fieldCount": 2,
+            "purpose": "contact",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": true,
+            "hasRequiredFields": true,
+            "browserValidationActive": true,
+            "criticalMissingValidation": [],
+            "detectionMethod": "dom"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "3 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "2 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "1 CTA(s): Get started"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 2,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/enterprise-ecommerce",
+      "slug": "/enterprise-ecommerce",
+      "overallScore": 79,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 47,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 186,
+        "internalLinks": 52,
+        "externalLinks": 6,
+        "brokenLinks": [
+          {
+            "url": "https://storeleads.app/reports",
+            "status": 404,
+            "region": "external"
+          },
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken external link(s) (out of 6 checked)",
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "2 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Request a demo",
+          "Get started"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 1,
+        "forms": [
+          {
+            "index": 0,
+            "fieldCount": 2,
+            "purpose": "contact",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": true,
+            "hasRequiredFields": true,
+            "browserValidationActive": true,
+            "criticalMissingValidation": [],
+            "detectionMethod": "dom"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "3 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "2 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Request a demo, Get started"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 2,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/payments",
+      "slug": "/payments",
+      "overallScore": 80,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 95,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 59,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 2,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 194,
+        "internalLinks": 63,
+        "externalLinks": 3,
+        "brokenLinks": [
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 3,
+        "ctaTexts": [
+          "Get started",
+          "Get WooPayments",
+          "Get in touch"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "2 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "3 CTA(s): Get started, Get WooPayments, Get in touch"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/products",
+      "slug": "/products",
+      "overallScore": 80,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 59,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 195,
+        "internalLinks": 60,
+        "externalLinks": 7,
+        "brokenLinks": [
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "external"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "external"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken external link(s) (out of 7 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Get started",
+          "Hire an expert"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 1,
+        "forms": [
+          {
+            "index": 0,
+            "fieldCount": 2,
+            "purpose": "contact",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": false,
+            "hasRequiredFields": true,
+            "browserValidationActive": false,
+            "criticalMissingValidation": [
+              "EMPTY_SUBMIT_NO_VALIDATION"
+            ],
+            "detectionMethod": "dom"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "2 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Get started, Hire an expert"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/download",
+      "slug": "/download",
+      "overallScore": 81,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 59,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 186,
+        "internalLinks": 55,
+        "externalLinks": 3,
+        "brokenLinks": [
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 3,
+        "ctaTexts": [
+          "Get started",
+          "Download the WooCommerce zip",
+          "Download WooCommerce free"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "2 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "3 CTA(s): Get started, Download the WooCommerce zip, Download WooCommerce free"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/contact-us",
+      "slug": "/contact-us",
+      "overallScore": 79,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 47,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 190,
+        "internalLinks": 56,
+        "externalLinks": 6,
+        "brokenLinks": [
+          {
+            "url": "https://docs.woocommerce.com/documentation/plugins/woocommerce/getting-started/installation-and-updating/",
+            "status": 404,
+            "region": "external"
+          },
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken external link(s) (out of 6 checked)",
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "2 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 4,
+        "ctaTexts": [
+          "Get started",
+          "Get support",
+          "Hire an expert",
+          "Download WooCommerce free"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "3 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "2 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "4 CTA(s): Get started, Get support, Hire an expert"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 2,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/development-services",
+      "slug": "/development-services",
+      "overallScore": 81,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 59,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 204,
+        "internalLinks": 76,
+        "externalLinks": 0,
+        "brokenLinks": [
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 3,
+        "ctaTexts": [
+          "Get started",
+          "Get matched with an agency",
+          "Hire an expert"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "2 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "3 CTA(s): Get started, Get matched with an agency, Hire an expert"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/showcase",
+      "slug": "/showcase",
+      "overallScore": 77,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 26,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Broken Links Detected",
+          "color": "#dc2626"
+        },
+        "severity": "high",
+        "totalLinks": 224,
+        "internalLinks": 90,
+        "externalLinks": 6,
+        "brokenLinks": [
+          {
+            "url": "https://drawnandquarterly.com/",
+            "status": 403,
+            "region": "external"
+          },
+          {
+            "url": "https://godinguitars.com/",
+            "status": 403,
+            "region": "external"
+          },
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Get started",
+          "Get started with WooCommerce"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "4 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Get started, Get started with WooCommerce"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://woocommerce.com/for-agencies",
+      "slug": "/for-agencies",
+      "overallScore": 80,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 98,
+        "speed": 50,
+        "resources": 100,
+        "mobile": 100,
+        "navigation": 59,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 1,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "firstContentfulPaint": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "timeToFirstByte": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "resources": {
+          "script": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "link": {
+            "count": 0,
+            "totalKB": 0
+          },
+          "other": {
+            "count": 0,
+            "totalKB": 0
+          }
+        },
+        "totalResources": 0,
+        "totalResourceSizeKB": 0,
+        "slowResources": [],
+        "largeImages": []
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 183,
+        "internalLinks": 53,
+        "externalLinks": 2,
+        "brokenLinks": [
+          {
+            "url": "https://www.facebook.com/woocommerce",
+            "status": 400,
+            "region": "footer"
+          },
+          {
+            "url": "https://www.x.com/woocommerce",
+            "status": 403,
+            "region": "footer"
+          }
+        ],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken footer link(s) (out of 47 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Get started",
+          "Join the program"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint (null)."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "2 broken link(s) — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Get started, Join the program"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        }
+      ]
+    }
+  ],
+  "formValidationSummary": {
+    "totalPages": 3,
+    "totalForms": 3,
+    "stats": {
+      "withSubmitButton": 3,
+      "withEmailField": 2,
+      "withRequiredFields": 3,
+      "withBrowserValidation": 2,
+      "withMissingValidation": 1
+    },
+    "forms": [
+      {
+        "page": "/wordpress-ecommerce",
+        "pageUrl": "https://woocommerce.com/wordpress-ecommerce",
+        "fieldCount": 2,
+        "purpose": "contact",
+        "hasSubmitBtn": true,
+        "hasEmailField": true,
+        "hasRequiredFields": true,
+        "browserValidationActive": true,
+        "criticalMissingValidation": []
+      },
+      {
+        "page": "/enterprise-ecommerce",
+        "pageUrl": "https://woocommerce.com/enterprise-ecommerce",
+        "fieldCount": 2,
+        "purpose": "contact",
+        "hasSubmitBtn": true,
+        "hasEmailField": true,
+        "hasRequiredFields": true,
+        "browserValidationActive": true,
+        "criticalMissingValidation": []
+      },
+      {
+        "page": "/products",
+        "pageUrl": "https://woocommerce.com/products",
+        "fieldCount": 2,
+        "purpose": "contact",
+        "hasSubmitBtn": true,
+        "hasEmailField": false,
+        "hasRequiredFields": true,
+        "browserValidationActive": false,
+        "criticalMissingValidation": [
+          "EMPTY_SUBMIT_NO_VALIDATION"
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "severity": "critical",
+        "page": "/products",
+        "message": "Missing critical validation: EMPTY_SUBMIT_NO_VALIDATION"
+      },
+      {
+        "severity": "info",
+        "page": "/products",
+        "message": "Browser validation not active."
+      }
+    ]
+  },
+  "uiUxIssues": {
+    "totalIssues": 0,
+    "issues": []
+  },
+  "opportunitySummary": {
+    "title": "Growth Opportunities Identified",
+    "description": "Addressing these items can directly impact your search rankings, page speed, and user engagement.",
+    "items": [
+      {
+        "id": 1,
+        "opportunity": "Resolve navigation issues across 10 pages — fix broken anchors and link structure."
+      }
+    ]
+  },
+  "categoryScorecard": {
+    "title": "How Your Site Performs by Category",
+    "categories": [
+      {
+        "name": "Page Health",
+        "description": "HTTP status, console errors, failed requests, and reliability",
+        "score": 97,
+        "grade": {
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
+        }
+      },
+      {
+        "name": "Page Speed",
+        "description": "First Contentful Paint, TTFB, DOM ready, and total load time",
+        "score": 50,
+        "grade": {
+          "grade": "D",
+          "label": "Poor",
+          "color": "#ea580c"
+        }
+      },
+      {
+        "name": "Resource Efficiency",
+        "description": "Page weight, resource count, slow assets, and image optimisation",
+        "score": 100,
+        "grade": {
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
+        }
+      },
+      {
+        "name": "Mobile Experience",
+        "description": "Responsiveness across mobile, tablet, and desktop viewports",
+        "score": 100,
+        "grade": {
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
+        }
+      },
+      {
+        "name": "Navigation & Links",
+        "description": "Broken links, anchor integrity, and navigation health",
+        "score": 48,
+        "grade": {
+          "grade": "D",
+          "label": "Poor",
+          "color": "#ea580c"
+        }
+      },
+      {
+        "name": "Layout & UX",
+        "description": "Header, footer, logo, CTAs, and page structure completeness",
+        "score": 97,
+        "grade": {
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
+        }
+      }
+    ]
+  }
+}

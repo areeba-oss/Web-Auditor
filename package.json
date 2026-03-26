@@ -1,0 +1,30 @@
+{
+  "name": "audit-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "audit.js",
+  "scripts": {
+    "api": "node src/api.js",
+    "test:api": "node test-api.js",
+    "audit": "node src/auditor.js",
+    "report": "node src/reporter.js",
+    "generate": "node src/generator.js",
+    "generate:mini": "node src/miniGenerator.js",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "chrome-launcher": "^1.2.1",
+    "dotenv": "^17.3.1",
+    "lighthouse": "^13.0.3",
+    "playwright-core": "^1.58.1",
+    "playwright-extra": "^4.3.6",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}

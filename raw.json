@@ -1,0 +1,2113 @@
+{
+  "url": "https://woocommerce.com/",
+  "httpStatus": 200,
+  "score": 85,
+  "overallStatus": "critical",
+  "issues": [
+    {
+      "type": "critical",
+      "code": "NAV_BROKEN_LINKS",
+      "message": "3 of 131 nav link(s) are broken",
+      "detail": [
+        "[broken-anchor] # — \"Nutribullet\"",
+        "[broken-anchor] # — \"House of Malt\"",
+        "[broken-anchor] # — \"Dan-O's Seasoning\""
+      ]
+    },
+    {
+      "type": "warning",
+      "code": "EXTERNAL_BROKEN_LINKS",
+      "message": "1 broken external link(s) (out of 3 checked)",
+      "detail": [
+        "[404] https://storeleads.app/reports"
+      ]
+    },
+    {
+      "type": "warning",
+      "code": "FOOTER_BROKEN_LINKS",
+      "message": "1 broken footer link(s) (out of 47 checked)",
+      "detail": [
+        "[400] https://www.facebook.com/woocommerce — \"Follow us on Facebook\""
+      ]
+    },
+    {
+      "type": "info",
+      "code": "REDIRECTED_LINKS",
+      "message": "14 link(s) redirect — consider updating to final URL",
+      "detail": [
+        "https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D2ede9abe059b973271a33627844c61d1e7ff07482bd57c07e70bef5eb8282cd5%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
+        "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/",
+        "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/"
+      ]
+    },
+    {
+      "type": "info",
+      "code": "BOT_BLOCKED_LINKS",
+      "message": "1 link(s) bot-blocked (1× 403) — accessible to real users",
+      "detail": [
+        "[403] https://www.x.com/woocommerce"
+      ]
+    }
+  ],
+  "summary": {
+    "nav": {
+      "total": 131,
+      "broken": 3,
+      "timedOut": 0
+    },
+    "internal": {
+      "total": 13,
+      "broken": 0,
+      "timedOut": 0
+    },
+    "external": {
+      "total": 3,
+      "broken": 1,
+      "timedOut": 0
+    },
+    "footer": {
+      "total": 47,
+      "broken": 1,
+      "timedOut": 0
+    }
+  },
+  "details": {
+    "nav": [
+      {
+        "url": "https://woocommerce.com/wordpress-ecommerce/",
+        "text": "Develop on Woo",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/development-services/",
+        "text": "Hire an expert",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/my-account/contact-support/",
+        "text": "Get support",
+        "region": "nav",
+        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D2ede9abe059b973271a33627844c61d1e7ff07482bd57c07e70bef5eb8282cd5%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/woocommerce/",
+        "text": "What is WooCommerce?Learn more about the platform that powers success for millio",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/payments/",
+        "text": "PaymentsAccept payments and manage transactions right from your dashboard with W",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/woocommerce-shipping/",
+        "text": "ShippingGet the flexibility you need to take full control of your end-to-end shi",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/customize/",
+        "text": "No-code customizationCreate exactly the store you want without touching a line o",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/checkout-blocks/",
+        "text": "Optimized checkoutIncrease conversion with a customized checkout experience",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/marketing/",
+        "text": "MarketingBuild your brand and reach more shoppers with content marketing, SEO to",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/mobile/",
+        "text": "Mobile appManage your business on the go",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/enterprise-ecommerce/",
+        "text": "Woo for enterpriseNext-level customization and advanced features for established",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/multi-channel-ecommerce/",
+        "text": "Multi-channel ecommerceFind new audiences and increase sales by selling across m",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/in-person-payments/",
+        "text": "In‑Person PaymentsSell in person with POS, card readers, and Tap to Pay — all sy",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/products/",
+        "text": "WooCommerce MarketplaceFind everything you need to enhance your store and grow y",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/",
+        "text": "ExtensionsGrow your business with hundreds of free and paid extensions",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/themes/",
+        "text": "ThemesQuickly build a beautiful store with one of our professionally designed th",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/collections/",
+        "text": "CollectionsExplore curated extension collections tailored for different business",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/business-services/",
+        "text": "Business servicesDiscover a handpicked selection of essential services to suppor",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/?orderby=date&paged=1",
+        "text": "New",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/developed-by-woo/",
+        "text": "Developed by Woo",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/?categoryIds=1021&collections=product&page=1&min=0&max=0",
+        "text": "Free",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/",
+        "text": "All payments",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/online-payments/",
+        "text": "Payment processors & gateways",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/wallets/",
+        "text": "Wallets & express checkouts",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/wallets?categoryIds=35676&collections=product&page=1",
+        "text": "Buy now pay later",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/crypto-payments/",
+        "text": "Crypto payments",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/wallets?categoryIds=35538&collections=product&page=1",
+        "text": "B2B payments",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/in-person-payments/",
+        "text": "In-person payments & POS",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/",
+        "text": "All merchandising",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/b2b/",
+        "text": "B2B",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/bookings-and-appointments/",
+        "text": "Bookings and appointments",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/bundles/",
+        "text": "Bundles",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/gifts/",
+        "text": "Gifts",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/order-options/",
+        "text": "Order options",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/pricing/",
+        "text": "Pricing",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/product-display/",
+        "text": "Product display",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/product-options/",
+        "text": "Product options",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/product-variations/",
+        "text": "Product variations",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/subscriptions-merchandising/",
+        "text": "Subscriptions",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/",
+        "text": "All store content and customizations",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/cart-and-checkout-features/",
+        "text": "Cart and checkout features",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/search-and-navigation/",
+        "text": "Search and navigation",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/international-and-localization/",
+        "text": "International and localization",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/product-images-and-media/",
+        "text": "Product images and media",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/store-page-enhancements/",
+        "text": "Store page enhancements",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/",
+        "text": "All shipping, delivery, and fulfillment",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/shipping-rates-at-checkout/",
+        "text": "Shipping rates at checkout",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/label-printing/",
+        "text": "Label printing",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/delivery-options-and-enhancements/",
+        "text": "Delivery options and enhancements",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/inventory-and-order-management/",
+        "text": "Inventory and order management",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/fulfillment-and-dropshipping/",
+        "text": "Fulfillment and dropshipping",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/",
+        "text": "All marketing",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/email-marketing-extensions/",
+        "text": "Email",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/sales-channels/",
+        "text": "Sales channels",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/crm-marketing-extensions/",
+        "text": "CRM",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/automation/",
+        "text": "Automation",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/advertising-and-promotions/",
+        "text": "Advertising and promotions",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/reporting-and-analytics/",
+        "text": "Reporting and analytics",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/social/",
+        "text": "Social",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/seo-and-sem/",
+        "text": "SEO and SEM",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/",
+        "text": "All conversion",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/promotions-conversion/",
+        "text": "Promotions",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/upsells-and-cross-sells/",
+        "text": "Upsells and cross-sells",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/customer-feedback/",
+        "text": "Customer feedback",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/recovering-orders/",
+        "text": "Recovering orders",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/store-alerts/",
+        "text": "Store alerts",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/rewards-and-loyalty/",
+        "text": "Rewards and loyalty",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/",
+        "text": "All customer service",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/support/",
+        "text": "Support",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/live-chat/",
+        "text": "Live chat",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/managing-customers/",
+        "text": "Managing customers",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/post-purchase-services/",
+        "text": "Post-purchase services",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/customer-accounts/",
+        "text": "Customer accounts",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/",
+        "text": "All store management",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/",
+        "text": "Payment management",
+        "region": "nav",
+        "finalUrl": "https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/order-management/",
+        "text": "Order management",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/business-insights/",
+        "text": "Business insights",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/policy-and-security/",
+        "text": "Policy and security",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/admin-notifications/",
+        "text": "Admin and notifications",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/accounting-extensions/",
+        "text": "Accounting",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/sales-tax-and-duties/",
+        "text": "Sales tax and duties",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/import-and-export/",
+        "text": "Import and export",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/point-of-sale/",
+        "text": "Point of sale",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/",
+        "text": "Merchant financing",
+        "region": "nav",
+        "finalUrl": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/blog/",
+        "text": "BlogGet regular tips, tricks and ecommerce inspiration from the Woo team",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/showcase/",
+        "text": "WooCommerce site examplesSee beautiful samples of real businesses building succe",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/learn/",
+        "text": "LearnEcommerce resources to help you learn WooCommerce, launch fast, and sell mo",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/docs/",
+        "text": "DocumentationDiscover guides, tutorials, and technical resources for WooCommerce",
+        "region": "nav",
+        "finalUrl": "https://woocommerce.com/documentation/woocommerce/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/blog/customer-stories/",
+        "text": "Customer storiesSee how merchants are using WooCommerce to power their success",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/tco-calculator/",
+        "text": "Costs calculatorGet a personalized total cost of ownership estimate based on you",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/hosting-solutions/",
+        "text": "WooCommerce hostingFind trusted hosting solutions for your Woo store",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/community",
+        "text": "Join the Woo communityConnect with thousands of Woo users to get help or get ins",
+        "region": "nav",
+        "finalUrl": "https://woocommerce.com/community/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://wordpress.org/support/plugin/woocommerce/",
+        "text": "Support forumsAsk other WooCommerce users for help with your site",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/document/build-online-store/",
+        "text": "How to build an online store on WooCommerce",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/guide-woocommerce-costs/",
+        "text": "The costs of running a store on WooCommerce",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/ecommerce-migration-guide/",
+        "text": "Ecommerce migration blueprint",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/document/how-to-migrate-from-shopify/",
+        "text": "How to migrate from Shopify",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/posts/how-to-start-an-online-business/",
+        "text": "How to start an online business",
+        "region": "nav",
+        "finalUrl": "https://woocommerce.com/posts/how-start-online-business/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/posts/ecommerce-email-marketing/",
+        "text": "Email marketing strategy",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/sell-cbd-online/",
+        "text": "CBD store owners",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/posts/ecommerce-shipping-solutions-guide/",
+        "text": "A guide to shipping for ecommerce stores",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/posts/global-ecommerce-business-success-guide/",
+        "text": "How to sell internationally",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/enterprise-ecommerce/?woosource=nav_menu_click",
+        "text": "Enterprise ecommerce",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/sso?next=%2F",
+        "text": "Log in",
+        "region": "nav",
+        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3De072f38bb5f0b1867c709e603d7a7152c1881a6043b6d8ff62223777b5b8091a%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253D%25252F%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/start/?nuxentrysource=signup_header",
+        "text": "Get started",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/",
+        "text": "WooCommerce",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/shipping/",
+        "text": "Shipping",
+        "region": "nav",
+        "finalUrl": "https://woocommerce.com/woocommerce-shipping/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/collection/woocommerce-essentials/",
+        "text": "Essentials",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://developer.woocommerce.com/",
+        "text": "Developer resources",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/for-agencies/",
+        "text": "Become a Woo agency",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/partners/",
+        "text": "Become a Marketplace partner",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/affiliates/",
+        "text": "Become an affiliate",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/documentation/woocommerce/",
+        "text": "Documentation",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/woocommerce-list-sign/",
+        "text": "Email newsletter",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "http://woocommerce.com/my-account/contact-support/",
+        "text": "Support",
+        "region": "nav",
+        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3Dd35f9b7c0a593181e554d6a52bb636704cae6e79d576b60f1f795fd9569a0174%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/feature-requests/woocommerce/",
+        "text": "Feature requests",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/support-policy/",
+        "text": "Support policy",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/refund-policy/",
+        "text": "Refund policy",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/customer-research/",
+        "text": "Participate in customer research",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/accessibility/",
+        "text": "Accessibility",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "http://woocommerce.com/about/",
+        "text": "About",
+        "region": "nav",
+        "finalUrl": "https://woocommerce.com/about/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/newsroom/",
+        "text": "Press",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/download/",
+        "text": "Download WooCommerce free",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/community/",
+        "text": "Join the Woo community",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/trademark-guidelines/",
+        "text": "Woo trademark guidelines",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/brand-and-logo-guidelines/",
+        "text": "Brand and logo guidelines",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/do-not-sell-or-share-my-personal-information/",
+        "text": "Do not sell or share my personal information",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/contact-us/",
+        "text": "Contact us",
+        "region": "nav",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "#",
+        "text": "Nutribullet",
+        "region": "nav",
+        "status": "broken-anchor",
+        "ok": false,
+        "error": "Empty anchor (#) — placeholder link with no destination",
+        "_broken": true
+      },
+      {
+        "url": "#",
+        "text": "House of Malt",
+        "region": "nav",
+        "status": "broken-anchor",
+        "ok": false,
+        "error": "Empty anchor (#) — placeholder link with no destination",
+        "_broken": true
+      },
+      {
+        "url": "#",
+        "text": "Dan-O's Seasoning",
+        "region": "nav",
+        "status": "broken-anchor",
+        "ok": false,
+        "error": "Empty anchor (#) — placeholder link with no destination",
+        "_broken": true
+      }
+    ],
+    "navButtons": [
+      {
+        "text": "USD\nChange site currency USD selected",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "English\nChange site language English selected",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Sell\nClick to show 11 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Extensions\nClick to show 18 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Official paymentsClick to show 7 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "MerchandisingClick to show 11 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Store content and customizationsClick to show 6 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Shipping, delivery, and fulfillmentClick to show 6 more item",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "MarketingClick to show 9 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "ConversionClick to show 7 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Customer serviceClick to show 6 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Store managementClick to show 11 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Resources\nClick to show 20 more items",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Go to search results page",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "Search",
+        "type": "button-trigger",
+        "region": "nav"
+      },
+      {
+        "text": "",
+        "type": "button-trigger",
+        "region": "nav"
+      }
+    ],
+    "internal": [
+      {
+        "url": "https://woocommerce.com/products/klaviyo-for-woocommerce/",
+        "text": "",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/",
+        "text": "",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/start/?nuxentrysource=homepage_hero_cta",
+        "text": "Start here",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/get-in-touch/?woosource=homepage_hero_cta",
+        "text": "Get in touch about enterprise solutions",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/woocommerce/",
+        "text": "Create your dream store",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/products/",
+        "text": "Customize my store",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/posts/nutribullet-woopayments/",
+        "text": "Read full case study",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/posts/house-of-malt/",
+        "text": "Read full case study",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/posts/dan-os-seasoning/",
+        "text": "Read full case study",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/start/?nuxentrysource=homepage_footer_cta",
+        "text": "Get started with WooCommerce",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/refund-policy/",
+        "text": "money-back guarantee",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/docs/",
+        "text": "Support",
+        "region": "body",
+        "finalUrl": "https://woocommerce.com/documentation/woocommerce/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/products/woopayments/",
+        "text": "Safe and secure",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      }
+    ],
+    "external": [
+      {
+        "url": "https://storeleads.app/reports",
+        "text": "Store Leads",
+        "region": "body",
+        "finalUrl": null,
+        "status": 404,
+        "ok": false,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://w3techs.com/technologies/details/cm-wordpress",
+        "text": "W3Techs",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://developer.woocommerce.com/",
+        "text": "Build the future of open source",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      }
+    ],
+    "footer": [
+      {
+        "url": "https://woocommerce.com/",
+        "text": "WooCommerce",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/payments/",
+        "text": "Payments",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/customize/",
+        "text": "No-code customization",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/marketing/",
+        "text": "Marketing",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/checkout-blocks/",
+        "text": "Checkout",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/shipping/",
+        "text": "Shipping",
+        "region": "footer",
+        "finalUrl": "https://woocommerce.com/woocommerce-shipping/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/mobile/",
+        "text": "Mobile app",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/enterprise-ecommerce/",
+        "text": "Enterprise ecommerce",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/products/",
+        "text": "WooCommerce extensions",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/themes/",
+        "text": "WooCommerce themes",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/?orderby=date&paged=1",
+        "text": "New",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/collection/woocommerce-essentials/",
+        "text": "Essentials",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/collections/",
+        "text": "Collections",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/product-category/woocommerce-extensions/developed-by-woo/",
+        "text": "Developed by Woo",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/wordpress-ecommerce/",
+        "text": "Woo for developers",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://developer.woocommerce.com/",
+        "text": "Developer resources",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/for-agencies/",
+        "text": "Become a Woo agency",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/partners/",
+        "text": "Become a Marketplace partner",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/affiliates/",
+        "text": "Become an affiliate",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/blog/",
+        "text": "Blog",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/documentation/woocommerce/",
+        "text": "Documentation",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/showcase/",
+        "text": "WooCommerce site examples",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/woocommerce-list-sign/",
+        "text": "Email newsletter",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "http://woocommerce.com/my-account/contact-support/",
+        "text": "Support",
+        "region": "footer",
+        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D4603e6aec4ff600825b3bbc6789ee766733acbdee05d07127c84f8ac21f92cdb%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/feature-requests/woocommerce/",
+        "text": "Feature requests",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/hosting-solutions/",
+        "text": "WooCommerce hosting",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/development-services/",
+        "text": "Hire an agency",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/support-policy/",
+        "text": "Support policy",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/refund-policy/",
+        "text": "Refund policy",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/customer-research/",
+        "text": "Participate in customer research",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/accessibility/",
+        "text": "Accessibility",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://wordpress.org/support/plugin/woocommerce/",
+        "text": "Support forums",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "http://woocommerce.com/about/",
+        "text": "About",
+        "region": "footer",
+        "finalUrl": "https://woocommerce.com/about/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/newsroom/",
+        "text": "Press",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/download/",
+        "text": "Download WooCommerce free",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/community/",
+        "text": "Join the Woo community",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/trademark-guidelines/",
+        "text": "Woo trademark guidelines",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/brand-and-logo-guidelines/",
+        "text": "Brand and logo guidelines",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/do-not-sell-or-share-my-personal-information/",
+        "text": "Do not sell or share my personal information",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://woocommerce.com/contact-us/",
+        "text": "Contact us",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://www.facebook.com/woocommerce",
+        "text": "Follow us on Facebook",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 400,
+        "ok": false,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://www.x.com/woocommerce",
+        "text": "Follow us on X",
+        "region": "footer",
+        "finalUrl": "https://twitter.com/woocommerce",
+        "status": 403,
+        "ok": false,
+        "redirected": true,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://www.instagram.com/woocommerce",
+        "text": "Follow us on Instagram",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://www.linkedin.com/company/woocommerce/",
+        "text": "Follow us on LinkedIn",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://automattic.com/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://wordpress.com/tos/?_gl=1*1f7tjdz*_gcl_aw*R0NMLjE3MzUzMjUzMzkuQ2owS0NRaUF2Ym03QmhDNUFSSXNBRmp3Tkh1R2gxOEp4U2hvOHdoRkV1VUlRaGVSczJ3Z1ZZVm5RYWFIZTB5VDNqZEctUFlQeXc1VVMyZ2FBa3JURUFMd193Y0I.*_gcl_au*MTA1MjMxMjcyNC4xNzM2MTYyNjI3*_ga*NDcwOTA1NzMyLjE2NjAwMzk4Mjg.*_ga_98K30SHWB2*MTczNzYxMDIyNy40ODcuMS4xNzM3NjEyMzU3LjAuMC4w",
+        "text": "Terms and Conditions",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      },
+      {
+        "url": "https://automattic.com/privacy/",
+        "text": "Privacy policy",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "HEAD"
+      }
+    ]
+  }
+}

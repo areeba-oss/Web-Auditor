@@ -1,19 +1,19 @@
 {
   "meta": {
-    "reportTitle": "Web Audit Report — woocommerce.com",
-    "domain": "woocommerce.com",
-    "generatedAt": "2026-03-24T11:53:48.313Z",
+    "reportTitle": "Web Audit Report — stripe.com",
+    "domain": "stripe.com",
+    "generatedAt": "2026-03-27T12:10:58.338Z",
     "auditedPages": 10,
     "tool": "SPCTEK Web Auditor",
-    "version": "1.0"
+    "version": "2.0"
   },
   "executiveSummary": {
-    "headline": "Your site scores 79/100 — a solid foundation with clear wins available.",
-    "overallScore": 79,
+    "headline": "Your site scores 91/100 — a solid foundation with clear wins available.",
+    "overallScore": 91,
     "grade": {
-      "grade": "B",
-      "label": "Good",
-      "color": "#65a30d"
+      "grade": "A",
+      "label": "Excellent",
+      "color": "#16a34a"
     },
     "keyStats": [
       {
@@ -23,50 +23,86 @@
       },
       {
         "label": "Critical Issues",
-        "value": 10,
-        "icon": "CI",
-        "highlight": true
+        "value": 5,
+        "highlight": true,
+        "icon": "CI"
       },
       {
         "label": "Warnings",
-        "value": 0,
+        "value": 8,
         "icon": "WN"
       },
       {
         "label": "Mobile Failures",
         "value": 0,
-        "icon": "MF",
-        "highlight": false
+        "highlight": false,
+        "icon": "MF"
       },
       {
         "label": "Avg. FCP",
-        "value": "N/A",
+        "value": "0.61s",
+        "subLabel": "Fast",
         "icon": "FCP"
+      },
+      {
+        "label": "Avg. LCP",
+        "value": "0.90s",
+        "subLabel": "Fast",
+        "icon": "LCP"
+      },
+      {
+        "label": "Desktop PSI",
+        "value": "74/100",
+        "icon": "PSI"
+      },
+      {
+        "label": "Mobile PSI",
+        "value": "62/100",
+        "icon": "MOB"
       }
     ],
     "performanceStats": {
       "avgFCP": {
-        "ms": null,
-        "formatted": null,
-        "grade": null
+        "ms": 612,
+        "formatted": "0.61s",
+        "grade": {
+          "label": "Fast",
+          "color": "#16a34a"
+        }
+      },
+      "avgLCP": {
+        "ms": 904,
+        "formatted": "0.90s",
+        "grade": {
+          "label": "Fast",
+          "color": "#16a34a"
+        }
       },
       "avgTTFB": {
-        "ms": null,
-        "formatted": null,
-        "grade": null
+        "ms": 76,
+        "formatted": "0.08s",
+        "grade": {
+          "label": "Excellent",
+          "color": "#16a34a"
+        }
       },
-      "avgLoadTime": {
-        "ms": null,
-        "formatted": null,
-        "grade": null
-      }
+      "avgTBT": {
+        "ms": 2536,
+        "formatted": "2.54s",
+        "grade": {
+          "label": "Poor",
+          "color": "#dc2626"
+        }
+      },
+      "avgDesktopPsiScore": 74,
+      "avgMobilePsiScore": 62
     },
     "siteHealth": {
       "httpOkCount": 10,
       "totalPages": 10,
-      "totalLinks": 1957,
-      "brokenLinks": 29,
-      "totalCTAs": 29,
+      "totalLinks": 1987,
+      "brokenLinks": 0,
+      "totalCTAs": 21,
       "headerFound": 10,
       "footerFound": 10,
       "logoFound": 10,
@@ -74,13 +110,22 @@
       "mobileFail": 0
     },
     "topFindings": [
-      "10 critical issue(s) across 10 pages",
-      "29 broken link(s)"
+      "5 critical issue(s) across 10 pages",
+      "8 warning(s) flagged"
     ],
     "worstPages": [
       {
+        "slug": "/enterprise",
+        "score": 79,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
         "slug": "/",
-        "score": 76,
+        "score": 85,
         "grade": {
           "grade": "B",
           "label": "Good",
@@ -88,50 +133,41 @@
         }
       },
       {
-        "slug": "/showcase",
-        "score": 77,
+        "slug": "/contact/sales",
+        "score": 90,
         "grade": {
-          "grade": "B",
-          "label": "Good",
-          "color": "#65a30d"
-        }
-      },
-      {
-        "slug": "/wordpress-ecommerce",
-        "score": 78,
-        "grade": {
-          "grade": "B",
-          "label": "Good",
-          "color": "#65a30d"
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
         }
       }
     ],
     "bestPages": [
       {
-        "slug": "/development-services",
-        "score": 81,
+        "slug": "/customers",
+        "score": 95,
         "grade": {
-          "grade": "B",
-          "label": "Good",
-          "color": "#65a30d"
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
         }
       },
       {
-        "slug": "/download",
-        "score": 81,
+        "slug": "/guides",
+        "score": 94,
         "grade": {
-          "grade": "B",
-          "label": "Good",
-          "color": "#65a30d"
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
         }
       },
       {
-        "slug": "/for-agencies",
-        "score": 80,
+        "slug": "/billing",
+        "score": 94,
         "grade": {
-          "grade": "B",
-          "label": "Good",
-          "color": "#65a30d"
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
         }
       }
     ],
@@ -139,41 +175,191 @@
   },
   "pageBreakdown": [
     {
-      "url": "https://woocommerce.com",
+      "url": "https://stripe.com",
       "slug": "/",
-      "overallScore": 76,
+      "overallScore": 85,
       "grade": {
         "grade": "B",
         "label": "Good",
         "color": "#65a30d"
       },
       "categoryScores": {
-        "health": 95,
-        "speed": 50,
-        "resources": 100,
+        "health": 77,
+        "speed": 79,
+        "resources": 67,
         "mobile": 100,
-        "navigation": 19,
+        "navigation": 100,
         "layout": 100
       },
       "health": {
         "status": 200,
         "ok": true,
         "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 2,
+        "significantErrors": 1,
+        "failedRequests": 10,
         "criticalFailures": 0,
-        "significantErrorMessages": []
+        "significantErrorMessages": [
+          "Fetch API cannot load https://dm.slim02.jp/tppa/v2/vs?adv_id=5000000244218781&cnropq=eyJ0YWdfaWQiOiIwMjJmMmQwYi1iOGU4LTRmZTgtYWU1Yy1lMzBiM2JjZWNiYmIiLCJsYWJlbCI6IiIsImV2ZW50IjoicGFnZV92aWV3IiwicmVmIjoiaHR0cHM6Ly9zdHJpcGUuY29tLyIsInJlcV90eXBlIjoibHl0YWcifQ&evt=5&pid=5000000244218780&xci=506b607d-d8f6-4c83-b316-e5d6997bd9b1. Refused to connect because it violates the document's Content Security Policy."
+        ]
       },
       "performance": {
+        "desktop": {
+          "score": 64,
+          "firstContentfulPaint": {
+            "ms": 642,
+            "formatted": "0.64s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 1562,
+            "formatted": "1.56s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 57,
+            "formatted": "0.06s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 980,
+            "formatted": "0.98s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1639,
+            "formatted": "1.64s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 4912,
+            "formatted": "4.91s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 50,
+          "firstContentfulPaint": {
+            "ms": 2702,
+            "formatted": "2.70s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 5627,
+            "formatted": "5.63s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 67,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 906,
+            "formatted": "0.91s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 5308,
+            "formatted": "5.31s",
+            "rating": "needs-improvement"
+          },
+          "timeToInteractive": {
+            "ms": 20837,
+            "formatted": "20.84s",
+            "rating": "poor"
+          }
+        },
         "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 642,
+          "formatted": "0.64s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 1562,
+          "formatted": "1.56s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 57,
+          "formatted": "0.06s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 980,
+          "formatted": "0.98s",
+          "grade": {
+            "label": "Poor",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "formatted": "0.000",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "domContentLoaded": {
           "ms": null,
@@ -184,24 +370,10 @@
           "formatted": null,
           "grade": null
         },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
         "slowResources": [],
-        "largeImages": []
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
       },
       "responsiveness": {
         "mobile": {
@@ -230,52 +402,20 @@
       },
       "navigation": {
         "health": {
-          "label": "Broken Links Detected",
-          "color": "#dc2626"
+          "label": "All Links Working",
+          "color": "#16a34a"
         },
-        "severity": "high",
-        "totalLinks": 194,
-        "internalLinks": 60,
-        "externalLinks": 3,
-        "brokenLinks": [
-          {
-            "url": "#",
-            "status": "broken-anchor",
-            "region": "nav"
-          },
-          {
-            "url": "#",
-            "status": "broken-anchor",
-            "region": "nav"
-          },
-          {
-            "url": "#",
-            "status": "broken-anchor",
-            "region": "nav"
-          },
-          {
-            "url": "https://storeleads.app/reports",
-            "status": 404,
-            "region": "external"
-          },
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
+        "severity": "low",
+        "totalLinks": 138,
+        "internalLinks": 120,
+        "externalLinks": 13,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
         "protectedLinks": [],
-        "issues": [
-          "3 of 131 nav link(s) are broken",
-          "1 broken external link(s) (out of 3 checked)",
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "3 navigation issue(s) found."
+        "issues": [],
+        "insight": "All links working correctly."
       },
       "layout": {
         "headerFound": true,
@@ -286,14 +426,14 @@
         "logoVisible": true,
         "logoLinksHome": true,
         "mainCTAVisible": true,
-        "ctaCount": 7,
+        "ctaCount": 6,
         "ctaTexts": [
           "Get started",
-          "Start here",
-          "Create your dream store",
-          "Customize my store",
-          "Get started with WooCommerce",
-          "Get in touch about enterprise solutions"
+          "Sign up with Google",
+          "Contact sales",
+          "Apply now",
+          "Start your company",
+          "Start now"
         ],
         "responsiveness": {
           "mobile": {
@@ -328,49 +468,70 @@
       },
       "findings": [
         {
+          "type": "warning",
+          "message": "1 significant console error(s) detected."
+        },
+        {
+          "type": "warning",
+          "message": "10 failed network request(s)."
+        },
+        {
           "type": "success",
-          "message": "Excellent first paint (null)."
+          "message": "Excellent first paint — desktop FCP 0.64s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 1.56s."
+        },
+        {
+          "type": "critical",
+          "message": "High Total Blocking Time — desktop TBT 0.98s. Heavy JavaScript is blocking interaction."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.000."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 64/100, mobile: 50/100."
         },
         {
           "type": "success",
           "message": "Fully mobile-responsive."
         },
         {
-          "type": "critical",
-          "message": "6 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "3 minor navigation issue(s)."
-        },
-        {
           "type": "success",
-          "message": "7 CTA(s): Get started, Start here, Create your dream store"
+          "message": "6 CTA(s): Get started, Sign up with Google, Contact sales"
         }
       ],
       "opportunities": [
         {
-          "key": "nav-issues",
-          "value": 3,
+          "key": "high-tbt",
+          "value": 980,
+          "pages": 1
+        },
+        {
+          "key": "failed-reqs",
+          "value": 10,
           "pages": 1
         }
       ]
     },
     {
-      "url": "https://woocommerce.com/wordpress-ecommerce",
-      "slug": "/wordpress-ecommerce",
-      "overallScore": 78,
+      "url": "https://stripe.com/pricing",
+      "slug": "/pricing",
+      "overallScore": 94,
       "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
       },
       "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
+        "health": 100,
+        "speed": 89,
+        "resources": 92,
         "mobile": 100,
-        "navigation": 47,
+        "navigation": 100,
         "layout": 90
       },
       "health": {
@@ -378,20 +539,168 @@
         "ok": true,
         "blankScreen": false,
         "significantErrors": 0,
-        "failedRequests": 1,
+        "failedRequests": 0,
         "criticalFailures": 0,
         "significantErrorMessages": []
       },
       "performance": {
+        "desktop": {
+          "score": 78,
+          "firstContentfulPaint": {
+            "ms": 582,
+            "formatted": "0.58s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 642,
+            "formatted": "0.64s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 47,
+            "formatted": "0.05s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 523,
+            "formatted": "0.52s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 710,
+            "formatted": "0.71s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 3520,
+            "formatted": "3.52s",
+            "rating": "good"
+          }
+        },
+        "mobile": {
+          "score": 78,
+          "firstContentfulPaint": {
+            "ms": 2149,
+            "formatted": "2.15s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 2852,
+            "formatted": "2.85s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "timeToFirstByte": {
+            "ms": 50,
+            "formatted": "0.05s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 602,
+            "formatted": "0.60s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 2149,
+            "formatted": "2.15s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 14408,
+            "formatted": "14.41s",
+            "rating": "poor"
+          }
+        },
         "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 582,
+          "formatted": "0.58s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 642,
+          "formatted": "0.64s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 47,
+          "formatted": "0.05s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 523,
+          "formatted": "0.52s",
+          "grade": {
+            "label": "Moderate",
+            "color": "#b45309"
+          },
+          "rating": "needs-improvement"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "formatted": "0.000",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "domContentLoaded": {
           "ms": null,
@@ -402,24 +711,10 @@
           "formatted": null,
           "grade": null
         },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
         "slowResources": [],
-        "largeImages": []
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
       },
       "responsiveness": {
         "mobile": {
@@ -448,36 +743,20 @@
       },
       "navigation": {
         "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
+          "label": "All Links Working",
+          "color": "#16a34a"
         },
-        "severity": "medium",
-        "totalLinks": 201,
-        "internalLinks": 56,
-        "externalLinks": 17,
-        "brokenLinks": [
-          {
-            "url": "https://storeleads.app/reports",
-            "status": 404,
-            "region": "external"
-          },
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
+        "severity": "low",
+        "totalLinks": 227,
+        "internalLinks": 60,
+        "externalLinks": 20,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
         "protectedLinks": [],
-        "issues": [
-          "1 broken external link(s) (out of 17 checked)",
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "2 navigation issue(s) found."
+        "issues": [],
+        "insight": "All links working correctly."
       },
       "layout": {
         "headerFound": true,
@@ -490,424 +769,7 @@
         "mainCTAVisible": true,
         "ctaCount": 1,
         "ctaTexts": [
-          "Get started"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 1,
-        "forms": [
-          {
-            "index": 0,
-            "fieldCount": 2,
-            "purpose": "contact",
-            "isCritical": false,
-            "hasSubmitBtn": true,
-            "hasEmailField": true,
-            "hasRequiredFields": true,
-            "browserValidationActive": true,
-            "criticalMissingValidation": [],
-            "detectionMethod": "dom"
-          }
-        ]
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint (null)."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "critical",
-          "message": "3 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "2 minor navigation issue(s)."
-        },
-        {
-          "type": "success",
-          "message": "1 CTA(s): Get started"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "nav-issues",
-          "value": 2,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://woocommerce.com/enterprise-ecommerce",
-      "slug": "/enterprise-ecommerce",
-      "overallScore": 79,
-      "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
-      },
-      "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
-        "mobile": 100,
-        "navigation": 47,
-        "layout": 95
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 1,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
-        "slowResources": [],
-        "largeImages": []
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
-        },
-        "severity": "medium",
-        "totalLinks": 186,
-        "internalLinks": 52,
-        "externalLinks": 6,
-        "brokenLinks": [
-          {
-            "url": "https://storeleads.app/reports",
-            "status": 404,
-            "region": "external"
-          },
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
-        "protectedLinks": [],
-        "issues": [
-          "1 broken external link(s) (out of 6 checked)",
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "2 navigation issue(s) found."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 2,
-        "ctaTexts": [
-          "Request a demo",
-          "Get started"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 1,
-        "forms": [
-          {
-            "index": 0,
-            "fieldCount": 2,
-            "purpose": "contact",
-            "isCritical": false,
-            "hasSubmitBtn": true,
-            "hasEmailField": true,
-            "hasRequiredFields": true,
-            "browserValidationActive": true,
-            "criticalMissingValidation": [],
-            "detectionMethod": "dom"
-          }
-        ]
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint (null)."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "critical",
-          "message": "3 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "2 minor navigation issue(s)."
-        },
-        {
-          "type": "success",
-          "message": "2 CTA(s): Request a demo, Get started"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "nav-issues",
-          "value": 2,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://woocommerce.com/payments",
-      "slug": "/payments",
-      "overallScore": 80,
-      "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
-      },
-      "categoryScores": {
-        "health": 95,
-        "speed": 50,
-        "resources": 100,
-        "mobile": 100,
-        "navigation": 59,
-        "layout": 100
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 2,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
-        "slowResources": [],
-        "largeImages": []
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
-        },
-        "severity": "medium",
-        "totalLinks": 194,
-        "internalLinks": 63,
-        "externalLinks": 3,
-        "brokenLinks": [
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
-        "protectedLinks": [],
-        "issues": [
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "1 navigation issue(s) found."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 3,
-        "ctaTexts": [
-          "Get started",
-          "Get WooPayments",
-          "Get in touch"
+          "Contact sales"
         ],
         "responsiveness": {
           "mobile": {
@@ -943,255 +805,56 @@
       "findings": [
         {
           "type": "success",
-          "message": "Excellent first paint (null)."
+          "message": "Excellent first paint — desktop FCP 0.58s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.64s."
+        },
+        {
+          "type": "warning",
+          "message": "TBT 0.52s — some JS blocking detected."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.000."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 78/100, mobile: 78/100."
         },
         {
           "type": "success",
           "message": "Fully mobile-responsive."
         },
         {
-          "type": "critical",
-          "message": "2 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "1 minor navigation issue(s)."
-        },
-        {
           "type": "success",
-          "message": "3 CTA(s): Get started, Get WooPayments, Get in touch"
+          "message": "1 CTA(s): Contact sales"
         }
       ],
       "opportunities": [
         {
-          "key": "nav-issues",
-          "value": 1,
+          "key": "high-tbt",
+          "value": 523,
           "pages": 1
         }
       ]
     },
     {
-      "url": "https://woocommerce.com/products",
-      "slug": "/products",
-      "overallScore": 80,
+      "url": "https://stripe.com/contact/sales",
+      "slug": "/contact/sales",
+      "overallScore": 90,
       "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
       },
       "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
+        "health": 100,
+        "speed": 91,
+        "resources": 54,
         "mobile": 100,
-        "navigation": 59,
-        "layout": 95
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 1,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
-        "slowResources": [],
-        "largeImages": []
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
-        },
-        "severity": "medium",
-        "totalLinks": 195,
-        "internalLinks": 60,
-        "externalLinks": 7,
-        "brokenLinks": [
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "external"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "external"
-          }
-        ],
-        "protectedLinks": [],
-        "issues": [
-          "1 broken external link(s) (out of 7 checked)"
-        ],
-        "insight": "1 navigation issue(s) found."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 2,
-        "ctaTexts": [
-          "Get started",
-          "Hire an expert"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 1,
-        "forms": [
-          {
-            "index": 0,
-            "fieldCount": 2,
-            "purpose": "contact",
-            "isCritical": false,
-            "hasSubmitBtn": true,
-            "hasEmailField": false,
-            "hasRequiredFields": true,
-            "browserValidationActive": false,
-            "criticalMissingValidation": [
-              "EMPTY_SUBMIT_NO_VALIDATION"
-            ],
-            "detectionMethod": "dom"
-          }
-        ]
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint (null)."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "critical",
-          "message": "2 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "1 minor navigation issue(s)."
-        },
-        {
-          "type": "success",
-          "message": "2 CTA(s): Get started, Hire an expert"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "nav-issues",
-          "value": 1,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://woocommerce.com/download",
-      "slug": "/download",
-      "overallScore": 81,
-      "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
-      },
-      "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
-        "mobile": 100,
-        "navigation": 59,
+        "navigation": 100,
         "layout": 100
       },
       "health": {
@@ -1199,20 +862,162 @@
         "ok": true,
         "blankScreen": false,
         "significantErrors": 0,
-        "failedRequests": 1,
+        "failedRequests": 0,
         "criticalFailures": 0,
         "significantErrorMessages": []
       },
       "performance": {
+        "desktop": {
+          "score": 80,
+          "firstContentfulPaint": {
+            "ms": 545,
+            "formatted": "0.55s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 578,
+            "formatted": "0.58s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 81,
+            "formatted": "0.08s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 442,
+            "formatted": "0.44s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.002,
+            "formatted": "0.002",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 995,
+            "formatted": "0.99s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 3499,
+            "formatted": "3.50s",
+            "rating": "good"
+          }
+        },
+        "mobile": {
+          "score": 0,
+          "firstContentfulPaint": {
+            "ms": 2171,
+            "formatted": "2.17s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": null,
+            "formatted": null,
+            "grade": null,
+            "rating": null
+          },
+          "timeToFirstByte": {
+            "ms": 47,
+            "formatted": "0.05s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": null,
+            "formatted": null,
+            "grade": null,
+            "rating": null
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.021,
+            "formatted": "0.021",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 3851,
+            "formatted": "3.85s",
+            "rating": "needs-improvement"
+          },
+          "timeToInteractive": {
+            "ms": null,
+            "formatted": null,
+            "rating": null
+          }
+        },
         "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 545,
+          "formatted": "0.55s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 578,
+          "formatted": "0.58s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 81,
+          "formatted": "0.08s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 442,
+          "formatted": "0.44s",
+          "grade": {
+            "label": "Moderate",
+            "color": "#b45309"
+          },
+          "rating": "needs-improvement"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.002,
+          "formatted": "0.002",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "domContentLoaded": {
           "ms": null,
@@ -1223,24 +1028,10 @@
           "formatted": null,
           "grade": null
         },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
         "slowResources": [],
-        "largeImages": []
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
       },
       "responsiveness": {
         "mobile": {
@@ -1269,229 +1060,20 @@
       },
       "navigation": {
         "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
+          "label": "All Links Working",
+          "color": "#16a34a"
         },
-        "severity": "medium",
-        "totalLinks": 186,
-        "internalLinks": 55,
-        "externalLinks": 3,
-        "brokenLinks": [
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
+        "severity": "low",
+        "totalLinks": 11,
+        "internalLinks": 3,
+        "externalLinks": 5,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
         "protectedLinks": [],
-        "issues": [
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "1 navigation issue(s) found."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 3,
-        "ctaTexts": [
-          "Get started",
-          "Download the WooCommerce zip",
-          "Download WooCommerce free"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint (null)."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "critical",
-          "message": "2 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "1 minor navigation issue(s)."
-        },
-        {
-          "type": "success",
-          "message": "3 CTA(s): Get started, Download the WooCommerce zip, Download WooCommerce free"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "nav-issues",
-          "value": 1,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://woocommerce.com/contact-us",
-      "slug": "/contact-us",
-      "overallScore": 79,
-      "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
-      },
-      "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
-        "mobile": 100,
-        "navigation": 47,
-        "layout": 100
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 1,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
-        "slowResources": [],
-        "largeImages": []
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
-        },
-        "severity": "medium",
-        "totalLinks": 190,
-        "internalLinks": 56,
-        "externalLinks": 6,
-        "brokenLinks": [
-          {
-            "url": "https://docs.woocommerce.com/documentation/plugins/woocommerce/getting-started/installation-and-updating/",
-            "status": 404,
-            "region": "external"
-          },
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
-        "protectedLinks": [],
-        "issues": [
-          "1 broken external link(s) (out of 6 checked)",
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "2 navigation issue(s) found."
+        "issues": [],
+        "insight": "All links working correctly."
       },
       "layout": {
         "headerFound": true,
@@ -1504,10 +1086,10 @@
         "mainCTAVisible": true,
         "ctaCount": 4,
         "ctaTexts": [
-          "Get started",
-          "Get support",
-          "Hire an expert",
-          "Download WooCommerce free"
+          "Continue",
+          "Submit",
+          "Book meeting",
+          "Continue to sign up"
         ],
         "responsiveness": {
           "mobile": {
@@ -1537,247 +1119,80 @@
         }
       },
       "forms": {
-        "count": 0,
-        "forms": []
+        "count": 1,
+        "forms": [
+          {
+            "index": 0,
+            "fieldCount": 2,
+            "purpose": "multi-step",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": true,
+            "hasRequiredFields": true,
+            "browserValidationActive": true,
+            "criticalMissingValidation": [],
+            "detectionMethod": "dom"
+          }
+        ]
       },
       "findings": [
         {
           "type": "success",
-          "message": "Excellent first paint (null)."
+          "message": "Excellent first paint — desktop FCP 0.55s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.58s."
+        },
+        {
+          "type": "warning",
+          "message": "TBT 0.44s — some JS blocking detected."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.002."
+        },
+        {
+          "type": "critical",
+          "message": "Large mobile performance gap — desktop 80/100 vs mobile 0/100. Mobile users have a significantly worse experience."
         },
         {
           "type": "success",
           "message": "Fully mobile-responsive."
         },
         {
-          "type": "critical",
-          "message": "3 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "2 minor navigation issue(s)."
-        },
-        {
           "type": "success",
-          "message": "4 CTA(s): Get started, Get support, Hire an expert"
+          "message": "4 CTA(s): Continue, Submit, Book meeting"
         }
       ],
       "opportunities": [
         {
-          "key": "nav-issues",
-          "value": 2,
+          "key": "high-tbt",
+          "value": 442,
+          "pages": 1
+        },
+        {
+          "key": "mobile-perf",
+          "value": 0,
           "pages": 1
         }
       ]
     },
     {
-      "url": "https://woocommerce.com/development-services",
-      "slug": "/development-services",
-      "overallScore": 81,
+      "url": "https://stripe.com/payments",
+      "slug": "/payments",
+      "overallScore": 93,
       "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
       },
       "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
+        "health": 100,
+        "speed": 87,
+        "resources": 83,
         "mobile": 100,
-        "navigation": 59,
-        "layout": 100
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 1,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
-        "slowResources": [],
-        "largeImages": []
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
-        },
-        "severity": "medium",
-        "totalLinks": 204,
-        "internalLinks": 76,
-        "externalLinks": 0,
-        "brokenLinks": [
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
-        "protectedLinks": [],
-        "issues": [
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "1 navigation issue(s) found."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 3,
-        "ctaTexts": [
-          "Get started",
-          "Get matched with an agency",
-          "Hire an expert"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint (null)."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "critical",
-          "message": "2 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "1 minor navigation issue(s)."
-        },
-        {
-          "type": "success",
-          "message": "3 CTA(s): Get started, Get matched with an agency, Hire an expert"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "nav-issues",
-          "value": 1,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://woocommerce.com/showcase",
-      "slug": "/showcase",
-      "overallScore": 77,
-      "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
-      },
-      "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
-        "mobile": 100,
-        "navigation": 26,
+        "navigation": 100,
         "layout": 95
       },
       "health": {
@@ -1785,20 +1200,168 @@
         "ok": true,
         "blankScreen": false,
         "significantErrors": 0,
-        "failedRequests": 1,
+        "failedRequests": 0,
         "criticalFailures": 0,
         "significantErrorMessages": []
       },
       "performance": {
+        "desktop": {
+          "score": 75,
+          "firstContentfulPaint": {
+            "ms": 706,
+            "formatted": "0.71s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 802,
+            "formatted": "0.80s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 69,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 584,
+            "formatted": "0.58s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.007,
+            "formatted": "0.007",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1207,
+            "formatted": "1.21s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 4141,
+            "formatted": "4.14s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 68,
+          "firstContentfulPaint": {
+            "ms": 2751,
+            "formatted": "2.75s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 3602,
+            "formatted": "3.60s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "timeToFirstByte": {
+            "ms": 168,
+            "formatted": "0.17s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 687,
+            "formatted": "0.69s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 3018,
+            "formatted": "3.02s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 17742,
+            "formatted": "17.74s",
+            "rating": "poor"
+          }
+        },
         "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 706,
+          "formatted": "0.71s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 802,
+          "formatted": "0.80s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 69,
+          "formatted": "0.07s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 584,
+          "formatted": "0.58s",
+          "grade": {
+            "label": "Moderate",
+            "color": "#b45309"
+          },
+          "rating": "needs-improvement"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.007,
+          "formatted": "0.007",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "domContentLoaded": {
           "ms": null,
@@ -1809,24 +1372,10 @@
           "formatted": null,
           "grade": null
         },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
         "slowResources": [],
-        "largeImages": []
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
       },
       "responsiveness": {
         "mobile": {
@@ -1855,40 +1404,20 @@
       },
       "navigation": {
         "health": {
-          "label": "Broken Links Detected",
-          "color": "#dc2626"
+          "label": "All Links Working",
+          "color": "#16a34a"
         },
-        "severity": "high",
-        "totalLinks": 224,
-        "internalLinks": 90,
-        "externalLinks": 6,
-        "brokenLinks": [
-          {
-            "url": "https://drawnandquarterly.com/",
-            "status": 403,
-            "region": "external"
-          },
-          {
-            "url": "https://godinguitars.com/",
-            "status": 403,
-            "region": "external"
-          },
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
+        "severity": "low",
+        "totalLinks": 235,
+        "internalLinks": 62,
+        "externalLinks": 20,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
         "protectedLinks": [],
-        "issues": [
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "1 navigation issue(s) found."
+        "issues": [],
+        "insight": "All links working correctly."
       },
       "layout": {
         "headerFound": true,
@@ -1901,8 +1430,8 @@
         "mainCTAVisible": true,
         "ctaCount": 2,
         "ctaTexts": [
-          "Get started",
-          "Get started with WooCommerce"
+          "Contact sales",
+          "Register now"
         ],
         "responsiveness": {
           "mobile": {
@@ -1938,69 +1467,225 @@
       "findings": [
         {
           "type": "success",
-          "message": "Excellent first paint (null)."
+          "message": "Excellent first paint — desktop FCP 0.71s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.80s."
+        },
+        {
+          "type": "warning",
+          "message": "TBT 0.58s — some JS blocking detected."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.007."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 75/100, mobile: 68/100."
         },
         {
           "type": "success",
           "message": "Fully mobile-responsive."
         },
         {
-          "type": "critical",
-          "message": "4 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "1 minor navigation issue(s)."
-        },
-        {
           "type": "success",
-          "message": "2 CTA(s): Get started, Get started with WooCommerce"
+          "message": "2 CTA(s): Contact sales, Register now"
         }
       ],
       "opportunities": [
         {
-          "key": "nav-issues",
-          "value": 1,
+          "key": "high-tbt",
+          "value": 584,
           "pages": 1
         }
       ]
     },
     {
-      "url": "https://woocommerce.com/for-agencies",
-      "slug": "/for-agencies",
-      "overallScore": 80,
+      "url": "https://stripe.com/enterprise",
+      "slug": "/enterprise",
+      "overallScore": 79,
       "grade": {
         "grade": "B",
         "label": "Good",
         "color": "#65a30d"
       },
       "categoryScores": {
-        "health": 98,
-        "speed": 50,
-        "resources": 100,
+        "health": 100,
+        "speed": 73,
+        "resources": 26,
         "mobile": 100,
-        "navigation": 59,
-        "layout": 95
+        "navigation": 100,
+        "layout": 90
       },
       "health": {
         "status": 200,
         "ok": true,
         "blankScreen": false,
         "significantErrors": 0,
-        "failedRequests": 1,
+        "failedRequests": 0,
         "criticalFailures": 0,
         "significantErrorMessages": []
       },
       "performance": {
+        "desktop": {
+          "score": 51,
+          "firstContentfulPaint": {
+            "ms": 624,
+            "formatted": "0.62s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 1999,
+            "formatted": "2.00s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 138,
+            "formatted": "0.14s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 20078,
+            "formatted": "20.08s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 7955,
+            "formatted": "7.96s",
+            "rating": "poor"
+          },
+          "timeToInteractive": {
+            "ms": 26496,
+            "formatted": "26.50s",
+            "rating": "poor"
+          }
+        },
+        "mobile": {
+          "score": 35,
+          "firstContentfulPaint": {
+            "ms": 2543,
+            "formatted": "2.54s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 7532,
+            "formatted": "7.53s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 80,
+            "formatted": "0.08s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 22659,
+            "formatted": "22.66s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 8145,
+            "formatted": "8.14s",
+            "rating": "poor"
+          },
+          "timeToInteractive": {
+            "ms": 41657,
+            "formatted": "41.66s",
+            "rating": "poor"
+          }
+        },
         "firstContentfulPaint": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 624,
+          "formatted": "0.62s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 1999,
+          "formatted": "2.00s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "timeToFirstByte": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
+          "ms": 138,
+          "formatted": "0.14s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 20078,
+          "formatted": "20.08s",
+          "grade": {
+            "label": "Poor",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "formatted": "0.000",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
         },
         "domContentLoaded": {
           "ms": null,
@@ -2011,24 +1696,10 @@
           "formatted": null,
           "grade": null
         },
-        "resources": {
-          "script": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "link": {
-            "count": 0,
-            "totalKB": 0
-          },
-          "other": {
-            "count": 0,
-            "totalKB": 0
-          }
-        },
-        "totalResources": 0,
-        "totalResourceSizeKB": 0,
         "slowResources": [],
-        "largeImages": []
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
       },
       "responsiveness": {
         "mobile": {
@@ -2057,30 +1728,20 @@
       },
       "navigation": {
         "health": {
-          "label": "Minor Issues Found",
-          "color": "#b45309"
+          "label": "All Links Working",
+          "color": "#16a34a"
         },
-        "severity": "medium",
-        "totalLinks": 183,
-        "internalLinks": 53,
-        "externalLinks": 2,
-        "brokenLinks": [
-          {
-            "url": "https://www.facebook.com/woocommerce",
-            "status": 400,
-            "region": "footer"
-          },
-          {
-            "url": "https://www.x.com/woocommerce",
-            "status": 403,
-            "region": "footer"
-          }
-        ],
+        "severity": "low",
+        "totalLinks": 228,
+        "internalLinks": 61,
+        "externalLinks": 20,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
         "protectedLinks": [],
-        "issues": [
-          "1 broken footer link(s) (out of 47 checked)"
-        ],
-        "insight": "1 navigation issue(s) found."
+        "issues": [],
+        "insight": "All links working correctly."
       },
       "layout": {
         "headerFound": true,
@@ -2091,10 +1752,9 @@
         "logoVisible": true,
         "logoLinksHome": true,
         "mainCTAVisible": true,
-        "ctaCount": 2,
+        "ctaCount": 1,
         "ctaTexts": [
-          "Get started",
-          "Join the program"
+          "Contact sales"
         ],
         "responsiveness": {
           "mobile": {
@@ -2130,97 +1790,1703 @@
       "findings": [
         {
           "type": "success",
-          "message": "Excellent first paint (null)."
+          "message": "Excellent first paint — desktop FCP 0.62s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 2.00s."
+        },
+        {
+          "type": "critical",
+          "message": "High Total Blocking Time — desktop TBT 20.08s. Heavy JavaScript is blocking interaction."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.000."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 51/100, mobile: 35/100."
         },
         {
           "type": "success",
           "message": "Fully mobile-responsive."
         },
         {
-          "type": "critical",
-          "message": "2 broken link(s) — damages SEO."
-        },
-        {
-          "type": "info",
-          "message": "1 minor navigation issue(s)."
-        },
-        {
           "type": "success",
-          "message": "2 CTA(s): Get started, Join the program"
+          "message": "1 CTA(s): Contact sales"
         }
       ],
       "opportunities": [
         {
-          "key": "nav-issues",
-          "value": 1,
+          "key": "high-tbt",
+          "value": 20078,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://stripe.com/billing",
+      "slug": "/billing",
+      "overallScore": 94,
+      "grade": {
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
+      },
+      "categoryScores": {
+        "health": 100,
+        "speed": 90,
+        "resources": 87,
+        "mobile": 100,
+        "navigation": 100,
+        "layout": 90
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 0,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "desktop": {
+          "score": 79,
+          "firstContentfulPaint": {
+            "ms": 562,
+            "formatted": "0.56s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 682,
+            "formatted": "0.68s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 65,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 483,
+            "formatted": "0.48s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 863,
+            "formatted": "0.86s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 3908,
+            "formatted": "3.91s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 73,
+          "firstContentfulPaint": {
+            "ms": 2384,
+            "formatted": "2.38s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 2927,
+            "formatted": "2.93s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "timeToFirstByte": {
+            "ms": 67,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 782,
+            "formatted": "0.78s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 2611,
+            "formatted": "2.61s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 15320,
+            "formatted": "15.32s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 562,
+          "formatted": "0.56s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 682,
+          "formatted": "0.68s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "timeToFirstByte": {
+          "ms": 65,
+          "formatted": "0.07s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 483,
+          "formatted": "0.48s",
+          "grade": {
+            "label": "Moderate",
+            "color": "#b45309"
+          },
+          "rating": "needs-improvement"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "formatted": "0.000",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "All Links Working",
+          "color": "#16a34a"
+        },
+        "severity": "low",
+        "totalLinks": 233,
+        "internalLinks": 62,
+        "externalLinks": 20,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [],
+        "insight": "All links working correctly."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 1,
+        "ctaTexts": [
+          "Contact sales"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.56s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.68s."
+        },
+        {
+          "type": "warning",
+          "message": "TBT 0.48s — some JS blocking detected."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.000."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 79/100, mobile: 73/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "success",
+          "message": "1 CTA(s): Contact sales"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "high-tbt",
+          "value": 483,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://stripe.com/connect",
+      "slug": "/connect",
+      "overallScore": 93,
+      "grade": {
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
+      },
+      "categoryScores": {
+        "health": 100,
+        "speed": 86,
+        "resources": 89,
+        "mobile": 100,
+        "navigation": 100,
+        "layout": 90
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 0,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "desktop": {
+          "score": 74,
+          "firstContentfulPaint": {
+            "ms": 631,
+            "formatted": "0.63s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 722,
+            "formatted": "0.72s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 67,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 699,
+            "formatted": "0.70s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.007,
+            "formatted": "0.007",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 914,
+            "formatted": "0.91s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 4012,
+            "formatted": "4.01s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 72,
+          "firstContentfulPaint": {
+            "ms": 2383,
+            "formatted": "2.38s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 3152,
+            "formatted": "3.15s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "timeToFirstByte": {
+            "ms": 70,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 743,
+            "formatted": "0.74s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 2547,
+            "formatted": "2.55s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 15229,
+            "formatted": "15.23s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 631,
+          "formatted": "0.63s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 722,
+          "formatted": "0.72s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "timeToFirstByte": {
+          "ms": 67,
+          "formatted": "0.07s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 699,
+          "formatted": "0.70s",
+          "grade": {
+            "label": "Poor",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.007,
+          "formatted": "0.007",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "All Links Working",
+          "color": "#16a34a"
+        },
+        "severity": "low",
+        "totalLinks": 234,
+        "internalLinks": 62,
+        "externalLinks": 20,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [],
+        "insight": "All links working correctly."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 1,
+        "ctaTexts": [
+          "Contact sales"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.63s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.72s."
+        },
+        {
+          "type": "critical",
+          "message": "High Total Blocking Time — desktop TBT 0.70s. Heavy JavaScript is blocking interaction."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.007."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 74/100, mobile: 72/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "success",
+          "message": "1 CTA(s): Contact sales"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "high-tbt",
+          "value": 699,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://stripe.com/use-cases/saas",
+      "slug": "/use-cases/saas",
+      "overallScore": 93,
+      "grade": {
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
+      },
+      "categoryScores": {
+        "health": 100,
+        "speed": 84,
+        "resources": 92,
+        "mobile": 100,
+        "navigation": 100,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 0,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "desktop": {
+          "score": 71,
+          "firstContentfulPaint": {
+            "ms": 594,
+            "formatted": "0.59s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 666,
+            "formatted": "0.67s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 58,
+            "formatted": "0.06s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 906,
+            "formatted": "0.91s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.036,
+            "formatted": "0.036",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1099,
+            "formatted": "1.10s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 4008,
+            "formatted": "4.01s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 83,
+          "firstContentfulPaint": {
+            "ms": 2142,
+            "formatted": "2.14s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 2852,
+            "formatted": "2.85s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "timeToFirstByte": {
+            "ms": 44,
+            "formatted": "0.04s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 425,
+            "formatted": "0.42s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 2146,
+            "formatted": "2.15s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 14363,
+            "formatted": "14.36s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 594,
+          "formatted": "0.59s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 666,
+          "formatted": "0.67s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "timeToFirstByte": {
+          "ms": 58,
+          "formatted": "0.06s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 906,
+          "formatted": "0.91s",
+          "grade": {
+            "label": "Poor",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.036,
+          "formatted": "0.036",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "All Links Working",
+          "color": "#16a34a"
+        },
+        "severity": "low",
+        "totalLinks": 229,
+        "internalLinks": 62,
+        "externalLinks": 20,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [],
+        "insight": "All links working correctly."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Contact sales",
+          "Register now"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.59s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.67s."
+        },
+        {
+          "type": "critical",
+          "message": "High Total Blocking Time — desktop TBT 0.91s. Heavy JavaScript is blocking interaction."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.036."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 71/100, mobile: 83/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Contact sales, Register now"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "high-tbt",
+          "value": 906,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://stripe.com/customers",
+      "slug": "/customers",
+      "overallScore": 95,
+      "grade": {
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
+      },
+      "categoryScores": {
+        "health": 100,
+        "speed": 93,
+        "resources": 84,
+        "mobile": 100,
+        "navigation": 100,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 0,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "desktop": {
+          "score": 89,
+          "firstContentfulPaint": {
+            "ms": 659,
+            "formatted": "0.66s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 782,
+            "formatted": "0.78s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 75,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 268,
+            "formatted": "0.27s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 888,
+            "formatted": "0.89s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 3736,
+            "formatted": "3.74s",
+            "rating": "good"
+          }
+        },
+        "mobile": {
+          "score": 76,
+          "firstContentfulPaint": {
+            "ms": 2676,
+            "formatted": "2.68s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 3452,
+            "formatted": "3.45s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "timeToFirstByte": {
+            "ms": 78,
+            "formatted": "0.08s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 457,
+            "formatted": "0.46s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 2676,
+            "formatted": "2.68s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 16615,
+            "formatted": "16.61s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 659,
+          "formatted": "0.66s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 782,
+          "formatted": "0.78s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "timeToFirstByte": {
+          "ms": 75,
+          "formatted": "0.07s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 268,
+          "formatted": "0.27s",
+          "grade": {
+            "label": "Moderate",
+            "color": "#b45309"
+          },
+          "rating": "needs-improvement"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "formatted": "0.000",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "All Links Working",
+          "color": "#16a34a"
+        },
+        "severity": "low",
+        "totalLinks": 227,
+        "internalLinks": 62,
+        "externalLinks": 17,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [],
+        "insight": "All links working correctly."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Contact sales",
+          "Register now"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.66s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.78s."
+        },
+        {
+          "type": "warning",
+          "message": "TBT 0.27s — some JS blocking detected."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.000."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 89/100, mobile: 76/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Contact sales, Register now"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "high-tbt",
+          "value": 268,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://stripe.com/guides",
+      "slug": "/guides",
+      "overallScore": 94,
+      "grade": {
+        "grade": "A",
+        "label": "Excellent",
+        "color": "#16a34a"
+      },
+      "categoryScores": {
+        "health": 100,
+        "speed": 90,
+        "resources": 92,
+        "mobile": 100,
+        "navigation": 100,
+        "layout": 90
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 0,
+        "failedRequests": 0,
+        "criticalFailures": 0,
+        "significantErrorMessages": []
+      },
+      "performance": {
+        "desktop": {
+          "score": 82,
+          "firstContentfulPaint": {
+            "ms": 579,
+            "formatted": "0.58s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 602,
+            "formatted": "0.60s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 104,
+            "formatted": "0.10s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 397,
+            "formatted": "0.40s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1125,
+            "formatted": "1.13s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 3445,
+            "formatted": "3.44s",
+            "rating": "good"
+          }
+        },
+        "mobile": {
+          "score": 85,
+          "firstContentfulPaint": {
+            "ms": 2070,
+            "formatted": "2.07s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "largestContentfulPaint": {
+            "ms": 2402,
+            "formatted": "2.40s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 55,
+            "formatted": "0.06s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 439,
+            "formatted": "0.44s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 2092,
+            "formatted": "2.09s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 13512,
+            "formatted": "13.51s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 579,
+          "formatted": "0.58s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 602,
+          "formatted": "0.60s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "timeToFirstByte": {
+          "ms": 104,
+          "formatted": "0.10s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 397,
+          "formatted": "0.40s",
+          "grade": {
+            "label": "Moderate",
+            "color": "#b45309"
+          },
+          "rating": "needs-improvement"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "formatted": "0.000",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "All Links Working",
+          "color": "#16a34a"
+        },
+        "severity": "low",
+        "totalLinks": 225,
+        "internalLinks": 61,
+        "externalLinks": 17,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [],
+        "insight": "All links working correctly."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 1,
+        "ctaTexts": [
+          "Contact sales"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.58s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.60s."
+        },
+        {
+          "type": "warning",
+          "message": "TBT 0.40s — some JS blocking detected."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.000."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 82/100, mobile: 85/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "success",
+          "message": "1 CTA(s): Contact sales"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "high-tbt",
+          "value": 397,
           "pages": 1
         }
       ]
     }
   ],
   "formValidationSummary": {
-    "totalPages": 3,
-    "totalForms": 3,
+    "totalPages": 1,
+    "totalForms": 1,
     "stats": {
-      "withSubmitButton": 3,
-      "withEmailField": 2,
-      "withRequiredFields": 3,
-      "withBrowserValidation": 2,
-      "withMissingValidation": 1
+      "withSubmitButton": 1,
+      "withEmailField": 1,
+      "withRequiredFields": 1,
+      "withBrowserValidation": 1,
+      "withMissingValidation": 0
     },
     "forms": [
       {
-        "page": "/wordpress-ecommerce",
-        "pageUrl": "https://woocommerce.com/wordpress-ecommerce",
+        "page": "/contact/sales",
+        "pageUrl": "https://stripe.com/contact/sales",
         "fieldCount": 2,
-        "purpose": "contact",
+        "purpose": "multi-step",
         "hasSubmitBtn": true,
         "hasEmailField": true,
         "hasRequiredFields": true,
         "browserValidationActive": true,
         "criticalMissingValidation": []
-      },
-      {
-        "page": "/enterprise-ecommerce",
-        "pageUrl": "https://woocommerce.com/enterprise-ecommerce",
-        "fieldCount": 2,
-        "purpose": "contact",
-        "hasSubmitBtn": true,
-        "hasEmailField": true,
-        "hasRequiredFields": true,
-        "browserValidationActive": true,
-        "criticalMissingValidation": []
-      },
-      {
-        "page": "/products",
-        "pageUrl": "https://woocommerce.com/products",
-        "fieldCount": 2,
-        "purpose": "contact",
-        "hasSubmitBtn": true,
-        "hasEmailField": false,
-        "hasRequiredFields": true,
-        "browserValidationActive": false,
-        "criticalMissingValidation": [
-          "EMPTY_SUBMIT_NO_VALIDATION"
-        ]
       }
     ],
-    "issues": [
-      {
-        "severity": "critical",
-        "page": "/products",
-        "message": "Missing critical validation: EMPTY_SUBMIT_NO_VALIDATION"
-      },
-      {
-        "severity": "info",
-        "page": "/products",
-        "message": "Browser validation not active."
-      }
-    ]
+    "issues": []
   },
   "uiUxIssues": {
-    "totalIssues": 0,
-    "issues": []
+    "totalIssues": 1,
+    "issues": [
+      {
+        "category": "Performance",
+        "severity": "critical",
+        "page": "/",
+        "url": "https://stripe.com",
+        "title": "High JavaScript Blocking Time",
+        "description": "Total Blocking Time is 0. This issue affects 4 pages: /, /enterprise, /connect, /use-cases/saas.",
+        "pageCount": 4,
+        "affectedPages": [
+          "/",
+          "/enterprise",
+          "/connect",
+          "/use-cases/saas"
+        ]
+      }
+    ]
   },
   "opportunitySummary": {
     "title": "Growth Opportunities Identified",
@@ -2228,7 +3494,15 @@
     "items": [
       {
         "id": 1,
-        "opportunity": "Resolve navigation issues across 10 pages — fix broken anchors and link structure."
+        "opportunity": "Reduce JavaScript blocking time (TBT up to 20.08s) — heavy JS is delaying interactivity on 10 pages."
+      },
+      {
+        "id": 2,
+        "opportunity": "Improve mobile performance (score as low as 0/100) on 1 page — mobile users are seeing much slower experiences than desktop."
+      },
+      {
+        "id": 3,
+        "opportunity": "Fix failed network requests — up to 10 failures per page across 1 page."
       }
     ]
   },
@@ -2238,7 +3512,7 @@
       {
         "name": "Page Health",
         "description": "HTTP status, console errors, failed requests, and reliability",
-        "score": 97,
+        "score": 98,
         "grade": {
           "grade": "A",
           "label": "Excellent",
@@ -2247,22 +3521,22 @@
       },
       {
         "name": "Page Speed",
-        "description": "First Contentful Paint, TTFB, DOM ready, and total load time",
-        "score": 50,
+        "description": "First Contentful Paint, Largest Contentful Paint, TTFB, and Total Blocking Time",
+        "score": 86,
         "grade": {
-          "grade": "D",
-          "label": "Poor",
-          "color": "#ea580c"
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
         }
       },
       {
         "name": "Resource Efficiency",
-        "description": "Page weight, resource count, slow assets, and image optimisation",
-        "score": 100,
+        "description": "Speed Index (desktop + mobile) and mobile vs desktop rendering efficiency",
+        "score": 77,
         "grade": {
-          "grade": "A",
-          "label": "Excellent",
-          "color": "#16a34a"
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
         }
       },
       {
@@ -2278,17 +3552,17 @@
       {
         "name": "Navigation & Links",
         "description": "Broken links, anchor integrity, and navigation health",
-        "score": 48,
+        "score": 100,
         "grade": {
-          "grade": "D",
-          "label": "Poor",
-          "color": "#ea580c"
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
         }
       },
       {
         "name": "Layout & UX",
         "description": "Header, footer, logo, CTAs, and page structure completeness",
-        "score": 97,
+        "score": 94,
         "grade": {
           "grade": "A",
           "label": "Excellent",

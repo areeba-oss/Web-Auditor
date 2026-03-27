@@ -92,10 +92,10 @@ function executiveSummaryPage(meta, summary, generatedDate) {
       sub: performanceStats.avgTTFB.grade?.label || '',
     },
     {
-      icon: 'LOAD',
-      val: performanceStats.avgLoadTime.formatted ?? 'N/A',
-      label: 'Avg Load Time',
-      sub: performanceStats.avgLoadTime.grade?.label || '',
+      icon: 'TBT',
+      val: performanceStats.avgTBT.formatted ?? 'N/A',
+      label: 'Avg TBT',
+      sub: performanceStats.avgTBT.grade?.label || '',
     },
     {
       icon: 'HDR',

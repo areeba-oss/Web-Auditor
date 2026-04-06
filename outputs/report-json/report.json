@@ -1,35 +1,35 @@
 {
   "meta": {
-    "reportTitle": "Web Audit Report — stripe.com",
-    "domain": "stripe.com",
-    "generatedAt": "2026-03-27T12:10:58.338Z",
-    "auditedPages": 10,
+    "reportTitle": "Web Audit Report — getspeedbump.com",
+    "domain": "getspeedbump.com",
+    "generatedAt": "2026-04-06T10:53:44.051Z",
+    "auditedPages": 7,
     "tool": "SPCTEK Web Auditor",
     "version": "2.0"
   },
   "executiveSummary": {
-    "headline": "Your site scores 91/100 — a solid foundation with clear wins available.",
-    "overallScore": 91,
+    "headline": "Your site scores 82/100 — a solid foundation with clear wins available.",
+    "overallScore": 82,
     "grade": {
-      "grade": "A",
-      "label": "Excellent",
-      "color": "#16a34a"
+      "grade": "B",
+      "label": "Good",
+      "color": "#65a30d"
     },
     "keyStats": [
       {
         "label": "Pages Audited",
-        "value": 10,
+        "value": 7,
         "icon": "PA"
       },
       {
         "label": "Critical Issues",
-        "value": 5,
+        "value": 10,
         "highlight": true,
         "icon": "CI"
       },
       {
         "label": "Warnings",
-        "value": 8,
+        "value": 12,
         "icon": "WN"
       },
       {
@@ -40,134 +40,135 @@
       },
       {
         "label": "Avg. FCP",
-        "value": "0.61s",
+        "value": "0.35s",
         "subLabel": "Fast",
         "icon": "FCP"
       },
       {
         "label": "Avg. LCP",
-        "value": "0.90s",
-        "subLabel": "Fast",
+        "value": "3.19s",
+        "subLabel": "Moderate",
         "icon": "LCP"
       },
       {
         "label": "Desktop PSI",
-        "value": "74/100",
+        "value": "84/100",
         "icon": "PSI"
       },
       {
         "label": "Mobile PSI",
-        "value": "62/100",
+        "value": "65/100",
         "icon": "MOB"
       }
     ],
     "performanceStats": {
       "avgFCP": {
-        "ms": 612,
-        "formatted": "0.61s",
+        "ms": 347,
+        "formatted": "0.35s",
         "grade": {
           "label": "Fast",
           "color": "#16a34a"
         }
       },
       "avgLCP": {
-        "ms": 904,
-        "formatted": "0.90s",
+        "ms": 3187,
+        "formatted": "3.19s",
         "grade": {
-          "label": "Fast",
-          "color": "#16a34a"
+          "label": "Moderate",
+          "color": "#b45309"
         }
       },
       "avgTTFB": {
-        "ms": 76,
-        "formatted": "0.08s",
+        "ms": 6,
+        "formatted": "0.01s",
         "grade": {
           "label": "Excellent",
           "color": "#16a34a"
         }
       },
       "avgTBT": {
-        "ms": 2536,
-        "formatted": "2.54s",
+        "ms": 31,
+        "formatted": "0.03s",
         "grade": {
-          "label": "Poor",
-          "color": "#dc2626"
+          "label": "Excellent",
+          "color": "#16a34a"
         }
       },
-      "avgDesktopPsiScore": 74,
-      "avgMobilePsiScore": 62
+      "avgDesktopPsiScore": 84,
+      "avgMobilePsiScore": 65
     },
     "siteHealth": {
-      "httpOkCount": 10,
-      "totalPages": 10,
-      "totalLinks": 1987,
-      "brokenLinks": 0,
-      "totalCTAs": 21,
-      "headerFound": 10,
-      "footerFound": 10,
-      "logoFound": 10,
-      "mobilePass": 10,
+      "httpOkCount": 7,
+      "totalPages": 7,
+      "totalLinks": 116,
+      "brokenLinks": 3,
+      "totalCTAs": 16,
+      "headerFound": 7,
+      "footerFound": 7,
+      "logoFound": 7,
+      "mobilePass": 7,
       "mobileFail": 0
     },
     "topFindings": [
-      "5 critical issue(s) across 10 pages",
-      "8 warning(s) flagged"
+      "10 critical issue(s) across 7 pages",
+      "3 unique broken link(s)",
+      "12 warning(s) flagged"
     ],
     "worstPages": [
       {
-        "slug": "/enterprise",
-        "score": 79,
+        "slug": "/products/storage-box-black",
+        "score": 75,
         "grade": {
           "grade": "B",
           "label": "Good",
           "color": "#65a30d"
         }
       },
+      {
+        "slug": "/products/speedbump-energy-2x-2gram-containers",
+        "score": 81,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
+        "slug": "/products/spice-grinder",
+        "score": 81,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      }
+    ],
+    "bestPages": [
       {
         "slug": "/",
-        "score": 85,
-        "grade": {
-          "grade": "B",
-          "label": "Good",
-          "color": "#65a30d"
-        }
-      },
-      {
-        "slug": "/contact/sales",
         "score": 90,
         "grade": {
           "grade": "A",
           "label": "Excellent",
           "color": "#16a34a"
         }
-      }
-    ],
-    "bestPages": [
+      },
       {
-        "slug": "/customers",
-        "score": 95,
+        "slug": "/pages/contact",
+        "score": 83,
         "grade": {
-          "grade": "A",
-          "label": "Excellent",
-          "color": "#16a34a"
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
         }
       },
       {
-        "slug": "/guides",
-        "score": 94,
+        "slug": "/collections/all",
+        "score": 83,
         "grade": {
-          "grade": "A",
-          "label": "Excellent",
-          "color": "#16a34a"
-        }
-      },
-      {
-        "slug": "/billing",
-        "score": 94,
-        "grade": {
-          "grade": "A",
-          "label": "Excellent",
-          "color": "#16a34a"
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
         }
       }
     ],
@@ -175,674 +176,8 @@
   },
   "pageBreakdown": [
     {
-      "url": "https://stripe.com",
+      "url": "https://getspeedbump.com/",
       "slug": "/",
-      "overallScore": 85,
-      "grade": {
-        "grade": "B",
-        "label": "Good",
-        "color": "#65a30d"
-      },
-      "categoryScores": {
-        "health": 77,
-        "speed": 79,
-        "resources": 67,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 100
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 1,
-        "failedRequests": 10,
-        "criticalFailures": 0,
-        "significantErrorMessages": [
-          "Fetch API cannot load https://dm.slim02.jp/tppa/v2/vs?adv_id=5000000244218781&cnropq=eyJ0YWdfaWQiOiIwMjJmMmQwYi1iOGU4LTRmZTgtYWU1Yy1lMzBiM2JjZWNiYmIiLCJsYWJlbCI6IiIsImV2ZW50IjoicGFnZV92aWV3IiwicmVmIjoiaHR0cHM6Ly9zdHJpcGUuY29tLyIsInJlcV90eXBlIjoibHl0YWcifQ&evt=5&pid=5000000244218780&xci=506b607d-d8f6-4c83-b316-e5d6997bd9b1. Refused to connect because it violates the document's Content Security Policy."
-        ]
-      },
-      "performance": {
-        "desktop": {
-          "score": 64,
-          "firstContentfulPaint": {
-            "ms": 642,
-            "formatted": "0.64s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 1562,
-            "formatted": "1.56s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 57,
-            "formatted": "0.06s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 980,
-            "formatted": "0.98s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 1639,
-            "formatted": "1.64s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 4912,
-            "formatted": "4.91s",
-            "rating": "needs-improvement"
-          }
-        },
-        "mobile": {
-          "score": 50,
-          "firstContentfulPaint": {
-            "ms": 2702,
-            "formatted": "2.70s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 5627,
-            "formatted": "5.63s",
-            "grade": {
-              "label": "Slow",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "timeToFirstByte": {
-            "ms": 67,
-            "formatted": "0.07s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 906,
-            "formatted": "0.91s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 5308,
-            "formatted": "5.31s",
-            "rating": "needs-improvement"
-          },
-          "timeToInteractive": {
-            "ms": 20837,
-            "formatted": "20.84s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 642,
-          "formatted": "0.64s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 1562,
-          "formatted": "1.56s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 57,
-          "formatted": "0.06s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 980,
-          "formatted": "0.98s",
-          "grade": {
-            "label": "Poor",
-            "color": "#dc2626"
-          },
-          "rating": "poor"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0,
-          "formatted": "0.000",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 138,
-        "internalLinks": 120,
-        "externalLinks": 13,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 6,
-        "ctaTexts": [
-          "Get started",
-          "Sign up with Google",
-          "Contact sales",
-          "Apply now",
-          "Start your company",
-          "Start now"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "warning",
-          "message": "1 significant console error(s) detected."
-        },
-        {
-          "type": "warning",
-          "message": "10 failed network request(s)."
-        },
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.64s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 1.56s."
-        },
-        {
-          "type": "critical",
-          "message": "High Total Blocking Time — desktop TBT 0.98s. Heavy JavaScript is blocking interaction."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.000."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 64/100, mobile: 50/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "6 CTA(s): Get started, Sign up with Google, Contact sales"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 980,
-          "pages": 1
-        },
-        {
-          "key": "failed-reqs",
-          "value": 10,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/pricing",
-      "slug": "/pricing",
-      "overallScore": 94,
-      "grade": {
-        "grade": "A",
-        "label": "Excellent",
-        "color": "#16a34a"
-      },
-      "categoryScores": {
-        "health": 100,
-        "speed": 89,
-        "resources": 92,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 90
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "desktop": {
-          "score": 78,
-          "firstContentfulPaint": {
-            "ms": 582,
-            "formatted": "0.58s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 642,
-            "formatted": "0.64s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 47,
-            "formatted": "0.05s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 523,
-            "formatted": "0.52s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 710,
-            "formatted": "0.71s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 3520,
-            "formatted": "3.52s",
-            "rating": "good"
-          }
-        },
-        "mobile": {
-          "score": 78,
-          "firstContentfulPaint": {
-            "ms": 2149,
-            "formatted": "2.15s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 2852,
-            "formatted": "2.85s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "timeToFirstByte": {
-            "ms": 50,
-            "formatted": "0.05s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 602,
-            "formatted": "0.60s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 2149,
-            "formatted": "2.15s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 14408,
-            "formatted": "14.41s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 582,
-          "formatted": "0.58s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 642,
-          "formatted": "0.64s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 47,
-          "formatted": "0.05s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 523,
-          "formatted": "0.52s",
-          "grade": {
-            "label": "Moderate",
-            "color": "#b45309"
-          },
-          "rating": "needs-improvement"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0,
-          "formatted": "0.000",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 227,
-        "internalLinks": 60,
-        "externalLinks": 20,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 1,
-        "ctaTexts": [
-          "Contact sales"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.58s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.64s."
-        },
-        {
-          "type": "warning",
-          "message": "TBT 0.52s — some JS blocking detected."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.000."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 78/100, mobile: 78/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "1 CTA(s): Contact sales"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 523,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/contact/sales",
-      "slug": "/contact/sales",
       "overallScore": 90,
       "grade": {
         "grade": "A",
@@ -850,28 +185,31 @@
         "color": "#16a34a"
       },
       "categoryScores": {
-        "health": 100,
-        "speed": 91,
-        "resources": 54,
+        "health": 87,
+        "speed": 99,
+        "resources": 51,
         "mobile": 100,
         "navigation": 100,
-        "layout": 100
+        "layout": 95
       },
       "health": {
         "status": 200,
         "ok": true,
         "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
+        "significantErrors": 2,
+        "failedRequests": 2,
         "criticalFailures": 0,
-        "significantErrorMessages": []
+        "significantErrorMessages": [
+          "Framing 'https://shop.app/' violates the following Content Security Policy directive: \"frame-ancestors 'self' https://shop.app https://admin.shopify.com\". The request has been blocked.\n",
+          "Failed to load resource: the server responded with a status of 403 ()"
+        ]
       },
       "performance": {
         "desktop": {
-          "score": 80,
+          "score": 98,
           "firstContentfulPaint": {
-            "ms": 545,
-            "formatted": "0.55s",
+            "ms": 301,
+            "formatted": "0.30s",
             "grade": {
               "label": "Fast",
               "color": "#16a34a"
@@ -879,8 +217,8 @@
             "rating": "good"
           },
           "largestContentfulPaint": {
-            "ms": 578,
-            "formatted": "0.58s",
+            "ms": 692,
+            "formatted": "0.69s",
             "grade": {
               "label": "Fast",
               "color": "#16a34a"
@@ -888,25 +226,22 @@
             "rating": "good"
           },
           "timeToFirstByte": {
-            "ms": 81,
-            "formatted": "0.08s",
+            "ms": 5,
+            "formatted": "0.01s",
             "grade": {
               "label": "Excellent",
               "color": "#16a34a"
             }
           },
           "totalBlockingTime": {
-            "ms": 442,
-            "formatted": "0.44s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
+            "ms": 0,
+            "formatted": "0.00s",
+            "grade": null,
+            "rating": "good"
           },
           "cumulativeLayoutShift": {
-            "value": 0.002,
-            "formatted": "0.002",
+            "value": 0.007,
+            "formatted": "0.007",
             "grade": {
               "label": "Good",
               "color": "#16a34a"
@@ -914,50 +249,56 @@
             "rating": "good"
           },
           "speedIndex": {
-            "ms": 995,
-            "formatted": "0.99s",
+            "ms": 1629,
+            "formatted": "1.63s",
             "rating": "good"
           },
           "timeToInteractive": {
-            "ms": 3499,
-            "formatted": "3.50s",
+            "ms": 695,
+            "formatted": "0.69s",
             "rating": "good"
           }
         },
         "mobile": {
-          "score": 0,
+          "score": 60,
           "firstContentfulPaint": {
-            "ms": 2171,
-            "formatted": "2.17s",
+            "ms": 4689,
+            "formatted": "4.69s",
             "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
+              "label": "Slow",
+              "color": "#dc2626"
             },
-            "rating": "needs-improvement"
+            "rating": "poor"
           },
           "largestContentfulPaint": {
-            "ms": null,
-            "formatted": null,
-            "grade": null,
-            "rating": null
+            "ms": 22921,
+            "formatted": "22.92s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
           },
           "timeToFirstByte": {
-            "ms": 47,
-            "formatted": "0.05s",
+            "ms": 8,
+            "formatted": "0.01s",
             "grade": {
               "label": "Excellent",
               "color": "#16a34a"
             }
           },
           "totalBlockingTime": {
-            "ms": null,
-            "formatted": null,
-            "grade": null,
-            "rating": null
+            "ms": 25,
+            "formatted": "0.03s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
           },
           "cumulativeLayoutShift": {
-            "value": 0.021,
-            "formatted": "0.021",
+            "value": 0,
+            "formatted": "0.000",
             "grade": {
               "label": "Good",
               "color": "#16a34a"
@@ -965,19 +306,19 @@
             "rating": "good"
           },
           "speedIndex": {
-            "ms": 3851,
-            "formatted": "3.85s",
-            "rating": "needs-improvement"
+            "ms": 6944,
+            "formatted": "6.94s",
+            "rating": "poor"
           },
           "timeToInteractive": {
-            "ms": null,
-            "formatted": null,
-            "rating": null
+            "ms": 22929,
+            "formatted": "22.93s",
+            "rating": "poor"
           }
         },
         "firstContentfulPaint": {
-          "ms": 545,
-          "formatted": "0.55s",
+          "ms": 301,
+          "formatted": "0.30s",
           "grade": {
             "label": "Fast",
             "color": "#16a34a"
@@ -985,8 +326,8 @@
           "rating": "good"
         },
         "largestContentfulPaint": {
-          "ms": 578,
-          "formatted": "0.58s",
+          "ms": 692,
+          "formatted": "0.69s",
           "grade": {
             "label": "Fast",
             "color": "#16a34a"
@@ -994,25 +335,22 @@
           "rating": "good"
         },
         "timeToFirstByte": {
-          "ms": 81,
-          "formatted": "0.08s",
+          "ms": 5,
+          "formatted": "0.01s",
           "grade": {
             "label": "Excellent",
             "color": "#16a34a"
           }
         },
         "totalBlockingTime": {
-          "ms": 442,
-          "formatted": "0.44s",
-          "grade": {
-            "label": "Moderate",
-            "color": "#b45309"
-          },
-          "rating": "needs-improvement"
+          "ms": 0,
+          "formatted": "0.00s",
+          "grade": null,
+          "rating": "good"
         },
         "cumulativeLayoutShift": {
-          "value": 0.002,
-          "formatted": "0.002",
+          "value": 0.007,
+          "formatted": "0.007",
           "grade": {
             "label": "Good",
             "color": "#16a34a"
@@ -1064,9 +402,9 @@
           "color": "#16a34a"
         },
         "severity": "low",
-        "totalLinks": 11,
-        "internalLinks": 3,
-        "externalLinks": 5,
+        "totalLinks": 17,
+        "internalLinks": 13,
+        "externalLinks": 0,
         "brokenLinks": [],
         "contentBrokenLinks": [],
         "navBrokenLinks": [],
@@ -1084,12 +422,10 @@
         "logoVisible": true,
         "logoLinksHome": true,
         "mainCTAVisible": true,
-        "ctaCount": 4,
+        "ctaCount": 2,
         "ctaTexts": [
-          "Continue",
-          "Submit",
-          "Book meeting",
-          "Continue to sign up"
+          "Add to cart",
+          "Subscribe"
         ],
         "responsiveness": {
           "mobile": {
@@ -1119,12 +455,1791 @@
         }
       },
       "forms": {
-        "count": 1,
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "warning",
+          "message": "2 significant console error(s) detected."
+        },
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.30s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 0.69s."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.007."
+        },
+        {
+          "type": "warning",
+          "message": "Mobile performance (60/100) lags desktop (98/100) by 38 points."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Add to cart, Subscribe"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "mobile-perf",
+          "value": 60,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://getspeedbump.com/collections/all",
+      "slug": "/collections/all",
+      "overallScore": 83,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 59,
+        "speed": 76,
+        "resources": 82,
+        "mobile": 100,
+        "navigation": 100,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 6,
+        "failedRequests": 5,
+        "criticalFailures": 1,
+        "significantErrorMessages": [
+          "Framing 'https://shop.app/' violates the following Content Security Policy directive: \"frame-ancestors 'self' https://shop.app https://admin.shopify.com\". The request has been blocked.\n",
+          "Failed to load resource: the server responded with a status of 403 ()",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "Failed to load resource: net::ERR_FAILED",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+        ]
+      },
+      "performance": {
+        "desktop": {
+          "score": 76,
+          "firstContentfulPaint": {
+            "ms": 281,
+            "formatted": "0.28s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 4726,
+            "formatted": "4.73s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 6,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 15,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.005,
+            "formatted": "0.005",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1434,
+            "formatted": "1.43s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 4726,
+            "formatted": "4.73s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 74,
+          "firstContentfulPaint": {
+            "ms": 1201,
+            "formatted": "1.20s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 24286,
+            "formatted": "24.29s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 6,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 0,
+            "formatted": "0.00s",
+            "grade": null,
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 3441,
+            "formatted": "3.44s",
+            "rating": "needs-improvement"
+          },
+          "timeToInteractive": {
+            "ms": 24324,
+            "formatted": "24.32s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 281,
+          "formatted": "0.28s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 4726,
+          "formatted": "4.73s",
+          "grade": {
+            "label": "Slow",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "timeToFirstByte": {
+          "ms": 6,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 15,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.005,
+          "formatted": "0.005",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "All Links Working",
+          "color": "#16a34a"
+        },
+        "severity": "low",
+        "totalLinks": 25,
+        "internalLinks": 21,
+        "externalLinks": 0,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [],
+        "insight": "All links working correctly."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Add to cart",
+          "Subscribe"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "warning",
+          "message": "6 significant console error(s) detected."
+        },
+        {
+          "type": "warning",
+          "message": "5 failed network request(s)."
+        },
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.28s."
+        },
+        {
+          "type": "critical",
+          "message": "Slow Largest Contentful Paint — desktop LCP 4.73s (target < 2.5s). Impacts SEO Core Web Vitals."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.005."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 76/100, mobile: 74/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "success",
+          "message": "2 CTA(s): Add to cart, Subscribe"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "slow-lcp",
+          "value": 4726,
+          "pages": 1
+        },
+        {
+          "key": "failed-reqs",
+          "value": 5,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://getspeedbump.com/products/speedbump-energy-2x-2gram-containers",
+      "slug": "/products/speedbump-energy-2x-2gram-containers",
+      "overallScore": 81,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 48,
+        "speed": 95,
+        "resources": 54,
+        "mobile": 100,
+        "navigation": 68,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 7,
+        "failedRequests": 17,
+        "criticalFailures": 1,
+        "significantErrorMessages": [
+          "Framing 'https://shop.app/' violates the following Content Security Policy directive: \"frame-ancestors 'self' https://shop.app https://admin.shopify.com\". The request has been blocked.\n",
+          "Failed to load resource: the server responded with a status of 403 ()",
+          "Error producing monorail event MonorailRequestError: Error completing request. A network failure may have prevented the request from completing. Error: TypeError: Failed to fetch. Schemas: shopify_pay_page_load/2.7\n    at D.produce (https://cdn.shopify.com/shopifycloud/arrive-server/pay/vite-pay/assets/AnalyticsProvider-BjWWtAtf.js:1:6470)",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "Failed to load resource: net::ERR_FAILED"
+        ]
+      },
+      "performance": {
+        "desktop": {
+          "score": 94,
+          "firstContentfulPaint": {
+            "ms": 421,
+            "formatted": "0.42s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 1394,
+            "formatted": "1.39s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 6,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 8,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.012,
+            "formatted": "0.012",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1647,
+            "formatted": "1.65s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 2102,
+            "formatted": "2.10s",
+            "rating": "good"
+          }
+        },
+        "mobile": {
+          "score": 60,
+          "firstContentfulPaint": {
+            "ms": 4754,
+            "formatted": "4.75s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "largestContentfulPaint": {
+            "ms": 9953,
+            "formatted": "9.95s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 5,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 4,
+            "formatted": "0.00s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 6386,
+            "formatted": "6.39s",
+            "rating": "poor"
+          },
+          "timeToInteractive": {
+            "ms": 10064,
+            "formatted": "10.06s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 421,
+          "formatted": "0.42s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 1394,
+          "formatted": "1.39s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "timeToFirstByte": {
+          "ms": 6,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 8,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.012,
+          "formatted": "0.012",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 16,
+        "internalLinks": 12,
+        "externalLinks": 0,
+        "brokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          }
+        ],
+        "contentBrokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          }
+        ],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken internal link(s) (out of 6 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 3,
+        "ctaTexts": [
+          "Add to cart",
+          "Subscribe",
+          "REVEAL MY DISCOUNT"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "warning",
+          "message": "7 significant console error(s) detected."
+        },
+        {
+          "type": "critical",
+          "message": "17 failed network request(s) — significant reliability issue."
+        },
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.42s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 1.39s."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.012."
+        },
+        {
+          "type": "warning",
+          "message": "Mobile performance (60/100) lags desktop (94/100) by 34 points."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "1 broken link(s) on this page — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "3 CTA(s): Add to cart, Subscribe, REVEAL MY DISCOUNT"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "mobile-perf",
+          "value": 60,
+          "pages": 1
+        },
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        },
+        {
+          "key": "failed-reqs",
+          "value": 17,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://getspeedbump.com/products/spice-grinder",
+      "slug": "/products/spice-grinder",
+      "overallScore": 81,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 48,
+        "speed": 95,
+        "resources": 59,
+        "mobile": 100,
+        "navigation": 68,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 7,
+        "failedRequests": 17,
+        "criticalFailures": 1,
+        "significantErrorMessages": [
+          "Framing 'https://shop.app/' violates the following Content Security Policy directive: \"frame-ancestors 'self' https://shop.app https://admin.shopify.com\". The request has been blocked.\n",
+          "Failed to load resource: the server responded with a status of 403 ()",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "Failed to load resource: net::ERR_FAILED",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+        ]
+      },
+      "performance": {
+        "desktop": {
+          "score": 91,
+          "firstContentfulPaint": {
+            "ms": 401,
+            "formatted": "0.40s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 1331,
+            "formatted": "1.33s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "timeToFirstByte": {
+            "ms": 7,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 98,
+            "formatted": "0.10s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.013,
+            "formatted": "0.013",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 2132,
+            "formatted": "2.13s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 3047,
+            "formatted": "3.05s",
+            "rating": "good"
+          }
+        },
+        "mobile": {
+          "score": 71,
+          "firstContentfulPaint": {
+            "ms": 1754,
+            "formatted": "1.75s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 6697,
+            "formatted": "6.70s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 5,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 82,
+            "formatted": "0.08s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.004,
+            "formatted": "0.004",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 5795,
+            "formatted": "5.79s",
+            "rating": "needs-improvement"
+          },
+          "timeToInteractive": {
+            "ms": 14132,
+            "formatted": "14.13s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 401,
+          "formatted": "0.40s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 1331,
+          "formatted": "1.33s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "timeToFirstByte": {
+          "ms": 7,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 98,
+          "formatted": "0.10s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.013,
+          "formatted": "0.013",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 16,
+        "internalLinks": 12,
+        "externalLinks": 0,
+        "brokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          }
+        ],
+        "contentBrokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          }
+        ],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken internal link(s) (out of 6 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 3,
+        "ctaTexts": [
+          "Add to cart",
+          "Subscribe",
+          "REVEAL MY DISCOUNT"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "warning",
+          "message": "7 significant console error(s) detected."
+        },
+        {
+          "type": "critical",
+          "message": "17 failed network request(s) — significant reliability issue."
+        },
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.40s."
+        },
+        {
+          "type": "success",
+          "message": "Good LCP — desktop 1.33s."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.013."
+        },
+        {
+          "type": "warning",
+          "message": "Mobile performance (71/100) lags desktop (91/100) by 20 points."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "1 broken link(s) on this page — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "3 CTA(s): Add to cart, Subscribe, REVEAL MY DISCOUNT"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "mobile-perf",
+          "value": 71,
+          "pages": 1
+        },
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        },
+        {
+          "key": "failed-reqs",
+          "value": 17,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://getspeedbump.com/products/storage-box-black",
+      "slug": "/products/storage-box-black",
+      "overallScore": 75,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 48,
+        "speed": 74,
+        "resources": 61,
+        "mobile": 100,
+        "navigation": 68,
+        "layout": 100
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 7,
+        "failedRequests": 17,
+        "criticalFailures": 1,
+        "significantErrorMessages": [
+          "Framing 'https://shop.app/' violates the following Content Security Policy directive: \"frame-ancestors 'self' https://shop.app https://admin.shopify.com\". The request has been blocked.\n",
+          "Failed to load resource: the server responded with a status of 403 ()",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "Failed to load resource: net::ERR_FAILED",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+        ]
+      },
+      "performance": {
+        "desktop": {
+          "score": 73,
+          "firstContentfulPaint": {
+            "ms": 421,
+            "formatted": "0.42s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 5449,
+            "formatted": "5.45s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 6,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 27,
+            "formatted": "0.03s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.012,
+            "formatted": "0.012",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1985,
+            "formatted": "1.99s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 5454,
+            "formatted": "5.45s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 59,
+          "firstContentfulPaint": {
+            "ms": 5814,
+            "formatted": "5.81s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "largestContentfulPaint": {
+            "ms": 24918,
+            "formatted": "24.92s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 7,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 2,
+            "formatted": "0.00s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 6513,
+            "formatted": "6.51s",
+            "rating": "poor"
+          },
+          "timeToInteractive": {
+            "ms": 24918,
+            "formatted": "24.92s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 421,
+          "formatted": "0.42s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 5449,
+          "formatted": "5.45s",
+          "grade": {
+            "label": "Slow",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "timeToFirstByte": {
+          "ms": 6,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 27,
+          "formatted": "0.03s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.012,
+          "formatted": "0.012",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Minor Issues Found",
+          "color": "#b45309"
+        },
+        "severity": "medium",
+        "totalLinks": 16,
+        "internalLinks": 12,
+        "externalLinks": 0,
+        "brokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          }
+        ],
+        "contentBrokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          }
+        ],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [
+          "1 broken internal link(s) (out of 6 checked)"
+        ],
+        "insight": "1 navigation issue(s) found."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 3,
+        "ctaTexts": [
+          "Add to cart",
+          "Subscribe",
+          "REVEAL MY DISCOUNT"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 0,
+        "forms": []
+      },
+      "findings": [
+        {
+          "type": "warning",
+          "message": "7 significant console error(s) detected."
+        },
+        {
+          "type": "critical",
+          "message": "17 failed network request(s) — significant reliability issue."
+        },
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.42s."
+        },
+        {
+          "type": "critical",
+          "message": "Slow Largest Contentful Paint — desktop LCP 5.45s (target < 2.5s). Impacts SEO Core Web Vitals."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.012."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 73/100, mobile: 59/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "1 broken link(s) on this page — damages SEO."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "success",
+          "message": "3 CTA(s): Add to cart, Subscribe, REVEAL MY DISCOUNT"
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "slow-lcp",
+          "value": 5449,
+          "pages": 1
+        },
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        },
+        {
+          "key": "failed-reqs",
+          "value": 17,
+          "pages": 1
+        }
+      ]
+    },
+    {
+      "url": "https://getspeedbump.com/pages/contact",
+      "slug": "/pages/contact",
+      "overallScore": 83,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 60,
+        "speed": 78,
+        "resources": 76,
+        "mobile": 100,
+        "navigation": 100,
+        "layout": 95
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 5,
+        "failedRequests": 5,
+        "criticalFailures": 1,
+        "significantErrorMessages": [
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "Failed to load resource: net::ERR_FAILED",
+          "Access to XMLHttpRequest at 'https://a.klaviyo.com/onsite/track-analytics?company_id=UpJpsk' from origin 'https://getspeedbump.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "Failed to load resource: net::ERR_FAILED",
+          "Invalid 'X-Frame-Options' header encountered when loading 'https://getspeedbump.com/': 'ALLOW-FROM https://getspeedbump.com' is not a recognized directive. The header will be ignored."
+        ]
+      },
+      "performance": {
+        "desktop": {
+          "score": 78,
+          "firstContentfulPaint": {
+            "ms": 301,
+            "formatted": "0.30s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 4036,
+            "formatted": "4.04s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 5,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 71,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.004,
+            "formatted": "0.004",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1264,
+            "formatted": "1.26s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 4038,
+            "formatted": "4.04s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 72,
+          "firstContentfulPaint": {
+            "ms": 1201,
+            "formatted": "1.20s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 24101,
+            "formatted": "24.10s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 5,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 75,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 4452,
+            "formatted": "4.45s",
+            "rating": "needs-improvement"
+          },
+          "timeToInteractive": {
+            "ms": 24101,
+            "formatted": "24.10s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 301,
+          "formatted": "0.30s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 4036,
+          "formatted": "4.04s",
+          "grade": {
+            "label": "Slow",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "timeToFirstByte": {
+          "ms": 5,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 71,
+          "formatted": "0.07s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0.004,
+          "formatted": "0.004",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "All Links Working",
+          "color": "#16a34a"
+        },
+        "severity": "low",
+        "totalLinks": 13,
+        "internalLinks": 9,
+        "externalLinks": 0,
+        "brokenLinks": [],
+        "contentBrokenLinks": [],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [],
+        "insight": "All links working correctly."
+      },
+      "layout": {
+        "headerFound": true,
+        "headerVisible": true,
+        "footerFound": true,
+        "footerVisible": true,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": true,
+        "ctaCount": 2,
+        "ctaTexts": [
+          "Send",
+          "Subscribe"
+        ],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 2,
         "forms": [
           {
             "index": 0,
             "fieldCount": 2,
-            "purpose": "multi-step",
+            "purpose": "contact",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": true,
+            "hasRequiredFields": true,
+            "browserValidationActive": true,
+            "criticalMissingValidation": [],
+            "detectionMethod": "dom"
+          },
+          {
+            "index": 1,
+            "fieldCount": 2,
+            "purpose": "contact",
             "isCritical": false,
             "hasSubmitBtn": true,
             "hasEmailField": true,
@@ -1137,24 +2252,28 @@
       },
       "findings": [
         {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.55s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.58s."
+          "type": "warning",
+          "message": "5 significant console error(s) detected."
         },
         {
           "type": "warning",
-          "message": "TBT 0.44s — some JS blocking detected."
+          "message": "5 failed network request(s)."
         },
         {
           "type": "success",
-          "message": "Stable layout — CLS 0.002."
+          "message": "Excellent first paint — desktop FCP 0.30s."
         },
         {
           "type": "critical",
-          "message": "Large mobile performance gap — desktop 80/100 vs mobile 0/100. Mobile users have a significantly worse experience."
+          "message": "Slow Largest Contentful Paint — desktop LCP 4.04s (target < 2.5s). Impacts SEO Core Web Vitals."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.004."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 78/100, mobile: 72/100."
         },
         {
           "type": "success",
@@ -1162,359 +2281,35 @@
         },
         {
           "type": "success",
-          "message": "4 CTA(s): Continue, Submit, Book meeting"
+          "message": "2 CTA(s): Send, Subscribe"
         }
       ],
       "opportunities": [
         {
-          "key": "high-tbt",
-          "value": 442,
+          "key": "slow-lcp",
+          "value": 4036,
           "pages": 1
         },
         {
-          "key": "mobile-perf",
-          "value": 0,
+          "key": "failed-reqs",
+          "value": 5,
           "pages": 1
         }
       ]
     },
     {
-      "url": "https://stripe.com/payments",
-      "slug": "/payments",
-      "overallScore": 93,
-      "grade": {
-        "grade": "A",
-        "label": "Excellent",
-        "color": "#16a34a"
-      },
-      "categoryScores": {
-        "health": 100,
-        "speed": 87,
-        "resources": 83,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 95
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "desktop": {
-          "score": 75,
-          "firstContentfulPaint": {
-            "ms": 706,
-            "formatted": "0.71s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 802,
-            "formatted": "0.80s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 69,
-            "formatted": "0.07s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 584,
-            "formatted": "0.58s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0.007,
-            "formatted": "0.007",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 1207,
-            "formatted": "1.21s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 4141,
-            "formatted": "4.14s",
-            "rating": "needs-improvement"
-          }
-        },
-        "mobile": {
-          "score": 68,
-          "firstContentfulPaint": {
-            "ms": 2751,
-            "formatted": "2.75s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 3602,
-            "formatted": "3.60s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "timeToFirstByte": {
-            "ms": 168,
-            "formatted": "0.17s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 687,
-            "formatted": "0.69s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 3018,
-            "formatted": "3.02s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 17742,
-            "formatted": "17.74s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 706,
-          "formatted": "0.71s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 802,
-          "formatted": "0.80s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 69,
-          "formatted": "0.07s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 584,
-          "formatted": "0.58s",
-          "grade": {
-            "label": "Moderate",
-            "color": "#b45309"
-          },
-          "rating": "needs-improvement"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0.007,
-          "formatted": "0.007",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 235,
-        "internalLinks": 62,
-        "externalLinks": 20,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 2,
-        "ctaTexts": [
-          "Contact sales",
-          "Register now"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.71s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.80s."
-        },
-        {
-          "type": "warning",
-          "message": "TBT 0.58s — some JS blocking detected."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.007."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 75/100, mobile: 68/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "2 CTA(s): Contact sales, Register now"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 584,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/enterprise",
-      "slug": "/enterprise",
-      "overallScore": 79,
+      "url": "https://getspeedbump.com/pages/faq",
+      "slug": "/pages/faq",
+      "overallScore": 81,
       "grade": {
         "grade": "B",
         "label": "Good",
         "color": "#65a30d"
       },
       "categoryScores": {
-        "health": 100,
-        "speed": 73,
-        "resources": 26,
+        "health": 70,
+        "speed": 76,
+        "resources": 61,
         "mobile": 100,
         "navigation": 100,
         "layout": 90
@@ -1523,17 +2318,20 @@
         "status": 200,
         "ok": true,
         "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
+        "significantErrors": 2,
+        "failedRequests": 3,
+        "criticalFailures": 1,
+        "significantErrorMessages": [
+          "Framing 'https://shop.app/' violates the following Content Security Policy directive: \"frame-ancestors 'self' https://shop.app https://admin.shopify.com\". The request has been blocked.\n",
+          "Failed to load resource: the server responded with a status of 403 ()"
+        ]
       },
       "performance": {
         "desktop": {
-          "score": 51,
+          "score": 75,
           "firstContentfulPaint": {
-            "ms": 624,
-            "formatted": "0.62s",
+            "ms": 301,
+            "formatted": "0.30s",
             "grade": {
               "label": "Fast",
               "color": "#16a34a"
@@ -1541,65 +2339,8 @@
             "rating": "good"
           },
           "largestContentfulPaint": {
-            "ms": 1999,
-            "formatted": "2.00s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 138,
-            "formatted": "0.14s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 20078,
-            "formatted": "20.08s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 7955,
-            "formatted": "7.96s",
-            "rating": "poor"
-          },
-          "timeToInteractive": {
-            "ms": 26496,
-            "formatted": "26.50s",
-            "rating": "poor"
-          }
-        },
-        "mobile": {
-          "score": 35,
-          "firstContentfulPaint": {
-            "ms": 2543,
-            "formatted": "2.54s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 7532,
-            "formatted": "7.53s",
+            "ms": 4679,
+            "formatted": "4.68s",
             "grade": {
               "label": "Slow",
               "color": "#dc2626"
@@ -1607,21 +2348,75 @@
             "rating": "poor"
           },
           "timeToFirstByte": {
-            "ms": 80,
-            "formatted": "0.08s",
+            "ms": 6,
+            "formatted": "0.01s",
             "grade": {
               "label": "Excellent",
               "color": "#16a34a"
             }
           },
           "totalBlockingTime": {
-            "ms": 22659,
-            "formatted": "22.66s",
+            "ms": 0,
+            "formatted": "0.00s",
+            "grade": null,
+            "rating": "good"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.018,
+            "formatted": "0.018",
             "grade": {
-              "label": "Poor",
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1719,
+            "formatted": "1.72s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 4679,
+            "formatted": "4.68s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 59,
+          "firstContentfulPaint": {
+            "ms": 4684,
+            "formatted": "4.68s",
+            "grade": {
+              "label": "Slow",
               "color": "#dc2626"
             },
             "rating": "poor"
+          },
+          "largestContentfulPaint": {
+            "ms": 22796,
+            "formatted": "22.80s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 5,
+            "formatted": "0.01s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 68,
+            "formatted": "0.07s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            },
+            "rating": "good"
           },
           "cumulativeLayoutShift": {
             "value": 0,
@@ -1633,19 +2428,19 @@
             "rating": "good"
           },
           "speedIndex": {
-            "ms": 8145,
-            "formatted": "8.14s",
+            "ms": 7033,
+            "formatted": "7.03s",
             "rating": "poor"
           },
           "timeToInteractive": {
-            "ms": 41657,
-            "formatted": "41.66s",
+            "ms": 22804,
+            "formatted": "22.80s",
             "rating": "poor"
           }
         },
         "firstContentfulPaint": {
-          "ms": 624,
-          "formatted": "0.62s",
+          "ms": 301,
+          "formatted": "0.30s",
           "grade": {
             "label": "Fast",
             "color": "#16a34a"
@@ -1653,34 +2448,31 @@
           "rating": "good"
         },
         "largestContentfulPaint": {
-          "ms": 1999,
-          "formatted": "2.00s",
+          "ms": 4679,
+          "formatted": "4.68s",
           "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 138,
-          "formatted": "0.14s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 20078,
-          "formatted": "20.08s",
-          "grade": {
-            "label": "Poor",
+            "label": "Slow",
             "color": "#dc2626"
           },
           "rating": "poor"
         },
+        "timeToFirstByte": {
+          "ms": 6,
+          "formatted": "0.01s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 0,
+          "formatted": "0.00s",
+          "grade": null,
+          "rating": "good"
+        },
         "cumulativeLayoutShift": {
-          "value": 0,
-          "formatted": "0.000",
+          "value": 0.018,
+          "formatted": "0.018",
           "grade": {
             "label": "Good",
             "color": "#16a34a"
@@ -1732,9 +2524,9 @@
           "color": "#16a34a"
         },
         "severity": "low",
-        "totalLinks": 228,
-        "internalLinks": 61,
-        "externalLinks": 20,
+        "totalLinks": 13,
+        "internalLinks": 9,
+        "externalLinks": 0,
         "brokenLinks": [],
         "contentBrokenLinks": [],
         "navBrokenLinks": [],
@@ -1754,7 +2546,7 @@
         "mainCTAVisible": true,
         "ctaCount": 1,
         "ctaTexts": [
-          "Contact sales"
+          "Subscribe"
         ],
         "responsiveness": {
           "mobile": {
@@ -1784,352 +2576,54 @@
         }
       },
       "forms": {
-        "count": 0,
-        "forms": []
+        "count": 2,
+        "forms": [
+          {
+            "index": 0,
+            "fieldCount": 2,
+            "purpose": "contact",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": true,
+            "hasRequiredFields": true,
+            "browserValidationActive": true,
+            "criticalMissingValidation": [],
+            "detectionMethod": "dom"
+          },
+          {
+            "index": 1,
+            "fieldCount": 2,
+            "purpose": "contact",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": true,
+            "hasRequiredFields": true,
+            "browserValidationActive": true,
+            "criticalMissingValidation": [],
+            "detectionMethod": "dom"
+          }
+        ]
       },
       "findings": [
         {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.62s."
+          "type": "warning",
+          "message": "2 significant console error(s) detected."
         },
         {
           "type": "success",
-          "message": "Good LCP — desktop 2.00s."
+          "message": "Excellent first paint — desktop FCP 0.30s."
         },
         {
           "type": "critical",
-          "message": "High Total Blocking Time — desktop TBT 20.08s. Heavy JavaScript is blocking interaction."
+          "message": "Slow Largest Contentful Paint — desktop LCP 4.68s (target < 2.5s). Impacts SEO Core Web Vitals."
         },
         {
           "type": "success",
-          "message": "Stable layout — CLS 0.000."
+          "message": "Stable layout — CLS 0.018."
         },
         {
           "type": "success",
-          "message": "Desktop PSI score: 51/100, mobile: 35/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "1 CTA(s): Contact sales"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 20078,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/billing",
-      "slug": "/billing",
-      "overallScore": 94,
-      "grade": {
-        "grade": "A",
-        "label": "Excellent",
-        "color": "#16a34a"
-      },
-      "categoryScores": {
-        "health": 100,
-        "speed": 90,
-        "resources": 87,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 90
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "desktop": {
-          "score": 79,
-          "firstContentfulPaint": {
-            "ms": 562,
-            "formatted": "0.56s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 682,
-            "formatted": "0.68s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 65,
-            "formatted": "0.07s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 483,
-            "formatted": "0.48s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 863,
-            "formatted": "0.86s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 3908,
-            "formatted": "3.91s",
-            "rating": "needs-improvement"
-          }
-        },
-        "mobile": {
-          "score": 73,
-          "firstContentfulPaint": {
-            "ms": 2384,
-            "formatted": "2.38s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 2927,
-            "formatted": "2.93s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "timeToFirstByte": {
-            "ms": 67,
-            "formatted": "0.07s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 782,
-            "formatted": "0.78s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 2611,
-            "formatted": "2.61s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 15320,
-            "formatted": "15.32s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 562,
-          "formatted": "0.56s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 682,
-          "formatted": "0.68s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 65,
-          "formatted": "0.07s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 483,
-          "formatted": "0.48s",
-          "grade": {
-            "label": "Moderate",
-            "color": "#b45309"
-          },
-          "rating": "needs-improvement"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0,
-          "formatted": "0.000",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 233,
-        "internalLinks": 62,
-        "externalLinks": 20,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 1,
-        "ctaTexts": [
-          "Contact sales"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.56s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.68s."
-        },
-        {
-          "type": "warning",
-          "message": "TBT 0.48s — some JS blocking detected."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.000."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 79/100, mobile: 73/100."
+          "message": "Desktop PSI score: 75/100, mobile: 59/100."
         },
         {
           "type": "success",
@@ -2137,1328 +2631,67 @@
         },
         {
           "type": "success",
-          "message": "1 CTA(s): Contact sales"
+          "message": "1 CTA(s): Subscribe"
         }
       ],
       "opportunities": [
         {
-          "key": "high-tbt",
-          "value": 483,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/connect",
-      "slug": "/connect",
-      "overallScore": 93,
-      "grade": {
-        "grade": "A",
-        "label": "Excellent",
-        "color": "#16a34a"
-      },
-      "categoryScores": {
-        "health": 100,
-        "speed": 86,
-        "resources": 89,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 90
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "desktop": {
-          "score": 74,
-          "firstContentfulPaint": {
-            "ms": 631,
-            "formatted": "0.63s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 722,
-            "formatted": "0.72s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 67,
-            "formatted": "0.07s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 699,
-            "formatted": "0.70s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0.007,
-            "formatted": "0.007",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 914,
-            "formatted": "0.91s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 4012,
-            "formatted": "4.01s",
-            "rating": "needs-improvement"
-          }
-        },
-        "mobile": {
-          "score": 72,
-          "firstContentfulPaint": {
-            "ms": 2383,
-            "formatted": "2.38s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 3152,
-            "formatted": "3.15s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "timeToFirstByte": {
-            "ms": 70,
-            "formatted": "0.07s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 743,
-            "formatted": "0.74s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 2547,
-            "formatted": "2.55s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 15229,
-            "formatted": "15.23s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 631,
-          "formatted": "0.63s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 722,
-          "formatted": "0.72s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 67,
-          "formatted": "0.07s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 699,
-          "formatted": "0.70s",
-          "grade": {
-            "label": "Poor",
-            "color": "#dc2626"
-          },
-          "rating": "poor"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0.007,
-          "formatted": "0.007",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 234,
-        "internalLinks": 62,
-        "externalLinks": 20,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 1,
-        "ctaTexts": [
-          "Contact sales"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.63s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.72s."
-        },
-        {
-          "type": "critical",
-          "message": "High Total Blocking Time — desktop TBT 0.70s. Heavy JavaScript is blocking interaction."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.007."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 74/100, mobile: 72/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "1 CTA(s): Contact sales"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 699,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/use-cases/saas",
-      "slug": "/use-cases/saas",
-      "overallScore": 93,
-      "grade": {
-        "grade": "A",
-        "label": "Excellent",
-        "color": "#16a34a"
-      },
-      "categoryScores": {
-        "health": 100,
-        "speed": 84,
-        "resources": 92,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 95
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "desktop": {
-          "score": 71,
-          "firstContentfulPaint": {
-            "ms": 594,
-            "formatted": "0.59s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 666,
-            "formatted": "0.67s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 58,
-            "formatted": "0.06s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 906,
-            "formatted": "0.91s",
-            "grade": {
-              "label": "Poor",
-              "color": "#dc2626"
-            },
-            "rating": "poor"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0.036,
-            "formatted": "0.036",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 1099,
-            "formatted": "1.10s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 4008,
-            "formatted": "4.01s",
-            "rating": "needs-improvement"
-          }
-        },
-        "mobile": {
-          "score": 83,
-          "firstContentfulPaint": {
-            "ms": 2142,
-            "formatted": "2.14s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 2852,
-            "formatted": "2.85s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "timeToFirstByte": {
-            "ms": 44,
-            "formatted": "0.04s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 425,
-            "formatted": "0.42s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 2146,
-            "formatted": "2.15s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 14363,
-            "formatted": "14.36s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 594,
-          "formatted": "0.59s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 666,
-          "formatted": "0.67s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 58,
-          "formatted": "0.06s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 906,
-          "formatted": "0.91s",
-          "grade": {
-            "label": "Poor",
-            "color": "#dc2626"
-          },
-          "rating": "poor"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0.036,
-          "formatted": "0.036",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 229,
-        "internalLinks": 62,
-        "externalLinks": 20,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 2,
-        "ctaTexts": [
-          "Contact sales",
-          "Register now"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.59s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.67s."
-        },
-        {
-          "type": "critical",
-          "message": "High Total Blocking Time — desktop TBT 0.91s. Heavy JavaScript is blocking interaction."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.036."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 71/100, mobile: 83/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "2 CTA(s): Contact sales, Register now"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 906,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/customers",
-      "slug": "/customers",
-      "overallScore": 95,
-      "grade": {
-        "grade": "A",
-        "label": "Excellent",
-        "color": "#16a34a"
-      },
-      "categoryScores": {
-        "health": 100,
-        "speed": 93,
-        "resources": 84,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 95
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "desktop": {
-          "score": 89,
-          "firstContentfulPaint": {
-            "ms": 659,
-            "formatted": "0.66s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 782,
-            "formatted": "0.78s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 75,
-            "formatted": "0.07s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 268,
-            "formatted": "0.27s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 888,
-            "formatted": "0.89s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 3736,
-            "formatted": "3.74s",
-            "rating": "good"
-          }
-        },
-        "mobile": {
-          "score": 76,
-          "firstContentfulPaint": {
-            "ms": 2676,
-            "formatted": "2.68s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 3452,
-            "formatted": "3.45s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "timeToFirstByte": {
-            "ms": 78,
-            "formatted": "0.08s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 457,
-            "formatted": "0.46s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 2676,
-            "formatted": "2.68s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 16615,
-            "formatted": "16.61s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 659,
-          "formatted": "0.66s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 782,
-          "formatted": "0.78s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 75,
-          "formatted": "0.07s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 268,
-          "formatted": "0.27s",
-          "grade": {
-            "label": "Moderate",
-            "color": "#b45309"
-          },
-          "rating": "needs-improvement"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0,
-          "formatted": "0.000",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 227,
-        "internalLinks": 62,
-        "externalLinks": 17,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 2,
-        "ctaTexts": [
-          "Contact sales",
-          "Register now"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.66s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.78s."
-        },
-        {
-          "type": "warning",
-          "message": "TBT 0.27s — some JS blocking detected."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.000."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 89/100, mobile: 76/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "2 CTA(s): Contact sales, Register now"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 268,
-          "pages": 1
-        }
-      ]
-    },
-    {
-      "url": "https://stripe.com/guides",
-      "slug": "/guides",
-      "overallScore": 94,
-      "grade": {
-        "grade": "A",
-        "label": "Excellent",
-        "color": "#16a34a"
-      },
-      "categoryScores": {
-        "health": 100,
-        "speed": 90,
-        "resources": 92,
-        "mobile": 100,
-        "navigation": 100,
-        "layout": 90
-      },
-      "health": {
-        "status": 200,
-        "ok": true,
-        "blankScreen": false,
-        "significantErrors": 0,
-        "failedRequests": 0,
-        "criticalFailures": 0,
-        "significantErrorMessages": []
-      },
-      "performance": {
-        "desktop": {
-          "score": 82,
-          "firstContentfulPaint": {
-            "ms": 579,
-            "formatted": "0.58s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "largestContentfulPaint": {
-            "ms": 602,
-            "formatted": "0.60s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 104,
-            "formatted": "0.10s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 397,
-            "formatted": "0.40s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 1125,
-            "formatted": "1.13s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 3445,
-            "formatted": "3.44s",
-            "rating": "good"
-          }
-        },
-        "mobile": {
-          "score": 85,
-          "firstContentfulPaint": {
-            "ms": 2070,
-            "formatted": "2.07s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "largestContentfulPaint": {
-            "ms": 2402,
-            "formatted": "2.40s",
-            "grade": {
-              "label": "Fast",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "timeToFirstByte": {
-            "ms": 55,
-            "formatted": "0.06s",
-            "grade": {
-              "label": "Excellent",
-              "color": "#16a34a"
-            }
-          },
-          "totalBlockingTime": {
-            "ms": 439,
-            "formatted": "0.44s",
-            "grade": {
-              "label": "Moderate",
-              "color": "#b45309"
-            },
-            "rating": "needs-improvement"
-          },
-          "cumulativeLayoutShift": {
-            "value": 0,
-            "formatted": "0.000",
-            "grade": {
-              "label": "Good",
-              "color": "#16a34a"
-            },
-            "rating": "good"
-          },
-          "speedIndex": {
-            "ms": 2092,
-            "formatted": "2.09s",
-            "rating": "good"
-          },
-          "timeToInteractive": {
-            "ms": 13512,
-            "formatted": "13.51s",
-            "rating": "poor"
-          }
-        },
-        "firstContentfulPaint": {
-          "ms": 579,
-          "formatted": "0.58s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "largestContentfulPaint": {
-          "ms": 602,
-          "formatted": "0.60s",
-          "grade": {
-            "label": "Fast",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "timeToFirstByte": {
-          "ms": 104,
-          "formatted": "0.10s",
-          "grade": {
-            "label": "Excellent",
-            "color": "#16a34a"
-          }
-        },
-        "totalBlockingTime": {
-          "ms": 397,
-          "formatted": "0.40s",
-          "grade": {
-            "label": "Moderate",
-            "color": "#b45309"
-          },
-          "rating": "needs-improvement"
-        },
-        "cumulativeLayoutShift": {
-          "value": 0,
-          "formatted": "0.000",
-          "grade": {
-            "label": "Good",
-            "color": "#16a34a"
-          },
-          "rating": "good"
-        },
-        "domContentLoaded": {
-          "ms": null,
-          "formatted": null
-        },
-        "totalLoadTime": {
-          "ms": null,
-          "formatted": null,
-          "grade": null
-        },
-        "slowResources": [],
-        "largeImages": [],
-        "totalResources": null,
-        "totalResourceSizeKB": null
-      },
-      "responsiveness": {
-        "mobile": {
-          "label": "Fully Responsive",
-          "color": "#16a34a",
-          "score": 100,
-          "details": {
-            "responsive": true,
-            "hasHorizontalScroll": false
-          }
-        },
-        "tablet": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        },
-        "desktop": {
-          "label": "Responsive",
-          "color": "#16a34a",
-          "details": {
-            "responsive": true
-          }
-        }
-      },
-      "navigation": {
-        "health": {
-          "label": "All Links Working",
-          "color": "#16a34a"
-        },
-        "severity": "low",
-        "totalLinks": 225,
-        "internalLinks": 61,
-        "externalLinks": 17,
-        "brokenLinks": [],
-        "contentBrokenLinks": [],
-        "navBrokenLinks": [],
-        "footerBrokenLinks": [],
-        "protectedLinks": [],
-        "issues": [],
-        "insight": "All links working correctly."
-      },
-      "layout": {
-        "headerFound": true,
-        "headerVisible": true,
-        "footerFound": true,
-        "footerVisible": true,
-        "logoDetected": true,
-        "logoVisible": true,
-        "logoLinksHome": true,
-        "mainCTAVisible": true,
-        "ctaCount": 1,
-        "ctaTexts": [
-          "Contact sales"
-        ],
-        "responsiveness": {
-          "mobile": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "tablet": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          },
-          "desktop": {
-            "responsive": true,
-            "hasHorizontalScroll": false,
-            "details": {
-              "responsive": true,
-              "hasHorizontalScroll": false
-            }
-          }
-        }
-      },
-      "forms": {
-        "count": 0,
-        "forms": []
-      },
-      "findings": [
-        {
-          "type": "success",
-          "message": "Excellent first paint — desktop FCP 0.58s."
-        },
-        {
-          "type": "success",
-          "message": "Good LCP — desktop 0.60s."
-        },
-        {
-          "type": "warning",
-          "message": "TBT 0.40s — some JS blocking detected."
-        },
-        {
-          "type": "success",
-          "message": "Stable layout — CLS 0.000."
-        },
-        {
-          "type": "success",
-          "message": "Desktop PSI score: 82/100, mobile: 85/100."
-        },
-        {
-          "type": "success",
-          "message": "Fully mobile-responsive."
-        },
-        {
-          "type": "success",
-          "message": "1 CTA(s): Contact sales"
-        }
-      ],
-      "opportunities": [
-        {
-          "key": "high-tbt",
-          "value": 397,
+          "key": "slow-lcp",
+          "value": 4679,
           "pages": 1
         }
       ]
     }
   ],
   "formValidationSummary": {
-    "totalPages": 1,
-    "totalForms": 1,
+    "totalPages": 2,
+    "totalForms": 4,
     "stats": {
-      "withSubmitButton": 1,
-      "withEmailField": 1,
-      "withRequiredFields": 1,
-      "withBrowserValidation": 1,
+      "withSubmitButton": 4,
+      "withEmailField": 4,
+      "withRequiredFields": 4,
+      "withBrowserValidation": 4,
       "withMissingValidation": 0
     },
     "forms": [
       {
-        "page": "/contact/sales",
-        "pageUrl": "https://stripe.com/contact/sales",
+        "page": "/pages/contact",
+        "pageUrl": "https://getspeedbump.com/pages/contact",
         "fieldCount": 2,
-        "purpose": "multi-step",
+        "purpose": "contact",
+        "hasSubmitBtn": true,
+        "hasEmailField": true,
+        "hasRequiredFields": true,
+        "browserValidationActive": true,
+        "criticalMissingValidation": []
+      },
+      {
+        "page": "/pages/contact",
+        "pageUrl": "https://getspeedbump.com/pages/contact",
+        "fieldCount": 2,
+        "purpose": "contact",
+        "hasSubmitBtn": true,
+        "hasEmailField": true,
+        "hasRequiredFields": true,
+        "browserValidationActive": true,
+        "criticalMissingValidation": []
+      },
+      {
+        "page": "/pages/faq",
+        "pageUrl": "https://getspeedbump.com/pages/faq",
+        "fieldCount": 2,
+        "purpose": "contact",
+        "hasSubmitBtn": true,
+        "hasEmailField": true,
+        "hasRequiredFields": true,
+        "browserValidationActive": true,
+        "criticalMissingValidation": []
+      },
+      {
+        "page": "/pages/faq",
+        "pageUrl": "https://getspeedbump.com/pages/faq",
+        "fieldCount": 2,
+        "purpose": "contact",
         "hasSubmitBtn": true,
         "hasEmailField": true,
         "hasRequiredFields": true,
@@ -3474,16 +2707,16 @@
       {
         "category": "Performance",
         "severity": "critical",
-        "page": "/",
-        "url": "https://stripe.com",
-        "title": "High JavaScript Blocking Time",
-        "description": "Total Blocking Time is 0. This issue affects 4 pages: /, /enterprise, /connect, /use-cases/saas.",
+        "page": "/collections/all",
+        "url": "https://getspeedbump.com/collections/all",
+        "title": "Poor Largest Contentful Paint",
+        "description": "LCP is 4. This issue affects 4 pages: /collections/all, /products/storage-box-black, /pages/contact, /pages/faq.",
         "pageCount": 4,
         "affectedPages": [
-          "/",
-          "/enterprise",
-          "/connect",
-          "/use-cases/saas"
+          "/collections/all",
+          "/products/storage-box-black",
+          "/pages/contact",
+          "/pages/faq"
         ]
       }
     ]
@@ -3494,15 +2727,19 @@
     "items": [
       {
         "id": 1,
-        "opportunity": "Reduce JavaScript blocking time (TBT up to 20.08s) — heavy JS is delaying interactivity on 10 pages."
+        "opportunity": "Improve Largest Contentful Paint — slowest page is 5.45s. Optimize images and server response across 4 pages."
       },
       {
         "id": 2,
-        "opportunity": "Improve mobile performance (score as low as 0/100) on 1 page — mobile users are seeing much slower experiences than desktop."
+        "opportunity": "Improve mobile performance (score as low as 71/100) on 3 pages — mobile users are seeing much slower experiences than desktop."
       },
       {
         "id": 3,
-        "opportunity": "Fix failed network requests — up to 10 failures per page across 1 page."
+        "opportunity": "Fix failed network requests — up to 17 failures per page across 5 pages."
+      },
+      {
+        "id": 4,
+        "opportunity": "Resolve navigation issues across 3 pages — fix broken anchors and link structure."
       }
     ]
   },
@@ -3512,17 +2749,17 @@
       {
         "name": "Page Health",
         "description": "HTTP status, console errors, failed requests, and reliability",
-        "score": 98,
+        "score": 60,
         "grade": {
-          "grade": "A",
-          "label": "Excellent",
-          "color": "#16a34a"
+          "grade": "C",
+          "label": "Fair",
+          "color": "#b45309"
         }
       },
       {
         "name": "Page Speed",
         "description": "First Contentful Paint, Largest Contentful Paint, TTFB, and Total Blocking Time",
-        "score": 86,
+        "score": 85,
         "grade": {
           "grade": "B",
           "label": "Good",
@@ -3532,11 +2769,11 @@
       {
         "name": "Resource Efficiency",
         "description": "Speed Index (desktop + mobile) and mobile vs desktop rendering efficiency",
-        "score": 77,
+        "score": 63,
         "grade": {
-          "grade": "B",
-          "label": "Good",
-          "color": "#65a30d"
+          "grade": "C",
+          "label": "Fair",
+          "color": "#b45309"
         }
       },
       {
@@ -3552,17 +2789,17 @@
       {
         "name": "Navigation & Links",
         "description": "Broken links, anchor integrity, and navigation health",
-        "score": 100,
+        "score": 86,
         "grade": {
-          "grade": "A",
-          "label": "Excellent",
-          "color": "#16a34a"
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
         }
       },
       {
         "name": "Layout & UX",
         "description": "Header, footer, logo, CTAs, and page structure completeness",
-        "score": 94,
+        "score": 96,
         "grade": {
           "grade": "A",
           "label": "Excellent",

@@ -16,12 +16,34 @@ if (!url) {
   process.exit(1);
 }
 
+const CHROME_PATH =
+  process.env.CHROME_PATH ||
+  'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+
+const HEADLESS = String(process.env.FORMS_HEADLESS || '').toLowerCase() === 'true';
+
+const CHROME_USER_AGENT =
+  process.env.CHROME_USER_AGENT ||
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36';
+
 (async () => {
   const start = Date.now();
   console.log(`\n📋 Forms Audit: ${url}\n`);
 
-  const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext({ ignoreHTTPSErrors: true });
+  const browser = await chromium.launch({
+    headless: HEADLESS,
+    executablePath: CHROME_PATH,
+  });
+  const context = await browser.newContext({
+    ignoreHTTPSErrors: true,
+    userAgent: CHROME_USER_AGENT,
+    viewport: { width: 1366, height: 768 },
+    locale: 'en-US',
+    timezoneId: 'Asia/Karachi',
+    extraHTTPHeaders: {
+      'Accept-Language': 'en-US,en;q=0.9',
+    },
+  });
 
   try {
     const r = await auditForms(context, url);
@@ -34,7 +56,7 @@ if (!url) {
     console.log(`\n${banner}  (Score: ${r.score}/100)  —  ${elapsed}s`);
     console.log(`Forms found: ${r.formsFound}  |  Tested: ${r.formsTested ?? 0}\n`);
 
-    if (r.formsFound === 0) {
+    if (r.formsFound === 0 && r.overallStatus === 'healthy') {
       console.log('ℹ️  No testable forms on this page — try a contact/signup page\n');
       return;
     }
@@ -70,15 +92,24 @@ if (!url) {
 
       // 2. Invalid email
       console.log(`\n  2. INVALID EMAIL HANDLING`);
+      const interrupted = (form.issues ?? []).some((i) => i.code === 'FORM_TEST_INTERRUPTED');
       if (!form.invalidEmail.tested) {
         console.log(`     —   No email field on this form`);
+      } else if (form.invalidEmail.inconclusive || interrupted) {
+        console.log(`     ⚠️  Invalid email verdict inconclusive (test interrupted)`);
+        if (form.invalidEmail.detail) {
+          console.log(`        └─ ${form.invalidEmail.detail.slice(0, 90)}`);
+        }
       } else if (form.invalidEmail.caught) {
         console.log(`     ✅  Invalid email caught`);
         if (form.invalidEmail.detail) {
           console.log(`        └─ ${form.invalidEmail.detail.slice(0, 90)}`);
         }
       } else {
-        console.log(`     ❌  Invalid email NOT caught — bad emails could be submitted`);
+        console.log(`     ❌  No client-side email format validation detected`);
+        if (form.invalidEmail.detail) {
+          console.log(`        └─ ${form.invalidEmail.detail.slice(0, 90)}`);
+        }
       }
 
       // 3. Error / success messages
@@ -96,9 +127,15 @@ if (!url) {
         }
       }
 
-      // AI general observations
-      if (form.aiAnalysis?.generalObservations) {
-        console.log(`\n  💡 AI observation: ${form.aiAnalysis.generalObservations.slice(0, 120)}`);
+      const success = form.successMessages;
+      if (success?.visible) {
+        const successLine = success.clear ? '     ✅  Success/confirmation visible' : '     ⚠️   Success visible but vague';
+        console.log(successLine);
+        if (success.detail) {
+          console.log(`        └─ ${success.detail.slice(0, 100)}`);
+        }
+      } else {
+        console.log('     ℹ️  Success/confirmation not observed in safe validation flow');
       }
     }
 

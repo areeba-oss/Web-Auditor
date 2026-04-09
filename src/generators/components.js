@@ -49,7 +49,7 @@ function categoryBar(name, description, score, grade) {
       </div>
       <div class="category-bar-wrap">
         <div class="category-bar-track">
-          <div class="category-bar-fill" style="width:${score}%; background: linear-gradient(90deg, ${color}cc, ${color})"></div>
+          <div class="category-bar-fill" style="width:${score}%; background:${color}"></div>
         </div>
         <span class="category-score" style="color:${color}">${score}</span>
       </div>
@@ -119,9 +119,7 @@ function pageCard(page, index) {
   }
 
   const OPP_LIMIT = 3;
-  const visibleOpps = [...page.opportunities]
-  .sort(() => Math.random() - 0.5)
-  .slice(0, OPP_LIMIT);
+  const visibleOpps = [...page.opportunities].slice(0, OPP_LIMIT);
   const oppsLeft = page.opportunities.length - visibleOpps.length;
 
   const opportunities =
@@ -151,7 +149,7 @@ function pageCard(page, index) {
         ${metricChip(page.responsiveness.mobile.color, `Mobile: ${page.responsiveness.mobile.label}`)}
         ${metricChip(page.navigation.health.color, page.navigation.health.label)}
         ${metricChip('#64748b', `${page.navigation.totalLinks} links`)}
-        ${page.forms.count > 0 ? metricChip('#6d28d9', `${page.forms.count} form(s)`) : ''}
+        ${page.forms.count > 0 ? metricChip('#e8590c', `${page.forms.count} form(s)`) : ''}
         ${page.layout.ctaCount > 0 ? metricChip('#16a34a', `${page.layout.ctaCount} CTA(s)`) : ''}
       </div>
 

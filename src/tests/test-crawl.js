@@ -59,6 +59,9 @@ if (!url) {
     if (pagesShortlistedForAudit?.length) {
       console.log('\n🎯 SHORTLISTED FOR AUDIT:');
       console.log(`   Strategy: ${selectionStrategy}`);
+      if (typeof stats.shortlistRecovered === 'number' && stats.shortlistRecovered > 0) {
+        console.log(`   Rule shortlisted: ${stats.shortlistRecovered} page(s)`);
+      }
       console.log('');
       for (const p of pagesShortlistedForAudit) {
         const icon = p.auditPriority === 'critical' ? '🔴' : p.auditPriority === 'high' ? '🟠' : '🟡';
@@ -74,7 +77,9 @@ if (!url) {
     console.log(`  Tier 2           : ${byTier[2].length}`);
     console.log(`  Tier 3           : ${byTier[3].length}`);
     console.log(`  Raw links        : ${stats.rawLinksFound}`);
-    console.log(`  AI calls         : ${stats.aiCalls}`);
+    console.log(`  Rule pool        : ${stats.shortlistCandidates ?? pages.size}`);
+    console.log(`  Shortlist output : ${stats.shortlistRecovered ?? 0}`);
+    console.log(`  Service pages    : ${stats.serviceSubPagesFound ?? 0}`);
     console.log(`  Errors           : ${stats.errors}`);
     console.log(`  Time taken       : ${elapsed}s`);
     console.log('────────────────────────────────────────────────\n');

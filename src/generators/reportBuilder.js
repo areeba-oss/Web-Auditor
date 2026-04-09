@@ -66,7 +66,7 @@ function buildReportHTML(report, options = {}) {
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>${getStyles()}</style>
-  <style>@import url("https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap");.mainPageHeading{font-size:40px;color:#f26225;text-align:center;font-family: carlito;}.mainText{font-size:24px;font-family: carlito;line-height:56px;color:#000;text-align:center;margin-bottom:15px;}</style>
+  <style>.mainPageHeading{font-size:40px;color:#e8590c;text-align:center;font-family:'Inter',sans-serif;}.mainText{font-size:24px;font-family:'Inter',sans-serif;line-height:56px;color:#000;text-align:center;margin-bottom:15px;}</style>
 </head>
 <body>
   ${pages.join('\n')}

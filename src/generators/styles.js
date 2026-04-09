@@ -276,7 +276,7 @@ function getStyles(accentColor) {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+        justify-content: flex-start;
     }
 
     .exec-headline {
@@ -311,7 +311,7 @@ function getStyles(accentColor) {
       letter-spacing: 0.04em;
       background: var(--accent-light);
       color: var(--accent);
-      border: 1px solid #f9c7a8;
+      border: 1px solid #fdba74;
       border-radius: 3px;
       padding: 2px 5px;
       flex-shrink: 0;
@@ -385,7 +385,7 @@ function getStyles(accentColor) {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+        justify-content: flex-start;
     }
 
     .scorecard-body.compact {
@@ -452,7 +452,7 @@ function getStyles(accentColor) {
     .pages-body.compact {
       padding: 0 10mm 2mm;
       gap: 2.5mm;
-      justify-content: center;
+        justify-content: flex-start;
     }
 
     .page-card {
@@ -462,8 +462,11 @@ function getStyles(accentColor) {
       border-radius: 5px;
       overflow: hidden;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        max-height: 130mm;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
     }
-
     .page-card-header {
       display: flex;
       align-items: center;
@@ -530,7 +533,7 @@ function getStyles(accentColor) {
     .page-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
+        gap: 0;
     }
 
     .findings-col, .opp-col { padding: 2mm 3.5mm; }
@@ -578,7 +581,7 @@ function getStyles(accentColor) {
     .finding-icon.critical { background: var(--red-light); color: var(--red); border: 1px solid #fecaca; }
     .finding-icon.warning  { background: var(--yellow-light); color: var(--yellow); border: 1px solid #fde68a; }
     .finding-icon.success  { background: var(--green-light); color: var(--green); border: 1px solid #bbf7d0; }
-    .finding-icon.info     { background: var(--accent-light); color: var(--accent); border: 1px solid #f9c7a8; }
+    .finding-icon.info     { background: var(--accent-light); color: var(--accent); border: 1px solid #fdba74; }
 
     .opp-item {
       font-size: 8.5px;
@@ -642,7 +645,7 @@ function getStyles(accentColor) {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+        justify-content: flex-start;
     }
 
     .opp-section-body.compact {
@@ -713,7 +716,7 @@ function getStyles(accentColor) {
       margin-top: 4mm;
       padding: 3mm 4mm;
       background: var(--accent-light);
-      border: 1px solid #f9c7a8;
+      border: 1px solid #fdba74;
       border-radius: 4px;
       font-size: 9.5px;
       color: var(--accent);
@@ -846,7 +849,7 @@ function getStyles(accentColor) {
 
     .closing-cta-card {
       background: var(--accent-light);
-      border: 1px solid #f9c7a8;
+      border: 1px solid #fdba74;
       border-radius: 6px;
       padding: 6mm 7mm;
     }
@@ -1057,7 +1060,7 @@ function getStyles(accentColor) {
       margin-top: 3mm;
       padding: 2.5mm 4mm;
       background: var(--accent-light);
-      border: 1px solid #f9c7a8;
+      border: 1px solid #fdba74;
       border-radius: 4px;
       font-size: 9px;
       color: var(--accent);
@@ -1172,7 +1175,7 @@ function getStyles(accentColor) {
       display: flex;
       flex-direction: column;
     }
-  `;
-}
+    `;
+  }
 
 module.exports = { getStyles };

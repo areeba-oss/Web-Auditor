@@ -56,6 +56,26 @@ function shouldSkip(url) {
   return SKIP_PATTERNS.some((p) => p.test(url));
 }
 
+function isSocialHost(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return (
+      host.includes('facebook.com') ||
+      host.includes('instagram.com') ||
+      host === 'x.com' ||
+      host.endsWith('.x.com') ||
+      host.includes('twitter.com') ||
+      host.includes('linkedin.com') ||
+      host.includes('tiktok.com') ||
+      host.includes('youtube.com') ||
+      host.includes('youtu.be') ||
+      host.includes('pinterest.com')
+    );
+  } catch {
+    return false;
+  }
+}
+
 // ─── Concurrency pool ─────────────────────────────────────────────────────────
 
 async function pooled(tasks, concurrency) {
@@ -72,14 +92,14 @@ async function pooled(tasks, concurrency) {
 }
 
 // ─── HTTP check ───────────────────────────────────────────────────────────────
-// attempt 1 = HEAD  (fast)
-// attempt 2 = GET   (only if HEAD returns 405 Method Not Allowed)
-// Uses real browser UA to avoid anti-bot 404s (storeleads etc.)
+// GET-only strategy (no HEAD probe) to avoid WAF/rate-limit false positives
+// on stores that treat HEAD traffic as bot-like behavior.
+// Uses real browser UA to reduce anti-bot mismatches.
 
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36';
 
-async function checkUrl(href, attempt = 1) {
-  const method = attempt === 1 ? 'HEAD' : 'GET';
+async function checkUrl(href) {
+  const method = 'GET';
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
@@ -94,9 +114,6 @@ async function checkUrl(href, attempt = 1) {
       },
     });
     clearTimeout(timer);
-
-    // Retry with GET only if server rejects HEAD method
-    if (attempt === 1 && res.status === 405) return checkUrl(href, 2);
 
     return {
       url:        href,
@@ -129,6 +146,37 @@ async function extractLinksByRegion(page, pageUrl) {
     function collectLinks(roots, region) {
       const rootList = Array.isArray(roots) ? roots : (roots ? [roots] : []);
       const links = [];
+
+      function hasJsTriggerSignals(el) {
+        const attrs = el.getAttributeNames ? el.getAttributeNames() : [];
+        const joinedVals = [
+          el.getAttribute('class') || '',
+          el.getAttribute('id') || '',
+          el.getAttribute('aria-label') || '',
+          el.getAttribute('data-toggle') || '',
+          el.getAttribute('data-bs-toggle') || '',
+          el.getAttribute('data-target') || '',
+          el.getAttribute('data-bs-target') || '',
+          el.getAttribute('onclick') || '',
+        ].join(' ').toLowerCase();
+
+        const role = (el.getAttribute('role') || '').toLowerCase();
+        const hasInlineClick = !!el.getAttribute('onclick');
+        const hasFrameworkClickAttr = attrs.some((n) =>
+          /^(@click|v-on:click|ng-click|x-on:click|on:click)$/i.test(n)
+        );
+        const hasToggleAttrs =
+          el.hasAttribute('aria-controls') ||
+          el.hasAttribute('aria-expanded') ||
+          el.hasAttribute('data-toggle') ||
+          el.hasAttribute('data-bs-toggle') ||
+          el.hasAttribute('data-target') ||
+          el.hasAttribute('data-bs-target');
+        const hasSemanticSignal = /(menu|toggle|dropdown|tab|accordion|slider|carousel|modal|drawer|submenu)/i.test(joinedVals);
+
+        return role === 'button' || hasInlineClick || hasFrameworkClickAttr || hasToggleAttrs || hasSemanticSignal;
+      }
+
       for (const root of rootList) {
         if (!root) continue;
         for (const a of root.querySelectorAll('a[href]')) {
@@ -138,7 +186,11 @@ async function extractLinksByRegion(page, pageUrl) {
 
           // Bare "#" only → broken placeholder (NOT "#section")
           if (raw === '#' || raw === '#!' || raw === '' || raw === 'javascript:void(0)' || raw === 'javascript:;') {
-            links.push({ href: raw || '#', text, region, _broken: true, _brokenReason: 'empty-anchor' });
+            if (hasJsTriggerSignals(a)) {
+              links.push({ href: raw || '#', text, region, _jsTrigger: true, _jsTriggerReason: 'interactive-anchor' });
+            } else {
+              links.push({ href: raw || '#', text, region, _broken: true, _brokenReason: 'empty-anchor' });
+            }
             continue;
           }
 
@@ -197,7 +249,35 @@ async function extractLinksByRegion(page, pageUrl) {
       const text     = (a.innerText || a.getAttribute('aria-label') || a.title || '').trim().slice(0, 80);
 
       if (raw === '#' || raw === '#!' || raw === '' || raw === 'javascript:void(0)' || raw === 'javascript:;') {
-        bodyLinks.push({ href: raw || '#', text, region: 'body', _broken: true, _brokenReason: 'empty-anchor' });
+        const attrs = a.getAttributeNames ? a.getAttributeNames() : [];
+        const signals = [
+          a.getAttribute('class') || '',
+          a.getAttribute('id') || '',
+          a.getAttribute('aria-label') || '',
+          a.getAttribute('data-toggle') || '',
+          a.getAttribute('data-bs-toggle') || '',
+          a.getAttribute('data-target') || '',
+          a.getAttribute('data-bs-target') || '',
+          a.getAttribute('onclick') || '',
+        ].join(' ').toLowerCase();
+        const role = (a.getAttribute('role') || '').toLowerCase();
+        const hasJsTrigger =
+          role === 'button' ||
+          !!a.getAttribute('onclick') ||
+          attrs.some((n) => /^(@click|v-on:click|ng-click|x-on:click|on:click)$/i.test(n)) ||
+          a.hasAttribute('aria-controls') ||
+          a.hasAttribute('aria-expanded') ||
+          a.hasAttribute('data-toggle') ||
+          a.hasAttribute('data-bs-toggle') ||
+          a.hasAttribute('data-target') ||
+          a.hasAttribute('data-bs-target') ||
+          /(menu|toggle|dropdown|tab|accordion|slider|carousel|modal|drawer|submenu)/i.test(signals);
+
+        if (hasJsTrigger) {
+          bodyLinks.push({ href: raw || '#', text, region: 'body', _jsTrigger: true, _jsTriggerReason: 'interactive-anchor' });
+        } else {
+          bodyLinks.push({ href: raw || '#', text, region: 'body', _broken: true, _brokenReason: 'empty-anchor' });
+        }
         continue;
       }
       if (raw.startsWith('#')) continue;
@@ -211,7 +291,7 @@ async function extractLinksByRegion(page, pageUrl) {
     function dedupRegion(links) {
       const seen = new Set();
       return links.filter(l => {
-        if (l._broken) return true;           // keep every broken anchor
+        if (l._broken || l._jsTrigger) return true;           // keep every classified anchor
         if (seen.has(l.href)) return false;
         seen.add(l.href);
         return true;
@@ -235,6 +315,24 @@ function categoriseLinks(rawLinks, pageUrl, origin) {
   const nav = [], footer = [], internal = [], external = [];
 
   for (const link of rawLinks) {
+
+    // Pre-flagged anchors — push directly without normalizing
+    if (link._jsTrigger) {
+      const entry = {
+        url:        link.href,
+        text:       link.text,
+        region:     link.region,
+        status:     'js-anchor',
+        ok:         true,
+        redirected: false,
+        info:       'Anchor has JS trigger signals (toggle/slider/dropdown)',
+        _jsTrigger: true,
+      };
+      if (link.region === 'nav')    nav.push(entry);
+      if (link.region === 'footer') footer.push(entry);
+      if (link.region === 'body')   internal.push(entry);
+      continue;
+    }
 
     // Pre-flagged broken anchors — push directly without normalizing
     if (link._broken) {
@@ -270,7 +368,7 @@ function categoriseLinks(rawLinks, pageUrl, origin) {
   const dedup = (arr) => {
     const seen = new Set();
     return arr.filter(e => {
-      if (e._broken) return true;
+      if (e._broken || e._jsTrigger) return true;
       if (seen.has(e.url)) return false;
       seen.add(e.url); return true;
     });
@@ -289,10 +387,14 @@ function categoriseLinks(rawLinks, pageUrl, origin) {
 async function checkLinkGroup(links, label) {
   if (links.length === 0) return [];
 
-  const toCheck     = links.filter(l => !l._broken);
-  const preResolved = links.filter(l =>  l._broken);
+  const toCheck     = links.filter((l) => !l._broken && !l._jsTrigger);
+  const preResolved = links.filter((l) => l._broken || l._jsTrigger);
 
-  const anchorNote = preResolved.length > 0 ? ` + ${preResolved.length} broken anchor(s)` : '';
+  const brokenAnchors = preResolved.filter((l) => l._broken).length;
+  const jsAnchors = preResolved.filter((l) => l._jsTrigger).length;
+  const anchorNote = (brokenAnchors > 0 || jsAnchors > 0)
+    ? ` + ${brokenAnchors} broken anchor(s), ${jsAnchors} js anchor(s)`
+    : '';
   console.log(`   🔗 Checking ${toCheck.length} ${label} links (${CHECK_CONCURRENCY} concurrent)${anchorNote}...`);
 
   if (toCheck.length === 0) return preResolved;
@@ -311,15 +413,18 @@ function analyseResults(checked) {
   let score = 100;
 
   // 403/429/401 = bot-blocked, not truly broken — real users can access
+  // Some social platforms can also return 400 to automated probes.
   const BOT_BLOCKED = new Set([401, 403, 429]);
-  const isBroken    = (r) => r._broken || (!r.ok && r.status !== 'timeout' && !BOT_BLOCKED.has(r.status));
-  const isBotBlocked = (r) => BOT_BLOCKED.has(r.status);
+  const isSocialBlocked400 = (r) => r.status === 400 && isSocialHost(r.url || '');
+  const isBotBlocked = (r) => BOT_BLOCKED.has(r.status) || isSocialBlocked400(r);
+  const isActuallyBroken = (r) => r._broken || (!r.ok && r.status !== 'timeout' && !isBotBlocked(r));
   const isTimedOut  = (r) => r.status === 'timeout';
   const isRedirect  = (r) => r.ok && r.redirected;
 
   // Nav
-  const navBroken  = nav.filter(isBroken);
+  const navBroken  = nav.filter(isActuallyBroken);
   const navTimeout = nav.filter(isTimedOut);
+  const navJsAnchors = nav.filter((r) => r._jsTrigger);
   if (nav.length === 0) {
     score -= Math.round(WEIGHTS.navLinks * 0.5);
     issues.push({ type: 'warning', code: 'NAV_NO_LINKS', message: 'No navigation links found in header/nav' });
@@ -334,7 +439,7 @@ function analyseResults(checked) {
   }
 
   // Internal
-  const intBroken  = internal.filter(isBroken);
+  const intBroken  = internal.filter(isActuallyBroken);
   const intTimeout = internal.filter(isTimedOut);
   if (intBroken.length > 0) {
     score -= Math.round(WEIGHTS.internalLinks * Math.min((intBroken.length / internal.length) * 2, 1));
@@ -351,7 +456,7 @@ function analyseResults(checked) {
   }
 
   // External
-  const extBroken  = external.filter(isBroken);
+  const extBroken  = external.filter(isActuallyBroken);
   if (extBroken.length > 0) {
     score -= Math.round(WEIGHTS.externalLinks * Math.min((extBroken.length / Math.max(external.length, 1)) * 2, 1));
     issues.push({
@@ -363,7 +468,7 @@ function analyseResults(checked) {
   }
 
   // Footer
-  const footBroken  = footer.filter(isBroken);
+  const footBroken  = footer.filter(isActuallyBroken);
   const footTimeout = footer.filter(isTimedOut);
   if (footer.length === 0) {
     score -= Math.round(WEIGHTS.footerLinks * 0.3);
@@ -398,6 +503,14 @@ function analyseResults(checked) {
       code:    'BOT_BLOCKED_LINKS',
       message: `${botBlocked.length} link(s) bot-blocked (${Object.entries(s).map(([k,v])=>`${v}× ${k}`).join(', ')}) — accessible to real users`,
       detail:  botBlocked.slice(0, 3).map(r => `[${r.status}] ${r.url}`),
+    });
+  }
+  if (navJsAnchors.length > 0) {
+    issues.push({
+      type: 'info',
+      code: 'NAV_JS_TRIGGER_ANCHORS',
+      message: `${navJsAnchors.length} nav anchor(s) use JS triggers (slider/dropdown/toggle)`,
+      detail: navJsAnchors.slice(0, 5).map((r) => `${r.url} — "${r.text || ''}"`),
     });
   }
 

@@ -10,6 +10,9 @@ require('dotenv').config();
 const { chromium } = require('playwright-core');
 const { auditEcommerce } = require('../audits/ecommerceCheck');
 
+const CHROME_PATH = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const ECOMMERCE_HEADLESS = process.env.ECOMMERCE_HEADLESS === 'false' ? false : true;
+
 const url = process.argv[2];
 if (!url) {
   console.error('❌  Usage: node test-ecommerce.js <url>');
@@ -20,7 +23,10 @@ if (!url) {
   const start = Date.now();
   console.log(`\n🛒 Ecommerce Audit: ${url}\n`);
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: ECOMMERCE_HEADLESS,
+    executablePath: CHROME_PATH,
+  });
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
 
   try {
@@ -132,14 +138,7 @@ if (!url) {
       if (co.detail) console.log(`   Detail    : ${co.detail}`);
     }
 
-    // ── AI observations ────────────────────────────────────────────────────
-    if (r.aiAnalysis?.generalObservations) {
-      console.log(`\n── AI OBSERVATIONS ───────────────────────────────────`);
-      console.log(`   💡 ${r.aiAnalysis.generalObservations.slice(0, 140)}`);
-    }
-
     // ── Issues ────────────────────────────────────────────────────────────
-    const nonInfoIssues = (r.issues || []).filter(i => i.type !== 'info');
     if (r.issues?.length > 0) {
       console.log(`\n── ISSUES ────────────────────────────────────────────`);
       for (const issue of r.issues) {

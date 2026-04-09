@@ -1,1361 +1,607 @@
 {
-  "url": "https://woocommerce.com/",
+  "url": "https://spctek.com/",
   "httpStatus": 200,
-  "score": 85,
+  "score": 91,
   "overallStatus": "critical",
   "issues": [
     {
       "type": "critical",
       "code": "NAV_BROKEN_LINKS",
-      "message": "3 of 131 nav link(s) are broken",
+      "message": "4 of 63 nav link(s) are broken",
       "detail": [
-        "[broken-anchor] # — \"Nutribullet\"",
-        "[broken-anchor] # — \"House of Malt\"",
-        "[broken-anchor] # — \"Dan-O's Seasoning\""
+        "[broken-anchor] # — \"ABOUT\"",
+        "[broken-anchor] # — \"RESOURCES\"",
+        "[broken-anchor] # — \"About\"",
+        "[broken-anchor] # — \"Resources\""
       ]
     },
     {
       "type": "warning",
-      "code": "EXTERNAL_BROKEN_LINKS",
-      "message": "1 broken external link(s) (out of 3 checked)",
-      "detail": [
-        "[404] https://storeleads.app/reports"
-      ]
-    },
-    {
-      "type": "warning",
-      "code": "FOOTER_BROKEN_LINKS",
-      "message": "1 broken footer link(s) (out of 47 checked)",
-      "detail": [
-        "[400] https://www.facebook.com/woocommerce — \"Follow us on Facebook\""
-      ]
+      "code": "INTERNAL_TIMEOUTS",
+      "message": "6 internal links timed out"
     },
     {
       "type": "info",
       "code": "REDIRECTED_LINKS",
-      "message": "14 link(s) redirect — consider updating to final URL",
+      "message": "12 link(s) redirect — consider updating to final URL",
       "detail": [
-        "https://woocommerce.com/my-account/contact-support/ → https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D2ede9abe059b973271a33627844c61d1e7ff07482bd57c07e70bef5eb8282cd5%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
-        "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/ → https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/",
-        "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/ → https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/"
+        "https://spctek.com/custom-growth-plan-form → https://spctek.com/custom-growth-plan-form/",
+        "https://spctek.com/marketing-solutions/rufus-based-image-optimization/ → https://spctek.com/rufus-based-image-optimization/",
+        "https://spctek.com/amazon-account-management/ → https://spctek.com/account-management-for-amazon/"
       ]
     },
     {
       "type": "info",
       "code": "BOT_BLOCKED_LINKS",
-      "message": "1 link(s) bot-blocked (1× 403) — accessible to real users",
+      "message": "3 link(s) bot-blocked (1× 400, 2× 403) — accessible to real users",
       "detail": [
-        "[403] https://www.x.com/woocommerce"
+        "[403] https://www.perplexity.ai/search?q=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%2C%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%20and%20outcome-driven.",
+        "[403] https://clutch.co/profile/spctek",
+        "[400] https://www.facebook.com/SPCTEKGlobal"
+      ]
+    },
+    {
+      "type": "info",
+      "code": "NAV_JS_TRIGGER_ANCHORS",
+      "message": "9 nav anchor(s) use JS triggers (slider/dropdown/toggle)",
+      "detail": [
+        "# — \"About Us\"",
+        "# — \"Amazon\"",
+        "# — \"Walmart\"",
+        "# — \"Digital Marketing\"",
+        "# — \"Ebay\""
       ]
     }
   ],
   "summary": {
     "nav": {
-      "total": 131,
-      "broken": 3,
-      "timedOut": 0
+      "total": 63,
+      "broken": 4,
+      "timedOut": 5
     },
     "internal": {
-      "total": 13,
+      "total": 60,
+      "broken": 0,
+      "timedOut": 6
+    },
+    "external": {
+      "total": 5,
       "broken": 0,
       "timedOut": 0
     },
-    "external": {
-      "total": 3,
-      "broken": 1,
-      "timedOut": 0
-    },
     "footer": {
-      "total": 47,
-      "broken": 1,
-      "timedOut": 0
+      "total": 36,
+      "broken": 0,
+      "timedOut": 1
     }
   },
   "details": {
     "nav": [
       {
-        "url": "https://woocommerce.com/wordpress-ecommerce/",
-        "text": "Develop on Woo",
+        "url": "https://spctek.com/about/",
+        "text": "About Us",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/development-services/",
-        "text": "Hire an expert",
+        "url": "https://www.trustpilot.com/review/spctek.com",
+        "text": "Testimonials",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/my-account/contact-support/",
-        "text": "Get support",
+        "url": "https://spctek.com/awards/",
+        "text": "Awards",
         "region": "nav",
-        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D2ede9abe059b973271a33627844c61d1e7ff07482bd57c07e70bef5eb8282cd5%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/woocommerce/",
-        "text": "What is WooCommerce?Learn more about the platform that powers success for millio",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/payments/",
-        "text": "PaymentsAccept payments and manage transactions right from your dashboard with W",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/woocommerce-shipping/",
-        "text": "ShippingGet the flexibility you need to take full control of your end-to-end shi",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/customize/",
-        "text": "No-code customizationCreate exactly the store you want without touching a line o",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/checkout-blocks/",
-        "text": "Optimized checkoutIncrease conversion with a customized checkout experience",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/marketing/",
-        "text": "MarketingBuild your brand and reach more shoppers with content marketing, SEO to",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/mobile/",
-        "text": "Mobile appManage your business on the go",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/enterprise-ecommerce/",
-        "text": "Woo for enterpriseNext-level customization and advanced features for established",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/multi-channel-ecommerce/",
-        "text": "Multi-channel ecommerceFind new audiences and increase sales by selling across m",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/in-person-payments/",
-        "text": "In‑Person PaymentsSell in person with POS, card readers, and Tap to Pay — all sy",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/products/",
-        "text": "WooCommerce MarketplaceFind everything you need to enhance your store and grow y",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/",
-        "text": "ExtensionsGrow your business with hundreds of free and paid extensions",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/themes/",
-        "text": "ThemesQuickly build a beautiful store with one of our professionally designed th",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/collections/",
-        "text": "CollectionsExplore curated extension collections tailored for different business",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/business-services/",
-        "text": "Business servicesDiscover a handpicked selection of essential services to suppor",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/?orderby=date&paged=1",
-        "text": "New",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/developed-by-woo/",
-        "text": "Developed by Woo",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/?categoryIds=1021&collections=product&page=1&min=0&max=0",
-        "text": "Free",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/",
-        "text": "All payments",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/online-payments/",
-        "text": "Payment processors & gateways",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/wallets/",
-        "text": "Wallets & express checkouts",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/wallets?categoryIds=35676&collections=product&page=1",
-        "text": "Buy now pay later",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/crypto-payments/",
-        "text": "Crypto payments",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/wallets?categoryIds=35538&collections=product&page=1",
-        "text": "B2B payments",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/in-person-payments/",
-        "text": "In-person payments & POS",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/",
-        "text": "All merchandising",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/b2b/",
-        "text": "B2B",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/bookings-and-appointments/",
-        "text": "Bookings and appointments",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/bundles/",
-        "text": "Bundles",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/gifts/",
-        "text": "Gifts",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/order-options/",
-        "text": "Order options",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/pricing/",
-        "text": "Pricing",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/product-display/",
-        "text": "Product display",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/product-options/",
-        "text": "Product options",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/product-variations/",
-        "text": "Product variations",
-        "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/merchandising/subscriptions-merchandising/",
-        "text": "Subscriptions",
+        "url": "https://spctek.com/partners/",
+        "text": "Partners",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/",
-        "text": "All store content and customizations",
+        "url": "https://spctek.com/services/",
+        "text": "SERVICES",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/cart-and-checkout-features/",
-        "text": "Cart and checkout features",
+        "url": "https://spctek.com/case-studies/",
+        "text": "CASE STUDIES",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/search-and-navigation/",
-        "text": "Search and navigation",
+        "url": "https://spctek.com/blogs/",
+        "text": "Blogs",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/international-and-localization/",
-        "text": "International and localization",
+        "url": "https://spctek.com/interviews/",
+        "text": "Podcast",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/product-images-and-media/",
-        "text": "Product images and media",
+        "url": "https://spctek.com/policy-updates/",
+        "text": "Marketplace Updates",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/store-content-and-customizations/store-page-enhancements/",
-        "text": "Store page enhancements",
+        "url": "https://spctek.com/hacks/",
+        "text": "Hacks",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/",
-        "text": "All shipping, delivery, and fulfillment",
+        "url": "https://spctek.com/affiliate-program/",
+        "text": "Become an Affiliate",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/shipping-rates-at-checkout/",
-        "text": "Shipping rates at checkout",
+        "url": "https://spctek.com/contact/",
+        "text": "CONTACT",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/label-printing/",
-        "text": "Label printing",
+        "url": "https://spctek.com/account-management-for-amazon/",
+        "text": "AI-Powered Account Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/delivery-options-and-enhancements/",
-        "text": "Delivery options and enhancements",
+        "url": "https://spctek.com/amazon-account-suspended/",
+        "text": "Account Reinstatement Service",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/inventory-and-order-management/",
-        "text": "Inventory and order management",
+        "url": "https://spctek.com/account-health-for-amazon/",
+        "text": "Proactive Account Health Monitoring",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/shipping-delivery-and-fulfillment/fulfillment-and-dropshipping/",
-        "text": "Fulfillment and dropshipping",
+        "url": "https://spctek.com/ppc-management-services-for-amazon/",
+        "text": "PPC & Ad Automation Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/",
-        "text": "All marketing",
+        "url": "https://spctek.com/catalogue-management-for-amazon/",
+        "text": "Rufus AI Listing Optimization",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/email-marketing-extensions/",
-        "text": "Email",
+        "url": "https://spctek.com/amazon-a-content-that-converts/",
+        "text": "AI-Optimized A+ Content Creation",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/sales-channels/",
-        "text": "Sales channels",
+        "url": "https://spctek.com/amazon-policy-violation-resolution-services/",
+        "text": "Policy Violation Resolution",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/crm-marketing-extensions/",
-        "text": "CRM",
+        "url": "https://spctek.com/amazon-reimbursement-claims-recovery-services/",
+        "text": "Reimbursement Claims",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/automation/",
-        "text": "Automation",
+        "url": "https://spctek.com/amazon-asin-reinstatement/",
+        "text": "ASIN Reinstatement",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/advertising-and-promotions/",
-        "text": "Advertising and promotions",
+        "url": "https://spctek.com/amazon-vendor-central-management-services/",
+        "text": "AI-Powered Vendor Central Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/reporting-and-analytics/",
-        "text": "Reporting and analytics",
+        "url": "https://spctek.com/amazon-influencer-marketing-service/",
+        "text": "Influencer Marketing",
         "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/social/",
-        "text": "Social",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/seo-and-sem/",
-        "text": "SEO and SEM",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/",
-        "text": "All conversion",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/promotions-conversion/",
-        "text": "Promotions",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/upsells-and-cross-sells/",
-        "text": "Upsells and cross-sells",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/customer-feedback/",
-        "text": "Customer feedback",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/recovering-orders/",
-        "text": "Recovering orders",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/store-alerts/",
-        "text": "Store alerts",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/conversion/rewards-and-loyalty/",
-        "text": "Rewards and loyalty",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/",
-        "text": "All customer service",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/support/",
-        "text": "Support",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/live-chat/",
-        "text": "Live chat",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/managing-customers/",
-        "text": "Managing customers",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/post-purchase-services/",
-        "text": "Post-purchase services",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/customer-service-2/customer-accounts/",
-        "text": "Customer accounts",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/",
-        "text": "All store management",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/payment-management/",
-        "text": "Payment management",
-        "region": "nav",
-        "finalUrl": "https://woocommerce.com/product-category/woocommerce-extensions/operations/payment-management/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/order-management/",
-        "text": "Order management",
+        "url": "https://spctek.com/amazon-fba-wholesale-account-management/",
+        "text": "FBA Wholesale Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/business-insights/",
-        "text": "Business insights",
+        "url": "https://spctek.com/product-hunting-and-sourcing/",
+        "text": "Data-Driven Product Hunting & Sourcing",
         "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/policy-and-security/",
-        "text": "Policy and security",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/admin-notifications/",
-        "text": "Admin and notifications",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/accounting-extensions/",
-        "text": "Accounting",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/sales-tax-and-duties/",
-        "text": "Sales tax and duties",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/import-and-export/",
-        "text": "Import and export",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/operations/point-of-sale/",
-        "text": "Point of sale",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/merchant-financing/",
-        "text": "Merchant financing",
-        "region": "nav",
-        "finalUrl": "https://woocommerce.com/product-category/woocommerce-extensions/payment-gateways/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/blog/",
-        "text": "BlogGet regular tips, tricks and ecommerce inspiration from the Woo team",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/showcase/",
-        "text": "WooCommerce site examplesSee beautiful samples of real businesses building succe",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/learn/",
-        "text": "LearnEcommerce resources to help you learn WooCommerce, launch fast, and sell mo",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/docs/",
-        "text": "DocumentationDiscover guides, tutorials, and technical resources for WooCommerce",
-        "region": "nav",
-        "finalUrl": "https://woocommerce.com/documentation/woocommerce/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/blog/customer-stories/",
-        "text": "Customer storiesSee how merchants are using WooCommerce to power their success",
+        "url": "https://spctek.com/amazon-fba-inventory-audit-forecasting-service/",
+        "text": "AI Predictive FBA Inventory Audit & Forecasting",
         "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/tco-calculator/",
-        "text": "Costs calculatorGet a personalized total cost of ownership estimate based on you",
+        "url": "https://spctek.com/estimate-amazon-services-cost/",
+        "text": "Amazon Management Cost Estimator",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/hosting-solutions/",
-        "text": "WooCommerce hostingFind trusted hosting solutions for your Woo store",
+        "url": "https://spctek.com/walmart-account-management-services/",
+        "text": "AI-Powered Account Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/community",
-        "text": "Join the Woo communityConnect with thousands of Woo users to get help or get ins",
-        "region": "nav",
-        "finalUrl": "https://woocommerce.com/community/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://wordpress.org/support/plugin/woocommerce/",
-        "text": "Support forumsAsk other WooCommerce users for help with your site",
+        "url": "https://spctek.com/walmart-listing-optimization/",
+        "text": "AI-Optimized Listing Creation",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/document/build-online-store/",
-        "text": "How to build an online store on WooCommerce",
+        "url": "https://spctek.com/walmart-ads-management/",
+        "text": "Ads Management",
         "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/guide-woocommerce-costs/",
-        "text": "The costs of running a store on WooCommerce",
+        "url": "https://spctek.com/social-media-management-services/",
+        "text": "AI-Powered Social Media Growth",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/ecommerce-migration-guide/",
-        "text": "Ecommerce migration blueprint",
+        "url": "https://spctek.com/email-marketing-services/",
+        "text": "Email Marketing Service",
         "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/document/how-to-migrate-from-shopify/",
-        "text": "How to migrate from Shopify",
+        "url": "https://spctek.com/influencer-marketing-services-usa/",
+        "text": "Influencer & UGC Marketing",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/posts/how-to-start-an-online-business/",
-        "text": "How to start an online business",
-        "region": "nav",
-        "finalUrl": "https://woocommerce.com/posts/how-start-online-business/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/posts/ecommerce-email-marketing/",
-        "text": "Email marketing strategy",
+        "url": "https://spctek.com/meta-ads/",
+        "text": "Meta Ads Performance Automation",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/sell-cbd-online/",
-        "text": "CBD store owners",
+        "url": "https://spctek.com/tiktok-ads/",
+        "text": "TikTok Ads Service",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/posts/ecommerce-shipping-solutions-guide/",
-        "text": "A guide to shipping for ecommerce stores",
+        "url": "https://spctek.com/b2b-seo-service/",
+        "text": "Advanced SEO & Organic Growth",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/posts/global-ecommerce-business-success-guide/",
-        "text": "How to sell internationally",
+        "url": "https://spctek.com/local-seo-services/",
+        "text": "Local SEO Service",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/enterprise-ecommerce/?woosource=nav_menu_click",
-        "text": "Enterprise ecommerce",
+        "url": "https://spctek.com/ai-seo-services/",
+        "text": "AI Engine Search Optimization",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/sso?next=%2F",
-        "text": "Log in",
-        "region": "nav",
-        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3De072f38bb5f0b1867c709e603d7a7152c1881a6043b6d8ff62223777b5b8091a%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253D%25252F%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/start/?nuxentrysource=signup_header",
-        "text": "Get started",
+        "url": "https://spctek.com/creative-visual-design-service/",
+        "text": "Creative Design & Branding",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/",
-        "text": "WooCommerce",
+        "url": "https://spctek.com/ebay-account-management-services/",
+        "text": "AI-Powered Account Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/shipping/",
-        "text": "Shipping",
-        "region": "nav",
-        "finalUrl": "https://woocommerce.com/woocommerce-shipping/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/collection/woocommerce-essentials/",
-        "text": "Essentials",
+        "url": "https://spctek.com/etsy-account-management-services/",
+        "text": "AI-Powered Account Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://developer.woocommerce.com/",
-        "text": "Developer resources",
+        "url": "https://spctek.com/free-90-day-amazon-brand-growth-program/",
+        "text": "Free 90-Day Amazon Growth Program",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/for-agencies/",
-        "text": "Become a Woo agency",
+        "url": "https://spctek.com/image-editing-service/",
+        "text": "Amazon $5 AI-Optimized Listing Images",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/partners/",
-        "text": "Become a Marketplace partner",
+        "url": "https://spctek.com/rufus-based-image-optimization/",
+        "text": "Rufus AI Image Optimization",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/affiliates/",
-        "text": "Become an affiliate",
+        "url": "https://spctek.com/amazon-design-bundle/",
+        "text": "Amazon Creative Design Bundles",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/documentation/woocommerce/",
-        "text": "Documentation",
+        "url": "https://spctek.com/shopify-store-management-services/",
+        "text": "AI-Powered Store Creation & Management",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/woocommerce-list-sign/",
-        "text": "Email newsletter",
+        "url": "https://spctek.com/",
+        "text": "",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "http://woocommerce.com/my-account/contact-support/",
-        "text": "Support",
-        "region": "nav",
-        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3Dd35f9b7c0a593181e554d6a52bb636704cae6e79d576b60f1f795fd9569a0174%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/feature-requests/woocommerce/",
-        "text": "Feature requests",
+        "url": "https://spctek.com/career/",
+        "text": "",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/support-policy/",
-        "text": "Support policy",
+        "url": "https://spctek.com/terms-of-service/",
+        "text": "",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/refund-policy/",
-        "text": "Refund policy",
+        "url": "https://spctek.com/privacy-policy/",
+        "text": "",
         "region": "nav",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/customer-research/",
-        "text": "Participate in customer research",
+        "url": "#",
+        "text": "ABOUT",
         "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
+        "status": "broken-anchor",
+        "ok": false,
+        "error": "Empty anchor (#) — placeholder link with no destination",
+        "_broken": true
       },
       {
-        "url": "https://woocommerce.com/accessibility/",
-        "text": "Accessibility",
+        "url": "#",
+        "text": "RESOURCES",
         "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
+        "status": "broken-anchor",
+        "ok": false,
+        "error": "Empty anchor (#) — placeholder link with no destination",
+        "_broken": true
       },
       {
-        "url": "http://woocommerce.com/about/",
+        "url": "#",
         "text": "About",
         "region": "nav",
-        "finalUrl": "https://woocommerce.com/about/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/newsroom/",
-        "text": "Press",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/download/",
-        "text": "Download WooCommerce free",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/community/",
-        "text": "Join the Woo community",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/trademark-guidelines/",
-        "text": "Woo trademark guidelines",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/brand-and-logo-guidelines/",
-        "text": "Brand and logo guidelines",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/do-not-sell-or-share-my-personal-information/",
-        "text": "Do not sell or share my personal information",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/contact-us/",
-        "text": "Contact us",
-        "region": "nav",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
+        "status": "broken-anchor",
+        "ok": false,
+        "error": "Empty anchor (#) — placeholder link with no destination",
+        "_broken": true
       },
       {
         "url": "#",
-        "text": "Nutribullet",
+        "text": "Resources",
         "region": "nav",
         "status": "broken-anchor",
         "ok": false,
@@ -1364,749 +610,1103 @@
       },
       {
         "url": "#",
-        "text": "House of Malt",
+        "text": "About Us",
         "region": "nav",
-        "status": "broken-anchor",
-        "ok": false,
-        "error": "Empty anchor (#) — placeholder link with no destination",
-        "_broken": true
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
       },
       {
         "url": "#",
-        "text": "Dan-O's Seasoning",
+        "text": "Amazon",
         "region": "nav",
-        "status": "broken-anchor",
-        "ok": false,
-        "error": "Empty anchor (#) — placeholder link with no destination",
-        "_broken": true
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
+      },
+      {
+        "url": "#",
+        "text": "Walmart",
+        "region": "nav",
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
+      },
+      {
+        "url": "#",
+        "text": "Digital Marketing",
+        "region": "nav",
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
+      },
+      {
+        "url": "#",
+        "text": "Ebay",
+        "region": "nav",
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
+      },
+      {
+        "url": "#",
+        "text": "Etsy",
+        "region": "nav",
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
+      },
+      {
+        "url": "#",
+        "text": "Offers",
+        "region": "nav",
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
+      },
+      {
+        "url": "#",
+        "text": "Shopify",
+        "region": "nav",
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
+      },
+      {
+        "url": "#",
+        "text": "Resources",
+        "region": "nav",
+        "status": "js-anchor",
+        "ok": true,
+        "redirected": false,
+        "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+        "_jsTrigger": true
       }
     ],
-    "navButtons": [
-      {
-        "text": "USD\nChange site currency USD selected",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "English\nChange site language English selected",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Sell\nClick to show 11 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Extensions\nClick to show 18 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Official paymentsClick to show 7 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "MerchandisingClick to show 11 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Store content and customizationsClick to show 6 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Shipping, delivery, and fulfillmentClick to show 6 more item",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "MarketingClick to show 9 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "ConversionClick to show 7 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Customer serviceClick to show 6 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Store managementClick to show 11 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Resources\nClick to show 20 more items",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Go to search results page",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "Search",
-        "type": "button-trigger",
-        "region": "nav"
-      },
-      {
-        "text": "",
-        "type": "button-trigger",
-        "region": "nav"
-      }
-    ],
+    "navButtons": [],
     "internal": [
       {
-        "url": "https://woocommerce.com/products/klaviyo-for-woocommerce/",
+        "url": "https://spctek.com/",
         "text": "",
         "region": "body",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/",
-        "text": "",
+        "url": "https://spctek.com/book-a-call/",
+        "text": "GENERATE MORE SALES",
         "region": "body",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/start/?nuxentrysource=homepage_hero_cta",
-        "text": "Start here",
+        "url": "https://spctek.com/custom-growth-plan-form",
+        "text": "GET YOUR FREE ECOMMERCE GROWTH PLAN",
         "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/get-in-touch/?woosource=homepage_hero_cta",
-        "text": "Get in touch about enterprise solutions",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/woocommerce/",
-        "text": "Create your dream store",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/products/",
-        "text": "Customize my store",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/posts/nutribullet-woopayments/",
-        "text": "Read full case study",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/posts/house-of-malt/",
-        "text": "Read full case study",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/posts/dan-os-seasoning/",
-        "text": "Read full case study",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/start/?nuxentrysource=homepage_footer_cta",
-        "text": "Get started with WooCommerce",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/refund-policy/",
-        "text": "money-back guarantee",
-        "region": "body",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/docs/",
-        "text": "Support",
-        "region": "body",
-        "finalUrl": "https://woocommerce.com/documentation/woocommerce/",
+        "finalUrl": "https://spctek.com/custom-growth-plan-form/",
         "status": 200,
         "ok": true,
         "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/products/woopayments/",
-        "text": "Safe and secure",
+        "url": "https://spctek.com/amazon-policy-violation-resolution-services/",
+        "text": "PROTECT MY AMAZON REVENUE",
         "region": "body",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/shopify-store-management-services/",
+        "text": "START YOUR SHOPIFY JOURNEY NOW",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/marketing-solutions/rufus-based-image-optimization/",
+        "text": "OPTIMIZE IMAGES TODAY",
+        "region": "body",
+        "finalUrl": "https://spctek.com/rufus-based-image-optimization/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-account-suspended/",
+        "text": "FIX YOUR ACCOUNT TODAY",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/contact/",
+        "text": "Start Your Shopify Journey Now",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/free-90-day-amazon-brand-growth-program/",
+        "text": "",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/account-health-for-amazon/",
+        "text": "GET THIS OFFER",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/social-media-management-services/",
+        "text": "GET THIS OFFER",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/custom-growth-plan-form/",
+        "text": "GET A FREE ECOMMERCE GROWTH PLAN",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-account-management/",
+        "text": "Account Management for Amazon",
+        "region": "body",
+        "finalUrl": "https://spctek.com/account-management-for-amazon/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/service-fee-estimator/",
+        "text": "Estimate Amazon Services Cost",
+        "region": "body",
+        "finalUrl": "https://spctek.com/estimate-amazon-services-cost/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-account-health-monitoring-optimization/",
+        "text": "Account Health Management for Amazon",
+        "region": "body",
+        "finalUrl": "https://spctek.com/account-health-for-amazon/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-account-reinstatement-service/",
+        "text": "Amazon Account Reinstatement",
+        "region": "body",
+        "finalUrl": "https://spctek.com/amazon-account-suspended/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/walmart-account-management/",
+        "text": "Walmart Account Management",
+        "region": "body",
+        "finalUrl": "https://spctek.com/walmart-account-management-services/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/meta-ads/",
+        "text": "Digital Marketing Services",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/creative-visual-design-service/",
+        "text": "Design Services",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/podcast",
+        "text": "WATCH OUR LATEST PODCASTS",
+        "region": "body",
+        "finalUrl": "https://spctek.com/interviews/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/about-us/",
+        "text": "ABOUT SPCTEK",
+        "region": "body",
+        "finalUrl": "https://spctek.com/about/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/success-stories/",
+        "text": "EXPLORE ALL CASE STUDIES",
+        "region": "body",
+        "finalUrl": "https://spctek.com/case-studies/",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-revenue-growth-32-percent/",
+        "text": "32% Monthly Growth in Revenue: Scaling Think Natural Now to $115,652.61",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-brand-growth-70-percent/",
+        "text": "How We Helped Olympics Trading Achieve 70% Amazon Revenue Growth",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/how-influencers-took-us-from-low-reach-to-high-visibility/",
+        "text": "How Influencers Took Us from Low Reach to High Visibility",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/from-spam-to-scale-3k-33k-email-revenue-turnaround/",
+        "text": "From Spam to Scale: $3K → $33K Email Revenue Turnaround",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/revamping-a-fishing-brands-shopify-store-to-improve-ui-ux-and-conversion-rates-by-20/",
+        "text": "Revamping a Fishing Brand’s Shopify Store to Improve UI/UX and Conversion Rates ",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/scaling-a-business-consulting-agency-with-meta-ads-11-month-campaign-achieving-3-6x-roas/",
+        "text": "Scaling a Business Consulting Agency with Meta Ads — 11-Month Campaign Achieving",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/blogs/",
+        "text": "Explore All Blog Posts",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/dd7-deferred-payments-amazon-payout-policy/",
+        "text": "DD+7 Deferred Payments: Amazon Payout Policy Explained",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-inventory-bulk-update-guide/",
+        "text": "Bulk Updating Amazon Inventory Simplified: A Step-by-Step Tutorial",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/a-to-z-guarantee-claim-filed-against-you-heres-how-to-respond-urgently/",
+        "text": "A-to-z Guarantee Claim Filed Against You? Here’s How to Respond Urgently.",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/mc011-on-ebay-understanding-the-consequences-and-how-to-respond/",
+        "text": "eBay MC011: Understanding the Consequences and How to Respond",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/a-complete-breakdown-of-amazons-seller-performance-standards/",
+        "text": "A Complete Breakdown of Amazon’s Seller Performance Standards",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-suspension-lawyer-when-to-seek-help/",
+        "text": "Amazon Suspension Lawyer: When to Seek Help",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/how-to-pick-a-great-product-to-sell-on-amazon/",
+        "text": "How to Pick a Great Product to Sell on Amazon",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-brand-registry-your-key-to-protection-against-counterfeiters/",
+        "text": "Amazon Brand Registry: Your Key to Protection Against Counterfeiters",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/contact?from=exit-popup",
+        "text": "",
+        "region": "body",
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/account-management-for-amazon/",
+        "text": "AI-Powered Account Management",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/estimate-amazon-services-cost/",
+        "text": "Amazon Management Cost Estimator",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-asin-reinstatement/",
+        "text": "ASIN Reinstatement",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/ppc-management-services-for-amazon/",
+        "text": "PPC & Ad Automation Management",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/catalogue-management-for-amazon/",
+        "text": "Rufus AI Listing Optimization",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-a-content-that-converts/",
+        "text": "AI-Optimized A+ Content Creation",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-reimbursement-claims-recovery-services/",
+        "text": "Reimbursement Claims",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-influencer-marketing-service/",
+        "text": "Influencer Marketing",
+        "region": "body",
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-fba-inventory-audit-forecasting-service/",
+        "text": "AI Predictive FBA Inventory Audit & Forecasting",
+        "region": "body",
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/product-hunting-and-sourcing/",
+        "text": "Data-Driven Product Hunting & Sourcing",
+        "region": "body",
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-vendor-central-management-services/",
+        "text": "AI-Powered Vendor Central Management",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/amazon-fba-wholesale-account-management/",
+        "text": "FBA Wholesale Management",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/email-marketing-services/",
+        "text": "Email Marketing Service",
+        "region": "body",
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/influencer-marketing-services-usa/",
+        "text": "Influencer & UGC Marketing",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/tiktok-ads/",
+        "text": "TikTok Ads Service",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/local-seo-services/",
+        "text": "Local SEO Service",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/b2b-seo-service/",
+        "text": "Advanced SEO & Organic Growth",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/ai-seo-services/",
+        "text": "AI Engine Search Optimization",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/walmart-account-management-services/",
+        "text": "AI-Powered Account Management",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/walmart-listing-optimization/",
+        "text": "AI-Optimized Listing Creation",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/walmart-ads-management/",
+        "text": "Ads Management",
+        "region": "body",
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/ebay-account-management-services/",
+        "text": "AI-Powered Account Management",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
       }
     ],
     "external": [
       {
-        "url": "https://storeleads.app/reports",
-        "text": "Store Leads",
-        "region": "body",
-        "finalUrl": null,
-        "status": 404,
-        "ok": false,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://w3techs.com/technologies/details/cm-wordpress",
-        "text": "W3Techs",
+        "url": "https://advertising.amazon.com/partners/directory/details/amzn1.ads1.ma1.5p3uibqcnqk5shijwfz7qixay/SPCTEK/",
+        "text": "",
         "region": "body",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://developer.woocommerce.com/",
-        "text": "Build the future of open source",
+        "url": "https://sellercentral.amazon.com/gspn/provider-details/Account%20Management/f7213b16-fefb-4feb-8d85-1a31126b4ef1?ref_=sc_gspn_blst_bdt-f7213b16&localeSelection=en_US&sellFrom=US&sellIn=US",
+        "text": "",
         "region": "body",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
+      },
+      {
+        "url": "https://marketplace.walmart.com/solution-providers/spctek/",
+        "text": "",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://www.google.com/maps/place/SPCTEK/@32.9897137,-96.7760671,17z/data=!4m8!3m7!1s0x864c23068c764ee9:0x45f2c28d6295ff1c!8m2!3d32.9893132!4d-96.774957!9m1!1b1!16s%2Fg%2F11rptm631r?entry=ttu&g_ep=EgoyMDI1MDcyOC4wIKXMDSoASAFQAw%3D%3D",
+        "text": "",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://www.trustpilot.com/review/spctek.com",
+        "text": "",
+        "region": "body",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
       }
     ],
     "footer": [
       {
-        "url": "https://woocommerce.com/",
-        "text": "WooCommerce",
+        "url": "https://chat.openai.com/?q=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%2C%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%2C%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%2C%20and%20outcome-driven.",
+        "text": "",
         "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/payments/",
-        "text": "Payments",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/customize/",
-        "text": "No-code customization",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/marketing/",
-        "text": "Marketing",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/checkout-blocks/",
-        "text": "Checkout",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/shipping/",
-        "text": "Shipping",
-        "region": "footer",
-        "finalUrl": "https://woocommerce.com/woocommerce-shipping/",
+        "finalUrl": "https://chatgpt.com/?q=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%2C%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%2C%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%2C%20and%20outcome-driven.",
         "status": 200,
         "ok": true,
         "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/mobile/",
-        "text": "Mobile app",
+        "url": "https://www.perplexity.ai/search?q=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%2C%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%20and%20outcome-driven.",
+        "text": "",
         "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/enterprise-ecommerce/",
-        "text": "Enterprise ecommerce",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/products/",
-        "text": "WooCommerce extensions",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/themes/",
-        "text": "WooCommerce themes",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/?orderby=date&paged=1",
-        "text": "New",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/collection/woocommerce-essentials/",
-        "text": "Essentials",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/collections/",
-        "text": "Collections",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/product-category/woocommerce-extensions/developed-by-woo/",
-        "text": "Developed by Woo",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/wordpress-ecommerce/",
-        "text": "Woo for developers",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://developer.woocommerce.com/",
-        "text": "Developer resources",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/for-agencies/",
-        "text": "Become a Woo agency",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/partners/",
-        "text": "Become a Marketplace partner",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/affiliates/",
-        "text": "Become an affiliate",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/blog/",
-        "text": "Blog",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/documentation/woocommerce/",
-        "text": "Documentation",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/showcase/",
-        "text": "WooCommerce site examples",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/woocommerce-list-sign/",
-        "text": "Email newsletter",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "http://woocommerce.com/my-account/contact-support/",
-        "text": "Support",
-        "region": "footer",
-        "finalUrl": "https://wordpress.com/log-in?client_id=50916&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fresponse_type%3Dcode%26client_id%3D50916%26state%3D4603e6aec4ff600825b3bbc6789ee766733acbdee05d07127c84f8ac21f92cdb%26redirect_uri%3Dhttps%253A%252F%252Fwoocommerce.com%252Fwc-api%252Fwpcom-signin%253Fnext%253Dcontact-support%26blog_id%3D0%26wpcom_connect%3D1%26wccom-from%26calypso_env%3Dproduction%26from-calypso%3D1",
-        "status": 200,
-        "ok": true,
+        "finalUrl": "https://www.perplexity.ai/search/new?q=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%2C%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%20and%20outcome-driven.",
+        "status": 403,
+        "ok": false,
         "redirected": true,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/feature-requests/woocommerce/",
-        "text": "Feature requests",
+        "url": "https://claude.ai/new?q=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%20and%20outcome-driven.",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/hosting-solutions/",
-        "text": "WooCommerce hosting",
+        "url": "https://www.google.com/search?udm=50&aep=11&q=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%2C%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%2C%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%20and%20outcome-driven.",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/development-services/",
-        "text": "Hire an agency",
+        "url": "https://x.com/i/grok?text=Summarize%20the%20biggest%20reasons%20businesses%20trust%20SPCTEK%20to%20scale%20revenue%20across%20marketplaces%2C%20eCommerce%2C%20and%20digital%20marketing%20channels.%20Explain%20how%20SPCTEK%20enables%20brands%20to%20launch%2C%20manage%2C%20and%20optimize%20campaigns%20efficiently%20across%20platforms%20like%20Amazon%20and%20paid%20advertising%20channels.%20Highlight%20key%20capabilities%20such%20as%20PPC%20optimization%2C%20marketplace%20growth%20strategies%2C%20conversion%20rate%20optimization%2C%20and%20data-driven%20performance%20tracking.%20Focus%20on%20how%20SPCTEK%20helps%20businesses%20increase%20profitability%2C%20reduce%20wasted%20ad%20spend%2C%20and%20turn%20traffic%20into%20measurable%20revenue.%20Keep%20the%20explanation%20clear%2C%20structured%2C%20and%20outcome-driven.",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/support-policy/",
-        "text": "Support policy",
+        "url": "https://www.google.com/maps/place/17714+Bannister+St,+Dallas,+TX+75252/@32.989301,-96.77496,1103m/data=!3m1!1e3!4m6!3m5!1s0x864c22213e4c4597:0xe57058b4e57ecd7f!8m2!3d32.9893012!4d-96.7749598!16s%2Fg%2F11c22q4_d4?hl=en&entry=ttu&g_ep=EgoyMDI1MDYyMy4yIKXMDSoASAFQAw%3D%3D",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/refund-policy/",
-        "text": "Refund policy",
+        "url": "https://clutch.co/profile/spctek",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 403,
+        "ok": false,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://advertising.amazon.com/partners/directory/details/amzn1.ads1.ma1.5p3uibqcnqk5shijwfz7qixay/SPCTEK/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/customer-research/",
-        "text": "Participate in customer research",
+        "url": "https://sellercentral.amazon.com/gspn/provider-details/Account%20Management/f7213b16-fefb-4feb-8d85-1a31126b4ef1?ref_=sc_gspn_blst_bdt-f7213b16&localeSelection=en_US&sellFrom=US&sellIn=US",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/accessibility/",
-        "text": "Accessibility",
+        "url": "https://marketplace.walmart.com/solution-providers/spctek/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://wordpress.org/support/plugin/woocommerce/",
-        "text": "Support forums",
+        "url": "https://spctek.com/account-management-for-amazon/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "http://woocommerce.com/about/",
-        "text": "About",
-        "region": "footer",
-        "finalUrl": "https://woocommerce.com/about/",
-        "status": 200,
-        "ok": true,
-        "redirected": true,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://woocommerce.com/newsroom/",
-        "text": "Press",
+        "url": "https://spctek.com/account-health-for-amazon/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/download/",
-        "text": "Download WooCommerce free",
+        "url": "https://spctek.com/amazon-account-suspended/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/community/",
-        "text": "Join the Woo community",
+        "url": "https://spctek.com/walmart-account-management-services/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/trademark-guidelines/",
-        "text": "Woo trademark guidelines",
+        "url": "https://spctek.com/meta-ads/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/brand-and-logo-guidelines/",
-        "text": "Brand and logo guidelines",
+        "url": "https://spctek.com/creative-visual-design-service/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/do-not-sell-or-share-my-personal-information/",
-        "text": "Do not sell or share my personal information",
+        "url": "https://spctek.com/about/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://woocommerce.com/contact-us/",
-        "text": "Contact us",
+        "url": "https://spctek.com/affiliate-program/",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://www.facebook.com/woocommerce",
-        "text": "Follow us on Facebook",
+        "url": "https://www.trustpilot.com/review/spctek.com",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/career/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/contact/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/partners/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/awards/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/interviews/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/case-studies/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/blogs/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/hacks/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/policy-updates/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/terms-of-service/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://spctek.com/privacy-policy/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": null,
+        "status": 200,
+        "ok": true,
+        "redirected": false,
+        "method": "GET"
+      },
+      {
+        "url": "https://www.facebook.com/SPCTEKGlobal",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 400,
         "ok": false,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://www.x.com/woocommerce",
-        "text": "Follow us on X",
-        "region": "footer",
-        "finalUrl": "https://twitter.com/woocommerce",
-        "status": 403,
-        "ok": false,
-        "redirected": true,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://www.instagram.com/woocommerce",
-        "text": "Follow us on Instagram",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://www.linkedin.com/company/woocommerce/",
-        "text": "Follow us on LinkedIn",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://automattic.com/",
+        "url": "https://www.instagram.com/spctek/",
         "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       },
       {
-        "url": "https://wordpress.com/tos/?_gl=1*1f7tjdz*_gcl_aw*R0NMLjE3MzUzMjUzMzkuQ2owS0NRaUF2Ym03QmhDNUFSSXNBRmp3Tkh1R2gxOEp4U2hvOHdoRkV1VUlRaGVSczJ3Z1ZZVm5RYWFIZTB5VDNqZEctUFlQeXc1VVMyZ2FBa3JURUFMd193Y0I.*_gcl_au*MTA1MjMxMjcyNC4xNzM2MTYyNjI3*_ga*NDcwOTA1NzMyLjE2NjAwMzk4Mjg.*_ga_98K30SHWB2*MTczNzYxMDIyNy40ODcuMS4xNzM3NjEyMzU3LjAuMC4w",
-        "text": "Terms and Conditions",
+        "url": "https://www.youtube.com/channel/UC8WKVkQ7E_1_qCSAOAybzxA",
+        "text": "",
+        "region": "footer",
+        "status": "timeout",
+        "ok": false,
+        "error": "Request timed out",
+        "method": "GET"
+      },
+      {
+        "url": "https://www.linkedin.com/company/spc-tek/",
+        "text": "",
+        "region": "footer",
+        "finalUrl": "https://www.linkedin.com/company/spctek",
+        "status": 200,
+        "ok": true,
+        "redirected": true,
+        "method": "GET"
+      },
+      {
+        "url": "https://x.com/spctekglobal",
+        "text": "",
         "region": "footer",
         "finalUrl": null,
         "status": 200,
         "ok": true,
         "redirected": false,
-        "method": "HEAD"
-      },
-      {
-        "url": "https://automattic.com/privacy/",
-        "text": "Privacy policy",
-        "region": "footer",
-        "finalUrl": null,
-        "status": 200,
-        "ok": true,
-        "redirected": false,
-        "method": "HEAD"
+        "method": "GET"
       }
     ]
   }

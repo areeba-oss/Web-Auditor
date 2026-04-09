@@ -17,16 +17,46 @@ if (!url) {
   process.exit(1);
 }
 
+const CHROME_PATH =
+  process.env.CHROME_PATH ||
+  'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+
+const HEADLESS = String(process.env.NAV_HEADLESS || '').toLowerCase() === 'true';
+
 (async () => {
   const start = Date.now();
   console.log(`\n🔗 Navigation & Links Audit: ${url}\n`);
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: HEADLESS,
+    executablePath: CHROME_PATH,
+  });
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
 
   try {
     const r = await auditNavigationLinks(context, url);
     const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+    const BOT_BLOCKED = new Set([401, 403, 429]);
+    function isSocialHost(linkUrl = '') {
+      try {
+        const host = new URL(linkUrl).hostname.toLowerCase();
+        return (
+          host.includes('facebook.com') ||
+          host.includes('instagram.com') ||
+          host === 'x.com' ||
+          host.endsWith('.x.com') ||
+          host.includes('twitter.com') ||
+          host.includes('linkedin.com') ||
+          host.includes('tiktok.com') ||
+          host.includes('youtube.com') ||
+          host.includes('youtu.be') ||
+          host.includes('pinterest.com')
+        );
+      } catch {
+        return false;
+      }
+    }
+    const isBotBlocked = (l) => BOT_BLOCKED.has(l?.status) || (l?.status === 400 && isSocialHost(l?.url || ''));
 
     // ── Write raw results ─────────────────────────────────────────────────── ← added
     const outPath = 'raw.json';                                                // ← added
@@ -78,8 +108,10 @@ if (!url) {
       console.log('   ⚠️  No checkable nav links found');
     } else {
       for (const link of nav.slice(0, 12)) {
-        const icon = !link.ok
-          ? (link.status === 'timeout' ? '⏱ ' : `❌ [${link.status}]`)
+        const icon = link.status === 'js-anchor'
+          ? '🧩'
+          : !link.ok
+          ? (link.status === 'timeout' ? '⏱ ' : (isBotBlocked(link) ? `🛡️ [${link.status}]` : `❌ [${link.status}]`))
           : (link.redirected ? 'ℹ️ ' : '✅');
         const text = link.text ? ` "${link.text.slice(0, 30)}"` : '';
         console.log(`   ${icon}  ${link.url.slice(0, 80)}${text}`);
@@ -90,7 +122,8 @@ if (!url) {
 
     // ── 2. Internal links ─────────────────────────────────────────────────────
     const internal = r.details?.internal ?? [];
-    const intBroken = internal.filter((l) => !l.ok && l.status !== 'timeout');
+    const intBroken = internal.filter((l) => !l.ok && l.status !== 'timeout' && !isBotBlocked(l));
+    const intBotBlocked = internal.filter((l) => isBotBlocked(l));
     console.log(`\n── 2. INTERNAL LINKS  (${internal.length} checked) ────────────`);
 
     if (intBroken.length === 0) {
@@ -104,6 +137,15 @@ if (!url) {
       if (intBroken.length > 8) console.log(`      ... and ${intBroken.length - 8} more`);
     }
 
+    if (intBotBlocked.length > 0) {
+      const statusBreakdown = intBotBlocked.reduce((acc, l) => {
+        const key = String(l.status);
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+      console.log(`   ℹ️  Bot-blocked (not counted as broken): ${Object.entries(statusBreakdown).map(([k, v]) => `${v}× ${k}`).join(', ')}`);
+    }
+
     const intRedirects = internal.filter((l) => l.ok && l.redirected);
     if (intRedirects.length > 0) {
       console.log(`\n   ℹ️  ${intRedirects.length} internal redirect(s):`);
@@ -114,7 +156,8 @@ if (!url) {
 
     // ── 3. External links ─────────────────────────────────────────────────────
     const external = r.details?.external ?? [];
-    const extBroken = external.filter((l) => !l.ok && l.status !== 'timeout');
+    const extBroken = external.filter((l) => !l.ok && l.status !== 'timeout' && !isBotBlocked(l));
+    const extBotBlocked = external.filter((l) => isBotBlocked(l));
     console.log(`\n── 3. EXTERNAL LINKS  (${external.length} checked) ────────────`);
 
     if (external.length === 0) {
@@ -134,9 +177,19 @@ if (!url) {
       }
     }
 
+    if (extBotBlocked.length > 0) {
+      const statusBreakdown = extBotBlocked.reduce((acc, l) => {
+        const key = String(l.status);
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+      console.log(`   ℹ️  Bot-blocked (not counted as broken): ${Object.entries(statusBreakdown).map(([k, v]) => `${v}× ${k}`).join(', ')}`);
+    }
+
     // ── 4. Footer links ───────────────────────────────────────────────────────
     const footer = r.details?.footer ?? [];
-    const footBroken = footer.filter((l) => !l.ok && l.status !== 'timeout');
+    const footBroken = footer.filter((l) => !l.ok && l.status !== 'timeout' && !isBotBlocked(l));
+    const footBotBlocked = footer.filter((l) => isBotBlocked(l));
     console.log(`\n── 4. FOOTER LINKS  (${footer.length} found) ──────────────────`);
 
     if (footer.length === 0) {
@@ -154,6 +207,15 @@ if (!url) {
         const text = link.text ? ` — "${link.text.slice(0, 25)}"` : '';
         console.log(`      [${link.status}] ${link.url.slice(0, 80)}${text}`);
       }
+    }
+
+    if (footBotBlocked.length > 0) {
+      const statusBreakdown = footBotBlocked.reduce((acc, l) => {
+        const key = String(l.status);
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+      console.log(`   ℹ️  Bot-blocked (not counted as broken): ${Object.entries(statusBreakdown).map(([k, v]) => `${v}× ${k}`).join(', ')}`);
     }
 
     // ── Issues ────────────────────────────────────────────────────────────────

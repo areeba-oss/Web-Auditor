@@ -18,11 +18,6 @@
  *  [B3] Cart page navigated on same page object (same session/cookies) as ATC click
  */
 
-const sharp = require('sharp');
-
-const AI_MODEL         = 'claude-haiku-4-5-20251001';
-const MAX_TOKENS       = 1400;
-const MAX_IMG_HEIGHT   = 7800;
 const INTERACTION_WAIT = 2500;
 const NAV_TIMEOUT      = 60_000;   // [B2] raised from 25s — slow sites need more time
 const FETCH_TIMEOUT    = 10_000;   // [B2] raised from 8s
@@ -31,31 +26,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ─── Utilities ────────────────────────────────────────────────────────────────
 
-function parseJSON(text) {
-  try { return JSON.parse(text.trim()); } catch {}
-  const block = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (block) { try { return JSON.parse(block[1].trim()); } catch {} }
-  const s = text.indexOf('{'), e = text.lastIndexOf('}');
-  if (s !== -1 && e > s) { try { return JSON.parse(text.slice(s, e + 1)); } catch {} }
-  throw new Error(`Non-JSON: ${text.slice(0, 150)}`);
-}
-
-async function resizeIfNeeded(buffer) {
-  const meta = await sharp(buffer).metadata();
-  if ((meta.height ?? 0) > MAX_IMG_HEIGHT) {
-    return sharp(buffer)
-      .resize({ height: MAX_IMG_HEIGHT, withoutEnlargement: true })
-      .jpeg({ quality: 60 })
-      .toBuffer();
-  }
-  return buffer;
-}
-
 async function takeScreenshot(page) {
   try {
-    let buf = await page.screenshot({ type: 'jpeg', quality: 65, fullPage: false });
-    buf = await resizeIfNeeded(buf);
-    return buf.toString('base64');
+    return await page.screenshot({ type: 'jpeg', quality: 65, fullPage: false, encoding: 'base64' });
   } catch { return null; }
 }
 
@@ -152,59 +125,9 @@ async function detectEcommerceDOM(page) {
   });
 }
 
-// ─── AI detection (homepage) ─────────────────────────────────────────────────
-
-async function detectWithAI(page, url, domResult, screenshotB64) {
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) return null;
-
-  const snapshot = await page.evaluate(() => {
-    const parts = [`URL: ${location.href}`, `TITLE: ${document.title}`];
-    document.querySelectorAll('h1,h2,h3').forEach(h =>
-      parts.push(`${h.tagName}: ${h.innerText?.trim().slice(0, 80)}`));
-    document.querySelectorAll('button,[role="button"],a').forEach(el => {
-      const t = (el.innerText || el.getAttribute('aria-label') || '').trim().slice(0, 60);
-      if (t) parts.push(`BTN/LINK: ${t}`);
-    });
-    document.querySelectorAll('[class*="price"],[itemprop="price"],[data-price]').forEach(el => {
-      const t = el.innerText?.trim().slice(0, 40);
-      if (t) parts.push(`PRICE: ${t}`);
-    });
-    return parts.slice(0, 60).join('\n');
-  });
-
-  const system = `You are an ecommerce audit expert. Analyze the provided screenshot and page snapshot.
-Return ONLY valid JSON — no markdown, no extra text.
-{"isEcommerce":true,"confidence":"high|medium|low","platform":"Shopify|WooCommerce|Magento|BigCommerce|custom|null","currentPageType":"home|product-listing|product-detail|cart|checkout|other","productListingUrl":"full URL or null","sampleProductUrls":["up to 3 INDIVIDUAL product page URLs — not category pages, not homepage"],"addToCartSelector":"CSS selector or null","cartUrl":"URL or null","checkoutUrl":"URL or null","reasoning":"one sentence"}
-Rules: isEcommerce true only if site sells products with buy flow. SaaS/service/lead-gen = NOT ecommerce.
-IMPORTANT: sampleProductUrls must be URLs to individual product detail pages only, never category pages.`;
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({
-        model: AI_MODEL, max_tokens: MAX_TOKENS, system,
-        messages: [{
-          role: 'user',
-          content: [
-            { type: 'text', text: `DOM signals: ${JSON.stringify(domResult.signals.slice(0, 8))}\n\nPage snapshot:\n${snapshot}` },
-            { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: screenshotB64 } },
-            { type: 'text', text: 'Is this an ecommerce site? Identify the shopping flow entry points.' },
-          ],
-        }],
-      }),
-    });
-    if (res.status === 429) { await sleep(8000); return null; }
-    if (!res.ok) return null;
-    return parseJSON((await res.json()).content?.[0]?.text || '');
-  } catch { return null; }
-}
-
 // ─── Product listing URL discovery ───────────────────────────────────────────
 
-async function findProductListingUrl(page, origin, aiHints = {}) {
-  if (aiHints.productListingUrl) return aiHints.productListingUrl;
+async function findProductListingUrl(page, origin) {
 
   const commonPaths = [
     '/shop', '/store', '/products', '/collections/all', '/collections',
@@ -233,7 +156,7 @@ async function findProductListingUrl(page, origin, aiHints = {}) {
 
 // ─── Step 1: Product listing audit ───────────────────────────────────────────
 
-async function auditProductListing(context, listingUrl, aiHints = {}) {
+async function auditProductListing(context, listingUrl) {
   const result = {
     tested: false, passed: false, url: listingUrl,
     productCount: 0, hasImages: false, hasPrices: false, hasProductLinks: false,
@@ -374,16 +297,7 @@ async function auditProductListing(context, listingUrl, aiHints = {}) {
     result.hasPrices        = domCheck.withPrices > 0;
     result.hasProductLinks  = domCheck.withLinks > 0;
 
-    const CATEGORY_PATH_RE = /\/(product-category|tag|category|categories)\//i;
-    const aiProductUrl     = (aiHints.sampleProductUrls || []).find(u => {
-      if (!u || CATEGORY_PATH_RE.test(u)) return false;
-      try {
-        const parsed = new URL(u);
-        if (parsed.pathname === '/' || parsed.href === listingUrl) return false;
-      } catch {}
-      return true;
-    });
-    result.sampleProductUrl = aiProductUrl || domCheck.sampleLink;
+    result.sampleProductUrl = domCheck.sampleLink;
 
     result.passed = result.productCount > 0 &&
       (domCheck.withImages > 0 || domCheck.withPrices > 0 || domCheck.withLinks > 0);
@@ -631,29 +545,47 @@ async function auditCartFlow(context, productUrl, productDetail, origin) {
       });
       if (variantsSelected > 0) await sleep(700);
 
-      // [B1] CDP network monitoring — tightened filter to only real cart API endpoints.
-      // Old regex matched cart.js/cart.json anywhere in the URL path, picking up plugin JS files
-      // like /wp-content/plugins/woocommerce/assets/js/frontend/cart.js
-      // New rules: cart.js/cart.json must be at origin root level (no /wp-content/ or /assets/ prefix)
-      const CART_API_RE = new RegExp(
-        [
-          String.raw`^https?://[^/]+/cart/?(add|update|change|items)(\?|$)`,   // Shopify /cart/add etc
-          String.raw`^https?://[^/]+/cart\.(js|json)(\?|$)`,                    // Shopify cart.js at root
-          String.raw`wc-ajax=add_to_cart`,                                       // WooCommerce AJAX
-          String.raw`wc-ajax=get_refreshed_fragments`,                           // WooCommerce fragments
-          String.raw`^https?://[^/]+/\?wc-ajax=`,                               // WooCommerce root AJAX
-          String.raw`/cart/add(\?|$)`,                                           // generic /cart/add
-          String.raw`add[_-]to[_-]cart`,                                         // add-to-cart params
-          String.raw`basket\/add`,                                               // basket/add variant
-        ].join('|'),
-        'i'
-      );
+      // [B1] CDP network monitoring — only first-party cart endpoints.
+      // Third-party conversion pixels often fire after ATC and are not cart traffic.
+      const firstPartyOrigin = origin;
+      const isRelevantCartRequest = (requestUrl, method) => {
+        try {
+          const parsed = new URL(requestUrl);
+          if (parsed.origin !== firstPartyOrigin) return false;
+
+          const path = `${parsed.pathname}${parsed.search}`.toLowerCase();
+          if (/^\/cart\/(add|update|change|items)(\?|$)/.test(path)) return true;
+          if (/^\/cart\.(js|json)(\?|$)/.test(path)) return true;
+          if (/^\/\?wc-ajax=/.test(path) && /add_to_cart|get_refreshed_fragments|update_order_review/.test(path)) return true;
+          if (/^\/cart(\?|$)/.test(path) && method === 'POST') return true;
+          if (/^\/basket\/(add|update|change|items)(\?|$)/.test(path)) return true;
+          return false;
+        } catch {
+          return false;
+        }
+      };
+      const isRelevantCartResponse = (responseUrl) => {
+        try {
+          const parsed = new URL(responseUrl);
+          if (parsed.origin !== firstPartyOrigin) return false;
+          const path = `${parsed.pathname}${parsed.search}`.toLowerCase();
+          return (
+            /^\/cart\/(add|update|change|items)(\?|$)/.test(path) ||
+            /^\/cart\.(js|json)(\?|$)/.test(path) ||
+            /^\/\?wc-ajax=/.test(path) ||
+            /^\/cart(\?|$)/.test(path) ||
+            /^\/basket\/(add|update|change|items)(\?|$)/.test(path)
+          );
+        } catch {
+          return false;
+        }
+      };
 
       const networkLog = { cartRequests: [], cartResponses: [], atcPostConfirmed: false, atcPostSucceeded: false };
       await cdpSession.send('Network.enable');
       cdpSession.on('Network.requestWillBeSent', ({ request }) => {
         const url = request.url;
-        if (CART_API_RE.test(url)) {
+        if (isRelevantCartRequest(url, request.method)) {
           networkLog.cartRequests.push({ url: url.slice(0, 120), method: request.method });
           // [A7] Track definitive ATC POST requests
           if (request.method === 'POST' && /\/cart\/add|wc-ajax=add_to_cart/i.test(url)) {
@@ -664,7 +596,7 @@ async function auditCartFlow(context, productUrl, productDetail, origin) {
       });
       cdpSession.on('Network.responseReceived', ({ response }) => {
         const url = response.url;
-        if (CART_API_RE.test(url)) {
+        if (isRelevantCartResponse(url)) {
           networkLog.cartResponses.push({ url: url.slice(0, 120), status: response.status });
           // [A7] A 200 response to the ATC POST is definitive proof
           if (response.status === 200 && /\/cart\/add|wc-ajax=add_to_cart/i.test(url)) {
@@ -1276,38 +1208,6 @@ async function findCartUrl(page, origin) {
   return null;
 }
 
-// ─── AI vision analysis ───────────────────────────────────────────────────────
-
-async function analyzeCartFlowWithAI(screenshots, flowSteps) {
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key || !screenshots.length) return null;
-
-  const system = `You are a QA engineer reviewing ecommerce flow screenshots. Return ONLY valid JSON — no markdown.
-{"productListing":{"loaded":true,"hasProducts":true,"productCount":"visible count or 'many'","detail":"..."},
- "productDetail":{"loaded":true,"hasAtcButton":true,"hasPrice":true,"detail":"..."},
- "addToCart":{"cartUpdated":true,"method":"count-change|drawer|redirect|notification|ajax","detail":"..."},
- "cartPage":{"loaded":true,"hasItems":true,"lineItemCount":0,"hasCheckoutButton":true,"detail":"..."},
- "generalObservations":"other UX issues or null"}`;
-
-  const content = [{ type: 'text', text: `Flow steps tested: ${flowSteps.join(', ')}` }];
-  for (const [label, b64] of screenshots) {
-    content.push({ type: 'text', text: `📸 ${label}:` });
-    content.push({ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: b64 } });
-  }
-  content.push({ type: 'text', text: 'Assess each ecommerce flow step from the screenshots.' });
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: AI_MODEL, max_tokens: MAX_TOKENS, system, messages: [{ role: 'user', content }] }),
-    });
-    if (res.status === 429) { await sleep(8000); return null; }
-    if (!res.ok) return null;
-    return parseJSON((await res.json()).content?.[0]?.text || '');
-  } catch { return null; }
-}
-
 // ─── Score calculation ────────────────────────────────────────────────────────
 
 function calculateScore(steps) {
@@ -1411,13 +1311,13 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
   const page = await context.newPage();
   const result = {
     url, isEcommerce: false, platform: null, confidence: 'low',
-    detectionMethod: null,
+    detectionMethod: 'dom-only',
     productListing: { tested: false, passed: false, detail: 'Not tested' },
     productDetail:  { tested: false, passed: false, detail: 'Not tested' },
     addToCart:      { tested: false, passed: false, detail: 'Not tested' },
     cartPage:       { tested: false, passed: false, detail: 'Not tested' },
     checkout:       { tested: false, passed: false, detail: 'Not tested' },
-    aiAnalysis: null, overallStatus: 'healthy', score: null, issues: [],
+    overallStatus: 'healthy', score: null, issues: [],
   };
 
   try {
@@ -1445,13 +1345,10 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
 
     console.log(`   🔍 Detecting ecommerce signals...`);
     const domDetection = await detectEcommerceDOM(page);
-    const homepageShot = await takeScreenshot(page);
-    const aiDetection  = await detectWithAI(page, url, domDetection, homepageShot);
 
-    result.isEcommerce     = (aiDetection?.isEcommerce === true && aiDetection?.confidence !== 'low') || domDetection.isEcommerce;
-    result.platform        = aiDetection?.platform || domDetection.platform;
-    result.confidence      = aiDetection?.confidence || domDetection.confidence;
-    result.detectionMethod = aiDetection ? 'ai+dom' : 'dom-only';
+    result.isEcommerce = domDetection.isEcommerce;
+    result.platform    = domDetection.platform;
+    result.confidence  = domDetection.confidence;
 
     console.log(
       `   ${result.isEcommerce ? '🛒' : '❌'} Ecommerce: ${result.isEcommerce} | ` +
@@ -1461,7 +1358,7 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
 
     if (!result.isEcommerce) {
       result.issues.push({ type: 'info', code: 'NOT_ECOMMERCE',
-        message: `Not ecommerce (DOM: ${domDetection.domScore}, AI: ${aiDetection?.reasoning || 'n/a'})` });
+        message: `Not ecommerce (DOM score: ${domDetection.domScore})` });
       result.overallStatus = 'healthy';
       result.score         = null;
       return result;
@@ -1470,12 +1367,12 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
     const origin = new URL(url).origin;
 
     console.log(`   📦 Step 1: Product listing...`);
-    const listingUrl      = await findProductListingUrl(page, origin, aiDetection || {});
-    result.productListing = await auditProductListing(context, listingUrl, aiDetection || {});
+    const listingUrl      = await findProductListingUrl(page, origin);
+    result.productListing = await auditProductListing(context, listingUrl);
     console.log(`      ${result.productListing.passed ? '✅' : '❌'} ${result.productListing.detail}`);
 
     console.log(`   🏷  Step 2: Product detail...`);
-    let productUrl       = result.productListing.sampleProductUrl || aiDetection?.sampleProductUrls?.[0] || null;
+    let productUrl       = result.productListing.sampleProductUrl || null;
     result.productDetail = await auditProductDetail(context, productUrl);
 
     if (result.productDetail.isCategoryPage && productUrl) {
@@ -1503,42 +1400,6 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
     result.addToCart = cartFlow.addToCart;
     result.cartPage  = cartFlow.cartPage;
     result.checkout  = cartFlow.checkout;
-
-    // AI vision
-    const screenshots = [
-      ['Homepage',          homepageShot],
-      result.productListing.screenshot && ['Product Listing', result.productListing.screenshot],
-      result.productDetail.screenshot  && ['Product Detail',  result.productDetail.screenshot],
-      result.addToCart.screenshot      && ['After ATC Click', result.addToCart.screenshot],
-      result.cartPage.screenshot       && ['Cart Page',       result.cartPage.screenshot],
-      result.checkout.screenshot       && ['Checkout Page',   result.checkout.screenshot],
-    ].filter(Boolean);
-
-    const flowStepsTested = [
-      'detection',
-      result.productListing.tested && 'product-listing',
-      result.productDetail.tested  && 'product-detail',
-      result.addToCart.tested      && 'add-to-cart',
-      result.cartPage.tested       && 'cart',
-      result.checkout.tested       && 'checkout',
-    ].filter(Boolean);
-
-    try {
-      result.aiAnalysis = await analyzeCartFlowWithAI(screenshots, flowStepsTested);
-      const ai = result.aiAnalysis;
-      if (ai?.addToCart?.cartUpdated && !result.addToCart.passed &&
-          result.addToCart.tested && result.addToCart.detail?.includes('ajax-request')) {
-        result.addToCart.passed = true;
-        result.addToCart.method = `ai-vision: ${ai.addToCart.method}`;
-      }
-      if (ai?.cartPage && !result.cartPage.passed && ai.cartPage.loaded &&
-          ai.cartPage.hasItems && (ai.cartPage.lineItemCount > 0)) {
-        result.cartPage.passed = true;
-        result.cartPage.detail = `AI confirmed items: ${ai.cartPage.detail}`;
-      }
-    } catch (err) {
-      console.warn(`      ⚠️  AI vision failed: ${err.message.slice(0, 60)}`);
-    }
 
     result.score = calculateScore(result);
 

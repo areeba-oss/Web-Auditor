@@ -35,9 +35,11 @@ const { auditPerformance }     = require('./audits/performanceCheck');
 // ─── Config ───────────────────────────────────────────────────────────────────
 
 const AUDIT_TIMEOUT   = 30_000;   // per-layer timeout (ms)
+const ECOMMERCE_TIMEOUT = Number(process.env.ECOMMERCE_AUDIT_TIMEOUT_MS || 90_000);
 const CRAWL_LIMIT     = 10;       // pages to shortlist when crawling homepage
 const LAYER_DELAY_MS  = 500;      // small pause between layers (rate limit safety)
 const OUTPUT_FILE     = 'results.json';
+const CHROME_PATH     = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -136,7 +138,9 @@ function normalisePerformance(raw) {
 
 // ─── Run all 6 layers on a single page ───────────────────────────────────────
 
-async function auditPage(browser, pageUrl, homepageUrl, pageLabel) {
+async function auditPage(browser, pageUrl, homepageUrl, pageLabel, options = {}) {
+  const runEcommerce = options.runEcommerce !== false;
+  const ecommerceUrl = options.ecommerceUrl || homepageUrl;
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
 
   const result = {
@@ -231,21 +235,34 @@ async function auditPage(browser, pageUrl, homepageUrl, pageLabel) {
     }
     await sleep(LAYER_DELAY_MS);
 
-    // ── Layer 5: Ecommerce ─────────────────────────────────────────────────
-    printLayerHeader(5, 'Ecommerce Flow', pageUrl);
-    try {
-      result.ecommerce = await auditEcommerce(context, pageUrl, AUDIT_TIMEOUT);
-      if (!result.ecommerce?.isEcommerce) {
-        console.log(`  ℹ️  Not an ecommerce page — skipped`);
-      } else {
-        console.log(`  Status: ${statusIcon(result.ecommerce.overallStatus)}  Score: ${result.ecommerce.score}/100`);
-        console.log(`  Platform: ${result.ecommerce.platform ?? 'unknown'}  Confidence: ${result.ecommerce.confidence ?? '—'}`);
-        const steps = ['productListing', 'productDetail', 'addToCart', 'cartPage', 'checkout'];
-        const stepLine = steps.map(s => result.ecommerce[s]?.passed ? '✅' : (result.ecommerce[s]?.tested ? '❌' : '—')).join(' ');
-        console.log(`  Funnel: ${stepLine}  (listing → detail → ATC → cart → checkout)`);
+    // ── Layer 5: Ecommerce (site-level; homepage only) ────────────────────
+    printLayerHeader(5, 'Ecommerce Flow', ecommerceUrl);
+    if (!runEcommerce) {
+      result.ecommerce = {
+        isEcommerce: false,
+        score: null,
+        overallStatus: 'healthy',
+        issues: [],
+        siteLevelSkipped: true,
+      };
+      console.log(`  ℹ️  Skipped on this page — ecommerce funnel is audited once at site level`);
+    } else {
+      try {
+        result.ecommerce = await auditEcommerce(context, ecommerceUrl, ECOMMERCE_TIMEOUT);
+        result.ecommerce.siteLevelAudited = true;
+
+        if (!result.ecommerce?.isEcommerce) {
+          console.log(`  ℹ️  Site does not appear to be ecommerce`);
+        } else {
+          console.log(`  Status: ${statusIcon(result.ecommerce.overallStatus)}  Score: ${result.ecommerce.score}/100`);
+          console.log(`  Platform: ${result.ecommerce.platform ?? 'unknown'}  Confidence: ${result.ecommerce.confidence ?? '—'}`);
+          const steps = ['productListing', 'productDetail', 'addToCart', 'cartPage', 'checkout'];
+          const stepLine = steps.map(s => result.ecommerce[s]?.passed ? '✅' : (result.ecommerce[s]?.tested ? '❌' : '—')).join(' ');
+          console.log(`  Funnel: ${stepLine}  (listing → detail → ATC → cart → checkout)`);
+        }
+      } catch (err) {
+        console.warn(`  ⚠️  Layer 5 crashed: ${err.message.slice(0, 80)}`);
       }
-    } catch (err) {
-      console.warn(`  ⚠️  Layer 5 crashed: ${err.message.slice(0, 80)}`);
     }
     await sleep(LAYER_DELAY_MS);
 
@@ -294,7 +311,7 @@ async function auditPage(browser, pageUrl, homepageUrl, pageLabel) {
       { result: result.navigation,  weight: 15 },
       { result: result.forms,       weight: 10 },
       { result: result.performance, weight: 20 },
-      ...(result.ecommerce?.isEcommerce ? [{ result: result.ecommerce, weight: 15 }] : []),
+      ...(result.ecommerce?.siteLevelAudited && result.ecommerce?.isEcommerce ? [{ result: result.ecommerce, weight: 15 }] : []),
     ].filter(s => s.result?.score != null);
 
     if (scoreInputs.length > 0) {
@@ -330,7 +347,9 @@ function printPageSummary(pageResult) {
   printLayerSummary('3. Navigation',  pageResult.navigation);
   printLayerSummary('4. Forms',       pageResult.forms);
 
-  if (pageResult.ecommerce?.isEcommerce) {
+  if (pageResult.ecommerce?.siteLevelSkipped) {
+    console.log(`  ${'5. Ecommerce'.padEnd(22)} —   N/A     Site-level run only (homepage)`);
+  } else if (pageResult.ecommerce?.isEcommerce) {
     printLayerSummary('5. Ecommerce', pageResult.ecommerce);
   } else {
     console.log(`  ${'5. Ecommerce'.padEnd(22)} —   N/A     Not an ecommerce page`);
@@ -497,7 +516,10 @@ function writeResultsFile(allResults, inputUrl, totalMs) {
   console.log(`  Layers : Health • UI • Navigation • Forms • Ecommerce • Performance`);
   console.log('═'.repeat(60) + '\n');
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: true,
+    executablePath: CHROME_PATH,
+  });
 
   try {
     // ── Determine pages to audit ─────────────────────────────────────────────
@@ -524,6 +546,7 @@ function writeResultsFile(allResults, inputUrl, totalMs) {
 
     // ── Audit each page ──────────────────────────────────────────────────────
     const allResults = [];
+    let ecommerceDone = false;
 
     for (let i = 0; i < pagesToAudit.length; i++) {
       const { url, label } = pagesToAudit[i];
@@ -532,7 +555,13 @@ function writeResultsFile(allResults, inputUrl, totalMs) {
       console.log(`  ${url}`);
       console.log('█'.repeat(60));
 
-      const pageResult = await auditPage(browser, url, homepage, label);
+      const shouldRunEcommerce = !ecommerceDone && (url === homepage || i === 0);
+
+      const pageResult = await auditPage(browser, url, homepage, label, {
+        runEcommerce: shouldRunEcommerce,
+        ecommerceUrl: homepage,
+      });
+      if (pageResult.ecommerce?.siteLevelAudited) ecommerceDone = true;
       allResults.push(pageResult);
       printPageSummary(pageResult);
 

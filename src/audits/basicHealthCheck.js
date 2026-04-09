@@ -3,54 +3,36 @@
 /**
  * basicHealthCheck.js — Layer 1 audit: Page Load & Basic Health
  *
+ * RAW MODE — no noise filtering, no bot detection, no tracker exclusions.
+ * Collects and reports everything exactly as the browser sees it.
+ *
  * Checks:
  *   1. HTTP status (200 OK?)
  *   2. Blank screen / broken layout detection
- *   3. Console errors & warnings (JS errors)
- *   4. Network failures (failed/blocked requests)
+ *   3. Console errors & warnings (JS errors) — ALL, unfiltered
+ *   4. Network failures (failed/blocked requests) — ALL, unfiltered
  *
- * Returns a structured result + AI-powered analysis of findings.
+ * Returns a structured rule-based result for layer-1 health.
  */
-
-// ─── Noise patterns — analytics/trackers we don't care about ─────────────────
-
-const NOISE_PATTERNS = [
-  /google-analytics\.com/,
-  /googletagmanager\.com/,
-  /googlesyndication\.com/,
-  /doubleclick\.net/,
-  /facebook\.net/,
-  /connect\.facebook\.net/,
-  /hotjar\.com/,
-  /clarity\.ms/,
-  /mouseflow\.com/,
-  /fullstory\.com/,
-  /segment\.com/,
-  /mixpanel\.com/,
-  /amplitude\.com/,
-  /intercom\.io/,
-  /crisp\.chat/,
-  /tawk\.to/,
-  /cdn\.heapanalytics\.com/,
-];
-
-function isNoise(str = '') {
-  return NOISE_PATTERNS.some((p) => p.test(str));
-}
-
-// ─── Blank screen detection ───────────────────────────────────────────────────
 
 const BLANK_SCREEN_CHECKS = {
   minBodyText: 100,      // less than this = likely blank
   minVisibleElements: 3, // less than this = broken layout
 };
 
+const POST_LOAD_OBSERVE_MS = Number(process.env.HEALTH_POST_LOAD_OBSERVE_MS || 500);
+const NETWORKIDLE_WAIT_MS = Number(process.env.HEALTH_NETWORKIDLE_TIMEOUT_MS || 15_000);
+
+function stripQueryAndHash(url = '') {
+  return String(url || '').split('#')[0].split('?')[0].toLowerCase();
+}
+
 // ─── Main audit function ──────────────────────────────────────────────────────
 
 /**
  * @param {import('playwright-core').Page} page  — already loaded Playwright page
  * @param {string} url                           — page URL
- * @param {object} loadResult                    — { httpStatus, redirectedTo }
+ * @param {object} loadResult                    — { httpStatus, redirectedTo, consoleErrors, consoleWarnings, failedRequests }
  * @returns {Promise<HealthCheckResult>}
  */
 async function runBasicHealthCheck(page, url, loadResult = {}) {
@@ -68,16 +50,16 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
     bodyTextLength: 0,
     visibleElementCount: 0,
 
-    // ── 3. Console Errors/Warnings ──────────────────────────────
+    // ── 3. Console Errors/Warnings (RAW — no filtering) ─────────
     consoleErrors: [],
     consoleWarnings: [],
-    significantErrors: [],       // after noise filtering
+    rawConsoleErrorCount: 0,
+    rawConsoleWarningCount: 0,
+    significantErrors: [],
     significantWarnings: [],
-    filteredNoise: [],
 
-    // ── 4. Network Failures ─────────────────────────────────────
+    // ── 4. Network Failures (RAW — no filtering) ────────────────
     failedRequests: [],
-    blockedRequests: [],
     criticalFailures: [],        // failures that likely affect page function
 
     // ── Summary ─────────────────────────────────────────────────
@@ -109,7 +91,7 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
     }
 
     // ── 2. BLANK SCREEN DETECTION ───────────────────────────────────────────
-    const domData = await page.evaluate((checks) => {
+    const domData = await page.evaluate(() => {
       const bodyText = document.body?.innerText?.trim() ?? '';
 
       // Count meaningfully visible elements (not hidden, not 0-size)
@@ -128,12 +110,9 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
         );
       }).length;
 
-      // Check if page has a meaningful <title>
       const title = document.title?.trim() ?? '';
       const hasTitle = title.length > 0 && title.toLowerCase() !== 'untitled';
 
-      // Check for common error page indicators — word-boundary match to avoid
-      // false positives like "$500" or "1-800-" on real pages
       const errorPageSignals = [
         /\b404\b.{0,30}(not found|page)/i,
         /\b(page|file) not found\b/i,
@@ -153,14 +132,14 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
         title,
         errorPageSignals,
       };
-    }, BLANK_SCREEN_CHECKS);
+    });
 
     result.bodyTextLength = domData.bodyTextLength;
     result.visibleElementCount = domData.visibleElementCount;
     result.pageTitle = domData.title;
+    const hasMeaningfulTitle = !!domData.hasTitle;
 
-    // Determine if page is blank/broken
-    if (domData.bodyTextLength < BLANK_SCREEN_CHECKS.minBodyText) {
+    if (domData.bodyTextLength < BLANK_SCREEN_CHECKS.minBodyText && domData.visibleElementCount < BLANK_SCREEN_CHECKS.minVisibleElements && !hasMeaningfulTitle) {
       result.blankScreen = true;
       result.blankScreenReason = `Body text only ${domData.bodyTextLength} chars (min: ${BLANK_SCREEN_CHECKS.minBodyText}) — page likely not hydrated or empty`;
     } else if (domData.visibleElementCount < BLANK_SCREEN_CHECKS.minVisibleElements) {
@@ -179,28 +158,22 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
       });
     }
 
-    // ── 3. CONSOLE ERRORS & WARNINGS ────────────────────────────────────────
-    // NOTE: Callers must set up page.on('console') BEFORE page.goto()
-    // These are passed in via loadResult.consoleErrors/consoleWarnings
-    const rawErrors = loadResult.consoleErrors ?? [];
+    // ── 3. CONSOLE ERRORS & WARNINGS (RAW — no filtering applied) ───────────
+    const rawErrors   = loadResult.consoleErrors   ?? [];
     const rawWarnings = loadResult.consoleWarnings ?? [];
 
-    result.consoleErrors = rawErrors;
-    result.consoleWarnings = rawWarnings;
-
-    // Separate real errors from analytics/tracker noise
-    result.significantErrors = rawErrors.filter((e) => !isNoise(e));
-    result.significantWarnings = rawWarnings.filter((w) => !isNoise(w));
-    result.filteredNoise = [
-      ...rawErrors.filter(isNoise),
-      ...rawWarnings.filter(isNoise),
-    ];
+    result.consoleErrors          = rawErrors;
+    result.consoleWarnings        = rawWarnings;
+    result.rawConsoleErrorCount   = rawErrors.length;
+    result.rawConsoleWarningCount = rawWarnings.length;
+    result.significantErrors      = [...rawErrors];
+    result.significantWarnings    = [...rawWarnings];
 
     if (result.significantErrors.length > 0) {
       result.issues.push({
         type: result.significantErrors.length >= 5 ? 'critical' : 'warning',
         code: 'CONSOLE_ERRORS',
-        message: `${result.significantErrors.length} JS error(s) detected (${result.filteredNoise.length} analytics/tracker noise filtered)`,
+        message: `${result.significantErrors.length} JS error(s) detected`,
         detail: result.significantErrors.slice(0, 5),
       });
     }
@@ -214,28 +187,20 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
       });
     }
 
-    // ── 4. NETWORK FAILURES ──────────────────────────────────────────────────
-    const rawFailed = loadResult.failedRequests ?? [];
+    // ── 4. NETWORK FAILURES (RAW — no filtering applied) ────────────────────
+    // All failed requests passed in directly — nothing stripped
+    const allFailures = loadResult.failedRequests ?? [];
+    result.failedRequests = allFailures;
 
-    // Separate noise from real failures
-    const realFailures = rawFailed.filter((r) => !isNoise(r.url));
-    const noiseFailures = rawFailed.filter((r) => isNoise(r.url));
-
-    result.failedRequests = realFailures;
-    result.blockedRequests = noiseFailures;
-
-    // Critical = failures that affect core page functionality
-    result.criticalFailures = realFailures.filter((r) => {
-      const url = (r.url || '').toLowerCase();
+    // Critical = failures that likely affect core page functionality
+    result.criticalFailures = allFailures.filter((r) => {
+      const url = stripQueryAndHash(r.url || '');
       return (
-        // JS bundles
         url.endsWith('.js') ||
         url.includes('/api/') ||
         url.includes('/graphql') ||
         url.includes('/rest/') ||
-        // CSS that affects layout
         (url.endsWith('.css') && !url.includes('font')) ||
-        // Fonts that would cause FOUT
         url.endsWith('.woff2') ||
         url.endsWith('.woff')
       );
@@ -255,7 +220,7 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
       result.issues.push({
         type: 'warning',
         code: 'NETWORK_FAILURES',
-        message: `${result.failedRequests.length} non-critical request(s) failed`,
+        message: `${result.failedRequests.length} request(s) failed`,
         detail: result.failedRequests.slice(0, 3).map((r) => ({
           url: r.url?.slice(0, 100),
           error: r.errorText,
@@ -302,7 +267,7 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
 
 /**
  * Opens a page, sets up all event listeners, navigates, then runs health check.
- * Call this from your auditor — it handles the full lifecycle.
+ * RAW MODE: captures everything — no tracker filtering, no bot detection.
  *
  * @param {import('playwright-core').BrowserContext} context
  * @param {string} url
@@ -313,86 +278,140 @@ async function auditPageHealth(context, url, timeout = 15_000) {
   const page = await context.newPage();
 
   // Collectors — must be registered before goto()
-  const consoleErrors = [];
-  const consoleWarnings = [];
-  const failedRequests = [];
+  const consoleEvents        = [];
+  const failedRequestEvents  = [];
+  const failedResponseEvents = [];
 
+  // ── Console: capture ALL types (error, warning, log, info, etc.) ──────────
   page.on('console', (msg) => {
     const text = msg.text();
-    if (msg.type() === 'error')   consoleErrors.push(text);
-    if (msg.type() === 'warning') consoleWarnings.push(text);
-  });
-
-  page.on('pageerror', (err) => {
-    // Uncaught exceptions — always significant
-    consoleErrors.push(`[uncaught] ${err.message}`);
-  });
-
-  page.on('requestfailed', (req) => {
-    failedRequests.push({
-      url: req.url(),
-      errorText: req.failure()?.errorText ?? 'unknown',
-      resourceType: req.resourceType(),
+    const t    = msg.type();
+    consoleEvents.push({
+      ts:   Date.now(),
+      type: t === 'assert' ? 'error' : t,
+      text,
     });
   });
 
-  let httpStatus = null;
+  // ── Uncaught exceptions — always significant ───────────────────────────────
+  page.on('pageerror', (err) => {
+    consoleEvents.push({
+      ts:   Date.now(),
+      type: 'error',
+      text: `[uncaught] ${err.message}`,
+    });
+  });
+
+  // ── Transport-level failures (DNS, connection refused, SSL, CORS abort) ───
+  page.on('requestfailed', (req) => {
+    failedRequestEvents.push({
+      ts:           Date.now(),
+      url:          req.url(),
+      errorText:    req.failure()?.errorText ?? 'unknown',
+      resourceType: req.resourceType(),
+      method:       req.method(),
+    });
+  });
+
+  // ── HTTP-level failures (4xx / 5xx responses) ─────────────────────────────
+  page.on('response', (res) => {
+    const status = res.status();
+    if (status >= 400) {
+      const req = res.request();
+      failedResponseEvents.push({
+        ts:           Date.now(),
+        url:          res.url(),
+        status,
+        statusText:   res.statusText(),
+        method:       req.method(),
+        resourceType: req.resourceType(),
+      });
+    }
+  });
+
+  let httpStatus   = null;
   let redirectedTo = null;
 
   try {
+    const observeStartTs = Date.now();
+
     const response = await page.goto(url, {
-      waitUntil: 'load',       // ⚡ wait for full load, not just HTML — SPAs need this
+      waitUntil: 'load',
       timeout,
     });
 
-    httpStatus = response?.status() ?? null;
+    httpStatus   = response?.status() ?? null;
     redirectedTo = page.url();
 
-    // ⚡ For React/Next.js/Vue sites — wait until body has real content (max 5s)
-    // domcontentloaded pe inke pages khali hote hain, JS hydrate karta hai baad mein
+    // Wait for network idle so async data fetches settle (React/Next/Vue)
     try {
-      await page.waitForFunction(
-        () => (document.body?.innerText?.trim().length ?? 0) > 100,
-        { timeout: 5_000 },
-      );
+      await page.waitForLoadState('networkidle', { timeout: NETWORKIDLE_WAIT_MS });
     } catch {
-      // If still empty after 5s — genuine blank page, let the check report it
+      // Long-polling / streaming pages may never go idle — continue anyway
     }
 
-    // Small extra wait for JS errors to bubble up after hydration
-    await page.waitForTimeout(500);
+    // Additional observation window to catch late-firing errors
+    await page.waitForTimeout(POST_LOAD_OBSERVE_MS);
 
-    const result = await runBasicHealthCheck(page, url, {
+    // ── Slice events to post-navigation window only ──────────────────────────
+    const postLoadConsole        = consoleEvents.filter((e) => e.ts >= observeStartTs);
+    const postLoadFailedRequests = failedRequestEvents.filter((e) => e.ts >= observeStartTs);
+    const postLoadFailedResponses = failedResponseEvents.filter((e) => e.ts >= observeStartTs);
+
+    // ── RAW console — no noise filtering ────────────────────────────────────
+    const consoleErrors   = postLoadConsole.filter((e) => e.type === 'error').map((e) => e.text);
+    const consoleWarnings = postLoadConsole.filter((e) => e.type === 'warning').map((e) => e.text);
+
+    // ── Merge transport + HTTP failures, deduplicate on url+resourceType ─────
+    const transportFailedRequests = postLoadFailedRequests.map(({ ts, ...rest }) => ({
+      ...rest,
+      source: 'requestfailed',
+    }));
+    const httpFailedRequests = postLoadFailedResponses.map(({ ts, ...rest }) => ({
+      url:          rest.url,
+      errorText:    `HTTP ${rest.status}${rest.statusText ? ` ${rest.statusText}` : ''}`,
+      resourceType: rest.resourceType,
+      status:       rest.status,
+      method:       rest.method,
+      source:       'http-response',
+    }));
+
+    const dedupe = new Set();
+    // RAW — keep ALL failures, just deduplicate same request appearing in both event types
+    const failedRequests = [...transportFailedRequests, ...httpFailedRequests].filter((r) => {
+      const key = `${r.url}|${r.resourceType || ''}`;
+      if (dedupe.has(key)) return false;
+      dedupe.add(key);
+      return true;
+    });
+
+    return await runBasicHealthCheck(page, url, {
       httpStatus,
       redirectedTo,
       consoleErrors,
       consoleWarnings,
-      failedRequests,
+      failedRequests,   // raw, unfiltered
     });
-
-    return result;
 
   } catch (err) {
     // Navigation itself failed (timeout, DNS error, etc.)
     return {
       url,
-      httpStatus: null,
-      httpOk: false,
-      blankScreen: true,
+      httpStatus:        null,
+      httpOk:            false,
+      blankScreen:       true,
       blankScreenReason: `Navigation failed: ${err.message}`,
-      consoleErrors,
-      consoleWarnings,
-      significantErrors: consoleErrors,
-      significantWarnings: consoleWarnings,
-      filteredNoise: [],
-      failedRequests,
-      blockedRequests: [],
-      criticalFailures: failedRequests,
-      overallStatus: 'critical',
-      score: 0,
+      consoleErrors:     consoleEvents.filter((e) => e.type === 'error').map((e) => e.text),
+      consoleWarnings:   consoleEvents.filter((e) => e.type === 'warning').map((e) => e.text),
+      significantErrors: consoleEvents.filter((e) => e.type === 'error').map((e) => e.text),
+      significantWarnings: consoleEvents.filter((e) => e.type === 'warning').map((e) => e.text),
+      failedRequests:    failedRequestEvents.map(({ ts, ...rest }) => rest),
+      criticalFailures:  failedRequestEvents.map(({ ts, ...rest }) => rest),
+      overallStatus:     'critical',
+      score:             0,
       issues: [{
-        type: 'critical',
-        code: 'NAVIGATION_FAILED',
+        type:    'critical',
+        code:    'NAVIGATION_FAILED',
         message: `Could not load page: ${err.message}`,
       }],
       fatalError: err.message,

@@ -325,26 +325,23 @@ function transformPage(raw) {
   const navBrokenLinks    = (nDetails.nav    ?? []).filter(isBrokenLink).map(l => ({ url: l.url ?? l.href, status: l.status, region: 'nav'    }));
   const footerBrokenLinks = (nDetails.footer ?? []).filter(isBrokenLink).map(l => ({ url: l.url ?? l.href, status: l.status, region: 'footer' }));
 
-  // All broken (for per-page findings — shows everything on this page)
-  const allBrokenLinks = [...navBrokenLinks, ...footerBrokenLinks, ...contentBrokenLinks];
-
   const totalLinks   = (nSummary.nav?.total ?? 0) + (nSummary.internal?.total ?? 0) + (nSummary.external?.total ?? 0) + (nSummary.footer?.total ?? 0);
-  const navHealthStr = allBrokenLinks.length > 3 ? 'broken' : allBrokenLinks.length > 0 ? 'issues' : 'good';
+  const contentHealthStr = contentBrokenLinks.length > 3 ? 'broken' : contentBrokenLinks.length > 0 ? 'issues' : 'good';
 
   const navigation = {
-    health:      navHealthLabel(navHealthStr),
-    severity:    allBrokenLinks.length > 3 ? 'high' : allBrokenLinks.length > 0 ? 'medium' : 'low',
+    health:      navHealthLabel(contentHealthStr),
+    severity:    contentBrokenLinks.length > 3 ? 'high' : contentBrokenLinks.length > 0 ? 'medium' : 'low',
     totalLinks,
-    internalLinks:     (nSummary.internal?.total ?? 0) + (nSummary.footer?.total ?? 0),
+    internalLinks:     (nSummary.internal?.total ?? 0),
     externalLinks:     nSummary.external?.total ?? 0,
-    // Broken split: content-only for per-page score; full list for display
-    brokenLinks:       allBrokenLinks,          // all broken on this page (display)
+    // Page-specific broken links only (nav/footer shown in site-wide summary)
+    brokenLinks:       contentBrokenLinks,       // page content links only
     contentBrokenLinks,                          // internal+external only (score)
-    navBrokenLinks,                              // nav broken (deduplicated at summary)
-    footerBrokenLinks,                           // footer broken (deduplicated at summary)
+    navBrokenLinks,                              // nav broken (for site summary, not page)
+    footerBrokenLinks,                           // footer broken (for site summary, not page)
     protectedLinks: [],
     issues:  nIssues.slice(0, 5).map(i => i.message),
-    insight: nIssues.length === 0 ? 'All links working correctly.' : `${nIssues.length} navigation issue(s) found.`,
+    insight: contentBrokenLinks.length === 0 && nIssues.length === 0 ? 'All page links working correctly.' : `${contentBrokenLinks.length} broken link(s) found; ${nIssues.length} issue(s).`,
   };
 
   // ── Forms ──────────────────────────────────────────────────────────────────
@@ -358,6 +355,8 @@ function transformPage(raw) {
       isCritical:                false,
       hasSubmitBtn:              true,
       hasEmailField:             f.invalidEmail?.tested ?? f.hasEmail ?? false,
+      invalidEmailInconclusive:  f.invalidEmail?.inconclusive ?? false,
+      invalidEmailDetail:        f.invalidEmail?.detail ?? null,
       hasRequiredFields:         true,
       browserValidationActive:   f.emptySubmit?.validationShown ?? false,
       criticalMissingValidation: (f.issues ?? []).filter(i => i.type === 'critical').map(i => i.code),
@@ -366,7 +365,7 @@ function transformPage(raw) {
   };
 
   // ── Category scores ─────────────────────────────────────────────────────────
-  const { overall: overallScore, categories: categoryScores } = computeCategoryScores(
+  const { overall: computedOverallScore, categories: categoryScores } = computeCategoryScores(
     {
       httpOk:               health.ok,
       blankScreen:          health.blankScreen,
@@ -392,6 +391,11 @@ function transformPage(raw) {
       issueCount:  nIssues.length,
     },
   );
+  // Keep auditor score as the source of truth when available to avoid drift
+  // between results.json and report.json. Use computed score only as fallback.
+  const overallScore = typeof raw.overallScore === 'number'
+    ? raw.overallScore
+    : computedOverallScore;
   const grade = gradeFromScore(overallScore);
 
   // ── Findings ───────────────────────────────────────────────────────────────
@@ -458,9 +462,9 @@ function transformPage(raw) {
   else
     findings.push({ type: 'success',  message: 'Fully mobile-responsive.' });
 
-  // Broken links (all on this page)
-  if (allBrokenLinks.length > 0)
-    findings.push({ type: 'critical', message: `${allBrokenLinks.length} broken link(s) on this page — damages SEO.` });
+  // Broken links from page body content only (exclude shared nav/footer)
+  if (contentBrokenLinks.length > 0)
+    findings.push({ type: 'critical', message: `${contentBrokenLinks.length} broken content link(s) on this page — excludes header/footer links.` });
 
   // Navigation issues
   if      (nIssues.length >= 5) findings.push({ type: 'warning', message: `${nIssues.length} navigation issues.` });
@@ -545,6 +549,34 @@ function consolidateOpportunities(rawOpps) {
 // ─── buildSummary ─────────────────────────────────────────────────────────────
 
 function buildSummary(pages) {
+  if (!pages || pages.length === 0) {
+    return {
+      pagesAudited: 0,
+      averageScore: 0,
+      grade: gradeFromScore(0),
+      criticalIssues: 0,
+      warnings: 0,
+      mobileFailures: 0,
+      mobilePassCount: 0,
+      httpOkCount: 0,
+      totalLinks: 0,
+      totalBrokenLinks: 0,
+      totalCTAs: 0,
+      headerVisibleCount: 0,
+      footerVisibleCount: 0,
+      logoCount: 0,
+      averageFirstContentfulPaint: { ms: null, formatted: null, grade: null },
+      averageLargestContentfulPaint: { ms: null, formatted: null, grade: null },
+      averageTTFB: { ms: null, formatted: null, grade: null },
+      averageTBT: { ms: null, formatted: null, grade: null },
+      averageDesktopPsiScore: null,
+      averageMobilePsiScore: null,
+      topFindings: ['No pages audited'],
+      allOpportunities: [],
+      worstPages: [],
+      bestPages: [],
+    };
+  }
   const scores   = pages.map(p => p.overallScore);
   const avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
   const grade    = gradeFromScore(avgScore);
@@ -644,6 +676,7 @@ function buildFormValidationSummary(pages) {
   allForms.forEach(f => {
     if (!f.hasSubmitBtn)                         issues.push({ severity: 'warning',  page: f.pageSlug, message: 'Form has no submit button.' });
     if (!f.browserValidationActive && f.fieldCount > 1) issues.push({ severity: 'info', page: f.pageSlug, message: 'Browser validation not active.' });
+    if (f.invalidEmailInconclusive)              issues.push({ severity: 'info', page: f.pageSlug, message: `Email validation test inconclusive: ${f.invalidEmailDetail || 'test interrupted'}` });
     if (f.criticalMissingValidation.length > 0)  issues.push({ severity: 'critical', page: f.pageSlug, message: `Missing critical validation: ${f.criticalMissingValidation.join(', ')}` });
   });
   return {
@@ -660,8 +693,49 @@ function buildFormValidationSummary(pages) {
       page: f.pageSlug, pageUrl: f.pageUrl, fieldCount: f.fieldCount, purpose: f.purpose,
       hasSubmitBtn: f.hasSubmitBtn, hasEmailField: f.hasEmailField, hasRequiredFields: f.hasRequiredFields,
       browserValidationActive: f.browserValidationActive, criticalMissingValidation: f.criticalMissingValidation,
+      invalidEmailInconclusive: f.invalidEmailInconclusive, invalidEmailDetail: f.invalidEmailDetail,
     })),
     issues: issues.sort((a, b) => ({ critical: 0, warning: 1, info: 2 }[a.severity] - ({ critical: 0, warning: 1, info: 2 }[b.severity]))),
+  };
+}
+
+// ─── buildNavFooterSummary ────────────────────────────────────────────────────
+
+function buildNavFooterSummary(pages) {
+  const navMap = new Map(), footerMap = new Map();
+  const navIssues = [], footerIssues = [];
+  let totalNavBroken = 0, totalFooterBroken = 0;
+
+  pages.forEach(p => {
+    (p.navigation.navBrokenLinks ?? []).forEach(l => {
+      const key = l.url;
+      if (!navMap.has(key)) {
+        const count = pages.filter(pg => (pg.navigation.navBrokenLinks ?? []).some(bl => bl.url === key)).length;
+        navMap.set(key, { url: l.url, status: l.status, affectedPages: count });
+        navIssues.push({ url: l.url, status: l.status, region: 'nav', affectedPages: count });
+        totalNavBroken++;
+      }
+    });
+    (p.navigation.footerBrokenLinks ?? []).forEach(l => {
+      const key = l.url;
+      if (!footerMap.has(key)) {
+        const count = pages.filter(pg => (pg.navigation.footerBrokenLinks ?? []).some(bl => bl.url === key)).length;
+        footerMap.set(key, { url: l.url, status: l.status, affectedPages: count });
+        footerIssues.push({ url: l.url, status: l.status, region: 'footer', affectedPages: count });
+        totalFooterBroken++;
+      }
+    });
+  });
+
+  return {
+    totalNavBroken,
+    totalFooterBroken,
+    summary: {
+      navHealth:    totalNavBroken === 0 ? '✓ All navigation links working' : `⚠ ${totalNavBroken} broken navigation link(s)`,
+      footerHealth: totalFooterBroken === 0 ? '✓ All footer links working' : `⚠ ${totalFooterBroken} broken footer link(s)`,
+    },
+    brokenNavLinks: navIssues.sort((a, b) => b.affectedPages - a.affectedPages),
+    brokenFooterLinks: footerIssues.sort((a, b) => b.affectedPages - a.affectedPages),
   };
 }
 
@@ -716,6 +790,36 @@ function buildUiUxIssues(pages) {
 // ─── buildReport ──────────────────────────────────────────────────────────────
 
 function buildReport(rawPages) {
+  if (!rawPages || !Array.isArray(rawPages) || rawPages.length === 0) {
+    const emptyGrade = gradeFromScore(0);
+    return {
+      meta: {
+        reportTitle: 'Web Audit Report',
+        domain: 'unknown',
+        generatedAt: new Date().toISOString(),
+        auditedPages: 0,
+        tool: 'SPCTEK Web Auditor',
+        version: '2.0',
+      },
+      executiveSummary: {
+        headline: 'No pages audited. Unable to generate report.',
+        overallScore: 0,
+        grade: emptyGrade,
+        keyStats: [],
+        performanceStats: {},
+        siteHealth: {},
+        topFindings: ['No pages to audit'],
+        worstPages: [],
+        bestPages: [],
+        callToAction: 'Please provide pages to audit.',
+      },
+      pageBreakdown: [],
+      formValidationSummary: { totalPages: 0, totalForms: 0, stats: {}, forms: [], issues: [] },
+      uiUxIssues: { totalIssues: 0, issues: [] },
+      opportunitySummary: { title: 'No opportunities', description: '', items: [] },
+      categoryScorecard: { title: '', categories: [] },
+    };
+  }
   const transformed = rawPages.map(transformPage);
   const summary     = buildSummary(transformed);
   const domain      = (() => { try { return new URL(rawPages[0].url).hostname; } catch { return 'unknown'; } })();
@@ -780,6 +884,7 @@ function buildReport(rawPages) {
 
     pageBreakdown:         transformed,
     formValidationSummary: buildFormValidationSummary(transformed),
+    navFooterSummary:      buildNavFooterSummary(transformed),
     uiUxIssues:            buildUiUxIssues(transformed),
 
     opportunitySummary: {
@@ -821,6 +926,12 @@ if (require.main === module) {
 
   console.log(`✅  Report written: ${out}`);
   console.log(`📊  Pages: ${report.meta.auditedPages}  Score: ${report.executiveSummary.overallScore}/100 (${report.executiveSummary.grade.grade})`);
-  console.log(`🔴  Critical: ${report.executiveSummary.keyStats[1].value}  ⚠️  Warnings: ${report.executiveSummary.keyStats[2].value}`);
-  console.log(`🚀  Desktop PSI avg: ${report.executiveSummary.performanceStats.avgDesktopPsiScore ?? '—'}  Mobile PSI avg: ${report.executiveSummary.performanceStats.avgMobilePsiScore ?? '—'}`);
+  if (report.meta.auditedPages > 0) {
+    const criticalStat = report.executiveSummary.keyStats.find(s => s.label === 'Critical Issues');
+    const warningStat  = report.executiveSummary.keyStats.find(s => s.label === 'Warnings');
+    console.log(`🔴  Critical: ${criticalStat?.value ?? '—'}  ⚠️  Warnings: ${warningStat?.value ?? '—'}`);
+    console.log(`🚀  Desktop PSI avg: ${report.executiveSummary.performanceStats.avgDesktopPsiScore ?? '—'}  Mobile PSI avg: ${report.executiveSummary.performanceStats.avgMobilePsiScore ?? '—'}`);
+  } else {
+    console.log('⚠️  No pages audited.');
+  }
 }

@@ -16,6 +16,9 @@
  */
 
 const https = require('https');
+const PSI_HTTP_TIMEOUT_MS = Number(process.env.PSI_HTTP_TIMEOUT_MS || 45_000);
+const PSI_MAX_RETRIES = Number(process.env.PSI_MAX_RETRIES || 2);
+const PSI_TIMEOUT_RETRIES = Math.max(3, Number(process.env.PSI_TIMEOUT_RETRIES || 3));
 
 // ─── Thresholds (Google CWV official) ────────────────────────────────────────
 
@@ -56,7 +59,7 @@ function fmt(ms) {
 
 // ─── PSI API call ─────────────────────────────────────────────────────────────
 
-function fetchPSI(url, strategy, apiKey) {
+function fetchPSI(url, strategy, apiKey, attempt = 1) {
   return new Promise((resolve, reject) => {
     const params = new URLSearchParams({
       url,
@@ -67,22 +70,56 @@ function fetchPSI(url, strategy, apiKey) {
 
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?${params}`;
 
-    https.get(apiUrl, (res) => {
+    const req = https.get(apiUrl, (res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
         try {
           const json = JSON.parse(data);
           if (json.error) {
-            reject(new Error(json.error.message));
+            const msg = String(json.error.message || 'PSI API error');
+            const timeoutLike = /timeout|timed out/i.test(msg);
+            const retryable = /rate limit|quota|backend|timeout|temporar|unavailable|internal/i.test(msg);
+            const retryBudget = timeoutLike ? PSI_TIMEOUT_RETRIES : PSI_MAX_RETRIES;
+            if (retryable && attempt <= retryBudget) {
+              const delay = 1000 * attempt;
+              return setTimeout(() => {
+                fetchPSI(url, strategy, apiKey, attempt + 1).then(resolve).catch(reject);
+              }, delay);
+            }
+            reject(new Error(msg));
           } else {
             resolve(json);
           }
         } catch (e) {
+          if (attempt <= PSI_MAX_RETRIES) {
+            const delay = 1000 * attempt;
+            return setTimeout(() => {
+              fetchPSI(url, strategy, apiKey, attempt + 1).then(resolve).catch(reject);
+            }, delay);
+          }
           reject(new Error(`PSI response parse error: ${e.message}`));
         }
       });
-    }).on('error', reject);
+    });
+
+    req.setTimeout(PSI_HTTP_TIMEOUT_MS, () => {
+      req.destroy(new Error(`PSI request timed out after ${PSI_HTTP_TIMEOUT_MS}ms`));
+    });
+
+    req.on('error', (err) => {
+      const msg = String(err?.message || err || 'PSI request failed');
+      const timeoutLike = /timeout|timed out|etimedout/i.test(msg);
+      const retryable = /timeout|timed out|reset|socket hang up|econnreset|etimedout|temporar|unavailable/i.test(msg);
+      const retryBudget = timeoutLike ? PSI_TIMEOUT_RETRIES : PSI_MAX_RETRIES;
+      if (retryable && attempt <= retryBudget) {
+        const delay = 1000 * attempt;
+        return setTimeout(() => {
+          fetchPSI(url, strategy, apiKey, attempt + 1).then(resolve).catch(reject);
+        }, delay);
+      }
+      reject(err);
+    });
   });
 }
 
@@ -153,21 +190,23 @@ function buildIssues(lab, lhr) {
   const issues = [];
   const audits = lhr?.audits ?? {};
 
-  const check = (key, metricKey, label, threshKey) => {
+  const check = (key, metricKey, label, threshKey, poorLevel = 'critical') => {
     const val = lab[metricKey];
     const t   = THRESHOLDS[threshKey ?? metricKey];
     if (val == null || !t) return;
     const r = rating(val, t.good, t.needs);
     if (r === 'needs-improvement') issues.push({ type: 'warning',  code: `${key}_NEEDS_IMPROVEMENT`, message: `${label} is ${fmt(val)} — aim for under ${fmt(t.good)}` });
-    if (r === 'poor')              issues.push({ type: 'critical', code: `${key}_POOR`,              message: `${label} is ${fmt(val)} — exceeds poor threshold of ${fmt(t.needs)}` });
+    if (r === 'poor')              issues.push({ type: poorLevel, code: `${key}_POOR`,              message: `${label} is ${fmt(val)} — exceeds poor threshold of ${fmt(t.needs)}` });
   };
 
   check('FCP',  'fcp',  'First Contentful Paint',   'fcp');
   check('LCP',  'lcp',  'Largest Contentful Paint',  'lcp');
   check('CLS',  'cls',  'Cumulative Layout Shift',   'cls');
   check('TBT',  'tbt',  'Total Blocking Time',       'tbt');
-  check('SI',   'si',   'Speed Index',               'si');
-  check('TTI',  'tti',  'Time to Interactive',       'tti');
+  // SI/TTI are useful diagnostics but noisy on PSI lab runs. Keep them warning-level
+  // when poor so they don't override an otherwise strong score.
+  check('SI',   'si',   'Speed Index',               'si',  'warning');
+  check('TTI',  'tti',  'Time to Interactive',       'tti', 'warning');
   check('TTFB', 'ttfb', 'Server Response Time',      'ttfb');
 
   // Pull top opportunities from Lighthouse
@@ -190,12 +229,19 @@ function buildIssues(lab, lhr) {
     if (!audit || audit.score == null) continue;
     if (audit.score >= 0.9) continue; // passing — skip
 
-    const savings = audit.details?.overallSavingsMs
-      ? ` (~${fmt(audit.details.overallSavingsMs)} savings)`
+    const savingsMs = Number(audit.details?.overallSavingsMs || 0);
+    const savings = savingsMs
+      ? ` (~${fmt(savingsMs)} savings)`
       : '';
 
+    // Opportunities should be severity-driven by expected user impact, not
+    // raw audit score alone (which can be strict even for tiny savings).
+    let level = 'info';
+    if (savingsMs >= 1000) level = 'critical';
+    else if (savingsMs >= 250) level = 'warning';
+
     issues.push({
-      type:    audit.score < 0.5 ? 'critical' : 'warning',
+      type:    level,
       code:    id.toUpperCase().replace(/-/g, '_'),
       message: `${audit.title}${savings}`,
     });

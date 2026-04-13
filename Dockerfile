@@ -46,4 +46,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["xvfb-run", "-a", "node", "src/api.js"]
+CMD ["sh", "-c", "Xvfb :99 -screen 0 1280x1024x24 -nolisten tcp & export DISPLAY=:99; node src/api.js"]

@@ -2,7 +2,7 @@ FROM node:20-bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive \
     CHROME_PATH=/usr/bin/chromium \
-    PORT=3000 \
+    PORT=3000 
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \

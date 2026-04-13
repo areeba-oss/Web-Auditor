@@ -33,6 +33,7 @@ RUN apt-get update \
     libxkbcommon0 \
     libxrandr2 \
     xdg-utils \
+    xauth \
     xvfb \
   && rm -rf /var/lib/apt/lists/*
 

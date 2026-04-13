@@ -22,7 +22,6 @@
 
 const MAX_FORMS        = 10;
 const MAX_LINKS        = Number(process.env.FORMS_MAX_LINKS || 24);
-const CRAWL_BUDGET_MS  = Number(process.env.FORMS_CRAWL_BUDGET_MS || 25_000);
 const MAX_CRAWL_FORMS  = Number(process.env.FORMS_MAX_CRAWL_FORMS || MAX_FORMS);
 const INTERACTION_WAIT = 900;
 const POPUP_WAIT       = 1200;
@@ -1053,8 +1052,11 @@ function logFormResult(result) {
   );
 }
 
-async function auditForms(context, url, timeout) {
+async function auditForms(context, url, timeout, options = {}) {
   timeout = timeout || 20_000;
+  const knownFingerprintsAcrossPages = options.knownFingerprints instanceof Set
+    ? options.knownFingerprints
+    : null;
   const mainPage = await context.newPage();
   const allFormResults = [];
 
@@ -1100,6 +1102,10 @@ async function auditForms(context, url, timeout) {
     console.log('   📋 Found ' + mainForms.length + ' form(s) on main page (' + simpleCount + ' simple, ' + fullCount + ' full)');
 
     const knownFingerprints = new Set(mainForms.map((f) => f.dedupeKey || f.fingerprint));
+    if (knownFingerprintsAcrossPages) {
+      for (const fp of knownFingerprintsAcrossPages) knownFingerprints.add(fp);
+    }
+    let duplicatesSkipped = 0;
 
     // Phase 2: crawl
     console.log('   🕷️  Phase 2: crawling links & buttons...');
@@ -1118,13 +1124,8 @@ async function auditForms(context, url, timeout) {
     console.log('   🔗 Probing ' + toProbe.length + ' trigger(s)...');
 
     const extraSources = [];
-    const crawlStartedAt = Date.now();
     let discoveredViaCrawl = 0;
     for (const trigger of toProbe) {
-      if (Date.now() - crawlStartedAt >= CRAWL_BUDGET_MS) {
-        console.log('      ⏱️  Crawl budget reached (' + CRAWL_BUDGET_MS + 'ms), stopping trigger probe');
-        break;
-      }
       if (discoveredViaCrawl >= MAX_CRAWL_FORMS) {
         console.log('      ✅ Reached crawl form target (' + MAX_CRAWL_FORMS + '), stopping trigger probe');
         break;
@@ -1155,7 +1156,14 @@ async function auditForms(context, url, timeout) {
       return da - db;
     });
 
-    for (const formMeta of sortedMainForms.slice(0, MAX_FORMS)) {
+    const mainFormsToTest = sortedMainForms.filter((f) => {
+      const key = f.dedupeKey || f.fingerprint;
+      const isDuplicateAcrossPages = knownFingerprintsAcrossPages && knownFingerprintsAcrossPages.has(key);
+      if (isDuplicateAcrossPages) duplicatesSkipped += 1;
+      return !isDuplicateAcrossPages;
+    });
+
+    for (const formMeta of mainFormsToTest.slice(0, MAX_FORMS)) {
       console.log('\n   📄 "' + formMeta.label + '" [' + formMeta.category + '] inputs:' + formMeta.inputCount + ' email:' + formMeta.hasEmail + ' required:' + formMeta.requiredCount + ' novalidate:' + formMeta.intrinsic.noValidate);
       const testPage = await context.newPage();
       try {
@@ -1191,6 +1199,7 @@ async function auditForms(context, url, timeout) {
 
         const result = await testForm(testPage, liveForm, 'main-page');
         allFormResults.push(result);
+        if (knownFingerprintsAcrossPages) knownFingerprintsAcrossPages.add(liveForm.dedupeKey || liveForm.fingerprint);
         logFormResult(result);
       } catch (err) {
         const msg = String(err.message || err);
@@ -1231,6 +1240,11 @@ async function auditForms(context, url, timeout) {
       });
       for (const formMeta of sortedSourceForms) {
         if (extraCount >= MAX_FORMS) break;
+        const formKey = formMeta.dedupeKey || formMeta.fingerprint;
+        if (knownFingerprintsAcrossPages && knownFingerprintsAcrossPages.has(formKey)) {
+          duplicatesSkipped += 1;
+          continue;
+        }
         extraCount++;
         console.log('\n   📄 "' + formMeta.label + '" [' + formMeta.category + '] source:' + src.source);
         let testPage = null;
@@ -1267,6 +1281,7 @@ async function auditForms(context, url, timeout) {
           if (!liveForm) { console.warn('      Form not found on reopened page'); await testPage.close(); continue; }
           const result = await testForm(testPage, liveForm, src.source);
           allFormResults.push(result);
+          if (knownFingerprintsAcrossPages) knownFingerprintsAcrossPages.add(liveForm.dedupeKey || liveForm.fingerprint);
           logFormResult(result);
         } finally { await testPage.close().catch(() => {}); }
       }
@@ -1276,8 +1291,15 @@ async function auditForms(context, url, timeout) {
     const totalFound = mainForms.length + extraSources.reduce((n, s) => n + s.forms.length, 0);
 
     if (allFormResults.length === 0) {
-      return { url, httpStatus, overallStatus: 'healthy', score: 100, formsFound: 0, formResults: [],
-        issues: [{ type: 'info', code: 'NO_FORMS', message: 'No testable forms found' }] };
+      const onlyDuplicates = totalFound > 0 && duplicatesSkipped >= totalFound;
+      return { url, httpStatus, overallStatus: 'healthy', score: 100, formsFound: totalFound, formsTested: 0, duplicatesSkipped, formResults: [],
+        issues: [{
+          type: 'info',
+          code: onlyDuplicates ? 'FORMS_ALREADY_TESTED' : 'NO_FORMS',
+          message: onlyDuplicates
+            ? 'All discovered forms match previously-tested fingerprints; skipped duplicate retests'
+            : 'No testable forms found',
+        }] };
     }
 
     const avgScore  = Math.round(allFormResults.reduce((s, f) => s + f.score, 0) / allFormResults.length);
@@ -1289,6 +1311,7 @@ async function auditForms(context, url, timeout) {
       url, httpStatus,
       overallStatus: criticals.length > 0 ? 'critical' : warnings.length > 0 ? 'warning' : 'healthy',
       score: avgScore, formsFound: totalFound, formsTested: allFormResults.length,
+      duplicatesSkipped,
       formResults: allFormResults, issues: allIssues,
     };
 

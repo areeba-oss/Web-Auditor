@@ -142,6 +142,7 @@ function normalisePerformance(raw) {
 async function auditPage(browser, pageUrl, homepageUrl, pageLabel, options = {}) {
   const runEcommerce = options.runEcommerce !== false;
   const ecommerceUrl = options.ecommerceUrl || homepageUrl;
+  const knownFormFingerprints = options.knownFormFingerprints;
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
 
   const result = {
@@ -231,9 +232,12 @@ async function auditPage(browser, pageUrl, homepageUrl, pageLabel, options = {})
     // ── Layer 4: Forms ─────────────────────────────────────────────────────
     printLayerHeader(4, 'Forms Testing', pageUrl);
     try {
-      result.forms = await auditForms(context, pageUrl, AUDIT_TIMEOUT);
+      result.forms = await auditForms(context, pageUrl, AUDIT_TIMEOUT, { knownFingerprints: knownFormFingerprints });
       console.log(`  Status: ${statusIcon(result.forms.overallStatus)}  Score: ${result.forms.score}/100`);
       console.log(`  Forms found: ${result.forms.formsFound ?? 0}  Tested: ${result.forms.formsTested ?? 0}`);
+      if ((result.forms.duplicatesSkipped ?? 0) > 0) {
+        console.log(`  Duplicate forms skipped: ${result.forms.duplicatesSkipped}`);
+      }
       if (!result.forms.formsFound) console.log(`  ℹ️  No testable forms on this page`);
     } catch (err) {
       console.warn(`  ⚠️  Layer 4 crashed: ${err.message.slice(0, 80)}`);
@@ -552,6 +556,7 @@ function writeResultsFile(allResults, inputUrl, totalMs) {
     // ── Audit each page ──────────────────────────────────────────────────────
     const allResults = [];
     let ecommerceDone = false;
+    const knownFormFingerprints = new Set();
 
     for (let i = 0; i < pagesToAudit.length; i++) {
       const { url, label } = pagesToAudit[i];
@@ -565,6 +570,7 @@ function writeResultsFile(allResults, inputUrl, totalMs) {
       const pageResult = await auditPage(browser, url, homepage, label, {
         runEcommerce: shouldRunEcommerce,
         ecommerceUrl: homepage,
+        knownFormFingerprints,
       });
       if (pageResult.ecommerce?.siteLevelAudited) ecommerceDone = true;
       allResults.push(pageResult);

@@ -12,6 +12,8 @@
 const { chromium } = require('playwright-core');
 const { URL } = require('url');
 
+const CHROME_PATH = process.env.CHROME_PATH;
+
 // ─── Config ───────────────────────────────────────────────────────────────────
 
 const DEFAULTS = {
@@ -460,7 +462,11 @@ async function fetchImportantPages(homepageUrl, options = {}) {
   };
 
   // ── Boot browser ──────────────────────────────────────────────────────────
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: true,
+    ...(CHROME_PATH ? { executablePath: CHROME_PATH } : {}),
+    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+  });
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
 
   // ⚡ Block everything except document + XHR — images, fonts, CSS, scripts all skipped

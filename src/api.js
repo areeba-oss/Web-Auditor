@@ -75,11 +75,15 @@ function runAuditProcess(targetUrl, resultsPath) {
     let stderr = '';
 
     child.stdout.on('data', (chunk) => {
-      stdout += chunk.toString('utf8');
+      const text = chunk.toString('utf8');
+      stdout += text;
+      process.stdout.write(text);
     });
 
     child.stderr.on('data', (chunk) => {
-      stderr += chunk.toString('utf8');
+      const text = chunk.toString('utf8');
+      stderr += text;
+      process.stderr.write(text);
     });
 
     child.on('error', reject);
@@ -214,6 +218,7 @@ async function handleAuditRequest(req, res, urlObject) {
       'X-Audit-Duration-Ms': String(elapsedMs),
       'X-Report-Path': path.relative(ROOT_DIR, reportHtmlPath).replace(/\\/g, '/'),
       'X-Report-Score': String(report?.executiveSummary?.overallScore ?? ''),
+      'X-Audited-Pages': String(report?.meta?.auditedPages ?? ''),
     });
     res.end(html);
   } catch (err) {

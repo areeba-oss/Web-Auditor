@@ -493,7 +493,7 @@ function formValidationPages(meta, formValidation, generatedDate) {
       {
         label: 'Platform',
         value: ecommerceSummary.platform || 'unknown',
-        sub: ecommerceSummary.confidence ? `Confidence ${ecommerceSummary.confidence}` : 'Detection confidence not set',
+        sub: 'Detected ecommerce platform',
         tone: 'neutral',
       },
       {

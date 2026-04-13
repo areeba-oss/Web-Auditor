@@ -23,12 +23,12 @@ const { convertToPDF } = require('./pdfConverter');
  * @param {Object} report - Report data
  * @param {Object} options
  * @param {boolean} [options.includePageBreakdown=true] - Whether to include page breakdown section
- * @param {number}  [options.maxPages=6]   - Max pages shown in page breakdown
+ * @param {number}  [options.maxPages=10]  - Max pages shown in page breakdown
  * @param {number}  [options.maxImages=4]  - Max screenshot placeholders in UI/UX section
  * @returns {string} Complete HTML document
  */
 function buildReportHTML(report, options = {}) {
-  const { includePageBreakdown = true, maxPages = 6, maxImages = 4 } = options;
+  const { includePageBreakdown = true, maxPages = 10, maxImages = 4 } = options;
   const {
     meta,
     executiveSummary,
@@ -83,11 +83,11 @@ function buildReportHTML(report, options = {}) {
  * @param {string} outputPath - Path for output PDF (relative to outputs/report-final/)
  * @param {Object} options
  * @param {boolean} [options.includePageBreakdown=true]
- * @param {number}  [options.maxPages=6]
+ * @param {number}  [options.maxPages=10]
  * @param {number}  [options.maxImages=4]
  */
 async function generateReport(jsonPath, outputPath, options = {}) {
-  const { includePageBreakdown = true, maxPages = 6, maxImages = 4 } = options;
+  const { includePageBreakdown = true, maxPages = 10, maxImages = 4 } = options;
   await initCoverImage();
   const report = JSON.parse(fs.readFileSync(`outputs/report-json/${jsonPath}`, 'utf8'));
   const html = buildReportHTML(report, { includePageBreakdown, maxPages, maxImages });

@@ -12,6 +12,7 @@ const {
   scorecardAndOpportunitiesPage,
   pageBreakdownPages,
   formValidationPages,
+  ecommercePages,
   uiUxPages,
   closingPage,
 } = require('./pages');
@@ -52,6 +53,8 @@ function buildReportHTML(report, options = {}) {
   if (includePageBreakdown) {
     pages.push(pageBreakdownPages(meta, pageBreakdown, generatedDate, maxPages));
     pages.push(formValidationPages(meta, formValidationSummary, generatedDate));
+    const ecommercePage = ecommercePages(meta, report.ecommerceSummary, generatedDate);
+    if (ecommercePage) pages.push(ecommercePage);
     pages.push(uiUxPages(meta, uiUxIssues, generatedDate, maxImages));
   }
 
@@ -91,16 +94,23 @@ async function generateReport(jsonPath, outputPath, options = {}) {
 
   fs.mkdirSync('outputs/report-final', { recursive: true });
 
+  const htmlOutputPath = `outputs/report-final/${outputPath.replace(/\.pdf$/i, '.html')}`;
+  fs.writeFileSync(htmlOutputPath, html, 'utf8');
+
   const reportType = includePageBreakdown ? 'Full' : 'Mini';
   const breakdownPages = Math.ceil(Math.min(report.pageBreakdown.length, maxPages) / 3);
-  const formPages = 1;
-  const uiuxPageCount = 2;
+  const formPages = includePageBreakdown ? 1 : 0;
+  const ecommercePageCount = includePageBreakdown
+    ? (report.ecommerceSummary?.blocked || report.ecommerceSummary?.hasEcommerce ? 1 : 0)
+    : 0;
+  const uiuxPageCount = includePageBreakdown ? 2 : 0;
   const pageCount = includePageBreakdown
-    ? `${4 + breakdownPages + formPages + uiuxPageCount} pages`
+    ? `${4 + breakdownPages + formPages + ecommercePageCount + uiuxPageCount} pages`
     : '4 pages';
 
   console.log(`✅  ${reportType} report generated`);
   console.log(`📄  ${pageCount} (${includePageBreakdown ? 'with' : 'without'} page breakdown)`);
+  console.log(`🧾  HTML written to: ${htmlOutputPath}`);
 
   await convertToPDF(html, `outputs/report-final/${outputPath}`);
 }

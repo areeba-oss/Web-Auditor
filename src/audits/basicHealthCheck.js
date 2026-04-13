@@ -22,6 +22,26 @@ const BLANK_SCREEN_CHECKS = {
 
 const POST_LOAD_OBSERVE_MS = Number(process.env.HEALTH_POST_LOAD_OBSERVE_MS || 500);
 const NETWORKIDLE_WAIT_MS = Number(process.env.HEALTH_NETWORKIDLE_TIMEOUT_MS || 15_000);
+const EVAL_TIMEOUT_MS = Number(process.env.HEALTH_EVAL_TIMEOUT_MS || 12_000);
+const HEALTH_TOTAL_GUARD_MS = Number(process.env.HEALTH_TOTAL_GUARD_MS || 25_000);
+
+function withTimeout(promise, ms, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    Promise.resolve(promise)
+      .then((v) => { clearTimeout(timer); resolve(v); })
+      .catch((e) => { clearTimeout(timer); reject(e); });
+  });
+}
+
+async function safeClosePage(page) {
+  if (!page) return;
+  try {
+    await withTimeout(page.close(), 5_000, 'page-close');
+  } catch {
+    // Ignore close hangs so one problematic page cannot stall the full audit.
+  }
+}
 
 function stripQueryAndHash(url = '') {
   return String(url || '').split('#')[0].split('?')[0].toLowerCase();
@@ -49,6 +69,7 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
     blankScreenReason: null,
     bodyTextLength: 0,
     visibleElementCount: 0,
+    errorPageSignals: [],
 
     // ── 3. Console Errors/Warnings (RAW — no filtering) ─────────
     consoleErrors: [],
@@ -71,10 +92,16 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
   try {
 
     // ── 1. HTTP STATUS ──────────────────────────────────────────────────────
-    result.httpOk = result.httpStatus >= 200 && result.httpStatus < 400;
+    result.httpOk = result.httpStatus == null || (result.httpStatus >= 200 && result.httpStatus < 400);
     result.wasRedirected = !!(result.redirectedTo && result.redirectedTo !== url);
 
-    if (!result.httpOk) {
+    if (result.httpStatus == null) {
+      result.issues.push({
+        type: 'warning',
+        code: 'HTTP_STATUS_UNKNOWN',
+        message: 'Could not resolve final HTTP status code, but page rendered enough DOM for analysis',
+      });
+    } else if (!result.httpOk) {
       result.issues.push({
         type: 'critical',
         code: 'HTTP_ERROR',
@@ -91,7 +118,7 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
     }
 
     // ── 2. BLANK SCREEN DETECTION ───────────────────────────────────────────
-    const domData = await page.evaluate(() => {
+    const domData = await withTimeout(page.evaluate(() => {
       const bodyText = document.body?.innerText?.trim() ?? '';
 
       // Count meaningfully visible elements (not hidden, not 0-size)
@@ -132,12 +159,14 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
         title,
         errorPageSignals,
       };
-    });
+    }), EVAL_TIMEOUT_MS, 'health-dom-evaluate');
 
     result.bodyTextLength = domData.bodyTextLength;
     result.visibleElementCount = domData.visibleElementCount;
     result.pageTitle = domData.title;
     const hasMeaningfulTitle = !!domData.hasTitle;
+
+    result.errorPageSignals = domData.errorPageSignals;
 
     if (domData.bodyTextLength < BLANK_SCREEN_CHECKS.minBodyText && domData.visibleElementCount < BLANK_SCREEN_CHECKS.minVisibleElements && !hasMeaningfulTitle) {
       result.blankScreen = true;
@@ -145,9 +174,6 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
     } else if (domData.visibleElementCount < BLANK_SCREEN_CHECKS.minVisibleElements) {
       result.blankScreen = true;
       result.blankScreenReason = `Only ${domData.visibleElementCount} visible elements found — layout likely broken`;
-    } else if (domData.errorPageSignals.length > 0) {
-      result.blankScreen = true;
-      result.blankScreenReason = `Error page content detected: "${domData.errorPageSignals[0]}"`;
     }
 
     if (result.blankScreen) {
@@ -155,6 +181,14 @@ async function runBasicHealthCheck(page, url, loadResult = {}) {
         type: 'critical',
         code: 'BLANK_SCREEN',
         message: result.blankScreenReason,
+      });
+    }
+
+    if (domData.errorPageSignals.length > 0) {
+      result.issues.push({
+        type: 'warning',
+        code: 'ERROR_PAGE_CONTENT',
+        message: `Error page content detected: "${domData.errorPageSignals[0]}"`,
       });
     }
 
@@ -331,21 +365,55 @@ async function auditPageHealth(context, url, timeout = 15_000) {
 
   let httpStatus   = null;
   let redirectedTo = null;
+  let navError     = null;
+  let didNavigate  = false;
 
   try {
     const observeStartTs = Date.now();
 
-    const response = await page.goto(url, {
-      waitUntil: 'load',
-      timeout,
-    });
+    try {
+      const response = await withTimeout(page.goto(url, {
+        waitUntil: 'domcontentloaded',
+        timeout,
+      }), timeout + 2_000, 'page-goto');
 
-    httpStatus   = response?.status() ?? null;
-    redirectedTo = page.url();
+      httpStatus   = response?.status() ?? null;
+      redirectedTo = page.url();
+      didNavigate  = true;
+    } catch (err) {
+      navError = err;
+      redirectedTo = page.url();
+    }
+
+    // Salvage mode: some bot-protected/slow sites throw navigation timeout,
+    // but meaningful DOM still renders. Do not hard-fail in that case.
+    if (!didNavigate) {
+      const salvage = await withTimeout(page.evaluate(() => {
+        const bodyText = document.body?.innerText?.trim() ?? '';
+        const hasMeaningfulDom = bodyText.length > 80 || document.querySelectorAll('header, footer, main, section, article, nav').length > 0;
+        return {
+          hasMeaningfulDom,
+          readyState: document.readyState,
+          title: document.title || '',
+        };
+      }), EVAL_TIMEOUT_MS, 'health-salvage-evaluate').catch(() => ({ hasMeaningfulDom: false, readyState: 'unknown', title: '' }));
+
+      const hasRealNavigatedUrl = !!(redirectedTo && !/^about:blank/i.test(redirectedTo));
+
+      if (salvage.hasMeaningfulDom || hasRealNavigatedUrl) {
+        didNavigate = true;
+      } else {
+        throw navError || new Error('Navigation failed before DOM was rendered');
+      }
+    }
 
     // Wait for network idle so async data fetches settle (React/Next/Vue)
     try {
-      await page.waitForLoadState('networkidle', { timeout: NETWORKIDLE_WAIT_MS });
+      await withTimeout(
+        page.waitForLoadState('networkidle', { timeout: NETWORKIDLE_WAIT_MS }),
+        NETWORKIDLE_WAIT_MS + 2_000,
+        'wait-networkidle',
+      );
     } catch {
       // Long-polling / streaming pages may never go idle — continue anyway
     }
@@ -385,13 +453,13 @@ async function auditPageHealth(context, url, timeout = 15_000) {
       return true;
     });
 
-    return await runBasicHealthCheck(page, url, {
+    return await withTimeout(runBasicHealthCheck(page, url, {
       httpStatus,
       redirectedTo,
       consoleErrors,
       consoleWarnings,
       failedRequests,   // raw, unfiltered
-    });
+    }), HEALTH_TOTAL_GUARD_MS, 'runBasicHealthCheck');
 
   } catch (err) {
     // Navigation itself failed (timeout, DNS error, etc.)
@@ -417,7 +485,7 @@ async function auditPageHealth(context, url, timeout = 15_000) {
       fatalError: err.message,
     };
   } finally {
-    await page.close();
+    await safeClosePage(page);
   }
 }
 

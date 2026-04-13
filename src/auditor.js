@@ -38,7 +38,7 @@ const AUDIT_TIMEOUT   = 30_000;   // per-layer timeout (ms)
 const ECOMMERCE_TIMEOUT = Number(process.env.ECOMMERCE_AUDIT_TIMEOUT_MS || 90_000);
 const CRAWL_LIMIT     = 10;       // pages to shortlist when crawling homepage
 const LAYER_DELAY_MS  = 500;      // small pause between layers (rate limit safety)
-const OUTPUT_FILE     = 'results.json';
+const OUTPUT_FILE     = process.env.AUDIT_OUTPUT_FILE || 'results.json';
 const CHROME_PATH     = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -169,9 +169,13 @@ async function auditPage(browser, pageUrl, homepageUrl, pageLabel, options = {})
     }
     await sleep(LAYER_DELAY_MS);
 
-    // Skip remaining layers if page returned an HTTP error
-    if (result.health?.httpStatus != null && result.health.httpStatus >= 400) {
-      console.log('\n  ⏭  Page returned HTTP error — skipping remaining layers');
+    // Skip remaining layers only on severe load failures.
+    // 4xx pages can still render meaningful UI (header/footer/nav), so we keep auditing them.
+    const severeHttpFailure = result.health?.httpStatus != null && result.health.httpStatus >= 500;
+    const noStatusAndBlank = result.health?.httpStatus == null && result.health?.blankScreen;
+
+    if (severeHttpFailure || noStatusAndBlank) {
+      console.log('\n  ⏭  Severe page load failure — skipping remaining layers');
       result.overallScore = 0;
       return result;
     }

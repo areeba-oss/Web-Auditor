@@ -380,85 +380,284 @@ function formValidationPages(meta, formValidation, generatedDate) {
 </div>`;
 }
 
-// ─── UI/UX Issues Pages (2 pages, 2 issues each) ───────────────────────────
+  // ─── Ecommerce Flow Page (single page) ──────────────────────────────────────
 
-function uiUxPages(meta, uiUxIssues, generatedDate, maxImages = 4) {
-  if (!uiUxIssues || uiUxIssues.totalIssues === 0) {
-    return `
-<div class="pdf-page">
-  ${pageHeaderBar(meta.tool, meta.domain, generatedDate)}
-  <div class="section-header compact">
-    <div class="section-eyebrow">UI / UX Review</div>
-    <h2 class="section-title">User Interface & Experience</h2>
-    <p class="section-sub">No significant UI/UX issues detected across ${meta.auditedPages} pages</p>
-  </div>
-  <div class="uiux-section-body">
-    <div class="form-empty-state">
-      <div class="form-empty-icon">🎨</div>
-      <div class="form-empty-text">All audited pages passed UI/UX checks. Headers, footers, logos, CTAs, and responsive layouts are functioning correctly.</div>
+  function ecommercePages(meta, ecommerceSummary, generatedDate) {
+    const pages = ecommerceSummary?.pages ?? [];
+    const primary = ecommerceSummary?.primary ?? pages[0] ?? null;
+
+    if (!ecommerceSummary || ecommerceSummary.auditedPages === 0) {
+      return '';
+    }
+
+    if (ecommerceSummary.blocked) {
+      const placeholderCards = [
+        ['Ecommerce Detected', 'N/A', 'Audit blocked by bot protection', 'warn'],
+        ['Platform', 'Unknown', 'Fill manually after rerun', 'warn'],
+        ['Ecommerce Score', 'N/A', 'No audited score available', 'warn'],
+        ['Checkout Ready', 'N/A', 'Not tested', 'warn'],
+        ['Cart Updated', 'N/A', 'Not tested', 'warn'],
+        ['Checkout Pages', 'N/A', 'Not tested', 'warn'],
+      ];
+
+      const statsHTML = placeholderCards
+        .map(([label, value, sub, tone]) => `
+        <div class="ecommerce-stat-card ${tone}">
+          <div class="ecommerce-stat-copy">
+            <div class="ecommerce-stat-label">${label}</div>
+            <div class="ecommerce-stat-sub">${sub}</div>
+          </div>
+          <div class="ecommerce-stat-val">${value}</div>
+        </div>`)
+        .join('');
+
+      const placeholderSteps = ['Product Listing', 'Product Detail', 'Add to Cart', 'Cart Page', 'Checkout']
+        .map((label) => `
+        <div class="ecommerce-step-card warn">
+          <div class="ecommerce-step-header">
+            <span class="ecommerce-step-name">${label}</span>
+            <span class="ecommerce-step-badge">Blocked</span>
+          </div>
+          <div class="ecommerce-step-detail">${ecommerceSummary.note || 'Bot protection prevented this step from being audited.'}</div>
+        </div>`)
+        .join('');
+
+      return `
+  <div class="pdf-page">
+    ${pageHeaderBar(meta.tool, meta.domain, generatedDate)}
+    <div class="section-header compact">
+      <div class="section-eyebrow">Ecommerce Flow</div>
+      <h2 class="section-title">Ecommerce Functionality Audit</h2>
+      <p class="section-sub">Audit blocked by bot protection - placeholder values included for manual completion</p>
     </div>
-  </div>
-  ${pageFooterBar(meta.tool, meta.version, 'UI/UX Review')}
-</div>`;
-  }
+    <div class="ecommerce-section-body">
+      <div class="ecommerce-stats-grid">${statsHTML}</div>
+      <div class="ecommerce-cards-label">Funnel Steps</div>
+      <div class="ecommerce-steps-grid">${placeholderSteps}</div>
+      <div class="ecommerce-cards-label">Primary Funnel Details</div>
+      <div class="ecommerce-primary-grid">
+        <div class="ecommerce-primary-card warn">
+          <div class="ecommerce-primary-title">Manual Fill Required</div>
+          <div class="ecommerce-primary-line">Storefront details were not captured because the audit was blocked.</div>
+          <div class="ecommerce-primary-line">Please rerun this section manually and replace the placeholder values.</div>
+        </div>
+        <div class="ecommerce-primary-card warn">
+          <div class="ecommerce-primary-title">Product Listing</div>
+          <div class="ecommerce-primary-line">Products: N/A</div>
+          <div class="ecommerce-primary-line">Images: N/A · Prices: N/A · Links: N/A</div>
+        </div>
+        <div class="ecommerce-primary-card warn">
+          <div class="ecommerce-primary-title">Add to Cart</div>
+          <div class="ecommerce-primary-line">Cart updated: N/A · Method: N/A</div>
+          <div class="ecommerce-primary-line">Count: N/A → N/A</div>
+        </div>
+        <div class="ecommerce-primary-card warn">
+          <div class="ecommerce-primary-title">Cart & Checkout</div>
+          <div class="ecommerce-primary-line">Cart page: N/A · Checkout reachable: N/A</div>
+          <div class="ecommerce-primary-line">Login required: N/A</div>
+        </div>
+      </div>
+      ${ecommerceSummary.note ? `<div class="ecommerce-note">${ecommerceSummary.note}</div>` : ''}
+    </div>
+    ${pageFooterBar(meta.tool, meta.version, 'Ecommerce Flow')}
+  </div>`;
+    }
 
-  const ISSUES_PER_PAGE = 2;
-  const TOTAL_PAGES = Math.max(1, Math.ceil(maxImages / ISSUES_PER_PAGE));
-  const allIssues = uiUxIssues.issues.slice(0, maxImages);
+    if (!ecommerceSummary.hasEcommerce) {
+      return `
+  <div class="pdf-page">
+    ${pageHeaderBar(meta.tool, meta.domain, generatedDate)}
+    <div class="section-header compact">
+      <div class="section-eyebrow">Ecommerce Flow</div>
+      <h2 class="section-title">Ecommerce Functionality Audit</h2>
+      <p class="section-sub">No ecommerce audit data was available</p>
+    </div>
+    <div class="ecommerce-section-body">
+      <div class="ecommerce-empty-state">
+        <div class="ecommerce-empty-icon">🛒</div>
+        <div class="ecommerce-empty-text">The audited site did not expose an ecommerce funnel during crawl, so cart and checkout flow checks were not run.</div>
+        <div class="ecommerce-empty-note">If the store is behind a different entry page or requires login, audit that URL directly to inspect cart functionality and checkout access.</div>
+      </div>
+    </div>
+    ${pageFooterBar(meta.tool, meta.version, 'Ecommerce Flow')}
+  </div>`;
+    }
 
-  const pages = [];
-  for (let p = 0; p < TOTAL_PAGES; p++) {
-    const start = p * ISSUES_PER_PAGE;
-    const chunk = allIssues.slice(start, start + ISSUES_PER_PAGE);
-    const pageNum = p + 1;
+    const statCards = [
+      {
+        label: 'Ecommerce Detected',
+        value: `${ecommerceSummary.detectedPages}/${ecommerceSummary.auditedPages}`,
+        sub: ecommerceSummary.hasEcommerce ? 'Storefront flow found' : 'No storefront detected',
+        tone: ecommerceSummary.hasEcommerce ? 'pass' : 'warn',
+      },
+      {
+        label: 'Platform',
+        value: ecommerceSummary.platform || 'unknown',
+        sub: ecommerceSummary.confidence ? `Confidence ${ecommerceSummary.confidence}` : 'Detection confidence not set',
+        tone: 'neutral',
+      },
+      {
+        label: 'Ecommerce Score',
+        value: ecommerceSummary.score != null ? `${ecommerceSummary.score}/100` : 'N/A',
+        sub: primary?.overallStatus ? `Status ${primary.overallStatus}` : 'No score available',
+        tone: ecommerceSummary.score != null && ecommerceSummary.score >= 75 ? 'pass' : ecommerceSummary.score != null && ecommerceSummary.score < 60 ? 'fail' : 'warn',
+      },
+      {
+        label: 'Checkout Ready',
+        value: `${ecommerceSummary.metrics.checkoutPassed ?? 0}`,
+        sub: `${ecommerceSummary.metrics.checkoutAccessible ?? 0} accessible / ${ecommerceSummary.metrics.checkoutLoginWalls ?? 0} login wall(s)`,
+        tone: (ecommerceSummary.metrics.checkoutAccessible ?? 0) > 0 ? 'pass' : 'warn',
+      },
+      {
+        label: 'Cart Updated',
+        value: `${ecommerceSummary.metrics.cartUpdated ?? 0}`,
+        sub: `${ecommerceSummary.metrics.addToCartPassed ?? 0} add-to-cart check(s) passed`,
+        tone: (ecommerceSummary.metrics.cartUpdated ?? 0) > 0 ? 'pass' : 'warn',
+      },
+      {
+        label: 'Checkout Pages',
+        value: `${ecommerceSummary.metrics.checkoutPassed ?? 0}`,
+        sub: 'Accessible cart-to-checkout path',
+        tone: (ecommerceSummary.metrics.checkoutPassed ?? 0) > 0 ? 'pass' : 'fail',
+      },
+    ];
 
-    const issueCards = chunk
-      .map((issue) => {
-        const severityColor =
-          issue.severity === 'critical'
-            ? 'var(--red)'
-            : issue.severity === 'warning'
-              ? 'var(--yellow)'
-              : 'var(--accent)';
+    const statsHTML = statCards
+      .map((card) => `
+        <div class="ecommerce-stat-card ${card.tone}">
+          <div class="ecommerce-stat-copy">
+            <div class="ecommerce-stat-label">${card.label}</div>
+            <div class="ecommerce-stat-sub">${card.sub}</div>
+          </div>
+          <div class="ecommerce-stat-val">${card.value}</div>
+        </div>`)
+      .join('');
 
+    const stepCards = (ecommerceSummary.steps || [])
+      .map((step) => {
+        const statusTone = step.failed > 0 ? 'fail' : step.passed > 0 ? 'pass' : 'warn';
+        const statusLabel = step.failed > 0
+          ? `${step.failed} failed`
+          : step.passed > 0
+            ? `${step.passed}/${step.tested || 1} passed`
+            : 'Not tested';
         return `
-      <div class="uiux-issue-card">
-        <div class="uiux-issue-header">
-          <span class="uiux-severity-badge" style="color:${severityColor}; border-color:${severityColor}">${issue.severity.toUpperCase()}</span>
-          <span class="uiux-issue-category">${issue.category}</span>
-          <span class="uiux-issue-pages">${issue.pageCount} page${issue.pageCount !== 1 ? 's' : ''} affected</span>
-        </div>
-        <h3 class="uiux-issue-title">${issue.title}</h3>
-        <p class="uiux-issue-desc">${issue.description}</p>
-        <div class="uiux-screenshot-placeholder">
-          <div class="uiux-screenshot-label">📷 Screenshot – Insert manually</div>
-        </div>
-      </div>`;
+        <div class="ecommerce-step-card ${statusTone}">
+          <div class="ecommerce-step-header">
+            <span class="ecommerce-step-name">${step.label}</span>
+            <span class="ecommerce-step-badge">${statusLabel}</span>
+          </div>
+          <div class="ecommerce-step-detail">${step.detail || 'No additional detail captured.'}</div>
+        </div>`;
       })
       .join('');
 
-    // If fewer than 2 issues on this page, add empty screenshot space
-    const emptySlots = ISSUES_PER_PAGE - chunk.length;
-    const emptyCards =
-      emptySlots > 0 && chunk.length > 0
-        ? Array(emptySlots)
-            .fill(
-              `
-      <div class="uiux-issue-card empty">
-        <div class="uiux-screenshot-placeholder large">
-          <div class="uiux-screenshot-label">📷 Additional Screenshot Space</div>
+    const primaryCards = primary ? `
+      <div class="ecommerce-primary-grid">
+        <div class="ecommerce-primary-card">
+          <div class="ecommerce-primary-title">Product Listing</div>
+          <div class="ecommerce-primary-line">${primary.productListing.passed ? 'Passed' : 'Failed'} · ${primary.productListing.productCount ?? 0} product(s)</div>
+          <div class="ecommerce-primary-line">Images: ${primary.productListing.hasImages ? 'yes' : 'no'} · Prices: ${primary.productListing.hasPrices ? 'yes' : 'no'} · Links: ${primary.productListing.hasProductLinks ? 'yes' : 'no'}</div>
+          ${primary.productListing.sampleProductUrl ? `<a class="ecommerce-primary-link" href="${primary.productListing.sampleProductUrl}" target="_blank" rel="noopener noreferrer">${primary.productListing.sampleProductUrl}</a>` : ''}
+          ${primary.productListing.detail ? `<div class="ecommerce-primary-note">${primary.productListing.detail}</div>` : ''}
         </div>
-      </div>`,
-            )
-            .join('')
-        : emptySlots === ISSUES_PER_PAGE
-          ? `
-      <div class="uiux-additional-space">
-        <div class="uiux-screenshot-placeholder full-page">
-          <div class="uiux-screenshot-label">📷 Additional Screenshots & Notes</div>
+        <div class="ecommerce-primary-card">
+          <div class="ecommerce-primary-title">Product Detail</div>
+          <div class="ecommerce-primary-line">Add-to-cart button: ${primary.productDetail.hasAddToCartBtn ? 'yes' : 'no'} · Site type: ${primary.productDetail.siteType || 'unknown'}</div>
+          <div class="ecommerce-primary-line">Selector: ${primary.productDetail.addToCartSelector || 'n/a'}</div>
+          ${primary.productDetail.detail ? `<div class="ecommerce-primary-note">${primary.productDetail.detail}</div>` : ''}
         </div>
-      </div>`
-          : '';
+        <div class="ecommerce-primary-card">
+          <div class="ecommerce-primary-title">Add to Cart</div>
+          <div class="ecommerce-primary-line">Cart updated: ${primary.addToCart.cartUpdated ? 'yes' : 'no'} · Method: ${primary.addToCart.method || 'n/a'}</div>
+          <div class="ecommerce-primary-line">Count: ${primary.addToCart.cartCountBefore ?? '—'} → ${primary.addToCart.cartCountAfter ?? '—'}</div>
+          ${primary.addToCart.detail ? `<div class="ecommerce-primary-note">${primary.addToCart.detail}</div>` : ''}
+        </div>
+        <div class="ecommerce-primary-card">
+          <div class="ecommerce-primary-title">Cart & Checkout</div>
+          <div class="ecommerce-primary-line">Cart page: ${primary.cartPage.passed ? 'passed' : 'failed'} · Items: ${primary.cartPage.lineItemCount ?? 0}</div>
+          <div class="ecommerce-primary-line">Checkout reachable: ${primary.checkout.reachable ? 'yes' : 'no'} · Login required: ${primary.checkout.requiresLogin ? 'yes' : 'no'}</div>
+          ${primary.cartPage.detail ? `<div class="ecommerce-primary-note">Cart: ${primary.cartPage.detail}</div>` : ''}
+          ${primary.checkout.detail ? `<div class="ecommerce-primary-note">Checkout: ${primary.checkout.detail}</div>` : ''}
+        </div>
+      </div>` : '';
+
+    const platformBreakdown = Object.entries(ecommerceSummary.platforms || {})
+      .map(([platform, count]) => `<span class="ecommerce-pill">${platform}: ${count}</span>`)
+      .join('');
+
+    return `
+  <div class="pdf-page">
+    ${pageHeaderBar(meta.tool, meta.domain, generatedDate)}
+    <div class="section-header compact">
+      <div class="section-eyebrow">Ecommerce Flow</div>
+      <h2 class="section-title">Ecommerce Functionality Audit</h2>
+      <p class="section-sub">Cart, checkout, and funnel availability captured from ${ecommerceSummary.auditedPages} audited ecommerce page(s)</p>
+    </div>
+    <div class="ecommerce-section-body">
+      <div class="ecommerce-stats-grid">${statsHTML}</div>
+      <div class="ecommerce-cards-label">Funnel Steps</div>
+      <div class="ecommerce-steps-grid">${stepCards}</div>
+      <div class="ecommerce-cards-label">Primary Funnel Details</div>
+      ${primaryCards}
+      <div class="ecommerce-meta-row">
+        <div class="ecommerce-meta-label">Platforms</div>
+        <div class="ecommerce-meta-pills">${platformBreakdown || '<span class="ecommerce-pill">unknown</span>'}</div>
+      </div>
+      ${ecommerceSummary.note ? `<div class="ecommerce-note">${ecommerceSummary.note}</div>` : ''}
+    </div>
+    ${pageFooterBar(meta.tool, meta.version, 'Ecommerce Flow')}
+  </div>`;
+  }
+
+// ─── UI/UX Issues Pages (2-slot visual grid per page) ───────────────────────
+
+function uiUxPages(meta, uiUxIssues, generatedDate, maxImages = 4) {
+  const cardsPerPage = 2;
+  const totalPages = 2;
+  const allIssues = (uiUxIssues?.issues || []).slice(0, cardsPerPage * totalPages);
+  const pages = [];
+
+  for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
+    const start = pageIndex * cardsPerPage;
+    const pageIssues = allIssues.slice(start, start + cardsPerPage);
+    while (pageIssues.length < cardsPerPage) pageIssues.push(null);
+
+    const slots = pageIssues.map((issue, offset) => {
+      const slotNumber = start + offset + 1;
+      const baseId = issue ? `uiux-slot-${slotNumber}` : `uiux-empty-slot-${slotNumber}`;
+
+      if (!issue) {
+        return `
+        <div class="uiux-issue-card empty" id="${baseId}">
+          <div class="uiux-slot-badge">Slot ${slotNumber}</div>
+          <div class="uiux-screenshot-placeholder full-slot" id="${baseId}-box">
+            <div class="uiux-screenshot-label">Empty image box</div>
+          </div>
+        </div>`;
+      }
+
+      const severityColor =
+        issue.severity === 'critical'
+          ? 'var(--red)'
+          : issue.severity === 'warning'
+            ? 'var(--yellow)'
+            : 'var(--accent)';
+
+      return `
+        <div class="uiux-issue-card" id="${baseId}">
+          <div class="uiux-issue-header">
+            <span class="uiux-severity-badge" style="color:${severityColor}; border-color:${severityColor}">${issue.severity.toUpperCase()}</span>
+            <span class="uiux-issue-category">${issue.category}</span>
+            <span class="uiux-issue-pages">${issue.pageCount} page${issue.pageCount !== 1 ? 's' : ''} affected</span>
+          </div>
+          <h3 class="uiux-issue-title">${issue.title}</h3>
+          <p class="uiux-issue-desc">${issue.description}</p>
+          <div class="uiux-screenshot-placeholder full-slot" id="${baseId}-box">
+            <div class="uiux-screenshot-label">📷 Screenshot placeholder</div>
+          </div>
+        </div>`;
+    }).join('');
 
     pages.push(`
 <div class="pdf-page">
@@ -466,13 +665,12 @@ function uiUxPages(meta, uiUxIssues, generatedDate, maxImages = 4) {
   <div class="section-header compact">
     <div class="section-eyebrow">UI / UX Review</div>
     <h2 class="section-title">User Interface & Experience Issues</h2>
-    <p class="section-sub">Page ${pageNum} of ${TOTAL_PAGES} — ${Math.min(uiUxIssues.totalIssues, maxImages)} issues shown across ${meta.auditedPages} pages</p>
+    <p class="section-sub">${uiUxIssues?.totalIssues > 0 ? `${Math.min(uiUxIssues.totalIssues, maxImages)} issue(s) prioritized into ${cardsPerPage} visual slots per page across ${totalPages} page(s)` : `No significant UI/UX issues detected across ${meta.auditedPages} pages`}</p>
   </div>
-  <div class="uiux-section-body">
-    ${issueCards}
-    ${emptyCards}
+  <div class="uiux-section-body uiux-section-body-two-up">
+    ${slots}
   </div>
-  ${pageFooterBar(meta.tool, meta.version, 'UI/UX Review ' + pageNum + '/' + TOTAL_PAGES)}
+  ${pageFooterBar(meta.tool, meta.version, `UI/UX Review ${pageIndex + 1}/${totalPages}`)}
 </div>`);
   }
 
@@ -552,6 +750,7 @@ module.exports = {
   scorecardAndOpportunitiesPage,
   pageBreakdownPages,
   formValidationPages,
+  ecommercePages,
   uiUxPages,
   closingPage,
 };

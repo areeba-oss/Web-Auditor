@@ -1312,6 +1312,9 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
   const result = {
     url, isEcommerce: false, platform: null, confidence: 'low',
     detectionMethod: 'dom-only',
+    auditState: 'attempted',
+    botDetected: false,
+    botDetectionReason: null,
     productListing: { tested: false, passed: false, detail: 'Not tested' },
     productDetail:  { tested: false, passed: false, detail: 'Not tested' },
     addToCart:      { tested: false, passed: false, detail: 'Not tested' },
@@ -1336,8 +1339,17 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
     }
 
     if (!response?.ok()) {
+      const status = response?.status();
+      if ([401, 403, 429].includes(status)) {
+        result.botDetected = true;
+        result.botDetectionReason = `HTTP ${status} from ecommerce entry page`;
+        result.auditState = 'bot-blocked';
+        result.issues.push({ type: 'warning', code: 'BOT_DETECTED', message: result.botDetectionReason });
+        return result;
+      }
       result.issues.push({ type: 'critical', code: 'PAGE_LOAD_FAILED', message: `HTTP ${response?.status()}` });
       result.overallStatus = 'critical';
+      result.auditState = 'failed';
       return result;
     }
 
@@ -1361,6 +1373,7 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
         message: `Not ecommerce (DOM score: ${domDetection.domScore})` });
       result.overallStatus = 'healthy';
       result.score         = null;
+      result.auditState    = 'not-ecommerce';
       return result;
     }
 
@@ -1402,6 +1415,7 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
     result.checkout  = cartFlow.checkout;
 
     result.score = calculateScore(result);
+    result.auditState = 'completed';
 
     if (!result.productListing.passed)
       result.issues.push({ type: 'critical', code: 'PRODUCT_LISTING_FAILED',
@@ -1434,11 +1448,23 @@ async function auditEcommerce(context, url, timeout = 90_000) {  // [B2] raised 
     result.overallStatus = criticals.length > 0 ? 'critical' : warnings.length > 0 ? 'warning' : 'healthy';
 
   } catch (err) {
-    result.overallStatus = 'critical';
-    result.score         = 0;
-    result.issues.push({ type: 'critical', code: 'AUDIT_FATAL', message: `Fatal: ${err.message}` });
-    result.fatalError    = err.message;
-    console.error(`   ❌ Ecommerce audit fatal: ${err.message}`);
+    const msg = String(err && err.message ? err.message : err);
+    const looksBlocked = /bot|captcha|blocked|rate.?limit|too many requests|cloudflare|access denied|challenge|forbidden|timeout/i.test(msg);
+    if (looksBlocked) {
+      result.botDetected = true;
+      result.botDetectionReason = msg.slice(0, 180);
+      result.auditState = 'bot-blocked';
+      result.overallStatus = 'warning';
+      result.score = null;
+      result.issues.push({ type: 'warning', code: 'BOT_DETECTED', message: `Bot protection prevented ecommerce audit: ${result.botDetectionReason}` });
+    } else {
+      result.overallStatus = 'critical';
+      result.score         = 0;
+      result.auditState    = 'failed';
+      result.issues.push({ type: 'critical', code: 'AUDIT_FATAL', message: `Fatal: ${err.message}` });
+      result.fatalError    = err.message;
+      console.error(`   ❌ Ecommerce audit fatal: ${err.message}`);
+    }
   } finally {
     await page.close();
   }

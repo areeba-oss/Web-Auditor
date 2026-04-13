@@ -1008,6 +1008,208 @@ function getStyles(accentColor) {
       font-weight: 500;
     }
 
+    /* ─────────────────────────────────────────
+       ECOMMERCE FLOW SECTION
+    ───────────────────────────────────────── */
+    .ecommerce-section-body {
+      padding: 0 10mm 4mm;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5mm;
+    }
+
+    .ecommerce-empty-state {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8mm 0;
+    }
+
+    .ecommerce-empty-icon { font-size: 36px; margin-bottom: 4mm; }
+    .ecommerce-empty-text { font-size: 11px; color: var(--muted); max-width: 350px; line-height: 1.6; }
+    .ecommerce-empty-note { margin-top: 2mm; font-size: 9px; color: var(--text-secondary); max-width: 360px; line-height: 1.5; }
+
+    .ecommerce-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5mm;
+    }
+
+    .ecommerce-stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3mm 3.5mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3mm;
+      min-height: 18mm;
+    }
+
+    .ecommerce-stat-card.pass { border-color: var(--green); background: var(--green-light); }
+    .ecommerce-stat-card.warn { border-color: var(--yellow); background: var(--yellow-light); }
+    .ecommerce-stat-card.fail { border-color: var(--red); background: var(--red-light); }
+
+    .ecommerce-stat-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ecommerce-stat-label {
+      font-size: 8.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1px;
+    }
+
+    .ecommerce-stat-sub {
+      font-size: 8.5px;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .ecommerce-stat-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .ecommerce-stat-card.pass .ecommerce-stat-val { color: var(--green); }
+    .ecommerce-stat-card.warn .ecommerce-stat-val { color: var(--yellow); }
+    .ecommerce-stat-card.fail .ecommerce-stat-val { color: var(--red); }
+
+    .ecommerce-cards-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 8.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 1mm;
+      margin-bottom: 1mm;
+      font-weight: 600;
+    }
+
+    .ecommerce-steps-grid,
+    .ecommerce-primary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5mm;
+    }
+
+    .ecommerce-step-card,
+    .ecommerce-primary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3mm;
+      font-size: 9px;
+    }
+
+    .ecommerce-step-card.pass,
+    .ecommerce-primary-card.pass { border-color: var(--green); background: var(--green-light); }
+    .ecommerce-step-card.warn,
+    .ecommerce-primary-card.warn { border-color: var(--yellow); background: var(--yellow-light); }
+    .ecommerce-step-card.fail,
+    .ecommerce-primary-card.fail { border-color: var(--red); background: var(--red-light); }
+
+    .ecommerce-step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2mm;
+      margin-bottom: 1.5mm;
+    }
+
+    .ecommerce-step-name,
+    .ecommerce-primary-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .ecommerce-step-badge {
+      font-size: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .ecommerce-step-detail,
+    .ecommerce-primary-line,
+    .ecommerce-primary-note,
+    .ecommerce-note {
+      font-size: 8.5px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .ecommerce-primary-card {
+      min-height: 28mm;
+    }
+
+    .ecommerce-primary-line + .ecommerce-primary-line {
+      margin-top: 1px;
+    }
+
+    .ecommerce-primary-link {
+      display: block;
+      margin-top: 1mm;
+      font-size: 8px;
+      color: var(--accent);
+      word-break: break-all;
+      text-decoration: underline;
+    }
+
+    .ecommerce-primary-note {
+      margin-top: 1mm;
+      color: var(--muted);
+    }
+
+    .ecommerce-meta-row {
+      display: flex;
+      gap: 2mm;
+      align-items: flex-start;
+      margin-top: 1mm;
+    }
+
+    .ecommerce-meta-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 8.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      min-width: 60px;
+      flex-shrink: 0;
+    }
+
+    .ecommerce-meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5mm;
+    }
+
+    .ecommerce-pill {
+      font-size: 8px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: var(--surface2);
+      color: var(--navy);
+    }
+
     .form-issues-list {
       display: flex;
       flex-direction: column;
@@ -1074,9 +1276,17 @@ function getStyles(accentColor) {
     .uiux-section-body {
       padding: 0 10mm 4mm;
       flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4mm;
+      align-content: start;
+    }
+
+    .uiux-section-body-two-up {
       display: flex;
       flex-direction: column;
       gap: 4mm;
+      padding-bottom: 5mm;
     }
 
     .uiux-issue-card {
@@ -1085,14 +1295,30 @@ function getStyles(accentColor) {
       border-radius: 6px;
       padding: 4mm 5mm;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      flex: 1;
       display: flex;
       flex-direction: column;
+      min-height: 0;
+      flex: 1 1 0;
     }
 
     .uiux-issue-card.empty {
       background: var(--surface);
       border-style: dashed;
+    }
+
+    .uiux-slot-badge {
+      align-self: flex-start;
+      font-family: 'DM Mono', monospace;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid #fdba74;
+      border-radius: 999px;
+      padding: 1.5px 6px;
+      margin-bottom: 3mm;
     }
 
     .uiux-issue-header {
@@ -1151,16 +1377,11 @@ function getStyles(accentColor) {
       align-items: center;
       justify-content: center;
       flex: 1;
-      min-height: 60mm;
+      min-height: 0;
     }
 
-    .uiux-screenshot-placeholder.large {
-      min-height: 80mm;
-    }
-
-    .uiux-screenshot-placeholder.full-page {
-      flex: 1;
-      min-height: 100mm;
+    .uiux-screenshot-placeholder.full-slot {
+      min-height: 0;
     }
 
     .uiux-screenshot-label {

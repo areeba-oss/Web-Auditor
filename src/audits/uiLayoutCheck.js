@@ -415,10 +415,54 @@ async function auditUILayout(context, url, homepageUrl, timeout = 20_000) {
 
   try {
     await page.setViewportSize({ width: 1440, height: 900 });
-    const response = await page.goto(url, { waitUntil: 'load', timeout });
+    let response = null;
+    let navigationRecoveredFromTimeout = false;
+
+    try {
+      response = await page.goto(url, { waitUntil: 'load', timeout });
+    } catch (loadErr) {
+      const isTimeout = /timeout/i.test(loadErr?.message || '');
+      if (!isTimeout) throw loadErr;
+
+      try {
+        response = await page.goto(url, {
+          waitUntil: 'domcontentloaded',
+          timeout: Math.max(8_000, Math.floor(timeout * 0.75)),
+        });
+      } catch (domErr) {
+        const domTimeout = /timeout/i.test(domErr?.message || '');
+        if (!domTimeout) throw domErr;
+
+        try {
+          await page.waitForLoadState('domcontentloaded', { timeout: 8_000 });
+          const hasRenderableDom = await page.evaluate(() => {
+            const textLen = document.body?.innerText?.trim().length ?? 0;
+            const structuralEl = document.querySelector('header, footer, main, nav, [role="main"], [role="banner"], [role="contentinfo"]');
+            return textLen > 80 || !!structuralEl;
+          });
+
+          if (!hasRenderableDom) throw domErr;
+          navigationRecoveredFromTimeout = true;
+        } catch {
+          throw domErr;
+        }
+      }
+    }
+
     const httpStatus = response?.status() ?? null;
 
-    if (!httpStatus || httpStatus >= 400) {
+    let hasRenderableDomWithoutHttp = false;
+    if (!httpStatus) {
+      try {
+        hasRenderableDomWithoutHttp = await page.evaluate(() => {
+          const textLen = document.body?.innerText?.trim().length ?? 0;
+          const structuralEl = document.querySelector('header, footer, main, nav, [role="main"], [role="banner"], [role="contentinfo"]');
+          return textLen > 80 || !!structuralEl;
+        });
+      } catch {}
+    }
+
+    if (!httpStatus && !hasRenderableDomWithoutHttp) {
       return {
         url, httpStatus, overallStatus: 'critical', score: 0,
         issues: [{ type: 'critical', code: 'PAGE_LOAD_FAILED', message: `HTTP ${httpStatus}` }],
@@ -477,7 +521,48 @@ async function auditUILayout(context, url, homepageUrl, timeout = 20_000) {
     }
 
     const analysis = aggregateResults(bpAnalyses, logoLinkResult);
-    return { url, httpStatus, ...analysis, breakpointResults: bpAnalyses };
+
+    const httpIssues = [];
+    if (httpStatus >= 500) {
+      httpIssues.push({
+        type: 'warning',
+        code: 'HTTP_SERVER_ERROR_STATUS',
+        message: `Page returned HTTP ${httpStatus}, but UI checks were still executed on rendered content`,
+      });
+    } else if (httpStatus >= 400) {
+      httpIssues.push({
+        type: 'info',
+        code: 'HTTP_CLIENT_ERROR_STATUS',
+        message: `Page returned HTTP ${httpStatus}, but UI checks were executed because visible layout may still be valid`,
+      });
+    } else if (!httpStatus && hasRenderableDomWithoutHttp) {
+      httpIssues.push({
+        type: 'warning',
+        code: 'HTTP_STATUS_UNAVAILABLE',
+        message: 'HTTP status was unavailable, but UI checks were executed because renderable DOM was detected',
+      });
+    }
+
+    if (navigationRecoveredFromTimeout) {
+      httpIssues.push({
+        type: 'info',
+        code: 'NAVIGATION_TIMEOUT_RECOVERED',
+        message: 'Page load timed out on full load event; continued using DOM-ready content',
+      });
+    }
+
+    const mergedIssues = [...httpIssues, ...analysis.issues];
+    const hasCritical = mergedIssues.some((i) => i.type === 'critical');
+    const hasWarning = mergedIssues.some((i) => i.type === 'warning');
+
+    return {
+      url,
+      httpStatus,
+      ...analysis,
+      overallStatus: hasCritical ? 'critical' : hasWarning ? 'warning' : 'healthy',
+      issues: mergedIssues,
+      breakpointResults: bpAnalyses,
+    };
 
   } catch (err) {
     return {

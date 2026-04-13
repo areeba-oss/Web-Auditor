@@ -182,6 +182,7 @@ function transformPage(raw) {
   const nRaw = raw.navigation ?? {};
   const fRaw = raw.forms      ?? {};
   const pRaw = raw.performance ?? {};
+  const eRaw = raw.ecommerce  ?? {};
 
   // ── Health ──────────────────────────────────────────────────────────────────
   const health = {
@@ -364,6 +365,53 @@ function transformPage(raw) {
     })),
   };
 
+  // ── Ecommerce ──────────────────────────────────────────────────────────────
+  const ecommerce = {
+    url: eRaw.url ?? url,
+    isEcommerce: eRaw.isEcommerce ?? false,
+    platform: eRaw.platform ?? null,
+    confidence: eRaw.confidence ?? null,
+    detectionMethod: eRaw.detectionMethod ?? null,
+    auditState: eRaw.auditState ?? 'unknown',
+    botDetected: eRaw.botDetected ?? false,
+    botDetectionReason: eRaw.botDetectionReason ?? null,
+    score: eRaw.score ?? null,
+    overallStatus: eRaw.overallStatus ?? null,
+    siteLevelAudited: !!eRaw.siteLevelAudited,
+    siteLevelSkipped: !!eRaw.siteLevelSkipped,
+    productListing: eRaw.productListing ? {
+      ...eRaw.productListing,
+      tested: eRaw.productListing.tested ?? false,
+      passed: eRaw.productListing.passed ?? false,
+      detail: eRaw.productListing.detail ?? null,
+    } : null,
+    productDetail: eRaw.productDetail ? {
+      ...eRaw.productDetail,
+      tested: eRaw.productDetail.tested ?? false,
+      passed: eRaw.productDetail.passed ?? false,
+      detail: eRaw.productDetail.detail ?? null,
+    } : null,
+    addToCart: eRaw.addToCart ? {
+      ...eRaw.addToCart,
+      tested: eRaw.addToCart.tested ?? false,
+      passed: eRaw.addToCart.passed ?? false,
+      detail: eRaw.addToCart.detail ?? null,
+    } : null,
+    cartPage: eRaw.cartPage ? {
+      ...eRaw.cartPage,
+      tested: eRaw.cartPage.tested ?? false,
+      passed: eRaw.cartPage.passed ?? false,
+      detail: eRaw.cartPage.detail ?? null,
+    } : null,
+    checkout: eRaw.checkout ? {
+      ...eRaw.checkout,
+      tested: eRaw.checkout.tested ?? false,
+      passed: eRaw.checkout.passed ?? false,
+      detail: eRaw.checkout.detail ?? null,
+    } : null,
+    issues: eRaw.issues ?? [],
+  };
+
   // ── Category scores ─────────────────────────────────────────────────────────
   const { overall: computedOverallScore, categories: categoryScores } = computeCategoryScores(
     {
@@ -501,7 +549,7 @@ function transformPage(raw) {
   if (ttfbMs != null && ttfbMs >= 400)             opportunities.push({ key: 'slow-ttfb',   value: ttfbMs,       pages: 1 });
   if (!layout.headerVisible || !layout.footerVisible) opportunities.push({ key: 'missing-nav', value: 1,         pages: 1 });
 
-  return { url, slug, overallScore, grade, categoryScores, health, performance, responsiveness, navigation, layout, forms, findings, opportunities };
+  return { url, slug, overallScore, grade, categoryScores, health, performance, responsiveness, navigation, layout, forms, ecommerce, findings, opportunities };
 }
 
 // ─── Opportunity consolidation ────────────────────────────────────────────────
@@ -787,6 +835,207 @@ function buildUiUxIssues(pages) {
   return { totalIssues: deduped.length, issues: deduped };
 }
 
+// ─── buildEcommerceSummary ──────────────────────────────────────────────────
+
+function buildEcommerceSummary(pages) {
+  const ecommercePages = pages.filter(p => p.ecommerce?.siteLevelAudited || p.ecommerce?.botDetected);
+  const detectedPages = ecommercePages.filter(p => p.ecommerce?.isEcommerce);
+  const blockedPages = ecommercePages.filter(p => p.ecommerce?.auditState === 'bot-blocked');
+  const primary = detectedPages[0] ?? ecommercePages[0] ?? null;
+
+  const stepDefs = [
+    { key: 'productListing', label: 'Product Listing' },
+    { key: 'productDetail', label: 'Product Detail' },
+    { key: 'addToCart', label: 'Add to Cart' },
+    { key: 'cartPage', label: 'Cart Page' },
+    { key: 'checkout', label: 'Checkout' },
+  ];
+
+  const pageDetails = ecommercePages.map((page) => {
+    const ecommerce = page.ecommerce ?? {};
+    const stepState = (step) => ({
+      tested: step?.tested ?? false,
+      passed: step?.passed ?? false,
+      detail: step?.detail ?? null,
+    });
+
+    if (ecommerce.auditState === 'bot-blocked') {
+      return {
+        page: page.slug,
+        pageUrl: page.url,
+        score: null,
+        overallStatus: 'warning',
+        isEcommerce: false,
+        platform: 'unknown',
+        confidence: 'low',
+        detectionMethod: ecommerce.detectionMethod ?? 'dom-only',
+        siteLevelAudited: false,
+        siteLevelSkipped: false,
+        botDetected: true,
+        botDetectionReason: ecommerce.botDetectionReason ?? 'Bot detection prevented ecommerce audit',
+        productListing: {
+          tested: false,
+          passed: false,
+          detail: ecommerce.botDetectionReason ?? 'Bot protection prevented product listing audit',
+          productCount: null,
+          hasImages: false,
+          hasPrices: false,
+          hasProductLinks: false,
+          sampleProductUrl: null,
+          url: null,
+        },
+        productDetail: {
+          tested: false,
+          passed: false,
+          detail: ecommerce.botDetectionReason ?? 'Bot protection prevented product detail audit',
+          hasAddToCartBtn: false,
+          addToCartSelector: null,
+          siteType: null,
+          url: null,
+        },
+        addToCart: {
+          tested: false,
+          passed: false,
+          detail: ecommerce.botDetectionReason ?? 'Bot protection prevented add-to-cart testing',
+          cartUpdated: false,
+          method: null,
+          cartCountBefore: null,
+          cartCountAfter: null,
+          url: null,
+        },
+        cartPage: {
+          tested: false,
+          passed: false,
+          detail: ecommerce.botDetectionReason ?? 'Bot protection prevented cart testing',
+          hasItem: false,
+          hasPrice: false,
+          hasQuantityControl: false,
+          hasRemoveOption: false,
+          lineItemCount: null,
+          url: null,
+        },
+        checkout: {
+          tested: false,
+          passed: false,
+          detail: ecommerce.botDetectionReason ?? 'Bot protection prevented checkout testing',
+          reachable: false,
+          requiresLogin: false,
+          checkoutHref: null,
+          url: null,
+        },
+      };
+    }
+
+    return {
+      page: page.slug,
+      pageUrl: page.url,
+      score: ecommerce.score ?? null,
+      overallStatus: ecommerce.overallStatus ?? null,
+      isEcommerce: !!ecommerce.isEcommerce,
+      platform: ecommerce.platform ?? 'unknown',
+      confidence: ecommerce.confidence ?? null,
+      detectionMethod: ecommerce.detectionMethod ?? null,
+      siteLevelAudited: !!ecommerce.siteLevelAudited,
+      siteLevelSkipped: !!ecommerce.siteLevelSkipped,
+      productListing: {
+        ...stepState(ecommerce.productListing),
+        productCount: ecommerce.productListing?.productCount ?? null,
+        hasImages: ecommerce.productListing?.hasImages ?? false,
+        hasPrices: ecommerce.productListing?.hasPrices ?? false,
+        hasProductLinks: ecommerce.productListing?.hasProductLinks ?? false,
+        sampleProductUrl: ecommerce.productListing?.sampleProductUrl ?? null,
+        url: ecommerce.productListing?.url ?? null,
+      },
+      productDetail: {
+        ...stepState(ecommerce.productDetail),
+        hasAddToCartBtn: ecommerce.productDetail?.hasAddToCartBtn ?? false,
+        addToCartSelector: ecommerce.productDetail?.addToCartSelector ?? null,
+        siteType: ecommerce.productDetail?.siteType ?? null,
+        url: ecommerce.productDetail?.url ?? null,
+      },
+      addToCart: {
+        ...stepState(ecommerce.addToCart),
+        cartUpdated: ecommerce.addToCart?.cartUpdated ?? false,
+        method: ecommerce.addToCart?.method ?? null,
+        cartCountBefore: ecommerce.addToCart?.cartCountBefore ?? null,
+        cartCountAfter: ecommerce.addToCart?.cartCountAfter ?? null,
+        url: ecommerce.addToCart?.url ?? null,
+      },
+      cartPage: {
+        ...stepState(ecommerce.cartPage),
+        hasItem: ecommerce.cartPage?.hasItem ?? false,
+        hasPrice: ecommerce.cartPage?.hasPrice ?? false,
+        hasQuantityControl: ecommerce.cartPage?.hasQuantityControl ?? false,
+        hasRemoveOption: ecommerce.cartPage?.hasRemoveOption ?? false,
+        lineItemCount: ecommerce.cartPage?.lineItemCount ?? null,
+        url: ecommerce.cartPage?.url ?? null,
+      },
+      checkout: {
+        ...stepState(ecommerce.checkout),
+        reachable: ecommerce.checkout?.reachable ?? false,
+        requiresLogin: ecommerce.checkout?.requiresLogin ?? false,
+        checkoutHref: ecommerce.checkout?.checkoutHref ?? null,
+        url: ecommerce.checkout?.url ?? null,
+      },
+    };
+  });
+
+  const stepStats = stepDefs.map(({ key, label }) => {
+    const entries = pageDetails.map((page) => page[key]).filter(Boolean);
+    return {
+      key,
+      label,
+      tested: entries.filter((entry) => entry.tested).length,
+      passed: entries.filter((entry) => entry.passed).length,
+      failed: entries.filter((entry) => entry.tested && !entry.passed).length,
+      detail: entries.find((entry) => entry.detail)?.detail ?? null,
+    };
+  });
+
+  const platformCounts = detectedPages.reduce((acc, page) => {
+    const platform = page.ecommerce?.platform ?? 'unknown';
+    acc[platform] = (acc[platform] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  const detectedScore = detectedPages.length > 0
+    ? Math.round(detectedPages.reduce((sum, page) => sum + (page.ecommerce?.score ?? 0), 0) / detectedPages.length)
+    : null;
+
+  return {
+    auditedPages: ecommercePages.length,
+    detectedPages: detectedPages.length,
+    hasEcommerce: detectedPages.length > 0,
+    overallStatus: primary?.ecommerce?.overallStatus ?? (ecommercePages.length > 0 ? 'healthy' : 'healthy'),
+    score: detectedScore,
+    platform: primary?.ecommerce?.platform ?? 'unknown',
+    confidence: primary?.ecommerce?.confidence ?? null,
+    detectionMethod: primary?.ecommerce?.detectionMethod ?? null,
+    platforms: platformCounts,
+    pages: pageDetails,
+    steps: stepStats,
+    primary: pageDetails[0] ?? null,
+    metrics: {
+      productListingPassed: pageDetails.filter((page) => page.productListing.passed).length,
+      productDetailPassed: pageDetails.filter((page) => page.productDetail.passed).length,
+      addToCartPassed: pageDetails.filter((page) => page.addToCart.passed).length,
+      cartPagePassed: pageDetails.filter((page) => page.cartPage.passed).length,
+      checkoutPassed: pageDetails.filter((page) => page.checkout.passed).length,
+      checkoutAccessible: pageDetails.filter((page) => page.checkout.passed && !page.checkout.requiresLogin).length,
+      checkoutLoginWalls: pageDetails.filter((page) => page.checkout.requiresLogin).length,
+      cartUpdated: pageDetails.filter((page) => page.addToCart.cartUpdated).length,
+    },
+    blocked: blockedPages.length > 0,
+    note: blockedPages.length > 0
+      ? 'Ecommerce audit was blocked by bot protection. Fill in the placeholder values manually.'
+      : detectedPages.length > 0
+      ? null
+      : (ecommercePages.length > 0
+        ? 'Ecommerce flow was audited, but no storefront pattern was detected.'
+        : 'No ecommerce audit data was available.'),
+  };
+}
+
 // ─── buildReport ──────────────────────────────────────────────────────────────
 
 function buildReport(rawPages) {
@@ -815,6 +1064,7 @@ function buildReport(rawPages) {
       },
       pageBreakdown: [],
       formValidationSummary: { totalPages: 0, totalForms: 0, stats: {}, forms: [], issues: [] },
+      ecommerceSummary: { auditedPages: 0, detectedPages: 0, hasEcommerce: false, blocked: false, overallStatus: 'healthy', score: null, platform: 'unknown', confidence: null, detectionMethod: null, platforms: {}, pages: [], steps: [], primary: null, metrics: {}, note: 'No ecommerce audit data was available.' },
       uiUxIssues: { totalIssues: 0, issues: [] },
       opportunitySummary: { title: 'No opportunities', description: '', items: [] },
       categoryScorecard: { title: '', categories: [] },
@@ -822,6 +1072,7 @@ function buildReport(rawPages) {
   }
   const transformed = rawPages.map(transformPage);
   const summary     = buildSummary(transformed);
+  const ecommerceSummary = buildEcommerceSummary(transformed);
   const domain      = (() => { try { return new URL(rawPages[0].url).hostname; } catch { return 'unknown'; } })();
 
   return {
@@ -846,6 +1097,8 @@ function buildReport(rawPages) {
         { label: 'Critical Issues',  value: summary.criticalIssues,  highlight: summary.criticalIssues > 0, icon: 'CI'  },
         { label: 'Warnings',         value: summary.warnings,                                             icon: 'WN'  },
         { label: 'Mobile Failures',  value: summary.mobileFailures,  highlight: summary.mobileFailures > 0, icon: 'MF'  },
+        { label: 'Ecommerce Sites',  value: ecommerceSummary.detectedPages, highlight: ecommerceSummary.detectedPages > 0, icon: 'EC'  },
+        { label: 'Checkout Ready',   value: ecommerceSummary.metrics.checkoutPassed ?? 0,                 icon: 'CH'  },
         { label: 'Avg. FCP',         value: summary.averageFirstContentfulPaint.formatted ?? 'N/A',
           subLabel: summary.averageFirstContentfulPaint.grade?.label,                                      icon: 'FCP' },
         { label: 'Avg. LCP',         value: summary.averageLargestContentfulPaint.formatted ?? 'N/A',
@@ -884,6 +1137,7 @@ function buildReport(rawPages) {
 
     pageBreakdown:         transformed,
     formValidationSummary: buildFormValidationSummary(transformed),
+    ecommerceSummary,
     navFooterSummary:      buildNavFooterSummary(transformed),
     uiUxIssues:            buildUiUxIssues(transformed),
 

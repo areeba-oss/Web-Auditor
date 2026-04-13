@@ -1,0 +1,994 @@
+{
+  "meta": {
+    "reportTitle": "Web Audit Report — www.spiritmarineqld.com",
+    "domain": "www.spiritmarineqld.com",
+    "generatedAt": "2026-04-13T18:19:07.423Z",
+    "auditedPages": 1,
+    "tool": "SPCTEK Web Auditor",
+    "version": "2.0"
+  },
+  "executiveSummary": {
+    "headline": "Your site scores 76/100 — a solid foundation with clear wins available.",
+    "overallScore": 76,
+    "grade": {
+      "grade": "B",
+      "label": "Good",
+      "color": "#65a30d"
+    },
+    "keyStats": [
+      {
+        "label": "Pages Audited",
+        "value": 1,
+        "icon": "PA"
+      },
+      {
+        "label": "Critical Issues",
+        "value": 3,
+        "highlight": true,
+        "icon": "CI"
+      },
+      {
+        "label": "Warnings",
+        "value": 3,
+        "icon": "WN"
+      },
+      {
+        "label": "Mobile Failures",
+        "value": 0,
+        "highlight": false,
+        "icon": "MF"
+      },
+      {
+        "label": "Ecommerce Sites",
+        "value": 0,
+        "highlight": false,
+        "icon": "EC"
+      },
+      {
+        "label": "Checkout Ready",
+        "value": 0,
+        "icon": "CH"
+      },
+      {
+        "label": "Avg. FCP",
+        "value": "0.58s",
+        "subLabel": "Fast",
+        "icon": "FCP"
+      },
+      {
+        "label": "Avg. LCP",
+        "value": "3.85s",
+        "subLabel": "Moderate",
+        "icon": "LCP"
+      },
+      {
+        "label": "Desktop PSI",
+        "value": "52/100",
+        "icon": "PSI"
+      },
+      {
+        "label": "Mobile PSI",
+        "value": "47/100",
+        "icon": "MOB"
+      }
+    ],
+    "performanceStats": {
+      "avgFCP": {
+        "ms": 584,
+        "formatted": "0.58s",
+        "grade": {
+          "label": "Fast",
+          "color": "#16a34a"
+        }
+      },
+      "avgLCP": {
+        "ms": 3846,
+        "formatted": "3.85s",
+        "grade": {
+          "label": "Moderate",
+          "color": "#b45309"
+        }
+      },
+      "avgTTFB": {
+        "ms": 2,
+        "formatted": "0.00s",
+        "grade": {
+          "label": "Excellent",
+          "color": "#16a34a"
+        }
+      },
+      "avgTBT": {
+        "ms": 849,
+        "formatted": "0.85s",
+        "grade": {
+          "label": "Poor",
+          "color": "#dc2626"
+        }
+      },
+      "avgDesktopPsiScore": 52,
+      "avgMobilePsiScore": 47
+    },
+    "siteHealth": {
+      "httpOkCount": 1,
+      "totalPages": 1,
+      "totalLinks": 51,
+      "brokenLinks": 4,
+      "totalCTAs": 0,
+      "headerFound": 0,
+      "footerFound": 0,
+      "logoFound": 1,
+      "mobilePass": 1,
+      "mobileFail": 0
+    },
+    "topFindings": [
+      "3 critical issue(s) across 1 pages",
+      "4 unique broken link(s)",
+      "3 warning(s) flagged"
+    ],
+    "worstPages": [
+      {
+        "slug": "/range/antares-range",
+        "score": 76,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      }
+    ],
+    "bestPages": [
+      {
+        "slug": "/range/antares-range",
+        "score": 76,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      }
+    ],
+    "callToAction": "The issues identified are actionable improvements that can increase search rankings, improve user experience, and drive more conversions."
+  },
+  "pageBreakdown": [
+    {
+      "url": "https://www.spiritmarineqld.com/range/antares-range",
+      "slug": "/range/antares-range",
+      "overallScore": 76,
+      "grade": {
+        "grade": "B",
+        "label": "Good",
+        "color": "#65a30d"
+      },
+      "categoryScores": {
+        "health": 76,
+        "speed": 66,
+        "resources": 85,
+        "mobile": 100,
+        "navigation": 26,
+        "layout": 17
+      },
+      "health": {
+        "status": 200,
+        "ok": true,
+        "blankScreen": false,
+        "significantErrors": 8,
+        "failedRequests": 3,
+        "criticalFailures": 0,
+        "significantErrorMessages": [
+          "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+          "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+          "%c%d font-size:0;color:transparent NaN",
+          "%c%d font-size:0;color:transparent NaN",
+          "Failed to load resource: the server responded with a status of 401 ()"
+        ]
+      },
+      "performance": {
+        "desktop": {
+          "score": 52,
+          "firstContentfulPaint": {
+            "ms": 584,
+            "formatted": "0.58s",
+            "grade": {
+              "label": "Fast",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "largestContentfulPaint": {
+            "ms": 3846,
+            "formatted": "3.85s",
+            "grade": {
+              "label": "Moderate",
+              "color": "#b45309"
+            },
+            "rating": "needs-improvement"
+          },
+          "timeToFirstByte": {
+            "ms": 2,
+            "formatted": "0.00s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 849,
+            "formatted": "0.85s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0,
+            "formatted": "0.000",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 1003,
+            "formatted": "1.00s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 3846,
+            "formatted": "3.85s",
+            "rating": "needs-improvement"
+          }
+        },
+        "mobile": {
+          "score": 47,
+          "firstContentfulPaint": {
+            "ms": 3180,
+            "formatted": "3.18s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "largestContentfulPaint": {
+            "ms": 22059,
+            "formatted": "22.06s",
+            "grade": {
+              "label": "Slow",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "timeToFirstByte": {
+            "ms": 2,
+            "formatted": "0.00s",
+            "grade": {
+              "label": "Excellent",
+              "color": "#16a34a"
+            }
+          },
+          "totalBlockingTime": {
+            "ms": 973,
+            "formatted": "0.97s",
+            "grade": {
+              "label": "Poor",
+              "color": "#dc2626"
+            },
+            "rating": "poor"
+          },
+          "cumulativeLayoutShift": {
+            "value": 0.012,
+            "formatted": "0.012",
+            "grade": {
+              "label": "Good",
+              "color": "#16a34a"
+            },
+            "rating": "good"
+          },
+          "speedIndex": {
+            "ms": 3180,
+            "formatted": "3.18s",
+            "rating": "good"
+          },
+          "timeToInteractive": {
+            "ms": 22059,
+            "formatted": "22.06s",
+            "rating": "poor"
+          }
+        },
+        "firstContentfulPaint": {
+          "ms": 584,
+          "formatted": "0.58s",
+          "grade": {
+            "label": "Fast",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "largestContentfulPaint": {
+          "ms": 3846,
+          "formatted": "3.85s",
+          "grade": {
+            "label": "Moderate",
+            "color": "#b45309"
+          },
+          "rating": "needs-improvement"
+        },
+        "timeToFirstByte": {
+          "ms": 2,
+          "formatted": "0.00s",
+          "grade": {
+            "label": "Excellent",
+            "color": "#16a34a"
+          }
+        },
+        "totalBlockingTime": {
+          "ms": 849,
+          "formatted": "0.85s",
+          "grade": {
+            "label": "Poor",
+            "color": "#dc2626"
+          },
+          "rating": "poor"
+        },
+        "cumulativeLayoutShift": {
+          "value": 0,
+          "formatted": "0.000",
+          "grade": {
+            "label": "Good",
+            "color": "#16a34a"
+          },
+          "rating": "good"
+        },
+        "domContentLoaded": {
+          "ms": null,
+          "formatted": null
+        },
+        "totalLoadTime": {
+          "ms": null,
+          "formatted": null,
+          "grade": null
+        },
+        "slowResources": [],
+        "largeImages": [],
+        "totalResources": null,
+        "totalResourceSizeKB": null
+      },
+      "responsiveness": {
+        "mobile": {
+          "label": "Fully Responsive",
+          "color": "#16a34a",
+          "score": 100,
+          "details": {
+            "responsive": true,
+            "hasHorizontalScroll": false
+          }
+        },
+        "tablet": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        },
+        "desktop": {
+          "label": "Responsive",
+          "color": "#16a34a",
+          "details": {
+            "responsive": true
+          }
+        }
+      },
+      "navigation": {
+        "health": {
+          "label": "Broken Links Detected",
+          "color": "#dc2626"
+        },
+        "severity": "high",
+        "totalLinks": 51,
+        "internalLinks": 32,
+        "externalLinks": 6,
+        "brokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          },
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          },
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          },
+          {
+            "url": "https://www.facebook.com/SpiritMarineQld/",
+            "status": 400,
+            "region": "external"
+          }
+        ],
+        "contentBrokenLinks": [
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          },
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          },
+          {
+            "url": "#",
+            "status": "broken-anchor",
+            "region": "internal"
+          },
+          {
+            "url": "https://www.facebook.com/SpiritMarineQld/",
+            "status": 400,
+            "region": "external"
+          }
+        ],
+        "navBrokenLinks": [],
+        "footerBrokenLinks": [],
+        "protectedLinks": [],
+        "issues": [
+          "3 broken internal link(s) (out of 32 checked)"
+        ],
+        "insight": "4 broken link(s) found; 1 issue(s)."
+      },
+      "layout": {
+        "headerFound": false,
+        "headerVisible": false,
+        "footerFound": false,
+        "footerVisible": false,
+        "logoDetected": true,
+        "logoVisible": true,
+        "logoLinksHome": true,
+        "mainCTAVisible": false,
+        "ctaCount": 0,
+        "ctaTexts": [],
+        "responsiveness": {
+          "mobile": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "tablet": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          },
+          "desktop": {
+            "responsive": true,
+            "hasHorizontalScroll": false,
+            "details": {
+              "responsive": true,
+              "hasHorizontalScroll": false
+            }
+          }
+        }
+      },
+      "forms": {
+        "count": 1,
+        "forms": [
+          {
+            "index": 0,
+            "fieldCount": 2,
+            "purpose": "contact",
+            "isCritical": false,
+            "hasSubmitBtn": true,
+            "hasEmailField": true,
+            "invalidEmailInconclusive": false,
+            "invalidEmailDetail": "Please fill out this field.",
+            "hasRequiredFields": true,
+            "browserValidationActive": true,
+            "criticalMissingValidation": [],
+            "detectionMethod": "dom"
+          }
+        ]
+      },
+      "ecommerce": {
+        "url": "https://www.spiritmarineqld.com",
+        "isEcommerce": false,
+        "platform": null,
+        "confidence": "low",
+        "detectionMethod": "dom-only",
+        "auditState": "not-ecommerce",
+        "botDetected": false,
+        "botDetectionReason": null,
+        "score": null,
+        "overallStatus": "healthy",
+        "siteLevelAudited": true,
+        "siteLevelSkipped": false,
+        "productListing": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "productDetail": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "addToCart": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "cartPage": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "checkout": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "issues": [
+          {
+            "type": "info",
+            "code": "NOT_ECOMMERCE",
+            "message": "Not ecommerce (DOM score: 0)"
+          }
+        ]
+      },
+      "findings": [
+        {
+          "type": "warning",
+          "message": "8 significant console error(s) detected."
+        },
+        {
+          "type": "success",
+          "message": "Excellent first paint — desktop FCP 0.58s."
+        },
+        {
+          "type": "warning",
+          "message": "LCP needs improvement — desktop 3.85s."
+        },
+        {
+          "type": "critical",
+          "message": "High Total Blocking Time — desktop TBT 0.85s. Heavy JavaScript is blocking interaction."
+        },
+        {
+          "type": "success",
+          "message": "Stable layout — CLS 0.000."
+        },
+        {
+          "type": "success",
+          "message": "Desktop PSI score: 52/100, mobile: 47/100."
+        },
+        {
+          "type": "success",
+          "message": "Fully mobile-responsive."
+        },
+        {
+          "type": "critical",
+          "message": "4 broken content link(s) on this page — excludes header/footer links."
+        },
+        {
+          "type": "info",
+          "message": "1 minor navigation issue(s)."
+        },
+        {
+          "type": "critical",
+          "message": "Missing both header and footer."
+        },
+        {
+          "type": "warning",
+          "message": "No CTAs detected — missed conversions."
+        }
+      ],
+      "opportunities": [
+        {
+          "key": "slow-lcp",
+          "value": 3846,
+          "pages": 1
+        },
+        {
+          "key": "high-tbt",
+          "value": 849,
+          "pages": 1
+        },
+        {
+          "key": "no-cta",
+          "value": 1,
+          "pages": 1
+        },
+        {
+          "key": "nav-issues",
+          "value": 1,
+          "pages": 1
+        },
+        {
+          "key": "missing-nav",
+          "value": 1,
+          "pages": 1
+        }
+      ]
+    }
+  ],
+  "formValidationSummary": {
+    "totalPages": 1,
+    "totalForms": 1,
+    "stats": {
+      "withSubmitButton": 1,
+      "withEmailField": 1,
+      "withRequiredFields": 1,
+      "withBrowserValidation": 1,
+      "withMissingValidation": 0
+    },
+    "forms": [
+      {
+        "page": "/range/antares-range",
+        "pageUrl": "https://www.spiritmarineqld.com/range/antares-range",
+        "fieldCount": 2,
+        "purpose": "contact",
+        "hasSubmitBtn": true,
+        "hasEmailField": true,
+        "hasRequiredFields": true,
+        "browserValidationActive": true,
+        "criticalMissingValidation": [],
+        "invalidEmailInconclusive": false,
+        "invalidEmailDetail": "Please fill out this field."
+      }
+    ],
+    "issues": []
+  },
+  "ecommerceSummary": {
+    "auditedPages": 1,
+    "detectedPages": 0,
+    "hasEcommerce": false,
+    "overallStatus": "healthy",
+    "score": null,
+    "platform": "unknown",
+    "confidence": "low",
+    "detectionMethod": "dom-only",
+    "platforms": {},
+    "pages": [
+      {
+        "page": "/range/antares-range",
+        "pageUrl": "https://www.spiritmarineqld.com/range/antares-range",
+        "score": null,
+        "overallStatus": "healthy",
+        "isEcommerce": false,
+        "platform": "unknown",
+        "confidence": "low",
+        "detectionMethod": "dom-only",
+        "siteLevelAudited": true,
+        "siteLevelSkipped": false,
+        "productListing": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested",
+          "productCount": null,
+          "hasImages": false,
+          "hasPrices": false,
+          "hasProductLinks": false,
+          "sampleProductUrl": null,
+          "url": null
+        },
+        "productDetail": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested",
+          "hasAddToCartBtn": false,
+          "addToCartSelector": null,
+          "siteType": null,
+          "url": null
+        },
+        "addToCart": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested",
+          "cartUpdated": false,
+          "method": null,
+          "cartCountBefore": null,
+          "cartCountAfter": null,
+          "url": null
+        },
+        "cartPage": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested",
+          "hasItem": false,
+          "hasPrice": false,
+          "hasQuantityControl": false,
+          "hasRemoveOption": false,
+          "lineItemCount": null,
+          "url": null
+        },
+        "checkout": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested",
+          "reachable": false,
+          "requiresLogin": false,
+          "checkoutHref": null,
+          "url": null
+        }
+      }
+    ],
+    "steps": [
+      {
+        "key": "productListing",
+        "label": "Product Listing",
+        "tested": 0,
+        "passed": 0,
+        "failed": 0,
+        "detail": "Not tested"
+      },
+      {
+        "key": "productDetail",
+        "label": "Product Detail",
+        "tested": 0,
+        "passed": 0,
+        "failed": 0,
+        "detail": "Not tested"
+      },
+      {
+        "key": "addToCart",
+        "label": "Add to Cart",
+        "tested": 0,
+        "passed": 0,
+        "failed": 0,
+        "detail": "Not tested"
+      },
+      {
+        "key": "cartPage",
+        "label": "Cart Page",
+        "tested": 0,
+        "passed": 0,
+        "failed": 0,
+        "detail": "Not tested"
+      },
+      {
+        "key": "checkout",
+        "label": "Checkout",
+        "tested": 0,
+        "passed": 0,
+        "failed": 0,
+        "detail": "Not tested"
+      }
+    ],
+    "primary": {
+      "page": "/range/antares-range",
+      "pageUrl": "https://www.spiritmarineqld.com/range/antares-range",
+      "score": null,
+      "overallStatus": "healthy",
+      "isEcommerce": false,
+      "platform": "unknown",
+      "confidence": "low",
+      "detectionMethod": "dom-only",
+      "siteLevelAudited": true,
+      "siteLevelSkipped": false,
+      "productListing": {
+        "tested": false,
+        "passed": false,
+        "detail": "Not tested",
+        "productCount": null,
+        "hasImages": false,
+        "hasPrices": false,
+        "hasProductLinks": false,
+        "sampleProductUrl": null,
+        "url": null
+      },
+      "productDetail": {
+        "tested": false,
+        "passed": false,
+        "detail": "Not tested",
+        "hasAddToCartBtn": false,
+        "addToCartSelector": null,
+        "siteType": null,
+        "url": null
+      },
+      "addToCart": {
+        "tested": false,
+        "passed": false,
+        "detail": "Not tested",
+        "cartUpdated": false,
+        "method": null,
+        "cartCountBefore": null,
+        "cartCountAfter": null,
+        "url": null
+      },
+      "cartPage": {
+        "tested": false,
+        "passed": false,
+        "detail": "Not tested",
+        "hasItem": false,
+        "hasPrice": false,
+        "hasQuantityControl": false,
+        "hasRemoveOption": false,
+        "lineItemCount": null,
+        "url": null
+      },
+      "checkout": {
+        "tested": false,
+        "passed": false,
+        "detail": "Not tested",
+        "reachable": false,
+        "requiresLogin": false,
+        "checkoutHref": null,
+        "url": null
+      }
+    },
+    "metrics": {
+      "productListingPassed": 0,
+      "productDetailPassed": 0,
+      "addToCartPassed": 0,
+      "cartPagePassed": 0,
+      "checkoutPassed": 0,
+      "checkoutAccessible": 0,
+      "checkoutLoginWalls": 0,
+      "cartUpdated": 0
+    },
+    "blocked": false,
+    "note": "Ecommerce flow was audited, but no storefront pattern was detected."
+  },
+  "navFooterSummary": {
+    "totalNavBroken": 0,
+    "totalFooterBroken": 0,
+    "summary": {
+      "navHealth": "✓ All navigation links working",
+      "footerHealth": "✓ All footer links working"
+    },
+    "brokenNavLinks": [],
+    "brokenFooterLinks": []
+  },
+  "uiUxIssues": {
+    "totalIssues": 4,
+    "issues": [
+      {
+        "category": "Layout",
+        "severity": "critical",
+        "page": "/range/antares-range",
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "title": "Missing Header Navigation",
+        "description": "The page at /range/antares-range has no visible header or navigation bar. Users cannot navigate to other sections of the site, leading to high bounce rates and poor user experience.",
+        "pageCount": 1,
+        "affectedPages": [
+          "/range/antares-range"
+        ]
+      },
+      {
+        "category": "Performance",
+        "severity": "critical",
+        "page": "/range/antares-range",
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "title": "High JavaScript Blocking Time",
+        "description": "Total Blocking Time is 0.85s on /range/antares-range — heavy JavaScript is preventing user interaction. Reduce or defer unused JS bundles.",
+        "pageCount": 1,
+        "affectedPages": [
+          "/range/antares-range"
+        ]
+      },
+      {
+        "category": "Layout",
+        "severity": "warning",
+        "page": "/range/antares-range",
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "title": "Missing Footer",
+        "description": "No footer is visible on /range/antares-range. Footers provide essential links, legal information, and trust signals.",
+        "pageCount": 1,
+        "affectedPages": [
+          "/range/antares-range"
+        ]
+      },
+      {
+        "category": "Conversions",
+        "severity": "warning",
+        "page": "/range/antares-range",
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "title": "No Call-to-Action Found",
+        "description": "No CTA buttons or links were detected on /range/antares-range. Without clear calls to action, visitors have no guided path to convert.",
+        "pageCount": 1,
+        "affectedPages": [
+          "/range/antares-range"
+        ]
+      }
+    ]
+  },
+  "opportunitySummary": {
+    "title": "Growth Opportunities Identified",
+    "description": "Addressing these items can directly impact your search rankings, page speed, and user engagement.",
+    "items": [
+      {
+        "id": 1,
+        "opportunity": "Improve Largest Contentful Paint — slowest page is 3.85s. Optimize images and server response across 1 page."
+      },
+      {
+        "id": 2,
+        "opportunity": "Reduce JavaScript blocking time (TBT up to 0.85s) — heavy JS is delaying interactivity on 1 page."
+      },
+      {
+        "id": 3,
+        "opportunity": "Add call-to-action buttons to 1 page — visitors have no clear conversion path."
+      },
+      {
+        "id": 4,
+        "opportunity": "Resolve navigation issues across 1 page — fix broken anchors and link structure."
+      },
+      {
+        "id": 5,
+        "opportunity": "Add consistent header/footer on 1 page — missing navigation breaks user flow."
+      }
+    ]
+  },
+  "categoryScorecard": {
+    "title": "How Your Site Performs by Category",
+    "categories": [
+      {
+        "name": "Page Health",
+        "description": "HTTP status, console errors, failed requests, and reliability",
+        "score": 76,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
+        "name": "Page Speed",
+        "description": "First Contentful Paint, Largest Contentful Paint, TTFB, and Total Blocking Time",
+        "score": 66,
+        "grade": {
+          "grade": "C",
+          "label": "Fair",
+          "color": "#b45309"
+        }
+      },
+      {
+        "name": "Resource Efficiency",
+        "description": "Speed Index (desktop + mobile) and mobile vs desktop rendering efficiency",
+        "score": 85,
+        "grade": {
+          "grade": "B",
+          "label": "Good",
+          "color": "#65a30d"
+        }
+      },
+      {
+        "name": "Mobile Experience",
+        "description": "Responsiveness across mobile, tablet, and desktop viewports",
+        "score": 100,
+        "grade": {
+          "grade": "A",
+          "label": "Excellent",
+          "color": "#16a34a"
+        }
+      },
+      {
+        "name": "Navigation & Links",
+        "description": "Broken links, anchor integrity, and navigation health",
+        "score": 26,
+        "grade": {
+          "grade": "F",
+          "label": "Critical Issues",
+          "color": "#dc2626"
+        }
+      },
+      {
+        "name": "Layout & UX",
+        "description": "Header, footer, logo, CTAs, and page structure completeness",
+        "score": 17,
+        "grade": {
+          "grade": "F",
+          "label": "Critical Issues",
+          "color": "#dc2626"
+        }
+      }
+    ]
+  }
+}

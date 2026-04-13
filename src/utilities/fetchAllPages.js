@@ -450,6 +450,12 @@ async function fetchPageLinks(context, url, timeout) {
 async function fetchImportantPages(homepageUrl, options = {}) {
   const cfg = { ...DEFAULTS, ...options };
   const origin = new URL(homepageUrl).origin;
+  const browser = options.browser || await chromium.launch({
+    headless: true,
+    ...(CHROME_PATH ? { executablePath: CHROME_PATH } : {}),
+    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+  });
+  const shouldCloseBrowser = !options.browser;
 
   const stats = {
     rawLinksFound: 0,
@@ -461,12 +467,6 @@ async function fetchImportantPages(homepageUrl, options = {}) {
     shortlistCandidates: 0,
   };
 
-  // ── Boot browser ──────────────────────────────────────────────────────────
-  const browser = await chromium.launch({
-    headless: true,
-    ...(CHROME_PATH ? { executablePath: CHROME_PATH } : {}),
-    args: ['--no-sandbox', '--disable-dev-shm-usage'],
-  });
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
 
   // ⚡ Block everything except document + XHR — images, fonts, CSS, scripts all skipped
@@ -616,7 +616,7 @@ async function fetchImportantPages(homepageUrl, options = {}) {
     console.log(`   ✓ Added ${added} single service/product page(s) from hubs`);
   }
 
-  await browser.close();
+  if (shouldCloseBrowser) await browser.close();
 
   // ────────────────────────────────────────────────────────────────────────────
   // PHASE 4 — Rule-based shortlisting

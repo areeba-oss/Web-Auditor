@@ -23,12 +23,12 @@ const { convertToPDF } = require('./pdfConverter');
  * @param {Object} report - Report data
  * @param {Object} options
  * @param {boolean} [options.includePageBreakdown=true] - Whether to include page breakdown section
- * @param {number}  [options.maxPages=10]  - Max pages shown in page breakdown
+ * @param {number}  [options.maxPages=6]  - Max pages shown in page breakdown
  * @param {number}  [options.maxImages=4]  - Max screenshot placeholders in UI/UX section
  * @returns {string} Complete HTML document
  */
 function buildReportHTML(report, options = {}) {
-  const { includePageBreakdown = true, maxPages = 10, maxImages = 4 } = options;
+  const { includePageBreakdown = true, maxPages = 6, maxImages = 4 } = options;
   const {
     meta,
     executiveSummary,
@@ -38,6 +38,8 @@ function buildReportHTML(report, options = {}) {
     formValidationSummary,
     uiUxIssues,
   } = report;
+  const hasFormsData = (formValidationSummary?.totalForms ?? 0) > 0;
+  const hasEcommerceData = !!(report.ecommerceSummary?.blocked || report.ecommerceSummary?.hasEcommerce);
   const generatedDate = new Date(meta.generatedAt).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
@@ -52,9 +54,11 @@ function buildReportHTML(report, options = {}) {
 
   if (includePageBreakdown) {
     pages.push(pageBreakdownPages(meta, pageBreakdown, generatedDate, maxPages));
-    pages.push(formValidationPages(meta, formValidationSummary, generatedDate));
-    const ecommercePage = ecommercePages(meta, report.ecommerceSummary, generatedDate);
-    if (ecommercePage) pages.push(ecommercePage);
+    if (hasFormsData) pages.push(formValidationPages(meta, formValidationSummary, generatedDate));
+    if (hasEcommerceData) {
+      const ecommercePage = ecommercePages(meta, report.ecommerceSummary, generatedDate);
+      if (ecommercePage) pages.push(ecommercePage);
+    }
     pages.push(uiUxPages(meta, uiUxIssues, generatedDate, maxImages));
   }
 
@@ -83,11 +87,11 @@ function buildReportHTML(report, options = {}) {
  * @param {string} outputPath - Path for output PDF (relative to outputs/report-final/)
  * @param {Object} options
  * @param {boolean} [options.includePageBreakdown=true]
- * @param {number}  [options.maxPages=10]
+ * @param {number}  [options.maxPages=6]
  * @param {number}  [options.maxImages=4]
  */
 async function generateReport(jsonPath, outputPath, options = {}) {
-  const { includePageBreakdown = true, maxPages = 10, maxImages = 4 } = options;
+  const { includePageBreakdown = true, maxPages = 6, maxImages = 4 } = options;
   await initCoverImage();
   const report = JSON.parse(fs.readFileSync(`outputs/report-json/${jsonPath}`, 'utf8'));
   const html = buildReportHTML(report, { includePageBreakdown, maxPages, maxImages });
@@ -99,9 +103,11 @@ async function generateReport(jsonPath, outputPath, options = {}) {
 
   const reportType = includePageBreakdown ? 'Full' : 'Mini';
   const breakdownPages = Math.ceil(Math.min(report.pageBreakdown.length, maxPages) / 3);
-  const formPages = includePageBreakdown ? 1 : 0;
+  const hasFormsData = (report.formValidationSummary?.totalForms ?? 0) > 0;
+  const hasEcommerceData = !!(report.ecommerceSummary?.blocked || report.ecommerceSummary?.hasEcommerce);
+  const formPages = includePageBreakdown && hasFormsData ? 1 : 0;
   const ecommercePageCount = includePageBreakdown
-    ? (report.ecommerceSummary?.blocked || report.ecommerceSummary?.hasEcommerce ? 1 : 0)
+    ? (hasEcommerceData ? 1 : 0)
     : 0;
   const uiuxPageCount = includePageBreakdown ? 2 : 0;
   const pageCount = includePageBreakdown

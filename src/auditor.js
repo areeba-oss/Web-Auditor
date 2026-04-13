@@ -539,7 +539,7 @@ function writeResultsFile(allResults, inputUrl, totalMs) {
     } else {
       console.log(`🕸  Crawling site to find top ${CRAWL_LIMIT} pages...\n`);
       try {
-        const crawlResult = await fetchImportantPages(inputUrl, { auditLimit: CRAWL_LIMIT });
+        const crawlResult = await fetchImportantPages(inputUrl, { auditLimit: CRAWL_LIMIT, browser });
         pagesToAudit = (crawlResult.pagesShortlistedForAudit || []).map(p => ({
           url:   p.url,
           label: p.category ? `${p.category} (rank ${p.rank})` : `Page ${p.rank}`,

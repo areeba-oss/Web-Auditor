@@ -1,0 +1,1222 @@
+{
+  "auditedUrl": "https://www.spiritmarineqld.com/range/antares-range",
+  "auditedAt": "2026-04-13T18:19:07.033Z",
+  "totalTimeMs": 339009,
+  "pagesAudited": 1,
+  "averageScore": 76,
+  "pages": [
+    {
+      "url": "https://www.spiritmarineqld.com/range/antares-range",
+      "label": "Specified Page",
+      "health": {
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "httpStatus": 200,
+        "httpOk": true,
+        "redirectedTo": "https://www.spiritmarineqld.com/range/antares-range",
+        "wasRedirected": false,
+        "blankScreen": false,
+        "blankScreenReason": null,
+        "bodyTextLength": 2127,
+        "visibleElementCount": 133,
+        "errorPageSignals": [],
+        "consoleErrors": [
+          "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+          "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+          "%c%d font-size:0;color:transparent NaN",
+          "%c%d font-size:0;color:transparent NaN",
+          "Failed to load resource: the server responded with a status of 401 ()",
+          " Note that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.",
+          " Note that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.",
+          "Failed to load resource: the server responded with a status of 401 ()"
+        ],
+        "consoleWarnings": [
+          "%c%d font-size:0;color:transparent NaN",
+          "%c%d font-size:0;color:transparent NaN",
+          "[Cloudflare Turnstile] Error: 600010.",
+          "The resource https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/cmg/1 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+        ],
+        "rawConsoleErrorCount": 8,
+        "rawConsoleWarningCount": 4,
+        "significantErrors": [
+          "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+          "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+          "%c%d font-size:0;color:transparent NaN",
+          "%c%d font-size:0;color:transparent NaN",
+          "Failed to load resource: the server responded with a status of 401 ()",
+          " Note that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.",
+          " Note that 'script-src' was not explicitly set, so 'default-src' is used as a fallback.",
+          "Failed to load resource: the server responded with a status of 401 ()"
+        ],
+        "significantWarnings": [
+          "%c%d font-size:0;color:transparent NaN",
+          "%c%d font-size:0;color:transparent NaN",
+          "[Cloudflare Turnstile] Error: 600010.",
+          "The resource https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/cmg/1 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+        ],
+        "failedRequests": [
+          {
+            "url": "https://cdn.prod.website-files.com/6883e165f83f60da2e030ab8%2F6895d3af0a9e02a577849321_2711218-uhd_3840_2160_24fps%20%281%29-transcode.mp4",
+            "errorText": "net::ERR_ABORTED",
+            "resourceType": "media",
+            "method": "GET",
+            "source": "requestfailed"
+          },
+          {
+            "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/pat/9ebc72f39a92908f/1776104052073/ebf383d36fc826a5298554268fa0693da8a2eb20e359f280f7613d50d3649436/8fBQQwBjPnDY9pU",
+            "errorText": "HTTP 401",
+            "resourceType": "fetch",
+            "status": 401,
+            "method": "GET",
+            "source": "http-response"
+          },
+          {
+            "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/pat/9ebc73438e16908f/1776104064895/c77ebc8ae06ef9f14de19df35cb603a9feafa955378a6f0432a4cbe31bce0c6d/6dxi4kl9AfcCjUr",
+            "errorText": "HTTP 401",
+            "resourceType": "fetch",
+            "status": 401,
+            "method": "GET",
+            "source": "http-response"
+          }
+        ],
+        "criticalFailures": [],
+        "overallStatus": "critical",
+        "issues": [
+          {
+            "type": "critical",
+            "code": "CONSOLE_ERRORS",
+            "message": "8 JS error(s) detected",
+            "detail": [
+              "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+              "Permissions policy violation: xr-spatial-tracking is not allowed in this document.",
+              "%c%d font-size:0;color:transparent NaN",
+              "%c%d font-size:0;color:transparent NaN",
+              "Failed to load resource: the server responded with a status of 401 ()"
+            ]
+          },
+          {
+            "type": "info",
+            "code": "CONSOLE_WARNINGS",
+            "message": "4 console warning(s)",
+            "detail": [
+              "%c%d font-size:0;color:transparent NaN",
+              "%c%d font-size:0;color:transparent NaN",
+              "[Cloudflare Turnstile] Error: 600010."
+            ]
+          },
+          {
+            "type": "warning",
+            "code": "NETWORK_FAILURES",
+            "message": "3 request(s) failed",
+            "detail": [
+              {
+                "url": "https://cdn.prod.website-files.com/6883e165f83f60da2e030ab8%2F6895d3af0a9e02a577849321_2711218-uhd_3",
+                "error": "net::ERR_ABORTED"
+              },
+              {
+                "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/pat/9ebc72f39a92908f/1776104052073/",
+                "error": "HTTP 401"
+              },
+              {
+                "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/pat/9ebc73438e16908f/1776104064895/",
+                "error": "HTTP 401"
+              }
+            ]
+          }
+        ],
+        "score": 75,
+        "pageTitle": "Antares Range"
+      },
+      "ui": {
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "httpStatus": 200,
+        "score": 87,
+        "overallStatus": "warning",
+        "issues": [
+          {
+            "type": "warning",
+            "code": "HEADER_MISSING",
+            "message": "Header not visible at: tablet, desktop",
+            "breakpoints": [
+              "tablet",
+              "desktop"
+            ]
+          }
+        ],
+        "details": {
+          "header": {
+            "mobile": {
+              "visible": true,
+              "description": "Header detected (DOM)",
+              "issue": null
+            },
+            "tablet": {
+              "visible": false,
+              "description": "No header element found",
+              "issue": "No header/nav element"
+            },
+            "desktop": {
+              "visible": false,
+              "description": "No header element found",
+              "issue": "No header/nav element"
+            }
+          },
+          "footer": {
+            "mobile": {
+              "visible": true,
+              "description": "Footer detected (DOM)",
+              "issue": null
+            },
+            "tablet": {
+              "visible": true,
+              "description": "Footer detected (DOM)",
+              "issue": null
+            },
+            "desktop": {
+              "visible": false,
+              "description": "No footer element found",
+              "issue": "No footer element"
+            }
+          },
+          "cta": {
+            "mobile": {
+              "found": true,
+              "count": 2,
+              "examples": [
+                "TALK TO OUR SALES TEAM NOW\n1300 110 489",
+                "DOWNLOAD THE E-BOOK"
+              ],
+              "issue": null,
+              "_fallback": true
+            },
+            "tablet": {
+              "found": true,
+              "count": 2,
+              "examples": [
+                "TALK TO OUR SALES TEAM NOW\n1300 110 489",
+                "DOWNLOAD THE E-BOOK"
+              ],
+              "issue": null,
+              "_fallback": true
+            },
+            "desktop": {
+              "found": false,
+              "count": 0,
+              "examples": [],
+              "issue": "No CTA buttons detected — users may not know what action to take",
+              "_fallback": true
+            }
+          },
+          "logo": {
+            "visible": true,
+            "description": "Logo detected (DOM)",
+            "issue": null,
+            "appearsClickable": false,
+            "linkFound": true,
+            "linksToHome": true,
+            "href": "https://www.spiritmarineqld.com/"
+          },
+          "overflow": {
+            "hasOverflow": false,
+            "breakpoints": []
+          },
+          "mobileNav": {
+            "applicable": true,
+            "hamburgerVisible": true,
+            "description": "Mobile nav toggle found",
+            "issue": null
+          }
+        },
+        "breakpointResults": [
+          {
+            "breakpoint": "mobile",
+            "width": 375,
+            "ai": {
+              "header": {
+                "visible": true,
+                "description": "Header detected (DOM)",
+                "issue": null
+              },
+              "footer": {
+                "visible": true,
+                "description": "Footer detected (DOM)",
+                "issue": null
+              },
+              "logo": {
+                "visible": true,
+                "description": "Logo detected (DOM)",
+                "issue": null,
+                "appearsClickable": false
+              },
+              "overflow": {
+                "detected": false,
+                "description": null
+              },
+              "mobileNav": {
+                "applicable": true,
+                "hamburgerVisible": true,
+                "description": "Mobile nav toggle found",
+                "issue": null
+              },
+              "generalIssues": [],
+              "_fallback": true,
+              "ctas": {
+                "found": true,
+                "count": 2,
+                "examples": [
+                  "TALK TO OUR SALES TEAM NOW\n1300 110 489",
+                  "DOWNLOAD THE E-BOOK"
+                ],
+                "issue": null,
+                "_fallback": true
+              }
+            },
+            "domOverflow": false
+          },
+          {
+            "breakpoint": "tablet",
+            "width": 768,
+            "ai": {
+              "header": {
+                "visible": false,
+                "description": "No header element found",
+                "issue": "No header/nav element"
+              },
+              "footer": {
+                "visible": true,
+                "description": "Footer detected (DOM)",
+                "issue": null
+              },
+              "logo": {
+                "visible": true,
+                "description": "Logo detected (DOM)",
+                "issue": null,
+                "appearsClickable": false
+              },
+              "overflow": {
+                "detected": false,
+                "description": null
+              },
+              "mobileNav": {
+                "applicable": true,
+                "hamburgerVisible": true,
+                "description": "Mobile nav toggle found",
+                "issue": null
+              },
+              "generalIssues": [],
+              "_fallback": true,
+              "ctas": {
+                "found": true,
+                "count": 2,
+                "examples": [
+                  "TALK TO OUR SALES TEAM NOW\n1300 110 489",
+                  "DOWNLOAD THE E-BOOK"
+                ],
+                "issue": null,
+                "_fallback": true
+              }
+            },
+            "domOverflow": false
+          },
+          {
+            "breakpoint": "desktop",
+            "width": 1440,
+            "ai": {
+              "header": {
+                "visible": false,
+                "description": "No header element found",
+                "issue": "No header/nav element"
+              },
+              "footer": {
+                "visible": false,
+                "description": "No footer element found",
+                "issue": "No footer element"
+              },
+              "logo": {
+                "visible": true,
+                "description": "Logo detected (DOM)",
+                "issue": null,
+                "appearsClickable": false
+              },
+              "overflow": {
+                "detected": false,
+                "description": null
+              },
+              "mobileNav": {
+                "applicable": false,
+                "hamburgerVisible": false,
+                "description": null,
+                "issue": null
+              },
+              "generalIssues": [],
+              "_fallback": true,
+              "ctas": {
+                "found": false,
+                "count": 0,
+                "examples": [],
+                "issue": "No CTA buttons detected — users may not know what action to take",
+                "_fallback": true
+              }
+            },
+            "domOverflow": false
+          }
+        ]
+      },
+      "navigation": {
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "httpStatus": 200,
+        "score": 88,
+        "overallStatus": "warning",
+        "issues": [
+          {
+            "type": "warning",
+            "code": "INTERNAL_BROKEN_LINKS",
+            "message": "3 broken internal link(s) (out of 32 checked)",
+            "detail": [
+              "[broken-anchor] #",
+              "[broken-anchor] #",
+              "[broken-anchor] #"
+            ]
+          },
+          {
+            "type": "info",
+            "code": "FOOTER_NO_LINKS",
+            "message": "No footer links detected"
+          },
+          {
+            "type": "info",
+            "code": "BOT_BLOCKED_LINKS",
+            "message": "1 link(s) bot-blocked (1× 400) — accessible to real users",
+            "detail": [
+              "[400] https://www.facebook.com/SpiritMarineQld/"
+            ]
+          },
+          {
+            "type": "info",
+            "code": "NAV_JS_TRIGGER_ANCHORS",
+            "message": "1 nav anchor(s) use JS triggers (slider/dropdown/toggle)",
+            "detail": [
+              "# — \"SunPower Yachts Range\""
+            ]
+          }
+        ],
+        "summary": {
+          "nav": {
+            "total": 13,
+            "broken": 0,
+            "timedOut": 0
+          },
+          "internal": {
+            "total": 32,
+            "broken": 3,
+            "timedOut": 0
+          },
+          "external": {
+            "total": 6,
+            "broken": 0,
+            "timedOut": 0
+          },
+          "footer": {
+            "total": 0,
+            "broken": 0,
+            "timedOut": 0
+          }
+        },
+        "details": {
+          "nav": [
+            {
+              "url": "https://www.spiritmarineqld.com/",
+              "text": "Home",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/about",
+              "text": "About",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/our-locations",
+              "text": "Our Locations",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/stock-boats",
+              "text": "Stock Boats",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/the-knowledge",
+              "text": "The Knowledge",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/antares-range",
+              "text": "Antares Range",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/flyer-range",
+              "text": "Flyer Range",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/oceanis-range",
+              "text": "Oceanis Range",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/first-range",
+              "text": "First Range",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/chaparral-range",
+              "text": "Chaparral Range",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/robalo-range",
+              "text": "Robalo Range",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/cruisers-yachts-range",
+              "text": "Cruisers Yachts  Range",
+              "region": "nav",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "#",
+              "text": "SunPower Yachts Range",
+              "region": "nav",
+              "status": "js-anchor",
+              "ok": true,
+              "redirected": false,
+              "info": "Anchor has JS trigger signals (toggle/slider/dropdown)",
+              "_jsTrigger": true
+            }
+          ],
+          "navButtons": [],
+          "internal": [
+            {
+              "url": "https://www.spiritmarineqld.com/",
+              "text": "home",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-7-cruise/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-7-fishing/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-8-cruise/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-8-fishing/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-9-v2/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-11-coupe/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-11-flybridge/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-12-coupe/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/antares-range/antares-12-flybridge/model",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/the-knowledge",
+              "text": "LEARN MORE",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/the-spirit-collective",
+              "text": "LEARN MORE ABOUT THE SPIRIT COLLECTIVE",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/about",
+              "text": "About Us",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/antares-range",
+              "text": "Antares",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/flyer-range",
+              "text": "Flyer",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/oceanis-range",
+              "text": "Oceanis",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/first-range",
+              "text": "First",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/chaparral-range",
+              "text": "Chaparral",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/robalo-range",
+              "text": "Robalo",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/range/cruisers-yachts-range",
+              "text": "Cruisers Yachts",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/our-locations",
+              "text": "The Regions We Serve",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/the-boat-production-process",
+              "text": "The Boat Production Process",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/faq",
+              "text": "FAQs",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/blog",
+              "text": "Boating Articles",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/boating-tips",
+              "text": "Boating Tips",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/boat-maintenance",
+              "text": "Maintenance Tips",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/terms-conditions",
+              "text": "Terms & Conditions",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/privacy-policy",
+              "text": "Privacy Policy",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.spiritmarineqld.com/contact",
+              "text": "Contact Us",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "#",
+              "text": "Explore More",
+              "region": "body",
+              "status": "broken-anchor",
+              "ok": false,
+              "error": "Empty anchor (#) — placeholder link with no destination",
+              "_broken": true
+            },
+            {
+              "url": "#",
+              "text": "EMAIL OUR SALES TEAM",
+              "region": "body",
+              "status": "broken-anchor",
+              "ok": false,
+              "error": "Empty anchor (#) — placeholder link with no destination",
+              "_broken": true
+            },
+            {
+              "url": "#",
+              "text": "SunPower",
+              "region": "body",
+              "status": "broken-anchor",
+              "ok": false,
+              "error": "Empty anchor (#) — placeholder link with no destination",
+              "_broken": true
+            }
+          ],
+          "external": [
+            {
+              "url": "https://www.flipsnack.com/EC89C977C6F/smq-shop-the-range/full-view.html",
+              "text": "DOWNLOAD THE E-BOOK",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.facebook.com/SpiritMarineQld/",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 400,
+              "ok": false,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.instagram.com/spiritmarineluxuryboats/",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://x.com/SQueenslan24805",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.linkedin.com/company/spirit-marine-qld/",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            },
+            {
+              "url": "https://www.youtube.com/@spiritmarinequeensland1014",
+              "text": "",
+              "region": "body",
+              "finalUrl": null,
+              "status": 200,
+              "ok": true,
+              "redirected": false,
+              "method": "GET"
+            }
+          ],
+          "footer": []
+        }
+      },
+      "forms": {
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "httpStatus": 200,
+        "overallStatus": "warning",
+        "score": 85,
+        "formsFound": 1,
+        "formsTested": 1,
+        "duplicatesSkipped": 0,
+        "formResults": [
+          {
+            "index": 0,
+            "label": "First Name",
+            "category": "full",
+            "source": "link:https://www.spiritmarineqld.com/contact",
+            "isMultiStep": false,
+            "hasEmail": true,
+            "emptySubmit": {
+              "tested": true,
+              "validationShown": true,
+              "method": "html5-native",
+              "detail": [
+                {
+                  "field": "First-Name",
+                  "msg": "Please fill out this field."
+                },
+                {
+                  "field": "Last-Name",
+                  "msg": "Please fill out this field."
+                },
+                {
+                  "field": "Email",
+                  "msg": "Please fill out this field."
+                },
+                {
+                  "field": "Phone",
+                  "msg": "Please fill out this field."
+                },
+                {
+                  "field": "Boat-of-Interest",
+                  "msg": "Please fill out this field."
+                }
+              ],
+              "intrinsicExpected": true
+            },
+            "invalidEmail": {
+              "tested": true,
+              "caught": true,
+              "inconclusive": false,
+              "detail": "Please fill out this field.",
+              "intrinsicExpected": true
+            },
+            "requiredFields": {
+              "total": 6,
+              "requiredCount": 5,
+              "markedOk": false
+            },
+            "errorMessages": {
+              "visible": true,
+              "clear": true,
+              "detail": "Please fill out this field."
+            },
+            "successMessages": {
+              "visible": false,
+              "clear": false,
+              "detail": null
+            },
+            "score": 85,
+            "issues": [
+              {
+                "type": "warning",
+                "code": "REQUIRED_NOT_MARKED",
+                "message": "\"First Name\" — 5 required field(s) not visually marked"
+              },
+              {
+                "type": "info",
+                "code": "SUCCESS_MESSAGE_NOT_OBSERVED",
+                "message": "\"First Name\" — no visible success/confirmation message observed during safe validation flow"
+              }
+            ]
+          }
+        ],
+        "issues": [
+          {
+            "type": "warning",
+            "code": "REQUIRED_NOT_MARKED",
+            "message": "\"First Name\" — 5 required field(s) not visually marked"
+          },
+          {
+            "type": "info",
+            "code": "SUCCESS_MESSAGE_NOT_OBSERVED",
+            "message": "\"First Name\" — no visible success/confirmation message observed during safe validation flow"
+          }
+        ]
+      },
+      "ecommerce": {
+        "url": "https://www.spiritmarineqld.com",
+        "isEcommerce": false,
+        "platform": null,
+        "confidence": "low",
+        "detectionMethod": "dom-only",
+        "auditState": "not-ecommerce",
+        "botDetected": false,
+        "botDetectionReason": null,
+        "productListing": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "productDetail": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "addToCart": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "cartPage": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "checkout": {
+          "tested": false,
+          "passed": false,
+          "detail": "Not tested"
+        },
+        "overallStatus": "healthy",
+        "score": null,
+        "issues": [
+          {
+            "type": "info",
+            "code": "NOT_ECOMMERCE",
+            "message": "Not ecommerce (DOM score: 0)"
+          }
+        ],
+        "siteLevelAudited": true
+      },
+      "performance": {
+        "url": "https://www.spiritmarineqld.com/range/antares-range",
+        "desktop": {
+          "device": "desktop",
+          "label": "Desktop",
+          "viewport": "1440×900",
+          "overallStatus": "critical",
+          "score": 52,
+          "lab": {
+            "fcp": 584,
+            "fcpRating": "good",
+            "lcp": 3846,
+            "lcpRating": "needs-improvement",
+            "cls": 0,
+            "clsRating": "good",
+            "tbt": 849,
+            "tbtRating": "poor",
+            "si": 1003,
+            "siRating": "good",
+            "tti": 3846,
+            "ttiRating": "needs-improvement",
+            "ttfb": 2
+          },
+          "field": null,
+          "issues": [
+            {
+              "type": "warning",
+              "code": "LCP_NEEDS_IMPROVEMENT",
+              "message": "Largest Contentful Paint is 3.85s — aim for under 2.50s"
+            },
+            {
+              "type": "critical",
+              "code": "TBT_POOR",
+              "message": "Total Blocking Time is 849ms — exceeds poor threshold of 600ms"
+            },
+            {
+              "type": "warning",
+              "code": "TTI_NEEDS_IMPROVEMENT",
+              "message": "Time to Interactive is 3.85s — aim for under 3.80s"
+            },
+            {
+              "type": "info",
+              "code": "UNUSED_CSS_RULES",
+              "message": "Reduce unused CSS (~40ms savings)"
+            }
+          ]
+        },
+        "mobile": {
+          "device": "mobile",
+          "label": "Mobile",
+          "viewport": "375×812",
+          "overallStatus": "critical",
+          "score": 47,
+          "lab": {
+            "fcp": 3180,
+            "fcpRating": "poor",
+            "lcp": 22059,
+            "lcpRating": "poor",
+            "cls": 0.012,
+            "clsRating": "good",
+            "tbt": 973,
+            "tbtRating": "poor",
+            "si": 3180,
+            "siRating": "good",
+            "tti": 22059,
+            "ttiRating": "poor",
+            "ttfb": 2
+          },
+          "field": null,
+          "issues": [
+            {
+              "type": "critical",
+              "code": "FCP_POOR",
+              "message": "First Contentful Paint is 3.18s — exceeds poor threshold of 3.00s"
+            },
+            {
+              "type": "critical",
+              "code": "LCP_POOR",
+              "message": "Largest Contentful Paint is 22.06s — exceeds poor threshold of 4.00s"
+            },
+            {
+              "type": "critical",
+              "code": "TBT_POOR",
+              "message": "Total Blocking Time is 973ms — exceeds poor threshold of 600ms"
+            },
+            {
+              "type": "warning",
+              "code": "TTI_POOR",
+              "message": "Time to Interactive is 22.06s — exceeds poor threshold of 7.30s"
+            },
+            {
+              "type": "info",
+              "code": "UNUSED_CSS_RULES",
+              "message": "Reduce unused CSS (~150ms savings)"
+            }
+          ]
+        },
+        "score": 52,
+        "overallStatus": "critical",
+        "issues": [
+          {
+            "type": "warning",
+            "code": "LCP_NEEDS_IMPROVEMENT",
+            "message": "Largest Contentful Paint is 3.85s — aim for under 2.50s"
+          },
+          {
+            "type": "critical",
+            "code": "TBT_POOR",
+            "message": "Total Blocking Time is 849ms — exceeds poor threshold of 600ms"
+          },
+          {
+            "type": "warning",
+            "code": "TTI_NEEDS_IMPROVEMENT",
+            "message": "Time to Interactive is 3.85s — aim for under 3.80s"
+          },
+          {
+            "type": "info",
+            "code": "UNUSED_CSS_RULES",
+            "message": "Reduce unused CSS (~40ms savings)"
+          },
+          {
+            "type": "critical",
+            "code": "FCP_POOR",
+            "message": "First Contentful Paint is 3.18s — exceeds poor threshold of 3.00s"
+          },
+          {
+            "type": "critical",
+            "code": "LCP_POOR",
+            "message": "Largest Contentful Paint is 22.06s — exceeds poor threshold of 4.00s"
+          },
+          {
+            "type": "warning",
+            "code": "TTI_POOR",
+            "message": "Time to Interactive is 22.06s — exceeds poor threshold of 7.30s"
+          }
+        ]
+      },
+      "overallScore": 76,
+      "completedAt": "2026-04-13T18:13:28.498Z"
+    }
+  ]
+}

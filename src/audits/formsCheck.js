@@ -1058,6 +1058,7 @@ async function auditForms(context, url, timeout, options = {}) {
     ? options.knownFingerprints
     : null;
   const mainPage = await context.newPage();
+  const testPage = await context.newPage();
   const allFormResults = [];
 
   try {
@@ -1165,7 +1166,6 @@ async function auditForms(context, url, timeout, options = {}) {
 
     for (const formMeta of mainFormsToTest.slice(0, MAX_FORMS)) {
       console.log('\n   📄 "' + formMeta.label + '" [' + formMeta.category + '] inputs:' + formMeta.inputCount + ' email:' + formMeta.hasEmail + ' required:' + formMeta.requiredCount + ' novalidate:' + formMeta.intrinsic.noValidate);
-      const testPage = await context.newPage();
       try {
         await testPage.setViewportSize({ width: 1440, height: 900 });
         await testPage.goto(url, { waitUntil: 'load', timeout });
@@ -1224,9 +1224,7 @@ async function auditForms(context, url, timeout, options = {}) {
           }],
         });
         console.warn('      ⚠️  Main-page form test failed: ' + msg.slice(0, 80));
-      } finally {
-        await testPage.close().catch(() => {});
-      }
+      } finally { }
     }
 
     let extraCount = allFormResults.length;
@@ -1247,20 +1245,18 @@ async function auditForms(context, url, timeout, options = {}) {
         }
         extraCount++;
         console.log('\n   📄 "' + formMeta.label + '" [' + formMeta.category + '] source:' + src.source);
-        let testPage = null;
         try {
-          testPage = await context.newPage();
+          await testPage.setViewportSize({ width: 1440, height: 900 });
         } catch (err) {
           runtimeIssues.push({
             type: 'warning',
             code: 'FORMS_CONTEXT_INTERRUPTED',
             message: 'Form crawl context interrupted while opening a new page: ' + String(err.message || err).slice(0, 120),
           });
-          console.warn('      ⚠️  Could not open new page: ' + String(err.message || err).slice(0, 80));
+          console.warn('      ⚠️  Could not prepare test page: ' + String(err.message || err).slice(0, 80));
           break;
         }
         try {
-          await testPage.setViewportSize({ width: 1440, height: 900 });
           await testPage.goto(src.pageUrl, { waitUntil: 'load', timeout });
           try { await testPage.waitForFunction(() => document.body && document.body.innerText.trim().length > 100, { timeout: 4000 }); } catch {}
           if (src.openedBy && src.popupSelector) {
@@ -1271,19 +1267,19 @@ async function auditForms(context, url, timeout, options = {}) {
               if (!popup.found) throw new Error('Popup did not reopen');
             } catch (e) {
               console.warn('      Could not reopen popup: ' + e.message.slice(0, 60));
-              await testPage.close(); continue;
+              continue;
             }
           }
           await sleep(600);
           const liveForms = await findForms(testPage, null);
           const liveForm  = liveForms.find((f) => f.fingerprint === formMeta.fingerprint)
                           || liveForms[formMeta.index] || liveForms[0];
-          if (!liveForm) { console.warn('      Form not found on reopened page'); await testPage.close(); continue; }
+          if (!liveForm) { console.warn('      Form not found on reopened page'); continue; }
           const result = await testForm(testPage, liveForm, src.source);
           allFormResults.push(result);
           if (knownFingerprintsAcrossPages) knownFingerprintsAcrossPages.add(liveForm.dedupeKey || liveForm.fingerprint);
           logFormResult(result);
-        } finally { await testPage.close().catch(() => {}); }
+        } finally { }
       }
     }
 
@@ -1321,6 +1317,7 @@ async function auditForms(context, url, timeout, options = {}) {
       fatalError: err.message };
   } finally {
     await mainPage.close().catch(() => {});
+    await testPage.close().catch(() => {});
   }
 }
 

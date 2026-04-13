@@ -1,0 +1,10 @@
+node_modules
+outputs
+audit-output.txt
+raw.json
+results.json
+npm-debug.log
+Dockerfile
+docker-compose.yml
+.git
+.gitignore

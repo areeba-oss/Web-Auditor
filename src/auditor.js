@@ -40,6 +40,7 @@ const CRAWL_LIMIT     = 10;       // pages to shortlist when crawling homepage
 const LAYER_DELAY_MS  = 500;      // small pause between layers (rate limit safety)
 const OUTPUT_FILE     = process.env.AUDIT_OUTPUT_FILE || 'results.json';
 const CHROME_PATH     = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const HEADLESS_BROWSER = String(process.env.HEADLESS_BROWSER ?? 'true').toLowerCase() !== 'false';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -521,7 +522,7 @@ function writeResultsFile(allResults, inputUrl, totalMs) {
   console.log('═'.repeat(60) + '\n');
 
   const browser = await chromium.launch({
-    headless: true,
+    headless: HEADLESS_BROWSER,
     executablePath: CHROME_PATH,
   });
 

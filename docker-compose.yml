@@ -1,0 +1,14 @@
+services:
+  web-auditor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-auditor:latest
+    container_name: web-auditor
+    ports:
+      - "8400:3000"
+    environment:
+      PORT: 3000
+      CHROME_PATH: /usr/bin/chromium
+      HEADLESS_BROWSER: "false"
+    restart: unless-stopped
